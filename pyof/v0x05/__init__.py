@@ -1,1 +1,1 @@
-"""The ofx parser package - spec version 0x04 (1.3.0)."""
+"""The ofx parser package - spec version 0x05 (1.3.0)."""
