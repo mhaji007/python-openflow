@@ -226,11 +226,7 @@ class InstructionGotoTable(InstructionHeader):
         """Create a InstructionGotoTable with the optional parameters below.
 
         Args:
-<<<<<<< HEAD
             length (int): Length of this struct in bytes.
-=======
-            len (int): Length of this struct in bytes.
->>>>>>> master
             table_id (int): set next table in the lookup pipeline.
         """
         super().__init__(InstructionType.OFPIT_GOTO_TABLE)

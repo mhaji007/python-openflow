@@ -192,9 +192,6 @@ class OxmTLV(GenericStruct):
     oxm_class = UBInt16(enum_ref=OxmClass)
     oxm_field_and_mask = UBInt8()
     oxm_length = UBInt8()
-
-
-
     oxm_value = BinaryData()
 
     def __init__(self, oxm_class=OxmClass.OFPXMC_OPENFLOW_BASIC,
@@ -437,15 +434,13 @@ class Match(GenericStruct):
 
 
 class OxmExperimenterHeader(GenericStruct):
-
-
+    """Header for OXM experimenter match fields."""
 
     #: oxm_class = OFPXMC_EXPERIMENTER
     oxm_header = UBInt32(OxmClass.OFPXMC_EXPERIMENTER,
                          enum_ref=OxmClass)
-
-    #: Experimenter ID.
-
+    #: Experimenter ID which takes the same form as in struct
+    #:     ofp_experimenter_header
     experimenter = UBInt32()
 
     def __init__(self, experimenter=None):
