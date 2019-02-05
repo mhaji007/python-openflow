@@ -1,7 +1,7 @@
 """PortMod tests."""
 import unittest
 
-from pyof.v0x04.controller2switch.port_mod import PortMod
+from pyof.v0x05.controller2switch.port_mod import PortMod
 
 
 class TestPortMod(unittest.TestCase):

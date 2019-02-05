@@ -1,7 +1,7 @@
 """FeturesReply test."""
 import unittest
 
-from pyof.v0x04.controller2switch.features_reply import FeaturesReply
+from pyof.v0x05.controller2switch.features_reply import FeaturesReply
 
 
 class TestFeaturesReply(unittest.TestCase):

@@ -7,16 +7,16 @@ from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import (
     Char, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.constants import OFP_MAX_TABLE_NAME_LEN
-from pyof.v0x04.asynchronous.flow_removed import FlowRemovedReason
-from pyof.v0x04.asynchronous.packet_in import PacketInReason
-from pyof.v0x04.asynchronous.port_status import PortReason
+from pyof.v0x05.asynchronous.flow_removed import FlowRemovedReason
+from pyof.v0x05.asynchronous.packet_in import PacketInReason
+from pyof.v0x05.asynchronous.port_status import PortReason
 # Local source tree imports
-from pyof.v0x04.common.action import (
+from pyof.v0x05.common.action import (
     ActionHeader, ControllerMaxLen, ListOfActions)
-from pyof.v0x04.common.flow_instructions import ListOfInstruction
-from pyof.v0x04.common.flow_match import ListOfOxmHeader
-from pyof.v0x04.common.header import Header
-from pyof.v0x04.controller2switch.table_mod import Table
+from pyof.v0x05.common.flow_instructions import ListOfInstruction
+from pyof.v0x05.common.flow_match import ListOfOxmHeader
+from pyof.v0x05.common.header import Header
+from pyof.v0x05.controller2switch.table_mod import Table
 
 __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
            'ExperimenterMultipartHeader', 'MultipartType',
@@ -212,7 +212,7 @@ class Bucket(GenericStruct):
                 live. Only required for fast failover groups.
             watch_group (int): Group whose state affects whether this bucket is
                 live. Only required for fast failover groups.
-            actions (~pyof.v0x04.common.action.ListOfActions): The action
+            actions (~pyof.v0x05.common.action.ListOfActions): The action
                 length is inferred from the length field in the header.
         """
         super().__init__()
@@ -254,7 +254,7 @@ class AsyncConfig(GenericMessage):
 
     AsyncConfig contains three 2-element arrays. Each array controls whether
     the controller receives asynchronous messages with a specific
-    :class:`~pyof.v0x04.common.header.Type`. Within each array, element
+    :class:`~pyof.v0x05.common.header.Type`. Within each array, element
     0 specifies messages of interest when the controller has a OFPCR_ROLE_EQUAL
     or OFPCR_ROLE_MASTER role; element 1, when the controller has a
     OFPCR_ROLE_SLAVE role. Each array element is a bit-mask in which a 0-bit
@@ -262,7 +262,7 @@ class AsyncConfig(GenericMessage):
     bit index and a 1-bit enables receiving it.
     """
 
-    #: OpenFlow :class:`~pyof.v0x04.common.header.Header`
+    #: OpenFlow :class:`~pyof.v0x05.common.header.Header`
     #: OFPT_GET_ASYNC_REPLY or OFPT_SET_ASYNC.
     header = Header()
     packet_in_mask1 = UBInt32(enum_ref=PacketInReason)
@@ -280,22 +280,22 @@ class AsyncConfig(GenericMessage):
         Args:
             xid (int): xid to be used on the message header.
             packet_in_mask1
-                (~pyof.v0x04.asynchronous.packet_in.PacketInReason):
+                (~pyof.v0x05.asynchronous.packet_in.PacketInReason):
                     A instance of PacketInReason
             packet_in_mask2
-                (~pyof.v0x04.asynchronous.packet_in.PacketInReason):
+                (~pyof.v0x05.asynchronous.packet_in.PacketInReason):
                     A instance of PacketInReason
             port_status_mask1
-                (~pyof.v0x04.asynchronous.port_status.PortReason):
+                (~pyof.v0x05.asynchronous.port_status.PortReason):
                     A instance of PortReason
             port_status_mask2
-                (~pyof.v0x04.asynchronous.port_status.PortReason):
+                (~pyof.v0x05.asynchronous.port_status.PortReason):
                     A instance of PortReason
             flow_removed_mask1
-                (~pyof.v0x04.asynchronous.flow_removed.FlowRemoved):
+                (~pyof.v0x05.asynchronous.flow_removed.FlowRemoved):
                     A instance of FlowRemoved.
             flow_removed_mask2
-                (~pyof.v0x04.asynchronous.flow_removed.FlowRemoved):
+                (~pyof.v0x05.asynchronous.flow_removed.FlowRemoved):
                     A instance of FlowRemoved.
         """
         super().__init__(xid)
@@ -310,7 +310,7 @@ class AsyncConfig(GenericMessage):
 class RoleBaseMessage(GenericMessage):
     """Role basic structure for RoleRequest and RoleReply messages."""
 
-    #: :class:`~pyof.v0x04.common.header.Header`
+    #: :class:`~pyof.v0x05.common.header.Header`
     #: Type OFPT_ROLE_REQUEST/OFPT_ROLE_REPLY.
     header = Header()
     #: One of NX_ROLE_*. (:class:`~.controller2switch.common.ControllerRole`)
@@ -336,7 +336,7 @@ class RoleBaseMessage(GenericMessage):
 class SwitchConfig(GenericMessage):
     """Used as base class for SET_CONFIG and GET_CONFIG_REPLY messages."""
 
-    #: OpenFlow :class:`~pyof.v0x04.common.header.Header`
+    #: OpenFlow :class:`~pyof.v0x05.common.header.Header`
     header = Header()
     flags = UBInt16(enum_ref=ConfigFlag)
     miss_send_len = UBInt16()
@@ -371,7 +371,7 @@ class ExperimenterMultipartHeader(GenericStruct):
         Args:
             experimenter: Experimenter ID which takes the same form as in
                 struct ofp_experimenter_header (
-                :class:`~pyof.v0x04.symmetric.experimenter.ExperimenterHeader`)
+                :class:`~pyof.v0x05.symmetric.experimenter.ExperimenterHeader`)
             exp_type: Experimenter defined.
         """
         super().__init__()
@@ -392,7 +392,7 @@ class Property(GenericStruct):
         """Create a Property with the optional parameters below.
 
         Args:
-            type(|TableFeaturePropType_v0x04|):
+            type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
         """
         super().__init__()
@@ -449,9 +449,9 @@ class InstructionsProperty(Property):
         """Create a InstructionsProperty with the optional parameters below.
 
         Args:
-            type(|TableFeaturePropType_v0x04|):
+            type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            next_table_ids(|ListOfInstruction_v0x04|):
+            next_table_ids(|ListOfInstruction_v0x05|):
                 List of InstructionGotoTable instances.
         """
         super().__init__(property_type=property_type)
@@ -474,9 +474,9 @@ class NextTablesProperty(Property):
         """Create a NextTablesProperty with the optional parameters below.
 
         Args:
-            type(|TableFeaturePropType_v0x04|):
+            type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            next_table_ids (|ListOfInstruction_v0x04|):
+            next_table_ids (|ListOfInstruction_v0x05|):
                 List of InstructionGotoTable instances.
         """
         super().__init__(property_type)
@@ -503,9 +503,9 @@ class ActionsProperty(Property):
         """Create a ActionsProperty with the optional parameters below.
 
         Args:
-            type(|TableFeaturePropType_v0x04|):
+            type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            action_ids(|ListOfActions_v0x04|):
+            action_ids(|ListOfActions_v0x05|):
                 List of Action instances.
         """
         super().__init__(property_type)
@@ -532,9 +532,9 @@ class OxmProperty(Property):
         """Create an OxmProperty with the optional parameters below.
 
         Args:
-            type(|TableFeaturePropType_v0x04|):
+            type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            oxm_ids(|ListOfOxmHeader_v0x04|):
+            oxm_ids(|ListOfOxmHeader_v0x05|):
                 List of OxmHeader instances.
         """
         super().__init__(property_type)
@@ -552,7 +552,7 @@ class ListOfProperty(FixedTypeList):
         """Create a ListOfProperty with the optional parameters below.
 
         Args:
-            items (|Property_v0x04|): Instance or a list of instances.
+            items (|Property_v0x05|): Instance or a list of instances.
         """
         super().__init__(pyof_class=Property, items=items)
 
@@ -604,7 +604,7 @@ class TableFeatures(GenericStruct):
             config(int): Field reseved for future use.
             max_entries(int): Describe the maximum number of flow entries that
                 can be inserted into that table.
-            properties(~pyof.v0x04.controller2switch.common.ListOfProperty):
+            properties(~pyof.v0x05.controller2switch.common.ListOfProperty):
                 List of Property intances.
         """
         super().__init__()

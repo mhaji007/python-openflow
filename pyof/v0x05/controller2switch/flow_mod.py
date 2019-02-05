@@ -6,12 +6,12 @@ from enum import IntEnum
 # Local source tree imports
 from pyof.foundation.base import GenericBitMask, GenericMessage
 from pyof.foundation.basic_types import Pad, UBInt8, UBInt16, UBInt32, UBInt64
-from pyof.v0x04.common.constants import OFP_NO_BUFFER
-from pyof.v0x04.common.flow_instructions import ListOfInstruction
-from pyof.v0x04.common.flow_match import Match
-from pyof.v0x04.common.header import Header, Type
-from pyof.v0x04.common.port import PortNo
-from pyof.v0x04.controller2switch.group_mod import Group
+from pyof.v0x05.common.constants import OFP_NO_BUFFER
+from pyof.v0x05.common.flow_instructions import ListOfInstruction
+from pyof.v0x05.common.flow_match import Match
+from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.controller2switch.group_mod import Group
 
 __all__ = ('FlowMod', 'FlowModCommand', 'FlowModFlags')
 
@@ -87,7 +87,7 @@ class FlowMod(GenericMessage):
             table_id (int): ID of the table to put the flow in. For
                 OFPFC_DELETE_* commands, OFPTT_ALL can also be used to delete
                 matching flows from all tables.
-            command (~pyof.v0x04.controller2switch.flow_mod.FlowModCommand):
+            command (~pyof.v0x05.controller2switch.flow_mod.FlowModCommand):
                 One of OFPFC_*.
             idle_timeout (int): Idle time before discarding (seconds).
             hard_timeout (int): Max time before discarding (seconds).
@@ -100,9 +100,9 @@ class FlowMod(GenericMessage):
             out_group (int): For OFPFC_DELETE* commands, require matching
                 entries to include this as an output group. A value of OFPG_ANY
                 indicates no restriction.
-            flags (~pyof.v0x04.controller2switch.flow_mod.FlowModFlags):
+            flags (~pyof.v0x05.controller2switch.flow_mod.FlowModFlags):
                 One of OFPFF_*.
-            match (~pyof.v0x04.common.flow_match.Match):
+            match (~pyof.v0x05.common.flow_match.Match):
                 Fields to match. Variable size.
         """
         super().__init__(xid)

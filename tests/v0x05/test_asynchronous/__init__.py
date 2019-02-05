@@ -1,1 +1,1 @@
-"""Tests for asynchronous package from v0x04 - OF 1.3.0."""
+"""Tests for asynchronous package from v0x05 - OF 1.3.0."""

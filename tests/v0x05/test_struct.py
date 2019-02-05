@@ -1,8 +1,8 @@
 """Automate struct tests."""
 import unittest
 
-from pyof.v0x04.common.header import Header
-from pyof.v0x04.common.utils import new_message_from_header
+from pyof.v0x05.common.header import Header
+from pyof.v0x05.common.utils import new_message_from_header
 
 
 class TestStruct(unittest.TestCase):

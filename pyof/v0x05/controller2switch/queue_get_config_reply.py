@@ -7,9 +7,9 @@
 # Local source tree imports
 from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import Pad, UBInt32
-from pyof.v0x04.common.header import Header, Type
-from pyof.v0x04.common.port import PortNo
-from pyof.v0x04.common.queue import ListOfQueues
+from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.common.queue import ListOfQueues
 
 __all__ = ('QueueGetConfigReply',)
 
@@ -17,7 +17,7 @@ __all__ = ('QueueGetConfigReply',)
 class QueueGetConfigReply(GenericMessage):
     """Class implements the response to the config request."""
 
-    #: Openflow :class:`~pyof.v0x04.common.header.Header`.
+    #: Openflow :class:`~pyof.v0x05.common.header.Header`.
     header = Header(message_type=Type.OFPT_GET_CONFIG_REPLY)
     #: Port to be queried. Should refer to a valid physical port
     #: (i.e. < OFPP_MAX), or OFPP_ANY to request all configured queues.
@@ -32,9 +32,9 @@ class QueueGetConfigReply(GenericMessage):
 
         Args:
             xid (int): xid of OpenFlow header.
-            port (:class:`~pyof.v0x04.common.port.PortNo`):
+            port (:class:`~pyof.v0x05.common.port.PortNo`):
                 Target port for the query.
-            queue (:class:`~pyof.v0x04.common.queue.ListOfQueues`):
+            queue (:class:`~pyof.v0x05.common.queue.ListOfQueues`):
                 List of configured queues.
         """
         super().__init__(xid)

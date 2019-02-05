@@ -5,7 +5,7 @@
 
 # Local imports
 from pyof.foundation.base import GenericMessage
-from pyof.v0x04.common.header import Header, Type
+from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('GetAsyncRequest',)
 
@@ -17,5 +17,5 @@ class GetAsyncRequest(GenericMessage):
     messages) on a given OpenFlow channel.
     """
 
-    #: OpenFlow :class:`~pyof.v0x04.common.header.Header`
+    #: OpenFlow :class:`~pyof.v0x05.common.header.Header`
     header = Header(message_type=Type.OFPT_GET_ASYNC_REQUEST)

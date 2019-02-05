@@ -45,7 +45,7 @@ class QueuePropHeader(GenericStruct):
         """Create a QueuePropHeader with the optional parameters below.
 
         Args:
-            queue_property (~pyof.v0x04.common.queue.QueueProperties):
+            queue_property (~pyof.v0x05.common.queue.QueueProperties):
                 The queue property.
             length (int): Length of property, including this header.
         """
@@ -93,7 +93,7 @@ class PacketQueue(GenericStruct):
             queue_id (int): ID of the specific queue.
             port (int): Port his queue is attached to.
             length (int): Length in bytes of this queue desc.
-            properties(~pyof.v0x04.common.queue.ListOfProperties):
+            properties(~pyof.v0x05.common.queue.ListOfProperties):
                 Queue's list of properties. Default is an empty list.
         """
         super().__init__()

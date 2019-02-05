@@ -1,8 +1,8 @@
-"""Tests header structure of v0x04."""
+"""Tests header structure of v0x05."""
 import os
 import unittest
 
-from pyof.v0x04.common.header import Header, Type
+from pyof.v0x05.common.header import Header, Type
 
 
 class TestHeader(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestHeader(unittest.TestCase):
     def test_unpack(self):
         """[Common/Header] - unpacking Hello."""
         filename = os.path.join(os.path.dirname(os.path.realpath('__file__')),
-                                'raw/v0x04/ofpt_hello.dat')
+                                'raw/v0x05/ofpt_hello.dat')
         try:
             f = open(filename, 'rb')
             self.message.unpack(f.read(8))

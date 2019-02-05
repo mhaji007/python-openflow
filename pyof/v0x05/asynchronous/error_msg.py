@@ -6,7 +6,7 @@ from enum import IntEnum
 from pyof.foundation import exceptions
 from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import BinaryData, UBInt16, UBInt32
-from pyof.v0x04.common.header import Header, Type
+from pyof.v0x05.common.header import Header, Type
 
 # Third-party imports
 

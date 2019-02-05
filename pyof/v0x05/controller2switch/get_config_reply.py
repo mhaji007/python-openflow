@@ -4,8 +4,8 @@
 
 # Third-party imports
 
-from pyof.v0x04.common.header import Type
-from pyof.v0x04.controller2switch.common import SwitchConfig
+from pyof.v0x05.common.header import Type
+from pyof.v0x05.controller2switch.common import SwitchConfig
 
 __all__ = ('GetConfigReply',)
 
@@ -18,7 +18,7 @@ class GetConfigReply(SwitchConfig):
 
         Args:
             xid (int): xid to be used on the message header.
-            flags (~pyof.v0x04.controller2switch.common.ConfigFlag):
+            flags (~pyof.v0x05.controller2switch.common.ConfigFlag):
                 OFPC_* flags.
             miss_send_len (int): UBInt16 max bytes of new flow that the
                 datapath should send to the controller.

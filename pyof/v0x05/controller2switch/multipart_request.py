@@ -7,14 +7,14 @@ from enum import Enum
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import (
     BinaryData, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
-from pyof.v0x04.common.flow_match import Match
-from pyof.v0x04.common.header import Header, Type
-from pyof.v0x04.common.port import PortNo
-from pyof.v0x04.controller2switch.common import (
+from pyof.v0x05.common.flow_match import Match
+from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
-from pyof.v0x04.controller2switch.group_mod import Group
-from pyof.v0x04.controller2switch.meter_mod import Meter
-from pyof.v0x04.controller2switch.table_mod import Table
+from pyof.v0x05.controller2switch.group_mod import Group
+from pyof.v0x05.controller2switch.meter_mod import Meter
+from pyof.v0x05.controller2switch.table_mod import Table
 
 # Third-party imports
 
@@ -46,7 +46,7 @@ class MultipartRequest(GenericMessage):
     datapath using the OFPT_MULTIPART_REQUEST message.
     """
 
-    #: Openflow :class:`~pyof.v0x04.common.header.Header`
+    #: Openflow :class:`~pyof.v0x05.common.header.Header`
     header = Header(message_type=Type.OFPT_MULTIPART_REQUEST)
     #: One of the OFPMP_* constants.
     multipart_type = UBInt16(enum_ref=MultipartType)
@@ -194,7 +194,7 @@ class AggregateStatsRequest(GenericStruct):
             cookie (int): Require matching entries to contain this cookie value
             cookie_mask (int): Mask used to restrict the cookie bits that must
                 match. A value of 0 indicates no restriction.
-            match (~pyof.v0x04.common.flow_match.Match):
+            match (~pyof.v0x05.common.flow_match.Match):
                 Fields to match. Variable size
         """
         super().__init__()
@@ -227,7 +227,7 @@ class FlowStatsRequest(GenericStruct):
         Args:
             table_id (int): ID of table to read (from pyof_table_stats)
                 0xff for all tables or 0xfe for emergency.
-            out_port (:class:`int`, :class:`~pyof.v0x04.common.port.PortNo`):
+            out_port (:class:`int`, :class:`~pyof.v0x05.common.port.PortNo`):
                 Require matching entries to include this as an output port.
                 A value of :attr:`.PortNo.OFPP_ANY` indicates no restriction.
             out_group: Require matching entries to include this as an output
@@ -236,7 +236,7 @@ class FlowStatsRequest(GenericStruct):
             cookie: Requires matching entries to contain this cookie value
             cookie_mask: Mask used to restrict the cookie bits that must match.
                 A value of 0 indicates no restriction.
-            match (~pyof.v0x04.common.flow_match.Match): Fields to match.
+            match (~pyof.v0x05.common.flow_match.Match): Fields to match.
         """
         super().__init__()
         self.table_id = table_id
@@ -258,7 +258,7 @@ class PortStatsRequest(GenericStruct):
         """Create a PortStatsRequest with the optional parameters below.
 
         Args:
-            port_no (:class:`int`, :class:`~pyof.v0x04.common.port.PortNo`):
+            port_no (:class:`int`, :class:`~pyof.v0x05.common.port.PortNo`):
                 :attr:`StatsType.OFPST_PORT` message must request statistics
                 either for a single port (specified in ``port_no``) or for all
                 ports (if ``port_no`` == :attr:`.PortNo.OFPP_ANY`).
@@ -277,7 +277,7 @@ class QueueStatsRequest(GenericStruct):
         """Create a QueueStatsRequest with the optional parameters below.
 
         Args:
-            port_no (:class:`int`, :class:`~pyof.v0x04.common.port.Port`):
+            port_no (:class:`int`, :class:`~pyof.v0x05.common.port.Port`):
                 All ports if :attr:`.Port.OFPP_ALL`.
             queue_id (int): All queues if OFPQ_ALL (``0xfffffff``).
         """

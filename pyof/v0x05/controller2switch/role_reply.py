@@ -6,8 +6,8 @@
 
 # Local source tree imports
 from pyof.foundation.constants import UBINT64_MAX_VALUE
-from pyof.v0x04.common.header import Type
-from pyof.v0x04.controller2switch.common import ControllerRole, RoleBaseMessage
+from pyof.v0x05.common.header import Type
+from pyof.v0x05.controller2switch.common import ControllerRole, RoleBaseMessage
 
 __all__ = ('RoleReply',)
 

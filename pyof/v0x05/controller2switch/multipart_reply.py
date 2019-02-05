@@ -8,14 +8,14 @@ from pyof.foundation.base import GenericBitMask, GenericMessage, GenericStruct
 from pyof.foundation.basic_types import (
     BinaryData, Char, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.constants import DESC_STR_LEN, SERIAL_NUM_LEN
-from pyof.v0x04.common.flow_instructions import ListOfInstruction
-from pyof.v0x04.common.flow_match import Match
-from pyof.v0x04.common.header import Header, Type
-from pyof.v0x04.common.port import Port
-from pyof.v0x04.controller2switch.common import (
+from pyof.v0x05.common.flow_instructions import ListOfInstruction
+from pyof.v0x05.common.flow_match import Match
+from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.common.port import Port
+from pyof.v0x05.controller2switch.common import (
     Bucket, BucketCounter, ExperimenterMultipartHeader, MultipartType,
     TableFeatures)
-from pyof.v0x04.controller2switch.meter_mod import (
+from pyof.v0x05.controller2switch.meter_mod import (
     ListOfMeterBandHeader, MeterBandType, MeterFlags)
 
 # Third-party imports
@@ -59,7 +59,7 @@ class MultipartReply(GenericMessage):
     datapath using the OFPT_MULTIPART_REPLY message.
     """
 
-    #: Openflow :class:`~pyof.v0x04.common.header.Header`
+    #: Openflow :class:`~pyof.v0x05.common.header.Header`
     header = Header(message_type=Type.OFPT_MULTIPART_REPLY)
     #: One of the OFPMP_* constants.
     multipart_type = UBInt16(enum_ref=MultipartType)
@@ -276,7 +276,7 @@ class FlowStats(GenericStruct):
             cookie (int): Opaque controller-issued identifier.
             packet_count (int): Number of packets in flow.
             byte_count (int): Number of bytes in flow.
-            match (~pyof.v0x04.common.flow_match.Match): Description of fields.
+            match (~pyof.v0x05.common.flow_match.Match): Description of fields.
         """
         super().__init__()
         self.length = length
@@ -340,7 +340,7 @@ class PortStats(GenericStruct):
         """Create a PortStats with the optional parameters below.
 
         Args:
-            port_no (:class:`int`, :class:`~pyof.v0x04.common.port.Port`):
+            port_no (:class:`int`, :class:`~pyof.v0x05.common.port.Port`):
                 Port number.
             rx_packets (int): Number of received packets.
             tx_packets (int): Number of transmitted packets.
@@ -398,7 +398,7 @@ class QueueStats(GenericStruct):
         """Create a QueueStats with the optional parameters below.
 
         Args:
-            port_no (:class:`int`, :class:`~pyof.v0x04.common.port.Port`):
+            port_no (:class:`int`, :class:`~pyof.v0x05.common.port.Port`):
                 Port Number.
             queue_id (int): Queue ID.
             tx_bytes (int): Number of transmitted bytes.
@@ -434,9 +434,9 @@ class GroupDescStats(GenericStruct):
 
         Args:
             length (int): Length of this entry.
-            group_type (|GroupType_v0x04|): One of OFPGT_*.
+            group_type (|GroupType_v0x05|): One of OFPGT_*.
             group_id (int): Group identifier.
-            buckets (|ListOfBuckets_v0x04|): List of buckets in group.
+            buckets (|ListOfBuckets_v0x05|): List of buckets in group.
         """
         super().__init__()
         self.length = length
@@ -547,10 +547,10 @@ class MeterConfig(GenericStruct):
         """Create a MeterConfig with the optional parameters below.
 
         Args:
-            flags (|MeterFlags_v0x04|):
+            flags (|MeterFlags_v0x05|):
                 Meter configuration flags.The default value is
                 MeterFlags.OFPMF_STATS
-            meter_id (|Meter_v0x04|):
+            meter_id (|Meter_v0x05|):
                 Meter Indentify.The value Meter.OFPM_ALL is used to
                 refer to all Meters on the switch.
             bands(list): List of MeterBandHeader instances.
@@ -577,9 +577,9 @@ class MeterFeatures(GenericStruct):
 
         Args:
             max_meter(int): Maximum number of meters.
-            band_types (|MeterBandType_v0x04|):
+            band_types (|MeterBandType_v0x05|):
                 Bitmaps of OFPMBT_* values supported.
-            capabilities (|MeterFlags_v0x04|): Bitmaps of "ofp_meter_flags".
+            capabilities (|MeterFlags_v0x05|): Bitmaps of "ofp_meter_flags".
             max_bands(int): Maximum bands per meters
             max_color(int): Maximum color value
         """
@@ -622,7 +622,7 @@ class ListOfBandStats(FixedTypeList):
         """Create a ListOfBandStats with the optional parameters below.
 
         Args:
-            items (|BandStats_v0x04|): Instance or a list of instances.
+            items (|BandStats_v0x05|): Instance or a list of instances.
         """
         super().__init__(pyof_class=BandStats, items=items)
 
@@ -649,7 +649,7 @@ class MeterStats(GenericStruct):
         """Create a MeterStats with the optional parameters below.
 
         Args:
-            meter_id (|Meter_v0x04|):  Meter instance.
+            meter_id (|Meter_v0x05|):  Meter instance.
             flow_count(int):      Number of flows bound to meter.
             packet_in_count(int): Number of packets in input.
             byte_in_count(int):   Number of bytes in input.

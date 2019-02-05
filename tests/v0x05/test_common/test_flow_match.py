@@ -2,7 +2,7 @@
 from unittest import TestCase
 
 from pyof.foundation.exceptions import PackException, UnpackException
-from pyof.v0x04.common.flow_match import (
+from pyof.v0x05.common.flow_match import (
     Match, MatchType, OxmClass, OxmOfbMatchField, OxmTLV)
 
 

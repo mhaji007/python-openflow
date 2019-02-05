@@ -3,7 +3,7 @@ from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import Pad, UBInt8, UBInt32
-from pyof.v0x04.common.header import Header, Type
+from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('Table', 'TableMod')
 
@@ -31,7 +31,7 @@ class TableMod(GenericMessage):
         """Assing parameters to object attributes.
 
         Args:
-            xid (int): :class:`~pyof.v0x04.common.header.Header`'s xid.
+            xid (int): :class:`~pyof.v0x05.common.header.Header`'s xid.
                 Defaults to random.
             table_id (int): ID of the table, OFPTT_ALL indicates all tables.
             config (int): Bitmap of OFPTC_* flags

@@ -397,8 +397,8 @@ class Match(GenericStruct):
         """Return the value for the 'field_type' field in oxm_match_fields.
 
         Args:
-            field_type (~pyof.v0x04.common.flow_match.OxmOfbMatchField,
-                        ~pyof.v0x04.common.flow_match.OxmMatchFields):
+            field_type (~pyof.v0x05.common.flow_match.OxmOfbMatchField,
+                        ~pyof.v0x05.common.flow_match.OxmMatchFields):
                 The type of the OXM field you want the value.
 
         Returns:

@@ -1,9 +1,9 @@
 """Packet in message tests."""
 from unittest import TestCase
 
-from pyof.v0x04.asynchronous.packet_in import PacketIn, PacketInReason
-from pyof.v0x04.common.flow_match import Match, OxmTLV
-from pyof.v0x04.common.header import Header
+from pyof.v0x05.asynchronous.packet_in import PacketIn, PacketInReason
+from pyof.v0x05.common.flow_match import Match, OxmTLV
+from pyof.v0x05.common.header import Header
 from tests.test_struct import TestStruct
 
 oxmtlv = OxmTLV(oxm_class=32768,
@@ -56,7 +56,7 @@ class TestPacketInRaw(TestStruct):
     def setUpClass(cls):
         """Configure raw file and its object in parent class (TestDump)."""
         super().setUpClass()
-        super().set_raw_dump_file('v0x04', 'ofpt_packet_in')
+        super().set_raw_dump_file('v0x05', 'ofpt_packet_in')
         super().set_raw_dump_object(PacketIn, xid=1, buffer_id=1, total_len=1,
                                     reason=PacketInReason.OFPR_ACTION,
                                     table_id=1, cookie=1, data=b'')

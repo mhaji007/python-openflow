@@ -7,7 +7,7 @@ from math import ceil
 from pyof.foundation.base import GenericStruct
 from pyof.foundation.basic_types import (
     FixedTypeList, Pad, UBInt8, UBInt16, UBInt32)
-from pyof.v0x04.common.flow_match import OxmTLV
+from pyof.v0x05.common.flow_match import OxmTLV
 
 # Third-party imports
 
@@ -100,7 +100,7 @@ class ActionHeader(GenericStruct):
         """Create an ActionHeader with the optional parameters below.
 
         Args:
-            action_type (~pyof.v0x04.common.action.ActionType):
+            action_type (~pyof.v0x05.common.action.ActionType):
                 The type of the action.
             length (int): Length of action, including this header.
         """
@@ -431,7 +431,7 @@ class ListOfActions(FixedTypeList):
         """Create a ListOfActions with the optional parameters below.
 
         Args:
-            items (~pyof.v0x04.common.action.ActionHeader):
+            items (~pyof.v0x05.common.action.ActionHeader):
                 Instance or a list of instances.
         """
         super().__init__(pyof_class=ActionHeader, items=items)

@@ -1,6 +1,6 @@
-"""Testing v0x04 FlowRemoved message."""
-from pyof.v0x04.asynchronous.flow_removed import FlowRemoved
-from pyof.v0x04.common.flow_match import Match
+"""Testing v0x05 FlowRemoved message."""
+from pyof.v0x05.asynchronous.flow_removed import FlowRemoved
+from pyof.v0x05.common.flow_match import Match
 from tests.test_struct import TestStruct
 
 
@@ -11,7 +11,7 @@ class TestFlowRemovedMsg(TestStruct):
     def setUpClass(cls):
         """Configure raw file and its object in parent class (TestDump)."""
         super().setUpClass()
-        super().set_raw_dump_file('v0x04', 'ofpt_flow_removed')
+        super().set_raw_dump_file('v0x05', 'ofpt_flow_removed')
         super().set_raw_dump_object(FlowRemoved, xid=1, cookie=1, priority=1,
                                     reason=1, table_id=1, duration_sec=1,
                                     duration_nsec=2, idle_timeout=3,

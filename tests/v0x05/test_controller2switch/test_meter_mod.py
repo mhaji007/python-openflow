@@ -1,7 +1,7 @@
 """MeterMod tests."""
 from unittest import TestCase
 
-from pyof.v0x04.controller2switch.meter_mod import (
+from pyof.v0x05.controller2switch.meter_mod import (
     MeterBandDrop, MeterBandDscpRemark, MeterBandExperimenter, MeterBandHeader,
     MeterMod)
 

@@ -5,9 +5,9 @@
 # Third-party imports
 
 # Local imports
-from pyof.v0x04.common.action import ControllerMaxLen
-from pyof.v0x04.common.header import Type
-from pyof.v0x04.controller2switch.common import ConfigFlag, SwitchConfig
+from pyof.v0x05.common.action import ControllerMaxLen
+from pyof.v0x05.common.header import Type
+from pyof.v0x05.controller2switch.common import ConfigFlag, SwitchConfig
 
 __all__ = ('SetConfig',)
 

@@ -52,7 +52,7 @@ class PortConfig(GenericBitMask):
 
     These flags are used in :class:`Port` to describe the current
     configuration. They are used in the
-    :class:`~pyof.v0x04.controller2switch.port_mod.PortMod`
+    :class:`~pyof.v0x05.controller2switch.port_mod.PortMod`
     message to configure the port's behavior.
 
     The :attr:`OFPPC_PORT_DOWN` bit indicates that the port has been
@@ -152,7 +152,7 @@ class PortState(GenericBitMask):
 
     All port state bits are read-only and cannot be changed by the controller.
     When the port flags are changed, the switch sends an
-    :attr:`v0x04.common.header.Type.OFPT_PORT_STATUS` message to notify the
+    :attr:`v0x05.common.header.Type.OFPT_PORT_STATUS` message to notify the
     controller of the change.
     """
 
@@ -206,15 +206,15 @@ class Port(GenericStruct):
             port_no (int): Port number.
             hw_addr (HWAddress): Hardware address.
             name (str): Null-terminated name.
-            config (~pyof.v0x04.common.port.PortConfig):
+            config (~pyof.v0x05.common.port.PortConfig):
                 Bitmap of OFPPC* flags.
-            state (~pyof.v0x04.common.port.PortState): Bitmap of OFPPS* flags.
-            curr (~pyof.v0x04.common.port.PortFeatures): Current features.
-            advertised (~pyof.v0x04.common.port.PortFeatures):
+            state (~pyof.v0x05.common.port.PortState): Bitmap of OFPPS* flags.
+            curr (~pyof.v0x05.common.port.PortFeatures): Current features.
+            advertised (~pyof.v0x05.common.port.PortFeatures):
                 Features being advertised by the port.
-            supported (~pyof.v0x04.common.port.PortFeatures):
+            supported (~pyof.v0x05.common.port.PortFeatures):
                 Features supported by the port.
-            peer (~pyof.v0x04.common.port.PortFeatures):
+            peer (~pyof.v0x05.common.port.PortFeatures):
                 Features advertised by peer.
             curr_speed (int): Current port bitrate in kbps.
             max_speed (int): Max port bitrate in kbps.
@@ -237,8 +237,8 @@ class ListOfPorts(FixedTypeList):
     """List of Ports.
 
     Represented by instances of :class:`Port` and used on
-    :class:`~pyof.v0x04.controller2switch.features_reply.FeaturesReply`/
-    :class:`~pyof.v0x04.controller2switch.features_reply.SwitchFeatures`
+    :class:`~pyof.v0x05.controller2switch.features_reply.FeaturesReply`/
+    :class:`~pyof.v0x05.controller2switch.features_reply.SwitchFeatures`
     objects.
     """
 
@@ -246,8 +246,8 @@ class ListOfPorts(FixedTypeList):
         """Create a ListOfPort with the optional parameters below.
 
         Args:
-            items (:class:`list`, :class:`~pyof.v0x04.common.port.Port`):
-                One :class:`~pyof.v0x04.common.port.Port` instance or list.
+            items (:class:`list`, :class:`~pyof.v0x05.common.port.Port`):
+                One :class:`~pyof.v0x05.common.port.Port` instance or list.
         """
         super().__init__(pyof_class=Port,
                          items=items)

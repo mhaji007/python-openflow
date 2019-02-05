@@ -5,9 +5,9 @@ from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import BinaryData, Pad, UBInt16, UBInt32
 from pyof.foundation.constants import UBINT32_MAX_VALUE
 from pyof.foundation.exceptions import PackException, ValidationError
-from pyof.v0x04.common.action import ListOfActions
-from pyof.v0x04.common.header import Header, Type
-from pyof.v0x04.common.port import Port, PortNo
+from pyof.v0x05.common.action import ListOfActions
+from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.common.port import Port, PortNo
 
 __all__ = ('PacketOut',)
 
@@ -20,7 +20,7 @@ _VIRT_IN_PORTS = (PortNo.OFPP_LOCAL, PortNo.OFPP_CONTROLLER, PortNo.OFPP_ANY)
 class PacketOut(GenericMessage):
     """Send packet (controller -> datapath)."""
 
-    #: Openflow :class:`~pyof.v0x04.common.header.Header`
+    #: Openflow :class:`~pyof.v0x05.common.header.Header`
     header = Header(message_type=Type.OFPT_PACKET_OUT)
     #: ID assigned by datapath (OFP_NO_BUFFER if none).
     buffer_id = UBInt32()
@@ -45,11 +45,11 @@ class PacketOut(GenericMessage):
             xid (int): xid of the message header.
             buffer_id (int): ID assigned by datapath (-1 if none). In this case
                 UBINT32_MAX_VALUE is -1 for the field.
-            in_port (:class:`int`, :class:`~pyof.v0x04.common.port.Port`):
+            in_port (:class:`int`, :class:`~pyof.v0x05.common.port.Port`):
                 Packet's input port (:attr:`Port.OFPP_NONE` if none).
                 Virtual ports OFPP_IN_PORT, OFPP_TABLE, OFPP_NORMAL,
                 OFPP_FLOOD, and OFPP_ALL cannot be used as input port.
-            actions (:class:`~pyof.v0x04.common.action.ListOfActions`):
+            actions (:class:`~pyof.v0x05.common.action.ListOfActions`):
                 List of Action instances.
             data (bytes): Packet data. The length is inferred from the length
                 field in the header. (Only meaningful if ``buffer_id`` == -1).

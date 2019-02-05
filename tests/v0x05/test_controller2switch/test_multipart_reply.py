@@ -1,9 +1,9 @@
 """MultipartReply message test."""
 
-from pyof.v0x04.controller2switch.common import MultipartType
-from pyof.v0x04.controller2switch.multipart_reply import (
+from pyof.v0x05.controller2switch.common import MultipartType
+from pyof.v0x05.controller2switch.multipart_reply import (
     Desc, MultipartReply, MultipartReplyFlags)
-from tests.v0x04.test_struct import TestStruct
+from tests.v0x05.test_struct import TestStruct
 
 
 class TestMultipartReply(TestStruct):

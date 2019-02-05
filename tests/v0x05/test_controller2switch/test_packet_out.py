@@ -2,8 +2,8 @@
 import logging
 
 from pyof.foundation.exceptions import ValidationError
-from pyof.v0x04.common.port import PortNo
-from pyof.v0x04.controller2switch.packet_out import PacketOut
+from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.controller2switch.packet_out import PacketOut
 from tests.test_struct import TestStruct
 
 log = logging.getLogger()
@@ -21,7 +21,7 @@ class TestPacketOut(TestStruct):
     def setUpClass(cls):
         """Configure raw file and its object in parent class (TestDump)."""
         super().setUpClass()
-        super().set_raw_dump_file('v0x04', 'ofpt_packet_out')
+        super().set_raw_dump_file('v0x05', 'ofpt_packet_out')
         super().set_raw_dump_object(PacketOut, xid=80, buffer_id=5,
                                     in_port=PortNo.OFPP_ANY)
         super().set_minimum_size(24)
