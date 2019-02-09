@@ -58,6 +58,20 @@ class PortDescPropType(IntEnum):
     OFPPDPT_EXPERIMENTER = 0xfff
 
 
+class OpticalPortFeatures(IntEnum):
+    """Features of optical ports available in switch. """
+
+    # Receiver is tunable.
+    OFPOPF_RX_TUNE = 1 << 0
+    # Transmit is tunable.
+    OFPOPF_TX_TUNE = 1 << 1
+    # Power is configurable.
+    OFPOPF_TX_PWR = 1 << 2
+    # Use Frequency, not wavelength
+    OFPOPF_USE_FREQ = 1 << 3
+
+
+
 
 class PortConfig(GenericBitMask):
     """Flags to indicate behavior of the physical port.
@@ -197,9 +211,9 @@ class Port(GenericStruct):
 
     port_no = UBInt32()
     length = UBInt16()
-    pad = UBInt8[2]
+    pad = Pad(2)
     hw_addr = UBInt8[OFP_ETH_ALEN]
-    pad2 = UBInt8[2]                            # Align to 64 bits
+    pad2 = Pad(2)                               # Align to 64 bits
     name = Char(length=OFP_MAX_PORT_NAME_LEN)   # Null terminated
     config = UBInt32(enum_ref=PortConfig)       # Bitmap of OFPPC_* flags
     state = UBInt32(enum_ref=PortState)         # Bitmap of OFPPS_* flags
@@ -272,7 +286,7 @@ class PortDescPropEthernet(GenericStruct):
     # Length in bytes of this property
     length = UBInt16()
     # Align to 64 bits
-    pad4 = UBInt8[4]
+    pad4 = Pad(4)
 
     """ Bimaps of OFPPF_* that describe features. All bits zeroed if
         unsupported or unavailable. """
@@ -299,7 +313,7 @@ class PortDescPropOptical(GenericStruct):
     # Length in bytes of this property.
     length = UBInt16()
     # Align to 64 bits.
-    pad4 = UBInt8[4]
+    pad4 = Pad(4)
 
     # Features supported by the port.
     supported = UBInt32()
@@ -319,6 +333,25 @@ class PortDescPropOptical(GenericStruct):
     tx_pwr_min = UBInt16()
     # Maximun TX power
     tx_pwr_max = UBInt16()
+
+
+class PortDescPropExperimenter(GenericStruct):
+    """ Experimenter port description property. """
+
+    #OFPPDPT_EXPERIMENTER.
+    type = UBInt16()
+    # Length in bytes of this property
+    length = UBInt16()
+    # Experimenter ID which takes the same form as in ExperimenterHeader.
+    experimenter = UBInt16()
+    # Experimenter defined.
+    exp_type = UBInt16()
+    """ Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7) bytes
+              of all-zero bytes. 
+    """
+    experimenterData = UBInt32(0)
 
 
 class ListOfPorts(FixedTypeList):
