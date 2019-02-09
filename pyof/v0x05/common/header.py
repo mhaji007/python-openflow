@@ -6,7 +6,7 @@ from enum import IntEnum
 # Local source tree imports
 from pyof.foundation.base import GenericStruct
 from pyof.foundation.basic_types import UBInt8, UBInt16, UBInt32
-from pyof.v0x04.common.constants import OFP_VERSION
+from pyof.v0x05.common.constants import OFP_VERSION
 
 # Third-party imports
 
