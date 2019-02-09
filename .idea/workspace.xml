@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/port.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/port.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,8 +95,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6645">
-              <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
+            <state relative-caret-position="410">
+              <caret line="449" column="26" lean-forward="true" selection-start-line="449" selection-start-column="26" selection-end-line="449" selection-end-column="26" />
               <folding>
                 <element signature="e#163#193#0" expanded="true" />
               </folding>
@@ -420,7 +419,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="11227000" />
+      <workItem from="1549678282785" duration="13283000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -471,11 +470,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549733584897</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add more descriptions to the port file and create the file flow_match">
+      <created>1549735259179</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1549735259179</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12557000" />
+    <option name="totallyTimeSpent" value="14613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
@@ -485,7 +491,7 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.44646925" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.17312072" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -519,7 +525,8 @@
     <MESSAGE value="Added some comments to the variables descriptions" />
     <MESSAGE value="Create and add classes and enmum classes, features and descriptions to the port file" />
     <MESSAGE value="Change project and file name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change project and file name" />
+    <MESSAGE value="Add more descriptions to the port file and create the file flow_match" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more descriptions to the port file and create the file flow_match" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/action.py">
@@ -630,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6645">
-          <caret line="443" lean-forward="true" selection-start-line="443" selection-end-line="443" />
+        <state relative-caret-position="410">
+          <caret line="449" column="26" lean-forward="true" selection-start-line="449" selection-start-column="26" selection-end-line="449" selection-end-column="26" />
           <folding>
             <element signature="e#163#193#0" expanded="true" />
           </folding>
