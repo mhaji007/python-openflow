@@ -167,6 +167,8 @@ class ActionExperimenterHeader(ActionHeader):
 class ActionGroup(ActionHeader):
     """Action structure for OFPAT_GROUP."""
 
+
+    # Group identifier.
     group_id = UBInt32()
 
     _allowed_types = ActionType.OFPAT_GROUP,
@@ -186,6 +188,7 @@ class ActionGroup(ActionHeader):
 class ActionDecMPLSTTL(ActionHeader):
     """Action structure for OFPAT_DEC_MPLS_TTL."""
 
+    # Pad to 64 bits
     pad = Pad(4)
 
     _allowed_types = ActionType.OFPAT_DEC_MPLS_TTL,
@@ -198,7 +201,9 @@ class ActionDecMPLSTTL(ActionHeader):
 class ActionSetMPLSTTL(ActionHeader):
     """Action structure for OFPAT_SET_MPLS_TTL."""
 
+    # MPLS TTL
     mpls_ttl = UBInt8()
+    #
     pad = Pad(3)
 
     _allowed_types = ActionType.OFPAT_SET_MPLS_TTL,
@@ -276,7 +281,9 @@ class ActionDecNWTTL(ActionHeader):
 class ActionSetNWTTL(ActionHeader):
     """Action structure for OFPAT_SET_NW_TTL."""
 
+    # IP TTL
     nw_ttl = UBInt8()
+    #
     pad = Pad(3)
 
     _allowed_types = ActionType.OFPAT_SET_NW_TTL,
@@ -327,7 +334,9 @@ class ActionOutput(ActionHeader):
 class ActionPopMPLS(ActionHeader):
     """Action structure for OFPAT_POP_MPLS."""
 
+    # Ethertype
     ethertype = UBInt16()
+    #
     pad = Pad(2)
 
     _allowed_types = ActionType.OFPAT_POP_MPLS,
@@ -345,7 +354,9 @@ class ActionPopMPLS(ActionHeader):
 class ActionPush(ActionHeader):
     """Action structure for OFPAT_PUSH_[VLAN/MPLS/PBB]."""
 
+    # Ethertype
     ethertype = UBInt16()
+    #
     pad = Pad(2)
 
     _allowed_types = (ActionType.OFPAT_PUSH_VLAN, ActionType.OFPAT_PUSH_MPLS,
@@ -409,6 +420,7 @@ class ActionSetField(ActionHeader):
 class ActionSetQueue(ActionHeader):
     """Action structure for OFPAT_SET_QUEUE."""
 
+    # Queue id for packets.
     queue_id = UBInt32()
 
     _allowed_types = ActionType.OFPAT_SET_QUEUE,
