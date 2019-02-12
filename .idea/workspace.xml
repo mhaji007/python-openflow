@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,18 +19,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
           <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/port.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="188" column="13" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="14" />
-              <folding>
-                <element signature="e#73#97#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -93,14 +81,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3680">
-              <caret line="35" column="27" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+            <state relative-caret-position="4725">
+              <caret line="315" column="7" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="315" selection-end-column="7" />
               <folding>
                 <element signature="e#82#106#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="20" column="74" lean-forward="true" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -117,11 +114,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/constants.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -133,6 +125,44 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../python_openflow_1.4" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../python_openflow_1.4" value="master" />
+      </map>
+    </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/../python_openflow_1.4" source="origin/feature/AMLT-22" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/../python_openflow_1.4" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/../python_openflow_1.4" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -145,6 +175,8 @@
         <option value="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py" />
         <option value="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py" />
         <option value="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py" />
+        <option value="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/utils.py" />
+        <option value="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py" />
       </list>
     </option>
   </component>
@@ -232,6 +264,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -436,7 +469,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="16465000" />
+      <workItem from="1549678282785" duration="17781000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -508,16 +541,31 @@
       <option name="project" value="LOCAL" />
       <updated>1549739794761</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct">
+      <created>1549937377466</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1549937377468</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Create the file util which is a helper for classes in OpenFlow">
+      <created>1549938256370</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1549938256370</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17795000" />
+    <option name="totallyTimeSpent" value="19111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -528,7 +576,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32915717" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32915717" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -558,16 +606,10 @@
     <MESSAGE value="Add more descriptions to the port file and create the file flow_match" />
     <MESSAGE value="Added new variables to the flow_match file and created the flow_instruction file" />
     <MESSAGE value="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct" />
+    <MESSAGE value="Create the file util which is a helper for classes in OpenFlow" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the file util which is a helper for classes in OpenFlow" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -703,11 +745,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3680">
-          <caret line="35" column="27" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        <state relative-caret-position="4725">
+          <caret line="315" column="7" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="315" selection-end-column="7" />
           <folding>
             <element signature="e#82#106#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2760">
+          <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+          <folding>
+            <element signature="e#144#198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="20" column="74" lean-forward="true" selection-start-line="20" selection-start-column="74" selection-end-line="20" selection-end-column="74" />
         </state>
       </provider>
     </entry>

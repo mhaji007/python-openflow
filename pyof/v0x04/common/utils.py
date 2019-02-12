@@ -11,7 +11,7 @@ from pyof.v0x04.asynchronous.flow_removed import FlowRemoved
 from pyof.v0x04.asynchronous.packet_in import PacketIn
 from pyof.v0x04.asynchronous.port_status import PortStatus
 # Importing controller2switch messages
-from pyof.v0x04.common.header import Header, Type
+from pyof.v0x05.common.header import Header, Type
 from pyof.v0x04.controller2switch.barrier_reply import BarrierReply
 from pyof.v0x04.controller2switch.barrier_request import BarrierRequest
 from pyof.v0x04.controller2switch.features_reply import FeaturesReply
