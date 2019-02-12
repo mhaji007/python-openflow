@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +15,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/port.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -33,92 +27,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_match.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="44" lean-forward="true" selection-end-line="452" />
-              <folding>
-                <element signature="e#163#193#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="449" column="26" lean-forward="true" selection-start-line="449" selection-start-column="26" selection-end-line="449" selection-end-column="26" />
-              <folding>
-                <element signature="e#163#193#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_instructions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="265" />
-              <folding>
-                <element signature="e#160#184#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2073">
-              <caret line="291" column="35" lean-forward="true" selection-start-line="291" selection-start-column="35" selection-end-line="291" selection-end-column="35" />
-              <folding>
-                <element signature="e#160#184#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="177" column="4" lean-forward="true" selection-start-line="177" selection-start-column="4" selection-end-line="177" selection-end-column="4" />
-              <folding>
-                <element signature="e#82#106#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="22" column="76" lean-forward="true" selection-end-line="184" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
-              <folding>
-                <element signature="e#144#198#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/action.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="437" />
+            <state relative-caret-position="1358">
+              <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
               <folding>
                 <element signature="e#82#106#0" expanded="true" />
               </folding>
@@ -481,7 +394,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="21792000" />
+      <workItem from="1549678282785" duration="22593000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -595,11 +508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549940217708</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4). Also, need to check if some of the features from 1.3 doesn't exist in 1.4">
+      <created>1549943554916</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1549943554918</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23122000" />
+    <option name="totallyTimeSpent" value="23923000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
@@ -651,7 +571,8 @@
     <MESSAGE value="Create a util file which is used as a classes helper for OpenFlow" />
     <MESSAGE value="Modify the class action output" />
     <MESSAGE value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4)" />
+    <MESSAGE value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4). Also, need to check if some of the features from 1.3 doesn't exist in 1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4). Also, need to check if some of the features from 1.3 doesn't exist in 1.4" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
@@ -727,20 +648,40 @@
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_match.py">
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/action.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="44" lean-forward="true" selection-end-line="452" />
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
-            <element signature="e#163#193#0" expanded="true" />
+            <element signature="e#82#106#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2073">
+          <caret line="291" column="35" lean-forward="true" selection-start-line="291" selection-start-column="35" selection-end-line="291" selection-end-column="35" />
+          <folding>
+            <element signature="e#160#184#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
+        <state relative-caret-position="453">
           <caret line="449" column="26" lean-forward="true" selection-start-line="449" selection-start-column="26" selection-end-line="449" selection-end-column="26" />
+          <folding>
+            <element signature="e#163#193#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_match.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="e#163#193#0" expanded="true" />
           </folding>
@@ -774,6 +715,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/queue.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/port.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
@@ -784,30 +728,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2073">
-          <caret line="291" column="35" lean-forward="true" selection-start-line="291" selection-start-column="35" selection-end-line="291" selection-end-column="35" />
-          <folding>
-            <element signature="e#160#184#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/action.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="437" />
-          <folding>
-            <element signature="e#82#106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="177" column="4" lean-forward="true" selection-start-line="177" selection-start-column="4" selection-end-line="177" selection-end-column="4" />
+        <state relative-caret-position="1358">
+          <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
           <folding>
             <element signature="e#82#106#0" expanded="true" />
           </folding>
