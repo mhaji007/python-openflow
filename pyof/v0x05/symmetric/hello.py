@@ -29,8 +29,11 @@ class HelloElemType(IntEnum):
 class HelloElemHeader(GenericStruct):
     """Common header for all Hello Elements."""
 
-    element_type = UBInt16()
+    #
+    type = UBInt16()
+    #
     length = UBInt16()
+    #
     content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
