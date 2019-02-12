@@ -5,7 +5,7 @@
 from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16
+from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32
 from pyof.foundation.exceptions import PackException
 from pyof.v0x05.common.header import Header, Type
 
@@ -45,7 +45,7 @@ class HelloElemHeader(GenericStruct):
                 excluding padding.
         """
         super().__init__()
-        self.element_type = element_type
+        self.type = element_type
         self.length = length
         #self.content = content
 
@@ -131,3 +131,15 @@ class Hello(GenericMessage):
         """
         super().__init__(xid)
         self.elements = elements
+
+class HelloElemVersionbitmap(HelloElemHeader):
+    """ Version bitmap Hello Element
+    The super class contains the type and length variables
+    Followed by:
+        - Exactly (length - 4) bytes containing the bitmaps, then
+        - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7)
+        bytes of all-zero bytes.
+    """
+    # List of bitmaps - supported versions
+    bitmaps = BinaryData()
+
