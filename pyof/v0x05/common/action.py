@@ -86,13 +86,11 @@ class ActionHeader(GenericStruct):
     """
 
     #: One of OFPAT_*.
-    action_type = UBInt16(enum_ref=ActionType)
+    type = UBInt16(enum_ref=ActionType)
     #: Length of action, including this header. This is the length of actions,
     #:    including any padding to make it 64-bit aligned.
     length = UBInt16()
-    # Pad for 64-bit alignment.
-    # This should not be implemented, as each action type has its own padding.
-    # pad = Pad(4)
+
 
     _allowed_types = ()
 
@@ -150,6 +148,7 @@ class ActionHeader(GenericStruct):
 class ActionExperimenterHeader(ActionHeader):
     """Action structure for OFPAT_EXPERIMENTER."""
 
+    # Experimenter ID
     experimenter = UBInt32()
 
     _allowed_types = ActionType.OFPAT_EXPERIMENTER,
@@ -165,10 +164,26 @@ class ActionExperimenterHeader(ActionHeader):
         self.length = length
         self.experimenter = experimenter
 
+class ExperimenterStruct(GenericStruct):
+    """ Typical Experimenter structure. """
+
+    # Experimenter ID:
+    # - MSB 0: low-order bytes are IEEE OUI
+    # - MSB != 0: defined by ONF
+    experimenter = UBInt32()
+    # Experimenter defined
+    exp_type = UBInt32()
+
+    experimenter_data = UBInt8()
+
+
+
 
 class ActionGroup(ActionHeader):
     """Action structure for OFPAT_GROUP."""
 
+
+    # Group identifier.
     group_id = UBInt32()
 
     _allowed_types = ActionType.OFPAT_GROUP,
@@ -188,6 +203,7 @@ class ActionGroup(ActionHeader):
 class ActionDecMPLSTTL(ActionHeader):
     """Action structure for OFPAT_DEC_MPLS_TTL."""
 
+    # Pad to 64 bits
     pad = Pad(4)
 
     _allowed_types = ActionType.OFPAT_DEC_MPLS_TTL,
@@ -200,7 +216,9 @@ class ActionDecMPLSTTL(ActionHeader):
 class ActionSetMPLSTTL(ActionHeader):
     """Action structure for OFPAT_SET_MPLS_TTL."""
 
+    # MPLS TTL
     mpls_ttl = UBInt8()
+    #
     pad = Pad(3)
 
     _allowed_types = ActionType.OFPAT_SET_MPLS_TTL,
@@ -278,7 +296,9 @@ class ActionDecNWTTL(ActionHeader):
 class ActionSetNWTTL(ActionHeader):
     """Action structure for OFPAT_SET_NW_TTL."""
 
+    # IP TTL
     nw_ttl = UBInt8()
+    #
     pad = Pad(3)
 
     _allowed_types = ActionType.OFPAT_SET_NW_TTL,
@@ -294,17 +314,21 @@ class ActionSetNWTTL(ActionHeader):
 
 
 class ActionOutput(ActionHeader):
-    """Defines the actions output.
-
-    Action structure for :attr:`ActionType.OFPAT_OUTPUT`, which sends packets
-    out :attr:`port`. When the :attr:`port` is the
-    :attr:`.Port.OFPP_CONTROLLER`, :attr:`max_length` indicates the max number
-    of bytes to send. A :attr:`max_length` of zero means no bytes of the packet
-    should be sent.
     """
 
+    Action structure for OFPAT_OUTPUT, which sends packets out ’port’.
+    When the ’port’ is the OFPP_CONTROLLER, ’max_len’ indicates the max
+    number of bytes to send. A ’max_len’ of zero means no bytes of the
+    packet should be sent. A ’max_len’ of OFPCML_NO_BUFFER means that
+    the packet is not buffered and the complete packet is to be sent to
+    the controller.
+    """
+    # Extend the ActionHeader.
+    # Output port.
     port = UBInt32()
+    # Max length to send to controller.
     max_length = UBInt16()
+    # Pad to 64 bits.
     pad = Pad(6)
 
     _allowed_types = ActionType.OFPAT_OUTPUT,
@@ -325,7 +349,9 @@ class ActionOutput(ActionHeader):
 class ActionPopMPLS(ActionHeader):
     """Action structure for OFPAT_POP_MPLS."""
 
+    # Ethertype
     ethertype = UBInt16()
+    #
     pad = Pad(2)
 
     _allowed_types = ActionType.OFPAT_POP_MPLS,
@@ -343,7 +369,9 @@ class ActionPopMPLS(ActionHeader):
 class ActionPush(ActionHeader):
     """Action structure for OFPAT_PUSH_[VLAN/MPLS/PBB]."""
 
+    # Ethertype
     ethertype = UBInt16()
+    #
     pad = Pad(2)
 
     _allowed_types = (ActionType.OFPAT_PUSH_VLAN, ActionType.OFPAT_PUSH_MPLS,
@@ -364,6 +392,15 @@ class ActionPush(ActionHeader):
 class ActionSetField(ActionHeader):
     """Action structure for OFPAT_SET_FIELD."""
 
+    # <editor-fold desc="Description">
+    """ Followed by:
+            - Exactly (4 + oxm_length) bytes containing a single OXM TLV, then
+            - Exactly ((8 + oxm_length) + 7) / 8 * 8 - (8 + oxm_length)
+            (between 0 and 7) bytes of all-zero bytes
+    """
+    # </editor-fold>
+
+    # OXM TLV - Make compiler happy
     field = OxmTLV()
 
     _allowed_types = ActionType.OFPAT_SET_FIELD,
@@ -407,6 +444,7 @@ class ActionSetField(ActionHeader):
 class ActionSetQueue(ActionHeader):
     """Action structure for OFPAT_SET_QUEUE."""
 
+    # Queue id for packets.
     queue_id = UBInt32()
 
     _allowed_types = ActionType.OFPAT_SET_QUEUE,

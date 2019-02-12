@@ -5,7 +5,7 @@
 from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16
+from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32
 from pyof.foundation.exceptions import PackException
 from pyof.v0x05.common.header import Header, Type
 
@@ -27,12 +27,14 @@ class HelloElemType(IntEnum):
 
 
 class HelloElemHeader(GenericStruct):
-    """Common header for all Hello El
-    ements."""
+    """Common header for all Hello Elements."""
 
-    element_type = UBInt16()
+    # One of OFPHET_*.
+    type = UBInt16()
+    #Length in bytes of element, including this header, excluding padding.
     length = UBInt16()
-    content = BinaryData()
+    # This variable does NOT appear in 1.4 specification
+    #content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
         """Create a HelloElemHeader with the optional parameters below.
@@ -45,7 +47,7 @@ class HelloElemHeader(GenericStruct):
         super().__init__()
         self.element_type = element_type
         self.length = length
-        self.content = content
+        #self.content = content
 
     def pack(self, value=None):
         """Update the length and pack the massege into binary data.
@@ -117,6 +119,7 @@ class Hello(GenericMessage):
 
     header = Header(message_type=Type.OFPT_HELLO)
     #: Hello element list
+    #: List of elements - 0 or more
     elements = ListOfHelloElements()
 
     def __init__(self, xid=None, elements=None):
@@ -128,3 +131,15 @@ class Hello(GenericMessage):
         """
         super().__init__(xid)
         self.elements = elements
+
+class HelloElemVersionbitmap(HelloElemHeader):
+    """ Version bitmap Hello Element
+    The super class contains the type and length variables
+    Followed by:
+        - Exactly (length - 4) bytes containing the bitmaps, then
+        - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7)
+        bytes of all-zero bytes.
+    """
+    # List of bitmaps - supported versions
+    bitmaps = BinaryData()
+
