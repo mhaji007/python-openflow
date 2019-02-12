@@ -29,12 +29,12 @@ class HelloElemType(IntEnum):
 class HelloElemHeader(GenericStruct):
     """Common header for all Hello Elements."""
 
-    #
+    # One of OFPHET_*.
     type = UBInt16()
-    #
+    #Length in bytes of element, including this header, excluding padding.
     length = UBInt16()
-    #
-    content = BinaryData()
+    # This variable does NOT appear in 1.4 specification
+    #content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
         """Create a HelloElemHeader with the optional parameters below.
@@ -47,7 +47,7 @@ class HelloElemHeader(GenericStruct):
         super().__init__()
         self.element_type = element_type
         self.length = length
-        self.content = content
+        #self.content = content
 
     def pack(self, value=None):
         """Update the length and pack the massege into binary data.
@@ -119,6 +119,7 @@ class Hello(GenericMessage):
 
     header = Header(message_type=Type.OFPT_HELLO)
     #: Hello element list
+    #: List of elements - 0 or more
     elements = ListOfHelloElements()
 
     def __init__(self, xid=None, elements=None):
