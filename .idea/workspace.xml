@@ -4,8 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py" line="122" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py" afterDir="false" />
+    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct">
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,8 +95,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3680">
-              <caret line="35" column="27" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+            <state relative-caret-position="4725">
+              <caret line="315" column="7" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="315" selection-end-column="7" />
               <folding>
                 <element signature="e#82#106#0" expanded="true" />
               </folding>
@@ -232,6 +231,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -436,7 +436,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="16465000" />
+      <workItem from="1549678282785" duration="17229000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -508,11 +508,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549739794761</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct">
+      <created>1549937377466</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1549937377468</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17795000" />
+    <option name="totallyTimeSpent" value="18559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
@@ -703,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/action.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3680">
-          <caret line="35" column="27" lean-forward="true" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
+        <state relative-caret-position="4725">
+          <caret line="315" column="7" lean-forward="true" selection-start-line="315" selection-start-column="7" selection-end-line="315" selection-end-column="7" />
           <folding>
             <element signature="e#82#106#0" expanded="true" />
           </folding>
