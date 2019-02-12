@@ -4,10 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_instructions.py" line="122" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py" afterDir="false" />
-    </list>
+    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="586">
-              <caret line="145" column="4" lean-forward="true" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
+            <state relative-caret-position="483">
+              <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
               <folding>
                 <element signature="e#48#72#0" expanded="true" />
               </folding>
@@ -377,7 +374,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="24769000" />
+      <workItem from="1549678282785" duration="25133000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -526,28 +523,34 @@
       <option name="project" value="LOCAL" />
       <updated>1549946661862</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Create a class name HelloElemVersionbitmap">
+      <created>1549947313540</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1549947313540</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26099000" />
+    <option name="totallyTimeSpent" value="26463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2533137" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.17312072" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.17312072" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" weight="0.2904328" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" visible="true" weight="0.2904328" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073636" side_tool="true" weight="0.31776765" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -586,7 +589,8 @@
     <MESSAGE value="Clompleted the commons files" />
     <MESSAGE value="Some changes to the hello file." />
     <MESSAGE value="Change some values in the hello_header, element_type, hello class, element_header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change some values in the hello_header, element_type, hello class, element_header" />
+    <MESSAGE value="Create a class name HelloElemVersionbitmap" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create a class name HelloElemVersionbitmap" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
@@ -748,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="145" column="4" lean-forward="true" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
+        <state relative-caret-position="483">
+          <caret line="145" lean-forward="true" selection-start-line="145" selection-end-line="145" />
           <folding>
             <element signature="e#48#72#0" expanded="true" />
           </folding>
