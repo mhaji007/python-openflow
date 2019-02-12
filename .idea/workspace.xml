@@ -19,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="149" column="23" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+            <state relative-caret-position="586">
+              <caret line="149" column="17" selection-start-line="149" selection-start-column="17" selection-end-line="149" selection-end-column="17" />
               <folding>
                 <element signature="e#48#72#0" expanded="true" />
               </folding>
@@ -29,44 +29,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_match.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="25" column="44" selection-end-line="452" />
-              <folding>
-                <element signature="e#163#193#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/common/flow_match.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6630">
-              <caret line="449" column="26" selection-start-line="449" selection-start-column="26" selection-end-line="449" selection-end-column="26" />
-              <folding>
-                <element signature="e#163#193#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/flow_instructions.py">
+        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x04/test_symmetric/test_hello.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret selection-end-line="265" />
               <folding>
-                <element signature="e#160#184#0" expanded="true" />
+                <element signature="e#27#71#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x04/test_struct.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+              <folding>
+                <element signature="e#29#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -255,6 +242,19 @@
               <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
               <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="v0x04" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="v0x04" type="462c0819:PsiDirectoryNode" />
+              <item name="test_symmetric" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
@@ -475,7 +475,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="25993000" />
+      <workItem from="1549678282785" duration="27702000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -645,11 +645,18 @@
       <option name="project" value="LOCAL" />
       <updated>1549947909862</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Create the constructor of the class that will initialize the super class.">
+      <created>1549948585434</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1549948585434</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27323000" />
+    <option name="totallyTimeSpent" value="29032000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="314" y="23" width="1400" height="970" extended-state="0" />
@@ -659,14 +666,14 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.17312072" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.17312072" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" visible="true" weight="0.2904328" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" weight="0.2904328" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073636" side_tool="true" weight="0.31776765" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -707,7 +714,8 @@
     <MESSAGE value="Change some values in the hello_header, element_type, hello class, element_header" />
     <MESSAGE value="Create a class name HelloElemVersionbitmap" />
     <MESSAGE value="Merge branch 'master' into feature/AMLT-22&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' into feature/AMLT-22&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <MESSAGE value="Create the constructor of the class that will initialize the super class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create the constructor of the class that will initialize the super class." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
@@ -863,10 +871,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/test_foundation/test_basic_types.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x04/test_struct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="31" lean-forward="true" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="31" />
+          <folding>
+            <element signature="e#29#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x04/test_symmetric/test_hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#27#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="149" column="23" selection-start-line="149" selection-start-column="23" selection-end-line="149" selection-end-column="23" />
+        <state relative-caret-position="586">
+          <caret line="149" column="17" selection-start-line="149" selection-start-column="17" selection-end-line="149" selection-end-column="17" />
           <folding>
             <element signature="e#48#72#0" expanded="true" />
           </folding>

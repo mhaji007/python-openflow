@@ -132,6 +132,7 @@ class Hello(GenericMessage):
         super().__init__(xid)
         self.elements = elements
 
+
 class HelloElemVersionbitmap(HelloElemHeader):
     """ Version bitmap Hello Element
     The super class contains the type and length variables
@@ -145,6 +146,5 @@ class HelloElemVersionbitmap(HelloElemHeader):
 
     def __init__(self, type=None, length=None, bitmaps=None):
         """ """
-
-        super.__init__(self, type, length)
-        self.bitmaps = BinaryData()
+        super().__init__(type, length)
+        self.bitmaps = bitmaps
