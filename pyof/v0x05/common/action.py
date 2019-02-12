@@ -86,13 +86,11 @@ class ActionHeader(GenericStruct):
     """
 
     #: One of OFPAT_*.
-    action_type = UBInt16(enum_ref=ActionType)
+    type = UBInt16(enum_ref=ActionType)
     #: Length of action, including this header. This is the length of actions,
     #:    including any padding to make it 64-bit aligned.
     length = UBInt16()
-    # Pad for 64-bit alignment.
-    # This should not be implemented, as each action type has its own padding.
-    # pad = Pad(4)
+
 
     _allowed_types = ()
 
@@ -294,17 +292,21 @@ class ActionSetNWTTL(ActionHeader):
 
 
 class ActionOutput(ActionHeader):
-    """Defines the actions output.
-
-    Action structure for :attr:`ActionType.OFPAT_OUTPUT`, which sends packets
-    out :attr:`port`. When the :attr:`port` is the
-    :attr:`.Port.OFPP_CONTROLLER`, :attr:`max_length` indicates the max number
-    of bytes to send. A :attr:`max_length` of zero means no bytes of the packet
-    should be sent.
     """
 
+    Action structure for OFPAT_OUTPUT, which sends packets out ’port’.
+    When the ’port’ is the OFPP_CONTROLLER, ’max_len’ indicates the max
+    number of bytes to send. A ’max_len’ of zero means no bytes of the
+    packet should be sent. A ’max_len’ of OFPCML_NO_BUFFER means that
+    the packet is not buffered and the complete packet is to be sent to
+    the controller.
+    """
+    # Extend the ActionHeader.
+    # Output port.
     port = UBInt32()
+    # Max length to send to controller.
     max_length = UBInt16()
+    # Pad to 64 bits.
     pad = Pad(6)
 
     _allowed_types = ActionType.OFPAT_OUTPUT,
