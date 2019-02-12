@@ -148,6 +148,7 @@ class ActionHeader(GenericStruct):
 class ActionExperimenterHeader(ActionHeader):
     """Action structure for OFPAT_EXPERIMENTER."""
 
+    # Experimenter ID
     experimenter = UBInt32()
 
     _allowed_types = ActionType.OFPAT_EXPERIMENTER,
@@ -162,6 +163,20 @@ class ActionExperimenterHeader(ActionHeader):
         super().__init__(action_type=ActionType.OFPAT_EXPERIMENTER)
         self.length = length
         self.experimenter = experimenter
+
+class ExperimenterStruct(GenericStruct):
+    """ Typical Experimenter structure. """
+
+    # Experimenter ID:
+    # - MSB 0: low-order bytes are IEEE OUI
+    # - MSB != 0: defined by ONF
+    experimenter = UBInt32()
+    # Experimenter defined
+    exp_type = UBInt32()
+
+    experimenter_data = UBInt8()
+
+
 
 
 class ActionGroup(ActionHeader):
@@ -377,6 +392,15 @@ class ActionPush(ActionHeader):
 class ActionSetField(ActionHeader):
     """Action structure for OFPAT_SET_FIELD."""
 
+    # <editor-fold desc="Description">
+    """ Followed by:
+            - Exactly (4 + oxm_length) bytes containing a single OXM TLV, then
+            - Exactly ((8 + oxm_length) + 7) / 8 * 8 - (8 + oxm_length)
+            (between 0 and 7) bytes of all-zero bytes
+    """
+    # </editor-fold>
+
+    # OXM TLV - Make compiler happy
     field = OxmTLV()
 
     _allowed_types = ActionType.OFPAT_SET_FIELD,
