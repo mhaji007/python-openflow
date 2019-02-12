@@ -11,7 +11,7 @@ from pyof.foundation.base import GenericStruct
 from pyof.foundation.basic_types import (
     FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.exceptions import PackException
-from pyof.v0x04.common.action import ListOfActions
+from pyof.v0x05.common.action import ListOfActions,
 from pyof.v0x04.controller2switch.meter_mod import Meter
 
 # Third-party imports
@@ -187,9 +187,10 @@ class InstructionWriteAction(InstructionHeader):
         super().__init__(InstructionType.OFPIT_WRITE_ACTIONS)
         self.actions = actions if actions else []
 
-
-class Instruction_actions(GenericStruct):
+# Check
+class InstructionActions(GenericStruct):
     """ Instruction structure for OFPIT_WRITE/APPLY/CLEAR_ACTIONS """
+
     #: One of OFPIT_*_ACTIONS
     type = UBInt16()
     #: Length is padded to 64 bits
@@ -197,7 +198,17 @@ class Instruction_actions(GenericStruct):
     #: Align to 64-bits
     pad = Pad(4)
     #: 0 or more actions associated with OFPIT_WRITE/APPLY_ACTIONS
-    actions = ActionHeader()
+    actions = ListOfActions()
+
+    def __init__(self, actions=None):
+        """Create a InstructionApplyAction with the optional parameters below.
+
+        Args:
+            actions (:class:`~.actions.ListOfActions`):
+                Actions associated with OFPIT_APPLY_ACTIONS.
+        """
+        super().__init__(InstructionType.OFPIT_APPLY_ACTIONS)
+        self.actions = actions if actions else []
 
 
 
@@ -213,7 +224,7 @@ class InstructionGotoTable(InstructionHeader):
     #: Pad to 64 bits.
     pad = Pad(3)
 
-    def __init__(self, table_id=Meter.OFPM_ALL):
+    def __init__(self, table_id=Meter.OFPM_ALL, len=None):
         """Create a InstructionGotoTable with the optional parameters below.
 
         Args:
@@ -221,6 +232,7 @@ class InstructionGotoTable(InstructionHeader):
             table_id (int): set next table in the lookup pipeline.
         """
         super().__init__(InstructionType.OFPIT_GOTO_TABLE)
+        self.length = len
         self.table_id = table_id
 
 
