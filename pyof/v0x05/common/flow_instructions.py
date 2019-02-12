@@ -54,7 +54,6 @@ class InstructionType(IntEnum):
 
 # Classes
 
-
 class InstructionHeader(GenericStruct):
     """ Instruction header that is common to all instructions. The
         length includes the header and any padding used to make the
@@ -64,7 +63,6 @@ class InstructionHeader(GenericStruct):
     #: One of OFPIT_*.
     type = UBInt16(enum_ref=InstructionType)
     #: Length of this struct in bytes.
-
     length = UBInt16()
 
     def __init__(self, instruction_type=None):
@@ -124,9 +122,7 @@ class InstructionHeader(GenericStruct):
         super().unpack(buff[:offset+length.value], offset)
 
 
-
 class InstructionApplyAction(InstructionHeader):
-
     """Instruction structure for OFPIT_APPLY_ACTIONS.
 
     The :attr:`~actions` field is treated as a list, and the actions are
@@ -149,9 +145,7 @@ class InstructionApplyAction(InstructionHeader):
         self.actions = actions if actions else []
 
 
-
 class InstructionClearAction(InstructionHeader):
-
     """Instruction structure for OFPIT_CLEAR_ACTIONS.
 
     This structure does not contain any actions.
@@ -171,7 +165,6 @@ class InstructionClearAction(InstructionHeader):
         """
         super().__init__(InstructionType.OFPIT_CLEAR_ACTIONS)
         self.actions = actions if actions else []
-
 
 class InstructionWriteAction(InstructionHeader):
     """Instruction structure for OFPIT_WRITE_ACTIONS.
@@ -195,9 +188,10 @@ class InstructionWriteAction(InstructionHeader):
         super().__init__(InstructionType.OFPIT_WRITE_ACTIONS)
         self.actions = actions if actions else []
 
-
-class Instruction_actions(GenericStruct):
+# Check
+class InstructionActions(GenericStruct):
     """ Instruction structure for OFPIT_WRITE/APPLY/CLEAR_ACTIONS """
+
     #: One of OFPIT_*_ACTIONS
     type = UBInt16()
     #: Length is padded to 64 bits
@@ -205,7 +199,17 @@ class Instruction_actions(GenericStruct):
     #: Align to 64-bits
     pad = Pad(4)
     #: 0 or more actions associated with OFPIT_WRITE/APPLY_ACTIONS
-    actions = ActionHeader()
+    actions = ListOfActions()
+
+    def __init__(self, actions=None):
+        """Create a InstructionApplyAction with the optional parameters below.
+
+        Args:
+            actions (:class:`~.actions.ListOfActions`):
+                Actions associated with OFPIT_APPLY_ACTIONS.
+        """
+        super().__init__(InstructionType.OFPIT_APPLY_ACTIONS)
+        self.actions = actions if actions else []
 
 
 
@@ -217,36 +221,32 @@ class InstructionGotoTable(InstructionHeader):
     #: Length is 8.
     len = UBInt16()
     #: Set next table in the lookup pipeline
-
     table_id = UBInt8()
     #: Pad to 64 bits.
     pad = Pad(3)
 
-    def __init__(self, table_id=Meter.OFPM_ALL):
+    def __init__(self, table_id=Meter.OFPM_ALL, len=None):
         """Create a InstructionGotoTable with the optional parameters below.
 
         Args:
-            length (int): Length of this struct in bytes.
+            len (int): Length of this struct in bytes.
             table_id (int): set next table in the lookup pipeline.
         """
         super().__init__(InstructionType.OFPIT_GOTO_TABLE)
+        self.length = len
         self.table_id = table_id
 
 
-
 class InstructionMeter(GenericStruct):
-
     """Instruction structure for OFPIT_METER.
 
     meter_id indicates which meter to apply on the packet.
     """
 
-
     #: OFPIT_METER
     type = UBInt16()
     #: Length is 8.
     len = UBInt16()
-
     #: Meter instance.
     meter_id = UBInt32()
 
@@ -258,7 +258,6 @@ class InstructionMeter(GenericStruct):
         """
         super().__init__(InstructionType.OFPIT_METER)
         self.meter_id = meter_id
-
 
 
 
@@ -278,7 +277,6 @@ class InstructionWriteMetadata(InstructionHeader):
     type = UBInt16()
     #: Length is 24.
     len = UBInt16()
-
     #: Align to 64-bits
     pad = Pad(4)
     #: Metadata value to write
@@ -308,9 +306,7 @@ class ListOfInstruction(FixedTypeList):
         """Create ListOfInstruction with the optional parameters below.
 
         Args:
-
             items (:class:`~pyof.v0x05.common.flow_instructions.InstructionHeader`):
                 Instance or a list of instances.
         """
         super().__init__(pyof_class=InstructionHeader, items=items)
-
