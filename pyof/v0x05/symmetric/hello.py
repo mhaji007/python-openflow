@@ -45,7 +45,7 @@ class HelloElemHeader(GenericStruct):
                 excluding padding.
         """
         super().__init__()
-        self.element_type = element_type
+        self.type = element_type
         self.length = length
         #self.content = content
 
@@ -143,3 +143,8 @@ class HelloElemVersionbitmap(HelloElemHeader):
     # List of bitmaps - supported versions
     bitmaps = BinaryData()
 
+    def __init__(self, type=None, length=None, bitmaps=None):
+        """ """
+
+        super.__init__(self, type, length)
+        self.bitmaps = BinaryData()
