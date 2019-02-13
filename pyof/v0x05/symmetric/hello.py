@@ -11,7 +11,7 @@ from pyof.v0x05.common.header import Header, Type
 
 # Third-party imports
 
-__all__ = ('Hello', 'HelloElemHeader', 'HelloElemType', 'ListOfHelloElements')
+__all__ = ('Hello', 'HelloElemHeader', 'HelloElemType', 'ListOfHelloElements', 'HelloElemVersionBitmap')
 
 # Enums
 
@@ -34,7 +34,7 @@ class HelloElemHeader(GenericStruct):
     #Length in bytes of element, including this header, excluding padding.
     length = UBInt16()
     # This variable does NOT appear in 1.4 specification
-    #content = BinaryData()
+    content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
         """Create a HelloElemHeader with the optional parameters below.
@@ -47,10 +47,10 @@ class HelloElemHeader(GenericStruct):
         super().__init__()
         self.type = element_type
         self.length = length
-        #self.content = content
+        self.content = content
 
     def pack(self, value=None):
-        """Update the length and pack the massege into binary data.
+        """Update the length and pack the message into binary data.
 
         Returns:
             bytes: A binary data that represents the Message.
@@ -87,10 +87,10 @@ class HelloElemHeader(GenericStruct):
             :exc:`~.exceptions.UnpackException`: If unpack fails.
 
         """
-        length = UBInt16()
-        length.unpack(buff, offset=offset+2)
+        # length = UBInt16()
+        self.length.unpack(buff, offset=offset+2)
 
-        super().unpack(buff[:offset+length.value], offset)
+        super().unpack(buff[:offset+self.length.value], offset)
 
 
 class ListOfHelloElements(FixedTypeList):
@@ -107,6 +107,9 @@ class ListOfHelloElements(FixedTypeList):
             items (HelloElemHeader): Instance or a list of instances.
         """
         super().__init__(pyof_class=HelloElemHeader, items=items)
+        # if (items != None and isinstance(HelloElemHeader,items)):
+        #     super().append(items)
+
 
 
 class Hello(GenericMessage):
