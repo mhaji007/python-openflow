@@ -106,6 +106,7 @@ class Header(GenericStruct):
     xid = UBInt32()                             # Transaction id associated with this packet.
                                                 # Replies use the same id as was in the request to faciliate pairing.
 
+
     def __init__(self, message_type=None, length=None, xid=None):
         """Create a Header with the optional parameters below.
 
