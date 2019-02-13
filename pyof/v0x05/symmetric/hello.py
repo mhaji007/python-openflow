@@ -120,7 +120,8 @@ class Hello(GenericMessage):
     extensions.
     """
 
-    header = Header(message_type=Type.OFPT_HELLO)
+    header = Header(Type.OFPT_HELLO,)
+
     #: Hello element list
     #: List of elements - 0 or more
     elements = ListOfHelloElements()
@@ -145,9 +146,9 @@ class HelloElemVersionBitmap(HelloElemHeader):
         bytes of all-zero bytes.
     """
     # List of bitmaps - supported versions
-    bitmaps = BinaryData()
+    bitmaps = TypeList(UBInt32())
 
-    def __init__(self, type=None, length=None, bitmaps=None):
+    def __init__(self, type=None, length=None, bitmaps=TypeList(UBInt32)):
         """ """
         super().__init__(type, length)
         self.bitmaps = bitmaps
