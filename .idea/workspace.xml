@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/python_openflow_1.4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/python_openflow_1.4.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric/test_hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric/test_hello.py" afterDir="false" />
@@ -17,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_hello_TestHello_test_HelloElemHeader.coverage" NAME="Unittests for test_hello.TestHello.test_HelloElemHeader Coverage Results" MODIFIED="1550081026306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric" />
+    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_hello_TestHello_test_HelloElemHeader.coverage" NAME="Unittests for test_hello.TestHello.test_HelloElemHeader Coverage Results" MODIFIED="1550085488518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_in_test_hello_py.coverage" NAME="Unittests in test_hello.py Coverage Results" MODIFIED="1550024671083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_in_bin.coverage" NAME="Unittests in bin Coverage Results" MODIFIED="1550024955368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_hello_TestHello.coverage" NAME="Unittests for test_hello.TestHello Coverage Results" MODIFIED="1550024687798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric" />
@@ -27,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="656" selection-start-line="656" selection-end-line="656" />
+            <state relative-caret-position="219">
+              <caret line="531" selection-start-line="531" selection-end-line="531" />
             </state>
           </provider>
         </entry>
@@ -58,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+            <state relative-caret-position="357">
+              <caret line="153" selection-start-line="153" selection-end-line="153" />
               <folding>
                 <element signature="e#48#72#0" expanded="true" />
               </folding>
@@ -70,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="211" selection-start-line="211" selection-end-line="211" />
+            <state relative-caret-position="328">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
             </state>
           </provider>
         </entry>
@@ -79,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric/test_hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+            <state relative-caret-position="283">
+              <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
               <folding>
                 <element signature="e#97#137#0" expanded="true" />
               </folding>
@@ -534,7 +533,7 @@
       <option name="presentableId" value="Default" />
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
-      <workItem from="1549678282785" duration="53465000" />
+      <workItem from="1549678282785" duration="58076000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -732,43 +731,50 @@
       <option name="project" value="LOCAL" />
       <updated>1550024181707</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Create a unittest for the hello file and its classes. Missing 2 test cases that will be implemented soon. There are ssome issues in some of the test cases that will require clarification from a group of developers">
+      <created>1550081146102</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1550081146104</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 11m 35s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 13h 47m 25s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 17m 51s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 13h 48m 26s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 19m 36s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 13h 48m 38s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 20m 31s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 13h 50m 24s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 26m 24s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 01m 07s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 27m 31s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 01m 50s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 27m 53s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 02m 44s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 29m 56s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 05m 26s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 30m 49s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 07m 46s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 12h 35m 00s.xml">
+    <history-entry file="Unittests_for_test_hello_TestHello_test_HelloElemHeader - 2019.02.13 at 14h 18m 08s.xml">
       <configuration name="Unittests for test_hello.TestHello.test_HelloElemHeader" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54795000" />
+    <option name="totallyTimeSpent" value="59406000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -815,7 +821,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Create package v0x05, package symmetric and hello.py file" />
     <MESSAGE value="Create file header in package commom in v0x05.&#10;&#10;Also, Added messages to the header file" />
     <MESSAGE value="Created a file name constants where all the constants of v0x05 are located" />
     <MESSAGE value="Updated the header file by linking the constants to the own version v0x05" />
@@ -840,7 +845,19 @@
     <MESSAGE value="Modified the constructor class" />
     <MESSAGE value="Update some reference in the flow_instructions file" />
     <MESSAGE value="Create some unittest for the hello file and classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create some unittest for the hello file and classes" />
+    <MESSAGE value="Create a unittest for the hello file and its classes. Missing 2 test cases that will be implemented soon. There are ssome issues in some of the test cases that will require clarification from a group of developers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create a unittest for the hello file and its classes. Missing 2 test cases that will be implemented soon. There are ssome issues in some of the test cases that will require clarification from a group of developers" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x04/common/header.py">
@@ -1047,10 +1064,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/diff_tools.py">
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="328">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="531" selection-start-line="531" selection-end-line="531" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="153" selection-start-line="153" selection-end-line="153" />
+          <folding>
+            <element signature="e#48#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1061,34 +1095,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/basic_types.py">
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pycharm/teamcity/diff_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="656" selection-start-line="656" selection-end-line="656" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/foundation/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="211" selection-start-line="211" selection-end-line="211" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/pyof/v0x05/symmetric/hello.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="89" column="28" lean-forward="true" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
-          <folding>
-            <element signature="e#48#72#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="313">
+          <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../python_openflow_1.4/tests/v0x05/test_symmetric/test_hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="87" column="12" selection-start-line="87" selection-start-column="12" selection-end-line="87" selection-end-column="12" />
+        <state relative-caret-position="283">
+          <caret line="83" column="10" lean-forward="true" selection-start-line="83" selection-start-column="10" selection-end-line="83" selection-end-column="10" />
           <folding>
             <element signature="e#97#137#0" expanded="true" />
           </folding>

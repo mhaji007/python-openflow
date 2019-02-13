@@ -1,12 +1,8 @@
 """Hello message tests."""
-#from pyof.v0x05.symmetric.hello import Hello, HelloElemVersionbitmap
 from tests.test_struct import TestStruct
 import unittest
-# import pyof.v0x01.symmetric.hello as Hello
-# import pyof.v0x04.symmetric.hello as Hello
-#from pyof.v0x05.symmetric.hello import HelloElemType, HelloElemHeader
 import pyof.v0x05.symmetric.hello as Hello
-from pyof.foundation.basic_types import UBInt32,UBInt64, UBInt16, UBInt8
+from pyof.foundation.basic_types import UBInt32,UBInt64, UBInt16, UBInt8, BinaryData, TypeList, FixedTypeList
 
 class TestHello(unittest.TestCase):
 
@@ -22,6 +18,9 @@ class TestHello(unittest.TestCase):
         self.length = UBInt16(6)
         self.type1 = UBInt16(1)
         self.length1 = UBInt16(8)
+        self.version1 = UBInt32(0x01)
+        self.version2 = UBInt32(0x04)
+        self.version3 = UBInt32(0x05)
 
     def tearDown(self):
         pass
@@ -81,11 +80,28 @@ class TestHello(unittest.TestCase):
 
 
     def test_hello(self):
+
+        #
+
         pass
 
     def test_helloElemVersionBitmap(self):
-        # Testing the creation of the object
-        pass
+
+        # Create and Initialize a TypeList object to be submitted as a bitmap
+        # Add to the object the 3 versions of Type UBInt32
+        self.bData1 = TypeList(self.version1)
+        self.bData1.append(self.version2)
+        self.bData1.append(self.version3)
+        # Create and Initialize the HelloElemVersionBitmap with type, length and the list of Versions
+        self.testObjectVersion = Hello.HelloElemVersionBitmap(self.type, self.length, self.bData1)
+        # Assert if the number of Versions are correct under the Bitmap
+        self.assertEqual(3, self.testObjectVersion.bitmaps.__len__())
+        # Assert that the Type are the same between the 2 values
+        self.assertEqual(self.type, self.testObjectVersion.type)
+        # Assert that the Length are the same between the 2 values
+        self.assertEqual(self.length, self.testObjectVersion.length)
+
+
 
 
 #
