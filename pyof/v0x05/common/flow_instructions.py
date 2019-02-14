@@ -11,8 +11,9 @@ from pyof.foundation.base import GenericStruct
 from pyof.foundation.basic_types import (
     FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.exceptions import PackException
+
 from pyof.v0x05.common.action import ListOfActions
-from pyof.v0x04.controller2switch.meter_mod import Meter
+from pyof.v0x05.controller2switch.meter_mod import Meter
 
 # Third-party imports
 

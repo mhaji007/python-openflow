@@ -28,14 +28,14 @@ class TestHello(unittest.TestCase):
         self.helloElements.append(Hello.ListOfHelloElements(Hello.HelloElemHeader(self.type1, self.length1)))
 
 
-        
+
 
     # def tearDown(self):
     #     # Delete all variable and objects after used in testing cases
     #     pass
 
 
-    
+
 
     def test_helloElemType(self):
         # Takes the values of bitmap version into a variable
@@ -147,7 +147,7 @@ class TestHello(unittest.TestCase):
         self.assertEqual((4 * 8), self.testObjectVersion.__sizeof__())
 
 #
-# class TestHelloClass(TestStruct,unittest.TestCase):
+# class TestHello(TestStruct):
 #     """Hello message tests (also those in :class:`.TestDump`)."""
 #
 #     @classmethod
@@ -157,16 +157,8 @@ class TestHello(unittest.TestCase):
 #         super().set_raw_dump_file('v0x05', 'ofpt_hello')
 #         super().set_raw_dump_object(Hello, xid=1)
 #         super().set_minimum_size(8)
-#
-#     def test_raw_dump_file(self):
-#         self.assertEqual(0,0,'They are equeals to 0')
-#
-#     def test_minimum_size(self):
-#         pass
-#
-#     def test_raw_dump_object(self):
-#         pass
-#
+
+
 
 if __name__ == '__main__':
     unittest.main()

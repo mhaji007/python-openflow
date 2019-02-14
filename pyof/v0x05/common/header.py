@@ -18,7 +18,9 @@ __all__ = ('Header', 'Type')
 class Type(IntEnum):
     """Enumeration of Message Types."""
 
+
     # Symmetric/Immutable messages
+
     OFPT_HELLO = 0
     OFPT_ERROR = 1
     OFPT_ECHO_REQUEST = 2
@@ -58,8 +60,10 @@ class Type(IntEnum):
 
     # Queue Configuration messages
     # Controller/Switch message
+
     #OFPT_QUEUE_GET_CONFIG_REQUEST = 22
     #OFPT_QUEUE_GET_CONFIG_REPLY = 23
+
 
     # Controller role change request message
     # Controller/Switch message
@@ -75,6 +79,7 @@ class Type(IntEnum):
     # Meters and rate limiters configuration messages
     # Controller/Switch message
     OFPT_METER_MOD = 29
+
 
     #Controller role change event messages
     #Async message
@@ -94,11 +99,13 @@ class Type(IntEnum):
     OFPT_BUNDLE_ADD_MESSAGE = 34
 
 
+
 # Classes
 
 
 class Header(GenericStruct):
     """Representation of an OpenFlow message Header."""
+
 
     version = UBInt8(OFP_VERSION)               # OFP_VERSION
     message_type = UBInt8(enum_ref=Type)        # One of the OFPT_ constants

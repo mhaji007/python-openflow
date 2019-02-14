@@ -5,9 +5,9 @@ from enum import IntEnum
 
 # Local source tree imports
 from pyof.foundation.base import GenericBitMask, GenericStruct
-from pyof.foundation.basic_types import (
-    Char, FixedTypeList, HWAddress, Pad, UBInt32, UBInt16, UBInt8)
+from pyof.foundation.basic_types import (Char, FixedTypeList, HWAddress, Pad, UBInt32, UBInt16, UBInt8)
 from pyof.foundation.constants import OFP_MAX_PORT_NAME_LEN, OFP_ETH_ALEN
+
 
 # Third-party imports
 
@@ -47,6 +47,7 @@ class PortNo(IntEnum):
     OFPP_ANY = 0xffffffff
 
 
+
 class PortDescPropType(IntEnum):
     """Port description property types"""
 
@@ -69,6 +70,7 @@ class OpticalPortFeatures(IntEnum):
     OFPOPF_TX_PWR = 1 << 2
     # Use Frequency, not wavelength
     OFPOPF_USE_FREQ = 1 << 3
+
 
 
 
@@ -210,6 +212,7 @@ class Port(GenericStruct):
     """
 
     port_no = UBInt32()
+
     length = UBInt16()
     pad = Pad(2)
     hw_addr = UBInt8[OFP_ETH_ALEN]
@@ -226,14 +229,17 @@ class Port(GenericStruct):
     #pad2 = Pad(2)
 
     """
+
     curr = UBInt32(enum_ref=PortFeatures)
     advertised = UBInt32(enum_ref=PortFeatures)
     supported = UBInt32(enum_ref=PortFeatures)
     peer = UBInt32(enum_ref=PortFeatures)
     curr_speed = UBInt32()
     max_speed = UBInt32()
+
     
     """
+
 
     def __init__(self, port_no=None, hw_addr=None, name=None, config=None,
                  state=None, curr=None, advertised=None, supported=None,
@@ -244,6 +250,7 @@ class Port(GenericStruct):
             port_no (int): Port number.
             hw_addr (HWAddress): Hardware address.
             name (str): Null-terminated name.
+
             config (~pyof.v0x04.common.port.PortConfig):
                 Bitmap of OFPPC* flags.
             state (~pyof.v0x04.common.port.PortState): Bitmap of OFPPS* flags.
@@ -253,6 +260,7 @@ class Port(GenericStruct):
             supported (~pyof.v0x04.common.port.PortFeatures):
                 Features supported by the port.
             peer (~pyof.v0x04.common.port.PortFeatures):
+
                 Features advertised by peer.
             curr_speed (int): Current port bitrate in kbps.
             max_speed (int): Max port bitrate in kbps.
@@ -269,6 +277,7 @@ class Port(GenericStruct):
         self.peer = peer
         self.curr_speed = curr_speed
         self.max_speed = max_speed
+
 
 class PortDescPropHeader(GenericStruct):
     """ Common header for all port description properties """
@@ -354,12 +363,15 @@ class PortDescPropExperimenter(GenericStruct):
     experimenterData = UBInt32(0)
 
 
+
 class ListOfPorts(FixedTypeList):
     """List of Ports.
 
     Represented by instances of :class:`Port` and used on
+
     :class:`~pyof.v0x04.controller2switch.features_reply.FeaturesReply`/
     :class:`~pyof.v0x04.controller2switch.features_reply.SwitchFeatures`
+
     objects.
     """
 
@@ -367,8 +379,10 @@ class ListOfPorts(FixedTypeList):
         """Create a ListOfPort with the optional parameters below.
 
         Args:
+
             items (:class:`list`, :class:`~pyof.v0x04.common.port.Port`):
                 One :class:`~pyof.v0x04.common.port.Port` instance or list.
+
         """
         super().__init__(pyof_class=Port,
                          items=items)
