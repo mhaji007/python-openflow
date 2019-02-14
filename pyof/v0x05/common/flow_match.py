@@ -130,8 +130,10 @@ class OxmOfbMatchField(IntEnum):
     OFPXMT_OFB_TUNNEL_ID = 38
     #: IPv6 Extension Header pseudo-field
     OFPXMT_OFB_IPV6_EXTHDR = 39
+
     #: PBB UCA header field.
     OFPXMT_OFB_PBB_UCA = 41
+
 
 
 class MatchType(IntEnum):
@@ -190,6 +192,8 @@ class OxmTLV(GenericStruct):
     oxm_class = UBInt16(enum_ref=OxmClass)
     oxm_field_and_mask = UBInt8()
     oxm_length = UBInt8()
+
+
 
     oxm_value = BinaryData()
 
@@ -325,12 +329,15 @@ class Match(GenericStruct):
 
     These are the fields to match against flows.
 
+
     The :attr:`~type` field is set to :attr:`~MatchType.OFPMT_OXM` and
+
     :attr:`length` field is set to the actual length of match structure
     including all match fields. The payload of the OpenFlow match is a set of
     OXM Flow match fields.
 
     """
+
 
     # One of OFPMT_*
     type = UBInt16(enum_ref=MatchType)
@@ -411,8 +418,10 @@ class Match(GenericStruct):
         """Return the value for the 'field_type' field in oxm_match_fields.
 
         Args:
-            field_type (~pyof.v0x04.common.flow_match.OxmOfbMatchField,
-                        ~pyof.v0x04.common.flow_match.OxmMatchFields):
+
+            field_type (~pyof.v0x05.common.flow_match.OxmOfbMatchField,
+                        ~pyof.v0x05.common.flow_match.OxmMatchFields):
+
                 The type of the OXM field you want the value.
 
         Returns:
@@ -428,15 +437,15 @@ class Match(GenericStruct):
 
 
 class OxmExperimenterHeader(GenericStruct):
-    """Header for OXM experimenter match fields.
-       The experimenter class should NOT use OXM_HEADER() macros for defining
-       fields due to this extra header.
-    """
+
+
 
     #: oxm_class = OFPXMC_EXPERIMENTER
     oxm_header = UBInt32(OxmClass.OFPXMC_EXPERIMENTER,
                          enum_ref=OxmClass)
+
     #: Experimenter ID.
+
     experimenter = UBInt32()
 
     def __init__(self, experimenter=None):
