@@ -27,7 +27,10 @@ class HelloElemType(IntEnum):
 
 
 class HelloElemHeader(GenericStruct):
-    """Common header for all Hello Elements."""
+
+    """Common header for all Hello El
+    ements."""
+
 
     element_type = UBInt16()
     length = UBInt16()

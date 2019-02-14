@@ -6,41 +6,42 @@
 
 # Local source tree imports
 # Importing asynchronous messages
-from pyof.v0x05.asynchronous.error_msg import ErrorMsg
-from pyof.v0x05.asynchronous.flow_removed import FlowRemoved
-from pyof.v0x05.asynchronous.packet_in import PacketIn
-from pyof.v0x05.asynchronous.port_status import PortStatus
+
+from pyof.v0x04.asynchronous.error_msg import ErrorMsg
+from pyof.v0x04.asynchronous.flow_removed import FlowRemoved
+from pyof.v0x04.asynchronous.packet_in import PacketIn
+from pyof.v0x04.asynchronous.port_status import PortStatus
 # Importing controller2switch messages
-from pyof.v0x05.common.header import Header, Type
-from pyof.v0x05.controller2switch.barrier_reply import BarrierReply
-from pyof.v0x05.controller2switch.barrier_request import BarrierRequest
-from pyof.v0x05.controller2switch.features_reply import FeaturesReply
-from pyof.v0x05.controller2switch.features_request import FeaturesRequest
-from pyof.v0x05.controller2switch.flow_mod import FlowMod
-from pyof.v0x05.controller2switch.get_async_reply import GetAsyncReply
-from pyof.v0x05.controller2switch.get_async_request import GetAsyncRequest
-from pyof.v0x05.controller2switch.get_config_reply import GetConfigReply
-from pyof.v0x05.controller2switch.get_config_request import GetConfigRequest
-from pyof.v0x05.controller2switch.group_mod import GroupMod
-from pyof.v0x05.controller2switch.meter_mod import MeterMod
-from pyof.v0x05.controller2switch.multipart_reply import MultipartReply
-from pyof.v0x05.controller2switch.multipart_request import MultipartRequest
-from pyof.v0x05.controller2switch.packet_out import PacketOut
-from pyof.v0x05.controller2switch.port_mod import PortMod
-from pyof.v0x05.controller2switch.queue_get_config_reply import (
+from pyof.v0x04.common.header import Header, Type
+from pyof.v0x04.controller2switch.barrier_reply import BarrierReply
+from pyof.v0x04.controller2switch.barrier_request import BarrierRequest
+from pyof.v0x04.controller2switch.features_reply import FeaturesReply
+from pyof.v0x04.controller2switch.features_request import FeaturesRequest
+from pyof.v0x04.controller2switch.flow_mod import FlowMod
+from pyof.v0x04.controller2switch.get_async_reply import GetAsyncReply
+from pyof.v0x04.controller2switch.get_async_request import GetAsyncRequest
+from pyof.v0x04.controller2switch.get_config_reply import GetConfigReply
+from pyof.v0x04.controller2switch.get_config_request import GetConfigRequest
+from pyof.v0x04.controller2switch.group_mod import GroupMod
+from pyof.v0x04.controller2switch.meter_mod import MeterMod
+from pyof.v0x04.controller2switch.multipart_reply import MultipartReply
+from pyof.v0x04.controller2switch.multipart_request import MultipartRequest
+from pyof.v0x04.controller2switch.packet_out import PacketOut
+from pyof.v0x04.controller2switch.port_mod import PortMod
+from pyof.v0x04.controller2switch.queue_get_config_reply import (
     QueueGetConfigReply)
-from pyof.v0x05.controller2switch.queue_get_config_request import (
+from pyof.v0x04.controller2switch.queue_get_config_request import (
     QueueGetConfigRequest)
-from pyof.v0x05.controller2switch.role_reply import RoleReply
-from pyof.v0x05.controller2switch.role_request import RoleRequest
-from pyof.v0x05.controller2switch.set_async import SetAsync
-from pyof.v0x05.controller2switch.set_config import SetConfig
-from pyof.v0x05.controller2switch.table_mod import TableMod
+from pyof.v0x04.controller2switch.role_reply import RoleReply
+from pyof.v0x04.controller2switch.role_request import RoleRequest
+from pyof.v0x04.controller2switch.set_async import SetAsync
+from pyof.v0x04.controller2switch.set_config import SetConfig
+from pyof.v0x04.controller2switch.table_mod import TableMod
 # Importing symmetric messages
-from pyof.v0x05.symmetric.echo_reply import EchoReply
-from pyof.v0x05.symmetric.echo_request import EchoRequest
-from pyof.v0x05.symmetric.experimenter import ExperimenterHeader
-from pyof.v0x05.symmetric.hello import Hello
+from pyof.v0x04.symmetric.echo_reply import EchoReply
+from pyof.v0x04.symmetric.echo_request import EchoRequest
+from pyof.v0x04.symmetric.experimenter import ExperimenterHeader
+from pyof.v0x04.symmetric.hello import Hello
 
 __all__ = ('MESSAGE_TYPES', 'new_message_from_header',
            'new_message_from_message_type', 'unpack_message')
@@ -111,7 +112,9 @@ def new_message_from_message_type(message_type):
     """Given an OpenFlow Message Type, return an empty message of that type.
 
     Args:
-        messageType (:class:`~pyof.v0x05.common.header.Type`):
+
+        messageType (:class:`~pyof.v0x04.common.header.Type`):
+
             Python-openflow message.
 
     Returns:
@@ -136,7 +139,9 @@ def new_message_from_header(header):
     """Given an OF Header, return an empty message of header's message_type.
 
     Args:
-        header (:class:`~pyof.v0x05.common.header.Header`):
+
+        header (:class:`~pyof.v0x04.common.header.Header`):
+
             Unpacked OpenFlow Header.
 
     Returns:

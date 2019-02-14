@@ -18,7 +18,9 @@ __all__ = ('Header', 'Type')
 class Type(IntEnum):
     """Enumeration of Message Types."""
 
-    # Symetric/Immutable messages
+
+    # Symmetric/Immutable messages
+
     OFPT_HELLO = 0
     OFPT_ERROR = 1
     OFPT_ECHO_REQUEST = 2
@@ -58,8 +60,10 @@ class Type(IntEnum):
 
     # Queue Configuration messages
     # Controller/Switch message
-    OFPT_QUEUE_GET_CONFIG_REQUEST = 22
-    OFPT_QUEUE_GET_CONFIG_REPLY = 23
+
+    #OFPT_QUEUE_GET_CONFIG_REQUEST = 22
+    #OFPT_QUEUE_GET_CONFIG_REPLY = 23
+
 
     # Controller role change request message
     # Controller/Switch message
@@ -77,16 +81,38 @@ class Type(IntEnum):
     OFPT_METER_MOD = 29
 
 
+    #Controller role change event messages
+    #Async message
+    OFPT_ROLE_STATUS = 30
+
+    #Asynchronous message
+    #Async message
+    OFPT_TABLE_STATUS = 31
+
+    #Request forwarding by switch
+    #Async message
+    OFPT_REQUESTFORWARD = 32
+
+    #Bundle operations (Multiple messages as a single operation)
+    #Controller/Switch message
+    OFPT_BUNDLE_CONTROL = 33
+    OFPT_BUNDLE_ADD_MESSAGE = 34
+
+
+
 # Classes
 
 
 class Header(GenericStruct):
     """Representation of an OpenFlow message Header."""
 
-    version = UBInt8(OFP_VERSION)
-    message_type = UBInt8(enum_ref=Type)
-    length = UBInt16()
-    xid = UBInt32()
+
+    version = UBInt8(OFP_VERSION)               # OFP_VERSION
+    message_type = UBInt8(enum_ref=Type)        # One of the OFPT_ constants
+    length = UBInt16()                          # Length including this ofp_header
+    xid = UBInt32()                             # Transaction id associated with this packet.
+                                                # Replies use the same id as was in the request to faciliate pairing.
+
 
     def __init__(self, message_type=None, length=None, xid=None):
         """Create a Header with the optional parameters below.

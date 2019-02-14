@@ -5,9 +5,9 @@ from enum import IntEnum
 
 # Local source tree imports
 from pyof.foundation.base import GenericBitMask, GenericStruct
-from pyof.foundation.basic_types import (
-    Char, FixedTypeList, HWAddress, Pad, UBInt32)
-from pyof.foundation.constants import OFP_MAX_PORT_NAME_LEN
+from pyof.foundation.basic_types import (Char, FixedTypeList, HWAddress, Pad, UBInt32, UBInt16, UBInt8)
+from pyof.foundation.constants import OFP_MAX_PORT_NAME_LEN, OFP_ETH_ALEN
+
 
 # Third-party imports
 
@@ -45,6 +45,34 @@ class PortNo(IntEnum):
     #: Selects all flows regardless of output port (including flows with no
     #: output port).
     OFPP_ANY = 0xffffffff
+
+
+
+class PortDescPropType(IntEnum):
+    """Port description property types"""
+
+    # Ethernet property
+    OFPPDPT_ETHERNET = 0
+    # Optical property
+    OFPPDPT_OPTICAL = 1
+    # Experimenter property
+    OFPPDPT_EXPERIMENTER = 0xfff
+
+
+class OpticalPortFeatures(IntEnum):
+    """Features of optical ports available in switch. """
+
+    # Receiver is tunable.
+    OFPOPF_RX_TUNE = 1 << 0
+    # Transmit is tunable.
+    OFPOPF_TX_TUNE = 1 << 1
+    # Power is configurable.
+    OFPOPF_TX_PWR = 1 << 2
+    # Use Frequency, not wavelength
+    OFPOPF_USE_FREQ = 1 << 3
+
+
+
 
 
 class PortConfig(GenericBitMask):
@@ -184,18 +212,34 @@ class Port(GenericStruct):
     """
 
     port_no = UBInt32()
-    pad = Pad(4)
-    hw_addr = HWAddress()
-    pad2 = Pad(2)
-    name = Char(length=OFP_MAX_PORT_NAME_LEN)
-    config = UBInt32(enum_ref=PortConfig)
-    state = UBInt32(enum_ref=PortState)
+
+    length = UBInt16()
+    pad = Pad(2)
+    hw_addr = UBInt8[OFP_ETH_ALEN]
+    pad2 = Pad(2)                               # Align to 64 bits
+    name = Char(length=OFP_MAX_PORT_NAME_LEN)   # Null terminated
+    config = UBInt32(enum_ref=PortConfig)       # Bitmap of OFPPC_* flags
+    state = UBInt32(enum_ref=PortState)         # Bitmap of OFPPS_* flags
+
+
+
+
+    #pad = Pad(4)
+    #hw_addr = HWAddress()
+    #pad2 = Pad(2)
+
+    """
+
     curr = UBInt32(enum_ref=PortFeatures)
     advertised = UBInt32(enum_ref=PortFeatures)
     supported = UBInt32(enum_ref=PortFeatures)
     peer = UBInt32(enum_ref=PortFeatures)
     curr_speed = UBInt32()
     max_speed = UBInt32()
+
+    
+    """
+
 
     def __init__(self, port_no=None, hw_addr=None, name=None, config=None,
                  state=None, curr=None, advertised=None, supported=None,
@@ -206,15 +250,17 @@ class Port(GenericStruct):
             port_no (int): Port number.
             hw_addr (HWAddress): Hardware address.
             name (str): Null-terminated name.
-            config (~pyof.v0x05.common.port.PortConfig):
+
+            config (~pyof.v0x04.common.port.PortConfig):
                 Bitmap of OFPPC* flags.
-            state (~pyof.v0x05.common.port.PortState): Bitmap of OFPPS* flags.
-            curr (~pyof.v0x05.common.port.PortFeatures): Current features.
-            advertised (~pyof.v0x05.common.port.PortFeatures):
+            state (~pyof.v0x04.common.port.PortState): Bitmap of OFPPS* flags.
+            curr (~pyof.v0x04.common.port.PortFeatures): Current features.
+            advertised (~pyof.v0x04.common.port.PortFeatures):
                 Features being advertised by the port.
-            supported (~pyof.v0x05.common.port.PortFeatures):
+            supported (~pyof.v0x04.common.port.PortFeatures):
                 Features supported by the port.
-            peer (~pyof.v0x05.common.port.PortFeatures):
+            peer (~pyof.v0x04.common.port.PortFeatures):
+
                 Features advertised by peer.
             curr_speed (int): Current port bitrate in kbps.
             max_speed (int): Max port bitrate in kbps.
@@ -233,12 +279,99 @@ class Port(GenericStruct):
         self.max_speed = max_speed
 
 
+class PortDescPropHeader(GenericStruct):
+    """ Common header for all port description properties """
+
+    # One of OFPPDPT_*
+    type = UBInt16()
+    # Length in bytes of this property
+    length = UBInt16()
+
+class PortDescPropEthernet(GenericStruct):
+    """Ethernet port description property"""
+
+    # OFPPDPT_ETHERNET
+    type = UBInt16()
+    # Length in bytes of this property
+    length = UBInt16()
+    # Align to 64 bits
+    pad4 = Pad(4)
+
+    """ Bimaps of OFPPF_* that describe features. All bits zeroed if
+        unsupported or unavailable. """
+    # Current features.
+    curr = UBInt32(enum_ref=PortFeatures)
+    # Feature being advertised by port.
+    advertised = UBInt32(enum_ref=PortFeatures)
+    # Features supported by the port.
+    supported = UBInt32(enum_ref=PortFeatures)
+    # Features advertised by peer.
+    peer = UBInt32(enum_ref=PortFeatures)
+
+    # Current port bitrate in kbps.
+    curr_speed = UBInt32()
+    # Max port bitrate in kbps.
+    max_speed = UBInt32()
+
+
+class PortDescPropOptical(GenericStruct):
+    """ Optical port description property. """
+
+    # OFPPDPT_3OPTICAL.
+    type = UBInt16()
+    # Length in bytes of this property.
+    length = UBInt16()
+    # Align to 64 bits.
+    pad4 = Pad(4)
+
+    # Features supported by the port.
+    supported = UBInt32()
+    # Minimum TX Frequency/Wavelength.
+    tx_min_freq_lmda = UBInt32()
+    # Maximum TX Frequency/Wavelength.
+    tx_max_freq_lmda = UBInt32()
+    # TX Grid Spacing Frequency/Wavelength.
+    tx_grid_freq_lmda = UBInt32()
+    # Minimum RX Frequency/Wavelength.
+    rx_min_freq_lmda = UBInt32()
+    # Maximum RX Frequency/Wavelength.
+    rx_max_freq_lmda = UBInt32()
+    # RX Grid Spacing Frequency/Wavelength
+    rx_grid_freq_lmda = UBInt32()
+    # Minimum TX power
+    tx_pwr_min = UBInt16()
+    # Maximun TX power
+    tx_pwr_max = UBInt16()
+
+
+class PortDescPropExperimenter(GenericStruct):
+    """ Experimenter port description property. """
+
+    #OFPPDPT_EXPERIMENTER.
+    type = UBInt16()
+    # Length in bytes of this property
+    length = UBInt16()
+    # Experimenter ID which takes the same form as in ExperimenterHeader.
+    experimenter = UBInt16()
+    # Experimenter defined.
+    exp_type = UBInt16()
+    """ Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7) bytes
+              of all-zero bytes. 
+    """
+    experimenterData = UBInt32(0)
+
+
+
 class ListOfPorts(FixedTypeList):
     """List of Ports.
 
     Represented by instances of :class:`Port` and used on
-    :class:`~pyof.v0x05.controller2switch.features_reply.FeaturesReply`/
-    :class:`~pyof.v0x05.controller2switch.features_reply.SwitchFeatures`
+
+    :class:`~pyof.v0x04.controller2switch.features_reply.FeaturesReply`/
+    :class:`~pyof.v0x04.controller2switch.features_reply.SwitchFeatures`
+
     objects.
     """
 
@@ -246,8 +379,10 @@ class ListOfPorts(FixedTypeList):
         """Create a ListOfPort with the optional parameters below.
 
         Args:
-            items (:class:`list`, :class:`~pyof.v0x05.common.port.Port`):
-                One :class:`~pyof.v0x05.common.port.Port` instance or list.
+
+            items (:class:`list`, :class:`~pyof.v0x04.common.port.Port`):
+                One :class:`~pyof.v0x04.common.port.Port` instance or list.
+
         """
         super().__init__(pyof_class=Port,
                          items=items)
