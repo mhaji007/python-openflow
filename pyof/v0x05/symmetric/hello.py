@@ -5,7 +5,7 @@
 from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, TypeList
+from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt32, TypeList
 from pyof.foundation.exceptions import PackException
 from pyof.v0x05.common.header import Header, Type
 
@@ -120,7 +120,7 @@ class Hello(GenericMessage):
     extensions.
     """
 
-    header = Header(Type.OFPT_HELLO,)
+    header = Header(Type.OFPT_HELLO)
 
     #: Hello element list
     #: List of elements - 0 or more
