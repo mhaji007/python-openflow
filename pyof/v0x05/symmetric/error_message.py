@@ -16,7 +16,8 @@ __all__ = ('BadActionCode', 'BadInstructionCode', 'BadMatchCode', 'ErrorType',
            'MeterModFailedCode', 'PortModFailedCode', 'QueueOpFailedCode',
            'RoleRequestFailedCode', 'SwitchConfigFailedCode',
            'TableFeaturesFailedCode', 'TableModFailedCode',
-           'GenericFailedCode')
+           'GenericFailedCode', 'BadPropertyCode' , 'AsyncConfigFailedCode' ,
+           'FlowMonitorFailedCode', 'BundleFailedCode')
 
 # Enums
 
@@ -517,7 +518,7 @@ class FlowMonitorFailedCode(IntEnum):
     OFPMOFC_BAD_OUT = 7
 
 
-class BundleFailedCod(IntEnum):
+class BundleFailedCode(IntEnum):
     """Error_msg 'code' values for OFPET_BUNDLE_FAILED.
 
             'data' contains at least the first 64 bytes of the failed request.
@@ -609,7 +610,7 @@ class ErrorExperimenterMsg(GenericMessage):
     # :class:`~.header.Header`: OpenFlow Header
     header = Header(message_type=Type.OFPT_ERROR)
     #: OFPET_EXPERIMENTER.
-    error_type = UBInt16(ErrorType.OFPET_EXPERIMENTER,
+    type = UBInt16(ErrorType.OFPET_EXPERIMENTER,
                          enum_ref=ErrorType)
     #: Experimenter Defined
     exp_type = UBInt16()
