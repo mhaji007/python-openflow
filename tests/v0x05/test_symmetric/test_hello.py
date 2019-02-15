@@ -146,17 +146,17 @@ class TestHello(unittest.TestCase):
         self.assertEqual((4 * 8), Hello.HelloElemVersionBitmap.__sizeof__(Hello.HelloElemVersionBitmap()))
         self.assertEqual((4 * 8), self.testObjectVersion.__sizeof__())
 
+# UNCOMMENT to used the previous tests
+# class TestHelloStruct(TestStruct):
+#     """Hello message tests (also those in :class:`.TestDump`)."""
 #
-class TestHelloStruct(TestStruct):
-    """Hello message tests (also those in :class:`.TestDump`)."""
-
-    @classmethod
-    def setUpClass(cls):
-        """Configure raw file and its object in parent class (TestDump)."""
-        super().setUpClass()
-        super().set_raw_dump_file('v0x05', 'ofpt_hello')
-        super().set_raw_dump_object(Hello.Hello, xid=1)
-        super().set_minimum_size(8)
+#     @classmethod
+#     def setUpClass(cls):
+#         """Configure raw file and its object in parent class (TestDump)."""
+#         super().setUpClass()
+#         super().set_raw_dump_file('v0x05', 'ofpt_hello')
+#         super().set_raw_dump_object(Hello.Hello, xid=1)
+#         super().set_minimum_size(8)
 
 
 
