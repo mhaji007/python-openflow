@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1527">
-              <caret line="173" column="39" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
+            <state relative-caret-position="439">
+              <caret line="99" column="23" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
               <folding>
                 <element signature="e#50#74#0" expanded="true" />
               </folding>
@@ -415,7 +415,7 @@
       <workItem from="1549678282785" duration="64394000" />
       <workItem from="1550112891318" duration="4590000" />
       <workItem from="1550181042790" duration="407000" />
-      <workItem from="1550185085101" duration="2514000" />
+      <workItem from="1550185085101" duration="2773000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -655,7 +655,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550202036774</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added some new error messages to the BadRequestCode class">
+      <created>1550202820134</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1550202820134</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -691,7 +698,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73235000" />
+    <option name="totallyTimeSpent" value="73494000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -738,7 +745,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Change project and file name" />
     <MESSAGE value="Add more descriptions to the port file and create the file flow_match" />
     <MESSAGE value="Added new variables to the flow_match file and created the flow_instruction file" />
     <MESSAGE value="Add classes to the instructions file.There are classes that need to ve overlook to verify if they are correct" />
@@ -763,7 +769,8 @@
     <MESSAGE value="Fix the unittest from hello" />
     <MESSAGE value="Create a error_mesage file and populated with the oldest version of openflow 1.3 and update them as need it" />
     <MESSAGE value="Added some new error messages to the class error type" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some new error messages to the class error type" />
+    <MESSAGE value="Added some new error messages to the BadRequestCode class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some new error messages to the BadRequestCode class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1101,8 +1108,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1527">
-          <caret line="173" column="39" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
+        <state relative-caret-position="439">
+          <caret line="99" column="23" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="23" />
           <folding>
             <element signature="e#50#74#0" expanded="true" />
           </folding>

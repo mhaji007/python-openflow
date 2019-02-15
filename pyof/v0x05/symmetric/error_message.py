@@ -96,6 +96,8 @@ class BadInstructionCode(IntEnum):
     OFPBIC_BAD_LEN = 7
     #: Permissions error.
     OFPBIC_EPERM = 8
+    #: Duplicate instruction.
+    OFPBIC_DUP_INST = 9
 
 
 class BadMatchCode(IntEnum):
