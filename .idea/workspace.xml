@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="1527">
+              <caret line="173" column="39" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
               <folding>
                 <element signature="e#50#74#0" expanded="true" />
               </folding>
@@ -178,7 +178,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="208" />
+    <option name="x" value="186" />
     <option name="y" value="23" />
     <option name="width" value="1400" />
     <option name="height" value="970" />
@@ -214,20 +214,6 @@
               <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
               <item name="pyof" type="462c0819:PsiDirectoryNode" />
               <item name="v0x05" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
-              <item name="pyof" type="462c0819:PsiDirectoryNode" />
-              <item name="v0x05" type="462c0819:PsiDirectoryNode" />
-              <item name="asynchronous" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
-              <item name="pyof" type="462c0819:PsiDirectoryNode" />
-              <item name="v0x05" type="462c0819:PsiDirectoryNode" />
-              <item name="controller2switch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
@@ -429,7 +415,7 @@
       <workItem from="1549678282785" duration="64394000" />
       <workItem from="1550112891318" duration="4590000" />
       <workItem from="1550181042790" duration="407000" />
-      <workItem from="1550185085101" duration="351000" />
+      <workItem from="1550185085101" duration="2514000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -655,7 +641,21 @@
       <option name="project" value="LOCAL" />
       <updated>1550116670845</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Create a error_mesage file and populated with the oldest version of openflow 1.3 and update them as need it">
+      <created>1550200617251</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1550200617253</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added some new error messages to the class error type">
+      <created>1550202036773</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1550202036774</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -691,7 +691,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71072000" />
+    <option name="totallyTimeSpent" value="73235000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -703,7 +703,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="208" y="23" width="1400" height="970" extended-state="0" />
+    <frame x="186" y="23" width="1400" height="970" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919742" visible="true" weight="0.26435935" />
@@ -717,7 +717,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32915717" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" weight="0.32915717" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" weight="0.2904328" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4992636" visible="true" weight="0.2904328" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50073636" side_tool="true" weight="0.31776765" />
       <window_info anchor="bottom" id="Terminal" order="11" />
@@ -738,8 +738,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Added some comments to the variables descriptions" />
-    <MESSAGE value="Create and add classes and enmum classes, features and descriptions to the port file" />
     <MESSAGE value="Change project and file name" />
     <MESSAGE value="Add more descriptions to the port file and create the file flow_match" />
     <MESSAGE value="Added new variables to the flow_match file and created the flow_instruction file" />
@@ -763,7 +761,9 @@
     <MESSAGE value="Implemented HelloElemVersionBitmap tests" />
     <MESSAGE value="Change some of the comments in the test. Update page where it could be found" />
     <MESSAGE value="Fix the unittest from hello" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the unittest from hello" />
+    <MESSAGE value="Create a error_mesage file and populated with the oldest version of openflow 1.3 and update them as need it" />
+    <MESSAGE value="Added some new error messages to the class error type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some new error messages to the class error type" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1101,8 +1101,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        <state relative-caret-position="1527">
+          <caret line="173" column="39" selection-start-line="173" selection-start-column="39" selection-end-line="173" selection-end-column="39" />
           <folding>
             <element signature="e#50#74#0" expanded="true" />
           </folding>
