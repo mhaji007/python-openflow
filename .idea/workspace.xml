@@ -4,9 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/pyof/v0x05/common/flow_instructions.py" line="122" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="This files was submitted in another user story.&#10;This is the new and full implementation of the unittests and includes the previous test which is commented it out.">
+    <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,9 +20,9 @@
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_hello_TestHello_test_HelloElemHeader.coverage" NAME="Unittests for test_hello.TestHello.test_HelloElemHeader Coverage Results" MODIFIED="1550112896923" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_in_test_hello_py.coverage" NAME="Unittests in test_hello.py Coverage Results" MODIFIED="1550116558305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x04/test_symmetric" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_in_bin.coverage" NAME="Unittests in bin Coverage Results" MODIFIED="1550024955368" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_echo_reply_TestEchoReply.coverage" NAME="Unittests for test_echo_reply.TestEchoReply Coverage Results" MODIFIED="1550115648776" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
     <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_hello_TestHello.coverage" NAME="Unittests for test_hello.TestHello Coverage Results" MODIFIED="1550115777263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
-    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_echo_request_TestEchoReuestByCases.coverage" NAME="Unittests for test_echo_request.TestEchoReuestByCases Coverage Results" MODIFIED="1550207813126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
+    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_echo_reply_TestEchoReply.coverage" NAME="Unittests for test_echo_reply.TestEchoReply Coverage Results" MODIFIED="1550208459042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
+    <SUITE FILE_PATH="coverage/python_openflow_1_4$Unittests_for_test_echo_request_TestEchoReuestByCases.coverage" NAME="Unittests for test_echo_request.TestEchoReuestByCases Coverage Results" MODIFIED="1550208374957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/v0x05/test_symmetric" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -41,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/common/header.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
+            <state relative-caret-position="179">
+              <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding>
                 <element signature="e#66#90#0" expanded="true" />
               </folding>
@@ -53,7 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="269">
+              <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
               <folding>
                 <element signature="e#97#144#0" expanded="true" />
               </folding>
@@ -61,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="485">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
               <folding>
                 <element signature="e#32#85#0" expanded="true" />
               </folding>
@@ -73,13 +74,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="450">
+              <caret line="30" column="76" lean-forward="true" selection-start-line="12" selection-end-line="30" selection-end-column="76" />
               <folding>
                 <element signature="e#34#91#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_vendor_header.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#34#98#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,6 +212,7 @@
         <option value="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" />
         <option value="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py" />
         <option value="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py" />
+        <option value="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py" />
       </list>
     </option>
   </component>
@@ -299,7 +312,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_echo_request.TestEchoReuestByCases">
+  <component name="RunManager" selected="Python tests.Unittests for test_echo_reply.TestEchoReply">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="python_openflow_1.4" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -399,11 +412,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests for test_echo_reply.TestEchoReply" />
         <item itemvalue="Python tests.Unittests for test_echo_request.TestEchoReuestByCases" />
         <item itemvalue="Python tests.Unittests for test_hello.TestHelloStruct" />
         <item itemvalue="Python tests.Unittests in test_hello.py" />
         <item itemvalue="Python tests.Unittests for test_hello.TestHello" />
-        <item itemvalue="Python tests.Unittests for test_echo_reply.TestEchoReply" />
       </list>
     </recent_temporary>
   </component>
@@ -421,7 +434,7 @@
       <workItem from="1549678282785" duration="64394000" />
       <workItem from="1550112891318" duration="4590000" />
       <workItem from="1550181042790" duration="407000" />
-      <workItem from="1550185085101" duration="7489000" />
+      <workItem from="1550185085101" duration="8122000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -724,43 +737,57 @@
       <option name="project" value="LOCAL" />
       <updated>1550206778055</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Created a unittest for the echo request messages. This user story is completed">
+      <created>1550207896260</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1550207896260</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Ready to create a pull request">
+      <created>1550208212285</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1550208212285</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_hello_TestHello - 2019.02.13 at 22h 42m 54s.xml">
-      <configuration name="Unittests for test_hello.TestHello" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHello - 2019.02.13 at 22h 51m 34s.xml">
-      <configuration name="Unittests for test_hello.TestHello" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_hello_py - 2019.02.13 at 22h 55m 16s.xml">
-      <configuration name="Unittests in test_hello.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_hello_py - 2019.02.13 at 22h 55m 36s.xml">
-      <configuration name="Unittests in test_hello.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_hello_py - 2019.02.13 at 22h 55m 46s.xml">
-      <configuration name="Unittests in test_hello.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_hello_py - 2019.02.13 at 22h 55m 58s.xml">
-      <configuration name="Unittests in test_hello.py" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHelloStruct - 2019.02.13 at 22h 57m 21s.xml">
-      <configuration name="Unittests for test_hello.TestHelloStruct" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHelloStruct - 2019.02.14 at 23h 56m 41s.xml">
-      <configuration name="Unittests for test_hello.TestHelloStruct" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_hello_TestHelloStruct - 2019.02.15 at 00h 16m 46s.xml">
-      <configuration name="Unittests for test_hello.TestHelloStruct" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 16m 53s.xml">
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 20m 21s.xml">
       <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 21m 50s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 22m 35s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 22m 43s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 22m 51s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 22m 57s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_request_TestEchoReuestByCases - 2019.02.15 at 00h 26m 15s.xml">
+      <configuration name="Unittests for test_echo_request.TestEchoReuestByCases" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_reply_TestEchoReply - 2019.02.15 at 00h 26m 22s.xml">
+      <configuration name="Unittests for test_echo_reply.TestEchoReply" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_reply_TestEchoReply - 2019.02.15 at 00h 26m 37s.xml">
+      <configuration name="Unittests for test_echo_reply.TestEchoReply" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_test_echo_reply_TestEchoReply - 2019.02.15 at 00h 27m 27s.xml">
+      <configuration name="Unittests for test_echo_reply.TestEchoReply" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78210000" />
+    <option name="totallyTimeSpent" value="78843000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -807,8 +834,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4). Also, need to check if some of the features from 1.3 doesn't exist in 1.4" />
-    <MESSAGE value="Clompleted the commons files" />
     <MESSAGE value="Some changes to the hello file." />
     <MESSAGE value="Change some values in the hello_header, element_type, hello class, element_header" />
     <MESSAGE value="Create a class name HelloElemVersionbitmap" />
@@ -832,7 +857,9 @@
     <MESSAGE value="Added and created some new error messages BundleFailedCod class" />
     <MESSAGE value="Fixed some type error and this feature is done. It has been implemented" />
     <MESSAGE value="This files was submitted in another user story.&#10;This is the new and full implementation of the unittests and includes the previous test which is commented it out." />
-    <option name="LAST_COMMIT_MESSAGE" value="This files was submitted in another user story.&#10;This is the new and full implementation of the unittests and includes the previous test which is commented it out." />
+    <MESSAGE value="Created a unittest for the echo request messages. This user story is completed" />
+    <MESSAGE value="Ready to create a pull request" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ready to create a pull request" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1082,16 +1109,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#32#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/experimenter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
@@ -1129,31 +1146,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#97#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_request.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
           <folding>
             <element signature="e#99#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/common/header.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="116" column="8" selection-start-line="116" selection-start-column="8" selection-end-line="116" selection-end-column="8" />
-          <folding>
-            <element signature="e#66#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1168,12 +1166,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_vendor_header.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#34#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        <state relative-caret-position="450">
+          <caret line="30" column="76" lean-forward="true" selection-start-line="12" selection-end-line="30" selection-end-column="76" />
           <folding>
             <element signature="e#34#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="21" column="44" lean-forward="true" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="e#97#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/common/header.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="e#66#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#32#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
