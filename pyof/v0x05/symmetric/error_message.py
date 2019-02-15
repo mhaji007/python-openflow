@@ -436,12 +436,6 @@ class TableFeaturesFailedCode(IntEnum):
     OFPTFFC_BAD_TABLE = 0
     #: Invalid metadata mask.
     OFPTFFC_BAD_METADATA = 1
-    #: Unknown property type.
-    OFPTFFC_BAD_TYPE = 2
-    #: Length problem in properties.
-    OFPTFFC_BAD_LEN = 3
-    #: Unsupported property value.
-    OFPTFFC_BAD_ARGUMENT = 4
     #: Permissions error.
     OFPTFFC_EPERM = 5
 
@@ -459,6 +453,39 @@ class TableModFailedCode(IntEnum):
     #: Permissions error.
     OFPTMFC_EPERM = 2
 
+class BadPropertyCode(IntEnum):
+    """Error_msg 'code' values for OFPET_BAD_PROPERTY.
+
+    'data' contains at least the first 64 bytes of the failed request.
+    """
+    #: Unknown property type.
+    OFPBPC_BAD_TYPE = 0
+    #: Length problem in property.
+    OFPBPC_BAD_LEN = 1
+    #: Unsupported property value.
+    OFPBPC_BAD_VALUE = 2
+    #: Can't handle this many properties.
+    OFPBPC_TOO_MANY = 3
+    #: A property type was duplicated.
+    OFPBPC_DUP_TYPE = 4
+    #: Unknown experimenter id specified.
+    OFPBPC_BAD_EXPERIMENTER = 5
+    #: Unknown exp_type for experimenter id.
+    OFPBPC_BAD_EXP_TYPE = 6
+    #: Unknown value for experimenter id.
+    OFPBPC_BAD_EXP_VALUE = 7
+    #: Permissions error
+    OFPBPC_EPERM = 8
+
+
+class AsyncConfigFailedCode(IntEnum):
+    pass
+
+class FlowMonitorFailedCode(IntEnum):
+    pass
+
+class BundleFailedCod(IntEnum):
+    pass
 
 # Classes
 
