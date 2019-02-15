@@ -6,16 +6,7 @@ import unittest
 
 
 
-class TestEchoRequest(TestStruct):
-    """Echo request message tests (also those in :class:`.TestDump`)."""
 
-    @classmethod
-    def setUpClass(cls):
-        """Configure raw file and its object in parent class (TestDump)."""
-        super().setUpClass()
-        super().set_raw_dump_file('v0x05', 'ofpt_echo_request')
-        super().set_raw_dump_object(EchoRequest, xid=0)
-        super().set_minimum_size(8)
 
 
 
@@ -39,6 +30,17 @@ class TestEchoReuestByCases(unittest.TestCase):
         self.assertEqual(self.data, self.testObject1.data)
         self.assertNotEqual(self.type, self.testObject1.header.message_type)
 
+
+class TestEchoRequest(TestStruct):
+    """Echo request message tests (also those in :class:`.TestDump`)."""
+
+    @classmethod
+    def setUpClass(cls):
+        """Configure raw file and its object in parent class (TestDump)."""
+        super().setUpClass()
+        super().set_raw_dump_file('v0x05', 'ofpt_echo_request')
+        super().set_raw_dump_object(EchoRequest, xid=0)
+        super().set_minimum_size(8)
 
 
 if __name__ == '__main__':
