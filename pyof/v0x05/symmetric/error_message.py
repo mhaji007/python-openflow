@@ -493,7 +493,29 @@ class AsyncConfigFailedCode(IntEnum):
 
 
 class FlowMonitorFailedCode(IntEnum):
-    pass
+    """Error_msg 'code' values for OFPET_FLOW_MONITOR_FAILED.
+
+        'data' contains at least the first 64 bytes of the failed request.
+        """
+
+    #: Unspecified error.
+    OFPMOFC_UNKNOWN = 0
+    #: Monitor not added because a Monitor ADD attempted to replace and existing Monitor.
+    OFPMOFC_MONITOR_EXISTS = 1
+    #: Monitor not added because Monitor specified is invalid.
+    OFPMOFC_INVALID_MONITOR = 2
+    #: Monitor not modified because a Monitor MODIFY attempted to modify
+    # a non-existent Monitor.
+    OFPMOFC_UNKNOWN_MONITOR = 3
+    #: Unsupported or unknown command.
+    OFPMOFC_BAD_COMMAND = 4
+    #: Flag configuration unsupported.
+    OFPMOFC_BAD_FLAGS = 5
+    #: Specified table does not exist.
+    OFPMOFC_BAD_TABLE_ID = 6
+    #: Error in output port/group.
+    OFPMOFC_BAD_OUT = 7
+
 
 class BundleFailedCod(IntEnum):
     pass
