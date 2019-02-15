@@ -518,7 +518,44 @@ class FlowMonitorFailedCode(IntEnum):
 
 
 class BundleFailedCod(IntEnum):
-    pass
+    """Error_msg 'code' values for OFPET_BUNDLE_FAILED.
+
+            'data' contains at least the first 64 bytes of the failed request.
+            """
+
+    #: Unspecified error.
+    OFPBFC_UNKNOWN = 0
+    #: Permissions error.
+    OFPBFC_EPERM = 1
+    #: Bundle ID doesn't exist.
+    OFPBFC_BAD_ID = 2
+    #: Bundle ID already exist.
+    OFPBFC_BUNDLE_EXIST = 3
+    #: Bundle ID is closed.
+    OFPBFC_BUNDLE_CLOSED = 4
+    #: Too many bundles IDs.
+    OFPBFC_OUT_OF_BUNDLES = 5
+    #: Unsupported or unknown message control type
+    OFPBFC_BAD_TYPE = 6
+    #: Unsupported, unknown, or inconsistent flags.
+    OFPBFC_BAD_FLAGS = 7
+    #: Length problem in included message.
+    OFPBFC_MSG_BAD_LEN = 8
+    #: Inconsistent or duplicate XID.
+    OFPBFC_MSG_BAD_XID = 9
+    #: Unsupported message in this bundle.
+    OFPBFC_MSG_UNSUP = 10
+    #: Unsupported message combination in this bundle.
+    OFPBFC_MSG_CONFLICT = 11
+    #: Can't handle this many messages in bundle.
+    OFPBFC__MSG_TOO_MANY = 12
+    #: One message in bundle failed.
+    OFPBFC_MSG_FAILED = 13
+    #: Bundle is taking too long.
+    OFPBFC_TIMEOUT = 14
+    #: Bundle is locking the resources.
+    OFPBFC_BUNDLE_IN_PROGRESS = 15
+
 
 # Classes
 

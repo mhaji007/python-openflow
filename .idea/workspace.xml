@@ -96,8 +96,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="404">
-              <caret line="517" column="4" selection-start-line="517" selection-start-column="4" selection-end-line="517" selection-end-column="4" />
+            <state relative-caret-position="375">
+              <caret line="556" column="34" selection-start-line="556" selection-start-column="34" selection-end-line="556" selection-end-column="34" />
               <folding>
                 <element signature="e#50#74#0" expanded="true" />
               </folding>
@@ -415,7 +415,7 @@
       <workItem from="1549678282785" duration="64394000" />
       <workItem from="1550112891318" duration="4590000" />
       <workItem from="1550181042790" duration="407000" />
-      <workItem from="1550185085101" duration="4897000" />
+      <workItem from="1550185085101" duration="5670000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -690,7 +690,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550204618791</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Added and created some new error messages FlowMonitorFailedCode class">
+      <created>1550205183175</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1550205183175</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -726,7 +733,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75618000" />
+    <option name="totallyTimeSpent" value="76391000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -773,7 +780,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="modify and testing if I change the files to remote instead of local" />
     <MESSAGE value="Create a util file which is used as a classes helper for OpenFlow" />
     <MESSAGE value="Modify the class action output" />
     <MESSAGE value="Modifying some of the classes implemented in v0x04 to meet the specifications of v0x05 (1.4)" />
@@ -798,7 +804,8 @@
     <MESSAGE value="Added some new error messages to the FlowModFailedCode class" />
     <MESSAGE value="Added and created some new error messages BadPropertyCode class" />
     <MESSAGE value="Added and created some new error messages AsyncConfigFailedCode class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added and created some new error messages AsyncConfigFailedCode class" />
+    <MESSAGE value="Added and created some new error messages FlowMonitorFailedCode class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added and created some new error messages FlowMonitorFailedCode class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1136,8 +1143,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="517" column="4" selection-start-line="517" selection-start-column="4" selection-end-line="517" selection-end-column="4" />
+        <state relative-caret-position="375">
+          <caret line="556" column="34" selection-start-line="556" selection-start-column="34" selection-end-line="556" selection-end-column="34" />
           <folding>
             <element signature="e#50#74#0" expanded="true" />
           </folding>
