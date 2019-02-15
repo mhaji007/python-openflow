@@ -205,6 +205,14 @@ class ErrorType(IntEnum):
     OFPET_METER_MOD_FAILED = 12
     #: Setting table features failed.
     OFPET_TABLE_FEATURES_FAILED = 13
+    #: Some property is invalid.
+    OFPET_BAD_PROPERTY = 14
+    #: Asynchronous config request failed
+    OFPET_ASYNC_CONFIG_FAILED = 15
+    #: Setting flow monitor failed.
+    OFPET_FLOW_MONITOR_FAILED = 16
+    #: Bundle operation failed
+    OFPET_BUNDLE_FAILED = 17
     #: Experimenter error messages.
     OFPET_EXPERIMENTER = 0xffff
 
@@ -228,7 +236,11 @@ class ErrorType(IntEnum):
                    'OFPET_ROLE_REQUEST_FAILED': RoleRequestFailedCode,
                    'OFPET_METER_MOD_FAILED': MeterModFailedCode,
                    'OFPET_TABLE_MOD_FAILED': TableModFailedCode,
-                   'OFPET_TABLE_FEATURES_FAILED': TableFeaturesFailedCode}
+                   'OFPET_TABLE_FEATURES_FAILED': TableFeaturesFailedCode,
+                   'OFPET_BAD_PROPERTY' : BadPropertyCode,
+                   'OFPET_ASYNC_CONFIG_FAILED' : AsyncConfigFailedCode,
+                   'OFPET_FLOW_MONITOR_FAILED' : FlowMonitorFailedCode,
+                   'OFPET_BUNDLE_FAILED' : BundleFailedCode}
         return classes.get(self.name, GenericFailedCode)
 
 
@@ -447,7 +459,7 @@ class ErrorMsg(GenericMessage):
     #: :class:`~.header.Header`: OpenFlow Header
     header = Header(message_type=Type.OFPT_ERROR)
     #: ErrorType enum item
-    error_type = UBInt16(enum_ref=ErrorType)
+    type = UBInt16(enum_ref=ErrorType)
     #: Error code associated with ErrorType
     code = UBInt16()
     #: Variable-length data interpreted based on the type and code. No padding.
@@ -467,7 +479,7 @@ class ErrorMsg(GenericMessage):
                 should be the full request without any padding.
         """
         super().__init__(xid)
-        self.error_type = error_type
+        self.type = error_type
         self.code = code
         self.data = data
 
