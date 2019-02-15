@@ -479,7 +479,18 @@ class BadPropertyCode(IntEnum):
 
 
 class AsyncConfigFailedCode(IntEnum):
-    pass
+    """Error_msg 'code' values for OFPET_ASYNC_CONFIG_FAILED.
+
+        'data' contains at least the first 64 bytes of the failed request.
+        """
+
+    #: One mask is invalid.
+    OFPACFC_INVALID = 0
+    #: Requested configuration not supported.
+    OFPACFC_UNSUPPORTED = 1
+    #: Permissions error.
+    OFPACFC_EPERM = 2
+
 
 class FlowMonitorFailedCode(IntEnum):
     pass
