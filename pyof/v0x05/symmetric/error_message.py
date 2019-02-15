@@ -272,6 +272,12 @@ class FlowModFailedCode(IntEnum):
     OFPFMFC_BAD_COMMAND = 6
     #: Unsupported or unknown flags.
     OFPFMFC_BAD_FLAGS = 7
+    #: Problem in table synchronisation
+    OFPFMFC_CANT_SYNC = 8
+    #: Unsupported priority value
+    OFPFMFC_BAD_PRIORITY = 9
+    #: Synchronised flow entry is read only.
+    OFPFMFC_IS_SYNC = 10
 
 
 class GroupModFailedCode(IntEnum):
