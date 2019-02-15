@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,10 +28,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_request.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="165">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#99#146#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#97#144#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -41,7 +52,10 @@
         <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
+              <folding>
+                <element signature="e#32#85#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -49,8 +63,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="210">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
               <folding>
                 <element signature="e#34#91#0" expanded="true" />
               </folding>
@@ -61,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/experimenter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="750">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#78#125#0" expanded="true" />
               </folding>
@@ -71,61 +85,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/v0x04/test_symmetric/test_hello.py">
+        <entry file="file://$PROJECT_DIR$/pyof/v0x05/asynchronous/error_msg.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" selection-start-line="5" selection-end-line="15" />
-              <folding>
-                <element signature="e#27#71#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="24" column="47" selection-end-line="520" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py">
+        <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="164" column="19" lean-forward="true" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+            <state relative-caret-position="570">
+              <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
               <folding>
-                <element signature="e#27#42#0" expanded="true" />
+                <element signature="e#50#74#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/suite.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/runner.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="210" selection-start-line="210" selection-end-line="210" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/case.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="662" selection-start-line="662" selection-end-line="662" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/test_struct.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
             </state>
           </provider>
         </entry>
@@ -198,6 +173,7 @@
         <option value="$PROJECT_DIR$/pyof/v0x05/common/header.py" />
         <option value="$PROJECT_DIR$/tests/v0x04/test_symmetric/test_hello.py" />
         <option value="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py" />
+        <option value="$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py" />
       </list>
     </option>
   </component>
@@ -215,7 +191,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,6 +214,20 @@
               <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
               <item name="pyof" type="462c0819:PsiDirectoryNode" />
               <item name="v0x05" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
+              <item name="pyof" type="462c0819:PsiDirectoryNode" />
+              <item name="v0x05" type="462c0819:PsiDirectoryNode" />
+              <item name="asynchronous" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python_openflow_1.4" type="462c0819:PsiDirectoryNode" />
+              <item name="pyof" type="462c0819:PsiDirectoryNode" />
+              <item name="v0x05" type="462c0819:PsiDirectoryNode" />
+              <item name="controller2switch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python_openflow_1.4" type="b2602c69:ProjectViewProjectNode" />
@@ -282,6 +271,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -437,7 +427,9 @@
       <updated>1548906772202</updated>
       <workItem from="1548906774730" duration="1330000" />
       <workItem from="1549678282785" duration="64394000" />
-      <workItem from="1550112891318" duration="3327000" />
+      <workItem from="1550112891318" duration="4590000" />
+      <workItem from="1550181042790" duration="407000" />
+      <workItem from="1550185085101" duration="351000" />
     </task>
     <task id="LOCAL-00001" summary="Create package v0x05, package symmetric and hello.py file">
       <created>1548907689067</created>
@@ -656,7 +648,14 @@
       <option name="project" value="LOCAL" />
       <updated>1550114127424</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Fix the unittest from hello">
+      <created>1550116670843</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1550116670845</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -692,7 +691,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69051000" />
+    <option name="totallyTimeSpent" value="71072000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -707,12 +706,12 @@
     <frame x="208" y="23" width="1400" height="970" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919742" visible="true" weight="0.2569956" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49919742" visible="true" weight="0.26435935" />
       <window_info id="Structure" order="1" sideWeight="0.5008026" side_tool="true" weight="0.2533137" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.17312072" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32915717" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32915717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997722" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -739,7 +738,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Updated the header file by linking the constants to the own version v0x05" />
     <MESSAGE value="Added some comments to the variables descriptions" />
     <MESSAGE value="Create and add classes and enmum classes, features and descriptions to the port file" />
     <MESSAGE value="Change project and file name" />
@@ -764,7 +762,8 @@
     <MESSAGE value="Create a unittest for the hello file and its classes. Missing 2 test cases that will be implemented soon. There are ssome issues in some of the test cases that will require clarification from a group of developers" />
     <MESSAGE value="Implemented HelloElemVersionBitmap tests" />
     <MESSAGE value="Change some of the comments in the test. Update page where it could be found" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change some of the comments in the test. Update page where it could be found" />
+    <MESSAGE value="Fix the unittest from hello" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the unittest from hello" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -996,25 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <folding>
-            <element signature="e#97#144#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#99#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_struct.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -1029,10 +1009,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/suite.py">
+    <entry file="file://$PROJECT_DIR$/tests/v0x04/test_symmetric/test_hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#27#71#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1043,17 +1026,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.7/lib/python3.7/unittest/suite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="164" column="13" selection-start-line="164" selection-start-column="13" selection-end-line="164" selection-end-column="13" />
+          <folding>
+            <element signature="e#27#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#99#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/echo_reply.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#97#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_reply.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="e#32#85#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_echo_request.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="210">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
           <folding>
             <element signature="e#34#91#0" expanded="true" />
           </folding>
@@ -1062,30 +1084,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/experimenter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="750">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
             <element signature="e#78#125#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/v0x04/test_symmetric/test_hello.py">
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/asynchronous/error_msg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="15" />
-          <folding>
-            <element signature="e#27#71#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="24" column="47" selection-end-line="520" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_hello.py">
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/symmetric/error_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="164" column="19" lean-forward="true" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="19" />
+        <state relative-caret-position="570">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
           <folding>
-            <element signature="e#27#42#0" expanded="true" />
+            <element signature="e#50#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
