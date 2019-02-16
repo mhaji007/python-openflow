@@ -20,12 +20,19 @@ __all__ = ('PacketIn', 'PacketInReason')
 class PacketInReason(IntEnum):
     """Reason why this packet is being sent to the controller."""
 
-    #: matching flow (table-miss flow entry).
-    OFPR_NO_MATCH = 0
-    #: Action explicitly output to controller.
-    OFPR_ACTION = 1
+    #: No matching flow (table- miss flow entry).
+    OFPR_TABLE_MISS = 0
+    #: Output to controller in apply-actions.
+    OFPR_APPLY_ACTION = 1
     #: Packet has invalid TTL.
     OFPR_INVALID_TTL = 2
+    #: Output to controller in action set.
+    OFPR_ACTION_SET = 3
+    #: Output to controller in group bucket.
+    OFPR_GROUP = 4
+    #: Output to controller in packet-out.
+    OFPR_PACKET_OUT = 5
+
 
 
 # Classes
@@ -48,6 +55,12 @@ class PacketIn(GenericMessage):
     cookie = UBInt64()
     #: Packet metadata. Variable size.
     match = Match()
+    """ The variable size and padded match is always followed by:
+        - Exactly 2 all-zero padding bytes, then
+        - An Ethernet frame whose length is inferred from header.length.
+        The padding bytes preceding the ethernet frame ensure that the IP
+        header (if any) following the Ethernet header is 32 bits aligned.
+    """
     #: Align to 64 bit + 16 bit
     pad = Pad(2)
     #: Ethernet frame whose length is inferred from header.length.
