@@ -1,5 +1,5 @@
-"""Testing v0x04 error message class."""
-from pyof.v0x04.asynchronous.error_msg import ErrorMsg
+"""Testing v0x05 error message class."""
+from pyof.v0x05.symmetric.error_message import ErrorMsg
 from tests.test_struct import TestStruct
 from pyof.foundation.basic_types import UBInt8,UBInt16,UBInt32,UBInt64,BinaryData
 import unittest
@@ -11,7 +11,7 @@ class TestErrorMsg(TestStruct):
     def setUpClass(cls):
         """Configure raw file and its object in parent class (TestDump)."""
         super().setUpClass()
-        super().set_raw_dump_file('v0x04', 'ofpt_error_msg')
+        super().set_raw_dump_file('v0x05', 'ofpt_error_msg')
         super().set_raw_dump_object(ErrorMsg, xid=1, error_type=1, code=1)
         super().set_minimum_size(12)
 
