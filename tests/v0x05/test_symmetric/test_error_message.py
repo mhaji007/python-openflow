@@ -106,14 +106,12 @@ class TestErrorMessageTestCases(unittest.TestCase):
         temp = 0
         for elem in self.testErrorType:
 
-            if elem == 0xffff:
-                temp = value
+            if value == 18:
                 value = 0xffff
             print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
-            if elem == 0xffff:
-                value = temp + 1
+
 
     def test_flow_mod_failed_codeValue(self):
         print()
@@ -272,9 +270,9 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             for elem in Error.ErrorType.get_class(errorType):
 
-                if errorTypeValue == 13 and codeValue in range(2,4):
+                if errorTypeValue == 13 and codeValue == 2:
                     codeValue = 5            # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
-                elif errorType == 0xffff:
+                elif errorTypeValue == 18:
                     errorTypeValue = 0xffff  # Experimenter error type value
 
                 # Create object with fix values to test the Error Message
@@ -294,6 +292,8 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             errorTypeValue += 1
 
+    def test_error_message_header(self):
+        pass
 
     def test_error_experimenter_message(self):
         pass
