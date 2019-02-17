@@ -1,5 +1,6 @@
 """Testing v0x05 error message class."""
 from pyof.v0x05.symmetric.error_message import ErrorMsg
+import pyof.v0x05.symmetric.error_message as Error
 from tests.test_struct import TestStruct
 from pyof.foundation.basic_types import UBInt8,UBInt16,UBInt32,UBInt64,BinaryData
 import unittest
@@ -20,7 +21,30 @@ class TestErrorMsg(TestStruct):
 class TestErrorMessageTestCases(unittest.TestCase):
 
     def setUp(self):
-        pass
+        self.testGenericFailedCode = Error.GenericFailedCode()
+        self.testBadActionCode = Error.BadActionCode()
+        self.testBadInstructionCode = Error.BadInstructionCode()
+        self.testBadMatchCode = Error.BadMatchCode()
+        self.testBadRequestCode = Error.BadRequestCode()
+        self.testErrorType = Error.ErrorType()
+        self.testFlowModFailedCode = Error.FlowModFailedCode()
+        self.testGroupModFailedCode = Error.GroupModFailedCode()
+        self.testHelloFailedCode = Error.HelloFailedCode()
+        self.testMeterModFailedCode = Error.MeterModFailedCode()
+        self.testPortModFailedCode = Error.PortModFailedCode()
+        self.testQueueOpFailedCode = Error.QueueOpFailedCode()
+        self.testRoleRequestFailedCode = Error.RoleRequestFailedCode()
+        self.testSwitchConfigFailedCode = Error.SwitchConfigFailedCode()
+        self.testTableFeatureFailedCode = Error.TableFeaturesFailedCode()
+        self.testTableModFailedCode = Error.TableModFailedCode()
+        self.testBadPropertyCode = Error.BadPropertyCode()
+        self.testAsyncConfigFailedCode = Error.AsyncConfigFailedCode()
+        self.testFlowMonitorFailedCode = Error.FlowMonitorFailedCode()
+        self.testBundleFailedCode = Error.BundleFailedCode()
+        self.testErrorMessage = Error.ErrorMsg()
+        self.testErrorExperimenterMessage = Error.ErrorExperimenterMsg()
+
+
 
     def tearDown(self):
         pass
