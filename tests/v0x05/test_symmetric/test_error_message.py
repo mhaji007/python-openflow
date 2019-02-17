@@ -296,7 +296,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
         print()
-        print('Testing the Error Message\'s Values\n')
+        print('Testing the Error Message\'s Header\n')
 
         errorTypeValue = 0  # Variable for the error type value simulated
 
