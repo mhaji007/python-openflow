@@ -201,9 +201,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testTableFeatureFailedCode:
+            if elem > value:
+                value = 5
             print('Testing values {} against {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
+
+
+
 
     def test_table_mod_failed_codeValue(self):
         print()
