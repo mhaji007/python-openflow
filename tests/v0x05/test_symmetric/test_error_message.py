@@ -54,7 +54,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         print()
         print('Testing the Generic Failed Codes Value')
         for elem in self.testGenericFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value{}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -75,7 +75,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testBadInstructionCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -85,7 +85,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testBadMatchCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -95,7 +95,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testBadRequestCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -109,7 +109,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             if elem == 0xffff:
                 temp = value
                 value = 0xffff
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
             if elem == 0xffff:
@@ -121,7 +121,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testFlowModFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -131,7 +131,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testGroupModFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -141,7 +141,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testHelloFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -151,7 +151,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testMeterModFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -161,7 +161,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testPortModFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value{}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -171,7 +171,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testQueueOpFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -181,7 +181,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testRoleRequestFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -191,7 +191,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testSwitchConfigFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -203,7 +203,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         for elem in self.testTableFeatureFailedCode:
             if elem > value:
                 value = 5
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -216,7 +216,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testTableModFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -226,7 +226,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testBadPropertyCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -236,7 +236,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testAsyncConfigFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -246,7 +246,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testFlowMonitorFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -256,7 +256,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testBundleFailedCode:
-            print('Testing values {} versus {}'.format(value, elem))
+            print('Testing code value {} versus code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
