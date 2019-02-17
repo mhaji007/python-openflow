@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_error_message.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+            <state relative-caret-position="614">
+              <caret line="289" column="30" selection-start-line="289" selection-start-column="30" selection-end-line="289" selection-end-column="30" />
               <folding>
                 <element signature="e#41#96#0" expanded="true" />
               </folding>
@@ -376,13 +376,6 @@
       <workItem from="1550181042790" duration="407000" />
       <workItem from="1550185085101" duration="11606000" />
     </task>
-    <task id="LOCAL-00005" summary="Added some comments to the variables descriptions">
-      <created>1549684106639</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1549684106640</updated>
-    </task>
     <task id="LOCAL-00006" summary="Create and add classes and enmum classes, features and descriptions to the port file">
       <created>1549732542941</created>
       <option name="number" value="00006" />
@@ -719,13 +712,17 @@
       <option name="project" value="LOCAL" />
       <updated>1550381608195</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Changed some formats in the Error Message tests">
+      <created>1550383999700</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1550383999713</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_test_error_message_TestErrorMessageTestCases - 2019.02.17 at 00h 20m 08s.xml">
-      <configuration name="Unittests for test_error_message.TestErrorMessageTestCases" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_for_test_error_message_TestErrorMessageTestCases - 2019.02.17 at 00h 36m 14s.xml">
       <configuration name="Unittests for test_error_message.TestErrorMessageTestCases" configurationId="tests" />
     </history-entry>
@@ -753,9 +750,12 @@
     <history-entry file="Unittests_for_test_error_message_TestErrorMessageTestCases - 2019.02.17 at 01h 04m 49s.xml">
       <configuration name="Unittests for test_error_message.TestErrorMessageTestCases" configurationId="tests" />
     </history-entry>
+    <history-entry file="Unittests_for_test_error_message_TestErrorMessageTestCases - 2019.02.17 at 01h 09m 07s.xml">
+      <configuration name="Unittests for test_error_message.TestErrorMessageTestCases" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94901000" />
+    <option name="totallyTimeSpent" value="95577000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -802,7 +802,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="Create some unittest for the hello file and classes" />
     <MESSAGE value="Create a unittest for the hello file and its classes. Missing 2 test cases that will be implemented soon. There are ssome issues in some of the test cases that will require clarification from a group of developers" />
     <MESSAGE value="Implemented HelloElemVersionBitmap tests" />
     <MESSAGE value="Change some of the comments in the test. Update page where it could be found" />
@@ -827,7 +826,8 @@
     <MESSAGE value="Change in table features failed code function to test the change in value from 1 to 5 in the error list of that enum." />
     <MESSAGE value="Created a test for the error message that test every error message type and error code" />
     <MESSAGE value="Added more descripted message to be printed on all test functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more descripted message to be printed on all test functions" />
+    <MESSAGE value="Changed some formats in the Error Message tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed some formats in the Error Message tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1202,8 +1202,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/v0x05/test_symmetric/test_error_message.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="285" lean-forward="true" selection-start-line="285" selection-end-line="285" />
+        <state relative-caret-position="614">
+          <caret line="289" column="30" selection-start-line="289" selection-start-column="30" selection-end-line="289" selection-end-column="30" />
           <folding>
             <element signature="e#41#96#0" expanded="true" />
           </folding>
