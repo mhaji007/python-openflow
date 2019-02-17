@@ -293,7 +293,41 @@ class TestErrorMessageTestCases(unittest.TestCase):
             errorTypeValue += 1
 
     def test_error_message_header(self):
-        pass
+
+
+        print()
+        print('Testing the Error Message\'s Values\n')
+
+        errorTypeValue = 0  # Variable for the error type value simulated
+
+        for errorType in self.testErrorType:
+
+            codeValue = 0  # Variable for the code value inside the errorTypeValue simulated
+
+            for elem in Error.ErrorType.get_class(errorType):
+
+                if errorTypeValue == 13 and codeValue == 2:
+                    codeValue = 5  # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
+                elif errorTypeValue == 18:
+                    errorTypeValue = 0xffff  # Experimenter error type value
+
+                # Create object with fix values to test the Error Message
+                testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
+                # Error object message to be tested
+                self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
+
+                testValuePack = testValue.pack()
+                testErrorMessagePack = self.testErrorMessage.pack()
+
+                print('Testing error message value {} \nversus\nexpected error message value {}\n\n'.format(testValuePack,
+                                                                                                     testErrorMessagePack))
+
+                # Test results
+                self.assertEqual(testValuePack, testErrorMessagePack)
+
+                codeValue += 1
+
+            errorTypeValue += 1
 
     def test_error_experimenter_message(self):
         pass
