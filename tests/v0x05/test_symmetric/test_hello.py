@@ -2,6 +2,7 @@
 import unittest
 from tests.test_struct import TestStruct
 import pyof.v0x05.symmetric.hello as Hello
+
 from pyof.foundation.basic_types import UBInt32, UBInt16, TypeList
 
 
@@ -46,7 +47,7 @@ class TestHello(unittest.TestCase):
     def test_helloElemHeader(self):
 
         print()
-        print('Testing the HelloElemHeader')
+        print('Testing the HelloElemHeader one element')
         testValue = b'\x00\x01\x00\x04'
 
         self.testObjectElemHeader = Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP, 4)
@@ -58,30 +59,41 @@ class TestHello(unittest.TestCase):
 
 
     def test_helloListOfHelloElements(self):
-        # Assert if the creation of the object and its initialization method and its values are equal
-        # Create two objects of class ListOfHelloElements
+        print()
+        print('Testing the HelloElemHeader more than one element')
+        testValue = b'\x00\x01\x00\x04\x00\x01\x00\x04\x00\x01\x00\x04'
+
         self.testObjectListOfHelloElem = Hello.ListOfHelloElements()
-        self.testObjectListOfHelloElem1 = Hello.ListOfHelloElements()
-        # Initialize the two created objects with same type and length values
-        Hello.ListOfHelloElements.__init__(self.testObjectListOfHelloElem, Hello.HelloElemHeader(self.type, self.length))
-        Hello.ListOfHelloElements.__init__(self.testObjectListOfHelloElem1, Hello.HelloElemHeader(self.type, self.length))
-        self.assertEqual(self.testObjectListOfHelloElem, self.testObjectListOfHelloElem1)
 
-        # Assert if the type value change they are not equal
-        self.testObjectListOfHelloElem.__init__(Hello.HelloElemHeader(self.type1, self.length1))
-        self.testObjectListOfHelloElem1.__init__(Hello.HelloElemHeader(self.type, self.length1))
-        self.assertNotEqual(self.testObjectListOfHelloElem, self.testObjectListOfHelloElem1)
+        self.testListOfElem = [Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP,4),
+                               Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP,4),
+                               Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP,4)]
 
-        # Different method to initialize and update the values of the objects
-        # Assert if one of the length value change they are equal because the types are equal
-        self.testObjectListOfHelloElem.__init__(Hello.HelloElemHeader(self.type, self.length))
-        self.testObjectListOfHelloElem1.__init__(Hello.HelloElemHeader(self.type, self.length1))
-        self.assertEqual(self.testObjectListOfHelloElem, self.testObjectListOfHelloElem1)
+        self.testObjectListOfHelloElem.__init__(self.testListOfElem)
 
-        # Assert if I could add an item to the list
-        self.testObjectListOfHelloElem.append(self.testObjectListOfHelloElem1)
-        self.assertEqual(2, self.testObjectListOfHelloElem.__len__())
+        val = self.testObjectListOfHelloElem.pack()
 
+        print('Testing the pack value return by the ListOfHelloElements more than one element.')
+        print('Testing fix value {} versus given value {}'.format(testValue, val))
+
+        self.assertEqual(testValue, val)
+
+
+    def test_helloListOfHelloElement(self):
+        print()
+        print('Testing the HelloElemHeader one element')
+        testValue = b'\x00\x01\x00\x04'
+        self.testObjectListOfHelloElem = Hello.ListOfHelloElements()
+
+        self.testObjectListOfHelloElem.__init__(Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP,4))
+
+
+        val = self.testObjectListOfHelloElem.pack()
+
+        print('Testing the pack value return by the ListOfHelloElements one element.')
+        print('Texting fix value {} versus given value {}'.format(testValue, val))
+
+        self.assertEqual(testValue, val)
 
     def test_hello(self):
 
