@@ -34,7 +34,7 @@ class HelloElemHeader(GenericStruct):
     #Length in bytes of element, including this header, excluding padding.
     length = UBInt16()
     # This variable does NOT appear in 1.4 specification
-    content = BinaryData()
+    #content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
         """Create a HelloElemHeader with the optional parameters below.
@@ -47,7 +47,7 @@ class HelloElemHeader(GenericStruct):
         super().__init__()
         self.type = element_type
         self.length = length
-        self.content = content
+        #self.content = content
 
     def pack(self, value=None):
         """Update the length and pack the message into binary data.

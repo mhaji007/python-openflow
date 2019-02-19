@@ -37,44 +37,24 @@ class TestHello(unittest.TestCase):
 
 
 
-    def test_helloElemType(self):
-        # Takes the values of bitmap version into a variable
-        self.testValue = Hello.HelloElemType.OFPHET_VERSIONBITMAP
+    def test_helloVersionBitmap(self):
+
         # Test if the bitmap version is 1
-        self.assertEqual(1, self.testValue)
+        self.assertEqual(1, Hello.HelloElemType.OFPHET_VERSIONBITMAP)
 
 
     def test_helloElemHeader(self):
 
-        # Create objects with type and length values
-        # Assert if the values were store correctly in the object
-        self.testObject = Hello.HelloElemHeader(self.type, self.length)
-        self.assertEqual(self.type, self.testObject.type)
-        self.assertEqual(self.length, self.testObject.length)
+        print()
+        print('Testing the HelloElemHeader')
+        testValue = b'\x00\x01\x00\x04'
 
-        # This needs understanding because the length changes
-        # Test if unpack works with binary input and length 7
-        data = self.testObject.unpack(b'0000000000100010' , 2)
-        bData = self.testObject.length
+        self.testObjectElemHeader = Hello.HelloElemHeader(Hello.HelloElemType.OFPHET_VERSIONBITMAP, 4)
+        value = self.testObjectElemHeader.pack()
 
-        # Update the update_length method
-        self.testObject.update_length()
+        print('Testing the values fix value {} and given value from the header {}'.format(testValue, value))
 
-        # Test to test the exceptions
-        # with self.assertRaises():
-
-
-
-        # NOTE: This test is going to fail until Understand what is going on in the packing method
-        # # This needs understanding because the values changes.
-        # Test if pack works with the supposed output of the unpack value and assert if they are equal
-        bData1 = self.testObject.pack(data)
-#        self.assertEqual(b'0000000000100010', bData1)
-        # This assert test the size of the object which it has to be 32 bits
-        # the reference is the OpenFlow 1.4 specification/page 147 of this struct(class) the sizeof is 4 bytes
-        # so we are testing it with 4 bytes * 8 bits/bytes = 32 bits
-        self.assertEqual((4 * 8), Hello.HelloElemHeader.__sizeof__(Hello.HelloElemHeader()))
-        self.assertEqual((4 * 8), self.testObject.__sizeof__())
+        self.assertEqual(testValue,value)
 
 
     def test_helloListOfHelloElements(self):
