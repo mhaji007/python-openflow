@@ -156,12 +156,13 @@ class HelloElemVersionBitmap(HelloElemHeader):
         if bitmaps is None or len(bitmaps) < 2:
             self.bitmaps.__init__(UBInt32, bitmaps)
         elif isinstance(bitmaps, list) and len(bitmaps) > 1:
-            newList = list
+            newList = list()
             for elem in bitmaps:
-                if elem in [b'\x01', b'\x04', b'\x05'] and not newList.__contains__(newList,elem):
+                elem = elem.pack()
+                if elem in [b'\x01', b'\x04', b'\x05']:
                     newList.append(elem)
 
             self.bitmaps.__init__(UBInt32, newList)
 
-        self.bitmaps.__init__(UBInt32, bitmaps)
+
 

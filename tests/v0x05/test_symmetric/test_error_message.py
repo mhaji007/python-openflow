@@ -294,7 +294,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
     def test_error_message_header(self):
 
-
         print()
         print('Testing the Error Message\'s Header\n')
 
