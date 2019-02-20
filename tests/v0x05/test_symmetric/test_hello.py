@@ -101,14 +101,12 @@ class TestHello(unittest.TestCase):
         print()
         print('Testing the Hello Message pack.')
 
-        testValue = b'\x05\x00\x00\x08\x00\x00\x00\x01'
-
         for i in range(0, _NUM_OF_TEST):
             random.seed()
 
             testVal = i + random.randint(0,100)
-            testValue = b'\x05\x00\x00\x08' + UBInt32(testVal).pack()
-            self.testObjectHello = Hello.Hello(UBInt32(testVal))
+            testValue = b'\x05\x00\x00\x08'+ UBInt32(testVal).pack()
+            self.testObjectHello = Hello.Hello(testVal)
 
             val = self.testObjectHello.pack()
 
