@@ -120,7 +120,21 @@ class TestHello(unittest.TestCase):
 
     def test_helloElemVersionBitmap(self):
 
-        pass
+        print()
+        print('Testing HelloElemVersionBitmaps class.')
+        elements = list()
+        elements.append(UBInt32(1))
+        elements.append(UBInt32(4))
+        elements.append(UBInt32(5))
+
+        self.testObjectHelloElemVersionBitmap = Hello.HelloElemVersionBitmap(8, elements)
+
+        val = self.testObjectHelloElemVersionBitmap.pack()
+
+        print('Testing pack function the fix value versus the given value {}.'.format(val))
+
+
+
 
 # UNCOMMENT to used the previous tests
 # class TestHelloStruct(TestStruct):

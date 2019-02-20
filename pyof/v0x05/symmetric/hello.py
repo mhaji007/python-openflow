@@ -149,7 +149,7 @@ class HelloElemVersionBitmap(HelloElemHeader):
     bitmaps = FixedTypeList(UBInt32)
 
     # Under Review
-    def __init__(self, type=None, length=None, bitmaps=None):
+    def __init__(self, length=None, bitmaps=None):
         """ """
         super().__init__(HelloElemType.OFPHET_VERSIONBITMAP, length)
 
