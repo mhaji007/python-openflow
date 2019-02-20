@@ -2,7 +2,7 @@
 import unittest
 from tests.test_struct import TestStruct
 import pyof.v0x05.symmetric.hello as Hello
-
+import random
 from pyof.foundation.basic_types import UBInt32, UBInt16, TypeList
 
 
@@ -91,52 +91,36 @@ class TestHello(unittest.TestCase):
         val = self.testObjectListOfHelloElem.pack()
 
         print('Testing the pack value return by the ListOfHelloElements one element.')
-        print('Texting fix value {} versus given value {}'.format(testValue, val))
+        print('Testing fix value {} versus given value {}'.format(testValue, val))
 
         self.assertEqual(testValue, val)
 
     def test_hello(self):
 
-        # Create the Hello message Object
-        self.testObjectHello = Hello.Hello(1, self.helloElements)
-        # Test if it has version 0x05 as the message version
-        self.assertEqual(0x05, self.testObjectHello.header.version)
-        # Test if the x1d is 1
-        self.assertEqual(1, self.testObjectHello.header.xid)
-        # Test if the message type is OFPT_HELLO
-        self.assertEqual(0, self.testObjectHello.header.message_type)
-        # Test if the initialize helloElements are the same
-        self.assertEqual(self.helloElements, self.testObjectHello.elements)
+        _NUM_OF_TEST = 25
+        print()
+        print('Testing the Hello Message pack.')
 
-        # This assert test the size of the object which it has to be 64 bits
-        # the reference is the OpenFlow 1.4 specification/page 147 of this struct(class) the sizeof is 8 bytes
-        # so we are testing it with 8 bytes * 8 bits/bytes = 64 bits
-        #self.assertEqual((8 * 8), Hello.Hello.__sizeof__(Hello.Hello()))
-        #self.assertEqual((8 * 8), self.testObjectHello.__sizeof__())
+        testValue = b'\x05\x00\x00\x08\x00\x00\x00\x01'
+
+        for i in range(0, _NUM_OF_TEST):
+            random.seed()
+
+            testVal = i + random.randint(0,100)
+            testValue = b'\x05\x00\x00\x08' + UBInt32(testVal).pack()
+            self.testObjectHello = Hello.Hello(UBInt32(testVal))
+
+            val = self.testObjectHello.pack()
+
+            print('Testing the fix value message {} versus the given value {}'.format(testValue, val))
+            self.assertEqual(testValue, val)
+
 
 
 
     def test_helloElemVersionBitmap(self):
 
-        # Create and Initialize a TypeList object to be submitted as a bitmap
-        # Add to the object the 3 versions of Type UBInt32
-        self.bData1 = TypeList(self.version1)
-        self.bData1.append(self.version2)
-        self.bData1.append(self.version3)
-        # Create and Initialize the HelloElemVersionBitmap with type, length and the list of Versions
-        self.testObjectVersion = Hello.HelloElemVersionBitmap(self.type, self.length, self.bData1)
-        # Assert if the number of Versions are correct under the Bitmap
-        self.assertEqual(3, self.testObjectVersion.bitmaps.__len__())
-        # Assert that the Type are the same between the 2 values
-        self.assertEqual(self.type, self.testObjectVersion.type)
-        # Assert that the Length are the same between the 2 values
-        self.assertEqual(self.length, self.testObjectVersion.length)
-
-        # This assert test the size of the object which it has to be 32 bits
-        # the reference is the OpenFlow 1.4 specification/page 147 of this struct(class) the sizeof is 4 bytes
-        # so we are testing it with 4 bytes * 8 bits/bytes = 32 bits
-        self.assertEqual((4 * 8), Hello.HelloElemVersionBitmap.__sizeof__(Hello.HelloElemVersionBitmap()))
-        self.assertEqual((4 * 8), self.testObjectVersion.__sizeof__())
+        pass
 
 # UNCOMMENT to used the previous tests
 # class TestHelloStruct(TestStruct):

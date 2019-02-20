@@ -146,10 +146,22 @@ class HelloElemVersionBitmap(HelloElemHeader):
         bytes of all-zero bytes.
     """
     # List of bitmaps - supported versions
-    bitmaps = TypeList(UBInt32())
+    bitmaps = FixedTypeList(UBInt32)
 
-    def __init__(self, type=None, length=None, bitmaps=TypeList(UBInt32)):
+    # Under Review
+    def __init__(self, type=None, length=None, bitmaps=None):
         """ """
-        super().__init__(type, length)
-        self.bitmaps = bitmaps
+        super().__init__(HelloElemType.OFPHET_VERSIONBITMAP, length)
+
+        if bitmaps is None or len(bitmaps) < 2:
+            self.bitmaps.__init__(UBInt32, bitmaps)
+        elif isinstance(bitmaps, list) and len(bitmaps) > 1:
+            newList = list
+            for elem in bitmaps:
+                if elem in [b'\x01', b'\x04', b'\x05'] and not newList.__contains__(newList,elem):
+                    newList.append(elem)
+
+            self.bitmaps.__init__(UBInt32, newList)
+
+        self.bitmaps.__init__(UBInt32, bitmaps)
 
