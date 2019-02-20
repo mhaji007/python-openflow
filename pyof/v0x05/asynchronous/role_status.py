@@ -1,25 +1,25 @@
 
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64
-from pyof.v0x05.common.header import Type
+from pyof.v0x05.common.header import Header, Type
 
 
-class OfpHeader(GenericStruct):
-    """Ofp Header"""
-
-
-    element_type = UBInt16()
-    content = BinaryData()
-
-    def __init__(self, message_type=None, content = b''):
-        """Create a Header with the optional parameters below.
-
-        Args:
-            element_type: One of OFPHET_*.
-        """
-        super().__init__()
-        self.message_type = message_type
-        self.content = content
+# class OfpHeader(GenericStruct):
+#     """Ofp Header"""
+#
+#
+#     element_type = UBInt16()
+#     content = BinaryData()
+#
+#     def __init__(self, message_type=None, content = b''):
+#         """Create a Header with the optional parameters below.
+#
+#         Args:
+#             element_type: One of OFPHET_*.
+#         """
+#         super().__init__()
+#         self.message_type = message_type
+#         self.content = content
 
 
 class OfpRolePropHeader(GenericStruct):
