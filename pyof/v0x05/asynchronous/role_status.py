@@ -1,29 +1,45 @@
+"""Defines a Controller Role Status Message."""
 
+# System imports
+from enum import IntEnum
+
+# Local source tree imports
 from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64
+from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
 
+# Third-party imports
 
-# class OfpHeader(GenericStruct):
-#     """Ofp Header"""
-#
-#
-#     element_type = UBInt16()
-#     content = BinaryData()
-#
-#     def __init__(self, message_type=None, content = b''):
-#         """Create a Header with the optional parameters below.
-#
-#         Args:
-#             element_type: One of OFPHET_*.
-#         """
-#         super().__init__()
-#         self.message_type = message_type
-#         self.content = content
+__all__ = ('RoleReason', 'RolePropertyType', 'RolePropHeader', 'RoleStatus')
 
 
-class OfpRolePropHeader(GenericStruct):
+# Enums
+
+class RoleReason(IntEnum):
+    """What changed about the controller role."""
+
+    #: Another controller asked to be master
+    OFPCRR_MASTER_REQUEST = 0
+    #: Configuration changed on the switch
+    OFPCRR_CONFIG = 1
+    #: Experimenter data changed
+    OFPCRR_EXPERIMENTER = 2
+
+
+class RolePropertyType(IntEnum):
+        """Role property types"""
+
+        #: Experimenter property
+        OFPRT_EXPERIMENTER = 0xFFFF
+
+
+
+class RolePropHeader(GenericStruct):
+    """Common header for all Role properties"""
+
+    #: One of OFPRPT_
     type = UBInt16()
+    #: Length in bytes of this property
     length = UBInt16()
 
     def __init__(self, type = None, length = None):
@@ -32,23 +48,23 @@ class OfpRolePropHeader(GenericStruct):
         self.length = length
 
 
-class OfpRoleStatus(GenericMessage):
-    """OpenFlow Hello Message OFPT_HELLO.
+class RoleStatus(GenericMessage):
+    """OpenFlow Controller Role Status Message OFPT_ROLE_REQUEST. """
 
-    This message includes zero or more hello elements having variable size.
-    Unknown element types must be ignored/skipped, to allow for future
-    extensions.
-    """
-
-    header = OfpHeader(message_type=Type.OFPT_ROLE_STATUS)
+    #: Type OFPT_ROLE_STATUS
+    header = Header(message_type=Type.OFPT_ROLE_STATUS)
+    #: One of OFPCR_ROLE_*
     role = UBInt32()
-    reason = UBInt8()
-    pad = FixedTypeList(UBInt8())
+    #: One of OFPCRR_*.
+    reason = UBInt8(enum_ref=RoleReason)
+    #: Align to 64 bits
+    pad = Pad(3)
+    #: Master Election Generation Id
     generation_id = UBInt64()
+    #: Role Property list
+    properties = FixedTypeList(RolePropHeader())
 
-    properties = FixedTypeList(OfpRolePropHeader())
-
-    def __init__(self, xid=None, data=None):
+    def __init__(self, xid=None, role=None, reason=None, generation_id=None, properties=None):
         """Create a message with the optional parameters below.
 
         Args:
@@ -56,5 +72,19 @@ class OfpRoleStatus(GenericMessage):
             elements: List of elements - 0 or more
         """
         super().__init__(xid)
-        self.data = data
+        self.role = role
+        self.reason = reason
+        self.generation_id = generation_id
+        self.properties = properties
 
+
+# # needs work
+#
+#     class ExperimenterRoleProperty():
+        """ Experimenter role property"""
+#
+#         type = UBInt16()
+#         length = UBInt16()
+#         experimenter = UBInt32()
+#         exp_type = UBInt32()
+#         experimenter_data[0] = UBInt32()
