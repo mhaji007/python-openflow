@@ -3,7 +3,7 @@ import unittest
 from tests.test_struct import TestStruct
 import pyof.v0x05.symmetric.hello as Hello
 import random
-from pyof.foundation.basic_types import UBInt32, UBInt16, TypeList
+from pyof.foundation.basic_types import UBInt32, UBInt16, TypeList, BinaryData
 
 
 class TestHello(unittest.TestCase):
@@ -117,19 +117,24 @@ class TestHello(unittest.TestCase):
 
 
     def test_helloElemVersionBitmap(self):
-
         print()
-        print('Testing HelloElemVersionBitmaps class.')
-        elements = list()
-        elements.append(UBInt32(1))
-        elements.append(UBInt32(4))
-        elements.append(UBInt32(5))
+        print('Testing the class HelloElemVersionBitmap.')
+        """ Test support 2 versions (ver 1 = 0x01 and ver 1.3 = 0x04) """
 
-        self.testObjectHelloElemVersionBitmap = Hello.HelloElemVersionBitmap(8, elements)
+        ver1 = 0x01
+        ver3 = 0x04
+        ver = ver1 << ver3
+        ver = ver | 2
 
-        val = self.testObjectHelloElemVersionBitmap.pack()
+        testVal = b'\x00\x01\x00\x08\x00\x00\x00\x12'
+        self.testObjectHelloElemVersion = Hello.HelloElemVersionBitmap(UBInt16(8), UBInt32(ver).pack())
+        val = self.testObjectHelloElemVersion.pack()
+        print('Testing 2 version support ver 1 and ver 1.3 based on the specification\'s example.')
+        print('Testing fix value {} versus given value {}.'.format(testVal, val))
 
-        print('Testing pack function the fix value versus the given value {}.'.format(val))
+        self.assertEqual(testVal,val)
+
+
 
 
 

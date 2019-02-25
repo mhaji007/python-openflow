@@ -42,6 +42,12 @@ class TestErrorMessageTestCases(unittest.TestCase):
         self.testBundleFailedCode = Error.BundleFailedCode
         self.testErrorMessage = Error.ErrorMsg()
         self.testErrorExperimenterMessage = Error.ErrorExperimenterMsg()
+        # Creating the list of Error Types to be used in the testing
+        self.listErrorType = list()
+        index = 0
+        for e in self.testErrorType:
+            self.listErrorType.insert(index, e)
+            index += 1
 
     def tearDown(self):
         pass
@@ -291,6 +297,8 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
     def test_error_message_header(self):
 
+
+
         print()
         print('Testing the Error Message\'s Header\n')
 
@@ -299,8 +307,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         for errorType in self.testErrorType:
 
             codeValue = 0  # Variable for the code value inside the errorTypeValue simulated
+            index = 0
+            errorCodes = Error.ErrorType.get_class(self.listErrorType.pop(index))
+            count  = 0
+            for elem in errorCodes:
 
-            for elem in Error.ErrorType.get_class(errorType):
+                if count == errorCodes:
+                    pass
 
                 if errorTypeValue == 13 and codeValue == 2:
                     codeValue = 5  # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
@@ -322,6 +335,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
                 self.assertEqual(testValuePack, testErrorMessagePack)
 
                 codeValue += 1
+                index += 1
 
             errorTypeValue += 1
 

@@ -139,30 +139,21 @@ class Hello(GenericMessage):
 
 class HelloElemVersionBitmap(HelloElemHeader):
     """ Version bitmap Hello Element
-    The super class contains the type and length variables
+    There is not need to enter the Version bitmap because is entered automatically as the type of message
     Followed by:
         - Exactly (length - 4) bytes containing the bitmaps, then
         - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7)
         bytes of all-zero bytes.
     """
     # List of bitmaps - supported versions
-    bitmaps = FixedTypeList(UBInt32)
+    bitmaps = BinaryData()
 
     # Under Review
     def __init__(self, length=None, bitmaps=None):
-        """ """
+        """This function will initialize the object with a specific length and different versions """
         super().__init__(HelloElemType.OFPHET_VERSIONBITMAP, length)
+        self.bitmaps = bitmaps
 
-        if bitmaps is None or len(bitmaps) < 2:
-            self.bitmaps.__init__(UBInt32, bitmaps)
-        elif isinstance(bitmaps, list) and len(bitmaps) > 1:
-            newList = list()
-            for elem in bitmaps:
-                elem = elem.pack()
-                if elem in [b'\x01', b'\x04', b'\x05']:
-                    newList.append(elem)
-
-            self.bitmaps.__init__(UBInt32, newList)
 
 
 
