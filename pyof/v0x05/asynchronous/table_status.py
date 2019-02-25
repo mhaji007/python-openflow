@@ -1,9 +1,15 @@
 """Defines an Table Status Message."""
 
+# System imports
+from enum import IntEnum
+
+# Local source tree imports
+
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.controller2Switch.table_description import TableDescription
+
 
 
 class TableReason(IntEnum):
@@ -29,7 +35,7 @@ class TableStatus(GenericMessage):
 
     table = TableDescription()
 
-    def __init__(self, xid=None, data=None):
+    def __init__(self, xid=None, reason=None, generation_id=None, table=None):
         """Create a message with the optional parameters below.
 
         Args:
@@ -37,5 +43,7 @@ class TableStatus(GenericMessage):
             elements: List of elements - 0 or more
         """
         super().__init__(xid)
-        self.data = data
+        self.reason=reason
+        self.generation_id=generation_id
+        self.table=table
 
