@@ -8,36 +8,6 @@ from pyof.foundation.basic_types import UBInt32, UBInt16, TypeList, BinaryData
 
 class TestHello(unittest.TestCase):
 
-    # @classmethod
-    # def setUpClass(cls):
-
-
-    # def tearDownClass(cls):
-    #     pass
-
-    def setUp(self):
-        # Create variables and object to use in the testing cases
-        self.type = UBInt16(2)
-        self.length = UBInt16(6)
-        self.type1 = UBInt16(1)
-        self.length1 = UBInt16(8)
-        self.version1 = UBInt32(0x01)
-        self.version2 = UBInt32(0x04)
-        self.version3 = UBInt32(0x05)
-        self.helloElements = Hello.ListOfHelloElements()
-        self.helloElements.__init__(Hello.HelloElemHeader(self.type, self.length))
-        self.helloElements.append(Hello.ListOfHelloElements(Hello.HelloElemHeader(self.type1, self.length1)))
-
-
-
-
-    # def tearDown(self):
-    #     # Delete all variable and objects after used in testing cases
-    #     pass
-
-
-
-
     def test_helloVersionBitmap(self):
 
         # Test if the bitmap version is 1
