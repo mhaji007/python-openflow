@@ -14,6 +14,8 @@ from pyof.v0x05.controller2Switch.table_description import TableDescription
 
 __all__ = ('TableStatus', 'TableReason')
 
+# Enums
+
 class TableReason(IntEnum):
     """What changed about the table."""
 
@@ -23,21 +25,20 @@ class TableReason(IntEnum):
     OFPTR_VACANCY_UP = 4
 
 
+# Classes
 
 class TableStatus(GenericMessage):
-    """OpenFlow TableStatus Message OFPT_TABLE_STATUS.
-    """
-
+    """OpenFlow TableStatus Message OFPT_TABLE_STATUS. """
+    #: :class:`~pyof.v0x05.common.action.ActionHeader`: OpenFlow Header
     header = Header(message_type=Type.OFPT_TABLE_STATUS)
-    reason = UBInt8()
-
-   # pad = FixedTypeList(UBInt8())
+    #: One of OFPTR_.*
+    reason = UBInt8(enum_ref=TableReason)
+    #: Pad to 64 bits
     pad = Pad(7)
-    generation_id = UBInt64()
-
+    #: New table config
     table = TableDescription()
 
-    def __init__(self, xid=None, reason=None, generation_id=None, table=None):
+    def __init__(self, xid=None, reason=None, table=None):
         """Create a message with the optional parameters below.
 
         Args:
@@ -45,7 +46,6 @@ class TableStatus(GenericMessage):
             elements: List of elements - 0 or more
         """
         super().__init__(xid)
-        self.reason=reason
-        self.generation_id=generation_id
-        self.table=table
+        self.reason = reason
+        self.table = table
 
