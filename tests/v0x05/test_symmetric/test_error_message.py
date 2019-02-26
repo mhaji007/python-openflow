@@ -4,6 +4,8 @@ import pyof.v0x05.symmetric.error_message as Error
 from tests.test_struct import TestStruct
 from pyof.foundation.basic_types import UBInt8,UBInt16,UBInt32,UBInt64,BinaryData
 import unittest
+import random
+
 #
 # class TestErrorMsg(TestStruct):
 #     """ErroMsg message tests (also those in :class:`.TestDump`)."""
@@ -42,8 +44,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         self.testBundleFailedCode = Error.BundleFailedCode
         self.testErrorMessage = Error.ErrorMsg()
         self.testErrorExperimenterMessage = Error.ErrorExperimenterMsg()
+
+        random.seed()
+
+
         # Creating the list of Error Types to be used in the testing
         self.listErrorType = dict()
+
+
         index = 0
         for e in self.testErrorType:
             self.listErrorType.__setitem__(index, e)
@@ -57,7 +65,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         print()
         print('Testing the Generic Failed Codes Values')
         for elem in self.testGenericFailedCode:
-            print('Testing expected code value {} versus actual code value{}'.format(value, elem))
+            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
             self.assertEqual(value, elem)
 
 
@@ -165,7 +173,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         value = 0
 
         for elem in self.testPortModFailedCode:
-            print('Testing expected code value {} versus actual code value{}'.format(value, elem))
+            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
             self.assertEqual(value, elem)
             value += 1
 
@@ -261,163 +269,551 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(value, elem)
             value += 1
 
-    def test_error_message(self):
-        print()
-        print('Testing the Error Message\'s Values')
-
-        errorTypeValue = 0               # Variable for the error type value simulated
-
-        for errorType in self.testErrorType:
-
-            codeValue = 0                # Variable for the code value inside the errorTypeValue simulated
-
-            for elem in Error.ErrorType.get_class(errorType):
-
-                if errorTypeValue == 13 and codeValue == 2:
-                    codeValue = 5            # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
-                elif errorTypeValue == 18:
-                    errorTypeValue = 0xffff  # Experimenter error type value
-
-                # Create object with fix values to test the Error Message
-                testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
-                # Error object message to be tested
-                self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
-
-                print('Testing expected error type values {} and code value {} versus '
-                      'actual error type value {} and code value {}'.format(errorTypeValue, codeValue,
-                                                                     self.testErrorMessage.type,
-                                                                     self.testErrorMessage.code))
-
-                # Test results
-                self.assertEqual(testValue, self.testErrorMessage)
-
-                codeValue += 1
-
-            errorTypeValue += 1
+    # def test_error_message(self):
+    #     print()
+    #     print('Testing the Error Message\'s Values')
+    #
+    #     errorTypeValue = 0               # Variable for the error type value simulated
+    #
+    #     for errorType in self.testErrorType:
+    #
+    #         codeValue = 0                # Variable for the code value inside the errorTypeValue simulated
+    #
+    #         for elem in Error.ErrorType.get_class(errorType):
+    #
+    #             if errorTypeValue == 13 and codeValue == 2:
+    #                 codeValue = 5            # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
+    #             elif errorTypeValue == 18:
+    #                 errorTypeValue = 0xffff  # Experimenter error type value
+    #
+    #             # Create object with fix values to test the Error Message
+    #             testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
+    #             # Error object message to be tested
+    #             self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
+    #
+    #             print('Testing expected error type values {} and code value {} versus '
+    #                   'actual error type value {} and code value {}'.format(errorTypeValue, codeValue,
+    #                                                                  self.testErrorMessage.type,
+    #                                                                  self.testErrorMessage.code))
+    #
+    #             # Test results
+    #             self.assertEqual(testValue, self.testErrorMessage)
+    #
+    #             codeValue += 1
+    #
+    #         errorTypeValue += 1
 
     def test_error_message_header_hello_failed_codes(self):
-        pass
+        errorType = 0
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header HelloFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
+
+
+
 
     def test_error_message_header_bad_request_codes(self):
-        pass
+        errorType = 1
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BadRequestCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_action_codes(self):
-        pass
+        errorType = 2
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BadActionCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_instruction_codes(self):
-        pass
+        errorType = 3
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BadInstructionCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_match_codes(self):
-        pass
+        errorType = 4
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BadMatchCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_mod_failed_codes(self):
-        pass
+        errorType = 5
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header FlowModFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
 
     def test_error_message_header_group_mod_failed_codes(self):
-        pass
+        errorType = 6
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header GroupModFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_port_mod_failed_codes(self):
-        pass
+        errorType = 7
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header PortModFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_mod_failed_codes(self):
-        pass
+        errorType = 8
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header TableModFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_queue_op_failed_codes(self):
-        pass
+        errorType = 9
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header QueueOpFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_switch_config_failed_codes(self):
-        pass
+        errorType = 10
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header SwitchConfigFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_role_request_failed_codes(self):
-        pass
+        errorType = 11
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header RoleRequestFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_meter_mod_failed_codes(self):
-        pass
+        errorType = 12
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header MeterModFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_features_failed_codes(self):
-        pass
+        errorType = 13
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header TableFeaturesFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            if errorCode == 2:
+                errorCode = 5
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_property_codes(self):
-        pass
+        errorType = 14
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BadPropertyCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_async_config_failed_codes(self):
-        pass
+        errorType = 15
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header AsyncConfigFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_monitor_failed_codes(self):
-        pass
+        errorType = 16
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header FlowMonitorFailedCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bundle_failed_codes(self):
-        pass
+        errorType = 17
+        errorTypeValue = self.listErrorType.get(errorType)
+
+        print('Testing the header BundleFailed.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_experimenter_codes(self):
-        pass
+        errorType = 18
+        errorTypeValue = self.listErrorType.get(errorType)
+        errorType = 0xffff
+
+        print('Testing the header ExperimenterCodes.')
+
+        errorCode = 0
+
+        for elem in Error.ErrorType.get_class(errorTypeValue):
+            data = UBInt32(random.randint(2, 250)).pack()
+            xid = random.randint(2, 250)
+
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + UBInt16(
+                errorCode).pack() + data
+
+            errorCode += 1
+
+            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
+
+            print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
+
+            self.assertEqual(testValue, testObjectErrorMessages)
 
 
 
-    def test_error_message_header(self):
-
-        dictErrorValues = {0:1, 1:15, 2:15, 3:9, 4:11, 5:10, 6:14, 7:4, 8: 2, 9:2,10:2,
-                           11:2, 12:11, 13:5, 14:8, 15:2, 16:7, 17:15 }
-
-        print()
-        print('Testing the Error Message\'s Header\n')
-
-        errorTypeValue = 0  # Variable for the error type value simulated
-
-        # for errorType in self.testErrorType:
-
-        codeValue = 0  # Variable for the code value inside the errorTypeValue simulated
-        index = 0
-        #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
-        count = 0
-        errorTypeValue1 = self.listErrorType.get(index)
-        testErrorType = Error.ErrorType
-
-        q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
-        iterElem = q.values().__iter__()
-
-        while index < 19:
-
-            if index == 13 and count == 2:
-                count = 5  # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
-                codeValue = count
-            elif index == 18:
-                errorTypeValue = 0xffff  # Experimenter error type value
-            else:
-                errorType = index
-                codeValue = count
-
-
-            elem = iterElem.__next__()
-
-            # Create object with fix values to test the Error Message
-            testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
-            # Error object message to be tested
-            # self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
-
-            testValuePack = testValue.pack()
-            # testErrorMessagePack = self.testErrorMessage.pack()
-
-            # print('Testing error message value {} \nversus\nexpected error message value {}\n\n'.format(testValuePack,
-            #                                                                                      testErrorMessagePack))
-
-            # Test results
-            # self.assertEqual(testValuePack, testErrorMessagePack)
-
-            if count == dictErrorValues.get(index):
-                index += 1
-                #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
-                errorTypeValue1 = self.listErrorType.get(index)
-                q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
-                iterElem = q.values().__iter__()
-                count = 0
-            else:
-                count += 1
-
-            # index += 1
-
-        errorTypeValue += 1
+    # def test_error_message_header(self):
+    #
+    #     dictErrorValues = {0:1, 1:15, 2:15, 3:9, 4:11, 5:10, 6:14, 7:4, 8: 2, 9:2,10:2,
+    #                        11:2, 12:11, 13:5, 14:8, 15:2, 16:7, 17:15 }
+    #
+    #     print()
+    #     print('Testing the Error Message\'s Header\n')
+    #
+    #     errorTypeValue = 0  # Variable for the error type value simulated
+    #
+    #     # for errorType in self.testErrorType:
+    #
+    #     codeValue = 0  # Variable for the code value inside the errorTypeValue simulated
+    #     index = 0
+    #     #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
+    #     count = 0
+    #     errorTypeValue1 = self.listErrorType.get(index)
+    #     testErrorType = Error.ErrorType
+    #
+    #     q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
+    #     iterElem = q.values().__iter__()
+    #
+    #     while index < 19:
+    #
+    #         if index == 13 and count == 2:
+    #             count = 5  # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
+    #             codeValue = count
+    #         elif index == 18:
+    #             errorTypeValue = 0xffff  # Experimenter error type value
+    #         else:
+    #             errorType = index
+    #             codeValue = count
+    #
+    #
+    #         elem = iterElem.__next__()
+    #
+    #         # Create object with fix values to test the Error Message
+    #         testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
+    #         # Error object message to be tested
+    #         # self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
+    #
+    #         testValuePack = testValue.pack()
+    #         # testErrorMessagePack = self.testErrorMessage.pack()
+    #
+    #         # print('Testing error message value {} \nversus\nexpected error message value {}\n\n'.format(testValuePack,
+    #         #                                                                                      testErrorMessagePack))
+    #
+    #         # Test results
+    #         # self.assertEqual(testValuePack, testErrorMessagePack)
+    #
+    #         if count == dictErrorValues.get(index):
+    #             index += 1
+    #             #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
+    #             errorTypeValue1 = self.listErrorType.get(index)
+    #             q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
+    #             iterElem = q.values().__iter__()
+    #             count = 0
+    #         else:
+    #             count += 1
+    #
+    #         # index += 1
+    #
+    #     errorTypeValue += 1
 
     def test_error_experimenter_message(self):
         pass
