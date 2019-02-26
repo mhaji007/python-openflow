@@ -34,7 +34,7 @@ class HelloElemHeader(GenericStruct):
     #Length in bytes of element, including this header, excluding padding.
     length = UBInt16()
     # This variable does NOT appear in 1.4 specification
-    content = BinaryData()
+    #content = BinaryData()
 
     def __init__(self, element_type=None, length=None, content=b''):
         """Create a HelloElemHeader with the optional parameters below.
@@ -47,7 +47,7 @@ class HelloElemHeader(GenericStruct):
         super().__init__()
         self.type = element_type
         self.length = length
-        self.content = content
+        #self.content = content
 
     def pack(self, value=None):
         """Update the length and pack the message into binary data.
@@ -139,17 +139,21 @@ class Hello(GenericMessage):
 
 class HelloElemVersionBitmap(HelloElemHeader):
     """ Version bitmap Hello Element
-    The super class contains the type and length variables
+    There is not need to enter the Version bitmap because is entered automatically as the type of message
     Followed by:
         - Exactly (length - 4) bytes containing the bitmaps, then
         - Exactly (length + 7) / 8 * 8 - (length) (between 0 and 7)
         bytes of all-zero bytes.
     """
     # List of bitmaps - supported versions
-    bitmaps = TypeList(UBInt32())
+    bitmaps = BinaryData()
 
-    def __init__(self, type=None, length=None, bitmaps=TypeList(UBInt32)):
-        """ """
-        super().__init__(type, length)
+    # Under Review
+    def __init__(self, length=None, bitmaps=None):
+        """This function will initialize the object with a specific length and different versions """
+        super().__init__(HelloElemType.OFPHET_VERSIONBITMAP, length)
         self.bitmaps = bitmaps
+
+
+
 
