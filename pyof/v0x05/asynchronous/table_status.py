@@ -10,7 +10,9 @@ from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBIn
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.controller2Switch.table_description import TableDescription
 
+# Third-party imports
 
+__all__ = ('TableStatus', 'TableReason')
 
 class TableReason(IntEnum):
     """What changed about the table."""
