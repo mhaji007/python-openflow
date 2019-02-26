@@ -28,7 +28,10 @@ class TableReason(IntEnum):
 # Classes
 
 class TableStatus(GenericMessage):
-    """OpenFlow TableStatus Message OFPT_TABLE_STATUS. """
+    """OpenFlow TableStatus Message OFPT_TABLE_STATUS.
+      A table config has changed in the datapath
+     """
+
     #: :class:`~pyof.v0x05.common.action.ActionHeader`: OpenFlow Header
     header = Header(message_type=Type.OFPT_TABLE_STATUS)
     #: One of OFPTR_.*
