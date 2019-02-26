@@ -269,39 +269,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(value, elem)
             value += 1
 
-    # def test_error_message(self):
-    #     print()
-    #     print('Testing the Error Message\'s Values')
-    #
-    #     errorTypeValue = 0               # Variable for the error type value simulated
-    #
-    #     for errorType in self.testErrorType:
-    #
-    #         codeValue = 0                # Variable for the code value inside the errorTypeValue simulated
-    #
-    #         for elem in Error.ErrorType.get_class(errorType):
-    #
-    #             if errorTypeValue == 13 and codeValue == 2:
-    #                 codeValue = 5            # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
-    #             elif errorTypeValue == 18:
-    #                 errorTypeValue = 0xffff  # Experimenter error type value
-    #
-    #             # Create object with fix values to test the Error Message
-    #             testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
-    #             # Error object message to be tested
-    #             self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
-    #
-    #             print('Testing expected error type values {} and code value {} versus '
-    #                   'actual error type value {} and code value {}'.format(errorTypeValue, codeValue,
-    #                                                                  self.testErrorMessage.type,
-    #                                                                  self.testErrorMessage.code))
-    #
-    #             # Test results
-    #             self.assertEqual(testValue, self.testErrorMessage)
-    #
-    #             codeValue += 1
-    #
-    #         errorTypeValue += 1
 
     def test_error_message_header_hello_failed_codes(self):
         errorType = 0
@@ -325,8 +292,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
             print('Testing fix value {} versus expected value {}'.format(testValue, testObjectErrorMessages))
 
             self.assertEqual(testValue, testObjectErrorMessages)
-
-
 
 
     def test_error_message_header_bad_request_codes(self):
@@ -749,71 +714,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
-
-
-    # def test_error_message_header(self):
-    #
-    #     dictErrorValues = {0:1, 1:15, 2:15, 3:9, 4:11, 5:10, 6:14, 7:4, 8: 2, 9:2,10:2,
-    #                        11:2, 12:11, 13:5, 14:8, 15:2, 16:7, 17:15 }
-    #
-    #     print()
-    #     print('Testing the Error Message\'s Header\n')
-    #
-    #     errorTypeValue = 0  # Variable for the error type value simulated
-    #
-    #     # for errorType in self.testErrorType:
-    #
-    #     codeValue = 0  # Variable for the code value inside the errorTypeValue simulated
-    #     index = 0
-    #     #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
-    #     count = 0
-    #     errorTypeValue1 = self.listErrorType.get(index)
-    #     testErrorType = Error.ErrorType
-    #
-    #     q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
-    #     iterElem = q.values().__iter__()
-    #
-    #     while index < 19:
-    #
-    #         if index == 13 and count == 2:
-    #             count = 5  # It will skip from 2-4 in the error message OFPET_TABLE_FEATURES_FAILED
-    #             codeValue = count
-    #         elif index == 18:
-    #             errorTypeValue = 0xffff  # Experimenter error type value
-    #         else:
-    #             errorType = index
-    #             codeValue = count
-    #
-    #
-    #         elem = iterElem.__next__()
-    #
-    #         # Create object with fix values to test the Error Message
-    #         testValue = Error.ErrorMsg(12, errorTypeValue, codeValue, b'00001110010')
-    #         # Error object message to be tested
-    #         # self.testErrorMessage.__init__(12, errorType, elem, b'00001110010')
-    #
-    #         testValuePack = testValue.pack()
-    #         # testErrorMessagePack = self.testErrorMessage.pack()
-    #
-    #         # print('Testing error message value {} \nversus\nexpected error message value {}\n\n'.format(testValuePack,
-    #         #                                                                                      testErrorMessagePack))
-    #
-    #         # Test results
-    #         # self.assertEqual(testValuePack, testErrorMessagePack)
-    #
-    #         if count == dictErrorValues.get(index):
-    #             index += 1
-    #             #errorCodes = Error.ErrorType.get_class(self.listErrorType[index])
-    #             errorTypeValue1 = self.listErrorType.get(index)
-    #             q = Error.ErrorType.get_class(errorTypeValue1)._member_map_
-    #             iterElem = q.values().__iter__()
-    #             count = 0
-    #         else:
-    #             count += 1
-    #
-    #         # index += 1
-    #
-    #     errorTypeValue += 1
 
     def test_error_experimenter_message(self):
         pass
