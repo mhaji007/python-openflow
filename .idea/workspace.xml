@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d613c2de-5b8d-4908-a350-99e78deffb16" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,22 +41,12 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_request.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#61#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="285">
+              <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
               <folding>
-                <element signature="e#90#143#0" expanded="true" />
+                <element signature="e#90#152#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -64,7 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-7339">
+            <state relative-caret-position="411">
+              <caret line="38" column="22" lean-forward="true" selection-start-line="29" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#83#107#0" expanded="true" />
               </folding>
@@ -75,9 +67,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_reply.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="112">
+              <caret line="8" column="61" lean-forward="true" selection-start-line="5" selection-end-line="8" selection-end-column="61" />
               <folding>
-                <element signature="e#82#123#0" expanded="true" />
+                <element signature="e#81#143#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,6 +157,9 @@
         <option value="$PROJECT_DIR$/tests/v0x05/test_symmetric/test_error_message.py" />
         <option value="$PROJECT_DIR$/pyof/v0x05/controller2switch/features_request.py" />
         <option value="$PROJECT_DIR$/pyof/v0x05/controller2switch/features_reply.py" />
+        <option value="$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_request.py" />
+        <option value="$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_reply.py" />
+        <option value="$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py" />
       </list>
     </option>
   </component>
@@ -376,21 +372,7 @@
       <workItem from="1550445855455" duration="13941000" />
       <workItem from="1550686218271" duration="8154000" />
       <workItem from="1550715642323" duration="13563000" />
-      <workItem from="1551146431382" duration="14418000" />
-    </task>
-    <task id="LOCAL-00020" summary="Some changes to the hello file.">
-      <created>1549946215352</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1549946215352</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Change some values in the hello_header, element_type, hello class, element_header">
-      <created>1549946661862</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1549946661862</updated>
+      <workItem from="1551146431382" duration="16673000" />
     </task>
     <task id="LOCAL-00022" summary="Create a class name HelloElemVersionbitmap">
       <created>1549947313540</created>
@@ -721,7 +703,21 @@
       <option name="project" value="LOCAL" />
       <updated>1551231609552</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="The configuration request there was nothing to touch.">
+      <created>1551233493025</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1551233493025</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Changed and add the file get_config_reply and set_config structures and how it was designed from version 1.3 to 1.4">
+      <created>1551235381965</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1551235381966</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -757,7 +753,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146459000" />
+    <option name="totallyTimeSpent" value="148714000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -804,8 +800,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="This files was submitted in another user story.&#10;This is the new and full implementation of the unittests and includes the previous test which is commented it out." />
-    <MESSAGE value="Created a unittest for the echo request messages. This user story is completed" />
     <MESSAGE value="Ready to create a pull request" />
     <MESSAGE value="Created a unittest for the echo_reply classes" />
     <MESSAGE value="There was not much to do here. It was implemented from previous version of OpenFlow 1.3" />
@@ -829,7 +823,9 @@
     <MESSAGE value="The request the was no need to change it. Added some comments to the switch_features message" />
     <MESSAGE value="Added new reply capabilities" />
     <MESSAGE value="Added Comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Comments" />
+    <MESSAGE value="The configuration request there was nothing to touch." />
+    <MESSAGE value="Changed and add the file get_config_reply and set_config structures and how it was designed from version 1.3 to 1.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed and add the file get_config_reply and set_config structures and how it was designed from version 1.3 to 1.4" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1246,38 +1242,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_reply.py">
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_request.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="105">
+          <caret line="7" column="9" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
           <folding>
-            <element signature="e#82#123#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#90#143#0" expanded="true" />
+            <element signature="e#61#108#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/common.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7339">
+        <state relative-caret-position="411">
+          <caret line="38" column="22" lean-forward="true" selection-start-line="29" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#83#107#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_request.py">
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/get_config_reply.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="112">
+          <caret line="8" column="61" lean-forward="true" selection-start-line="5" selection-end-line="8" selection-end-column="61" />
           <folding>
-            <element signature="e#61#108#0" expanded="true" />
+            <element signature="e#81#143#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pyof/v0x05/controller2switch/set_config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="24" lean-forward="true" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="24" />
+          <folding>
+            <element signature="e#90#152#0" expanded="true" />
           </folding>
         </state>
       </provider>

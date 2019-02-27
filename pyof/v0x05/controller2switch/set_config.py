@@ -10,7 +10,7 @@ from pyof.foundation.base import IntEnum
 from pyof.v0x05.common.header import Type, Header
 #from pyof.v0x05.controller2switch.common import SwitchConfig
 
-__all__ = ('SetConfig',)
+__all__ = ('SetConfig','ConfigFlags')
 
 #: Enums
 class ConfigFlags(IntEnum):
