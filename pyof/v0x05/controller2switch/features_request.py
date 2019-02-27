@@ -14,5 +14,4 @@ class FeaturesRequest(GenericMessage):
     This message does not contain a body in addition to the OpenFlow Header.
     """
 
-    header = Header(
-        message_type=Type.OFPT_FEATURES_REQUEST)
+    header = Header(message_type=Type.OFPT_FEATURES_REQUEST)

@@ -42,10 +42,15 @@ class SwitchFeatures(GenericMessage):
     """
 
     header = Header(message_type=Type.OFPT_FEATURES_REPLY)
+
+    #: Datapath unique ID. The lower 48-bits are for a MAC address, while the upper 16-bits are
+    #: implemented-defined.
     datapath_id = DPID()
 
+    #: Max packets buffered at once.
     n_buffers = UBInt32()
 
+    #: Number of tables supported by datapath.
     n_tables = UBInt8()
     auxiliary_id = UBInt8()
     #: Align to 64-bits.
