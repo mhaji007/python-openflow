@@ -5,7 +5,7 @@ from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('GetConfigRequest',)
 
-# Classe
+# Classes
 
 
 class GetConfigRequest(GenericMessage):
