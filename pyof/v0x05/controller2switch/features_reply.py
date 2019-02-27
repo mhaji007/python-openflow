@@ -29,6 +29,10 @@ class Capabilities(GenericBitMask):
     OFPC_QUEUE_STATS = 1 << 6
     #: Switch will block looping ports.
     OFPC_PORT_BLOCKED = 1 << 8
+    #: Switch supports bundles.
+    OFPC_BUNDLES = 1 << 9
+    #: Switch supports flow monitoring.
+    OFPC_FLOW_MONITORING = 1 << 10
 
 
 # Classes
@@ -52,11 +56,15 @@ class SwitchFeatures(GenericMessage):
 
     #: Number of tables supported by datapath.
     n_tables = UBInt8()
+
+    #: Identify auxiliary connections
     auxiliary_id = UBInt8()
+
     #: Align to 64-bits.
     pad = Pad(2)
 
     # Features
+    #: Bitmap of support "ofp_capabilities"
     capabilities = UBInt32(enum_ref=Capabilities)
     reserved = UBInt32()
 
