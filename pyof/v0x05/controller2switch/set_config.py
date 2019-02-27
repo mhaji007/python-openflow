@@ -5,26 +5,51 @@
 # Third-party imports
 
 # Local imports
-from pyof.v0x05.common.action import ControllerMaxLen
-from pyof.v0x05.common.header import Type
-from pyof.v0x05.controller2switch.common import ConfigFlag, SwitchConfig
+from pyof.foundation.basic_types import GenericStruct, UBInt16
+from pyof.foundation.base import IntEnum
+from pyof.v0x05.common.header import Type, Header
+#from pyof.v0x05.controller2switch.common import SwitchConfig
 
 __all__ = ('SetConfig',)
 
+#: Enums
+class ConfigFlags(IntEnum):
+    """Handling of IP fragments."""
 
-class SetConfig(SwitchConfig):
-    """Set config message."""
+    #: No special handling for fragments.
+    OFPC_FRAG_NORMAL = 0
+    #: Drop fragments.
+    OFPC_FRAG_DROP = 1 << 0
+    #: Reassemble (only if OFPC_IP_REASM set).
+    OFPC_FRAG_REASM = 1 << 1
+    #: Bit,ask of flags dealing with frag
+    OFPC_FRAG_MASK = 3
 
-    def __init__(self, xid=None, flags=ConfigFlag.OFPC_FRAG_NORMAL,
-                 miss_send_len=ControllerMaxLen.OFPCML_NO_BUFFER):
-        """Create a SetConfig with the optional parameters below.
+
+#: Classes
+
+class SetConfig(GenericStruct):
+    """Get Config Reply message."""
+
+    header = Header(message_type=Type.OFPT_SET_CONFIG)
+
+    #: Bitmap of OFPC_* flags.
+    flags = UBInt16()
+
+    #: Max bytes of packet that datapath should send to the controller.
+    #: See ofp_controller_max_len for valid values.
+    miss_send_len = UBInt16()
+
+    def __init__(self, xid=None, flags=None, miss_send_len=None):
+        """Create a GetConfigReply with the optional parameters below.
 
         Args:
             xid (int): xid to be used on the message header.
-            flags (:class:`~pyof.v0x01.controller2switch.common.ConfigFlag`):
+            flags (ConfigFlags):
                 OFPC_* flags.
             miss_send_len (int): UBInt16 max bytes of new flow that the
                 datapath should send to the controller.
         """
-        super().__init__(xid, flags, miss_send_len)
-        self.header.message_type = Type.OFPT_SET_CONFIG
+        self.header.xid = xid
+        self.flags = flags
+        self.miss_send_len = miss_send_len
