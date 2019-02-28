@@ -62,7 +62,7 @@ class RoleStatus(GenericMessage):
     #: Master Election Generation Id
     generation_id = UBInt64()
     #: Role Property list
-    properties = FixedTypeList(RolePropHeader())
+    properties = FixedTypeList(RolePropHeader)
 
     def __init__(self, xid=None, role=None, reason=None, generation_id=None, properties=None):
         """Create a message with the optional parameters below.
@@ -78,13 +78,18 @@ class RoleStatus(GenericMessage):
         self.properties = properties
 
 
-# # needs work
-#
-#     class ExperimenterRoleProperty():
-        """ Experimenter role property"""
-#
-#         type = UBInt16()
-#         length = UBInt16()
-#         experimenter = UBInt32()
-#         exp_type = UBInt32()
-#         experimenter_data[0] = UBInt32()
+class ExperimenterRoleProperty():
+    """ Experimenter role property"""
+
+    type = UBInt16()
+    length = UBInt16()
+    experimenter = UBInt32()
+    exp_type = UBInt32()
+    experimenter_data = UBInt32()
+
+    def __int__(self, type=Type.OFPRPT_EXPERIMENTER, length=None, experimenter=None, exp_type=None, experimenter_data=None):
+        self.type = type
+        self.length = length
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data

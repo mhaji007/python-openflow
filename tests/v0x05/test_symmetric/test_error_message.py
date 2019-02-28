@@ -703,6 +703,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
 
+            # testObject = Error.ErrorMsg.unpack(testValue)
+
+            # print(testObject)
+
             self.assertEqual(testValue, testObjectErrorMessages)
 
 

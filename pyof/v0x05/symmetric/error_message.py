@@ -575,6 +575,7 @@ class ErrorMsg(GenericMessage):
     #: Variable-length data interpreted based on the type and code. No padding.
     data = BinaryData()
 
+
     def __init__(self, xid=None, error_type=None, code=None, data=b''):
         """Assign parameters to object attributes.
 
