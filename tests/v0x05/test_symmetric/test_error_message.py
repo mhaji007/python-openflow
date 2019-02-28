@@ -677,10 +677,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
 
-            testObject = Error.ErrorMsg(xid)
-
-            testObject.unpack(testValue, 8)
-
             print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
 
             self.assertEqual(testValue, testObjectErrorMessages)
