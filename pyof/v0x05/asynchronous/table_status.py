@@ -8,7 +8,7 @@ from enum import IntEnum
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
-from pyof.v0x05.controller2Switch.table_description import TableDescription
+from pyof.v0x05.controller2switch.table_description import TableDescription
 
 # Third-party imports
 
