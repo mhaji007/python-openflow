@@ -569,7 +569,7 @@ class ErrorMsg(GenericMessage):
     #: :class:`~.header.Header`: OpenFlow Header
     header = Header(message_type=Type.OFPT_ERROR)
     #: ErrorType enum item
-    type = UBInt16(enum_ref=ErrorType)
+    error_type = UBInt16(enum_ref=ErrorType)
     #: Error code associated with ErrorType
     code = UBInt16()
     #: Variable-length data interpreted based on the type and code. No padding.
@@ -590,7 +590,7 @@ class ErrorMsg(GenericMessage):
                 should be the full request without any padding.
         """
         super().__init__(xid)
-        self.type = error_type
+        self.error_type = error_type
         self.code = code
         self.data = data
 

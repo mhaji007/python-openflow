@@ -337,7 +337,7 @@ class Match(GenericStruct):
 
 
     # One of OFPMT_*
-    type = UBInt16(enum_ref=MatchType)
+    match_type = UBInt16(enum_ref=MatchType)
     # Length of Match (excluding padding)
     length = UBInt16()
     """ Followed by:

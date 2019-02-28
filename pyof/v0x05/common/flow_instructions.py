@@ -61,7 +61,7 @@ class InstructionHeader(GenericStruct):
         NB: The length of an instruction *MUST* always be a multiple of eight.
     """
     #: One of OFPIT_*.
-    type = UBInt16(enum_ref=InstructionType)
+    instruction_type = UBInt16(enum_ref=InstructionType)
     #: Length of this struct in bytes.
     length = UBInt16()
 
