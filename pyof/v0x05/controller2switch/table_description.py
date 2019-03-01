@@ -11,6 +11,8 @@ from pyof.foundation.basic_types import UBInt16, UBInt8, UBInt32
 __all__ = ('TableDescription',)
 
 
+# Enums
+
 # NOTE: this class should be implemented in Modify Table Message.
 # Put here for the sake of error prevention. Remove after proper implementation
 class TableModPropHeader(IntEnum):
