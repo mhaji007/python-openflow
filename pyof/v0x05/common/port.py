@@ -215,7 +215,7 @@ class Port(GenericStruct):
 
     length = UBInt16()
     pad = Pad(2)
-    hw_addr = UBInt8(OFP_ETH_ALEN)
+    hw_addr = HWAddress()
     pad2 = Pad(2)                               # Align to 64 bits
     name = Char(length=OFP_MAX_PORT_NAME_LEN)   # Null terminated
     config = UBInt32(enum_ref=PortConfig)       # Bitmap of OFPPC_* flags
