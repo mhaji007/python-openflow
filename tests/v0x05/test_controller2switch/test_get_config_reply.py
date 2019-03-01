@@ -8,15 +8,28 @@ import unittest
 
 class TestFakeSwitch():
 
+    listOfConfigMessage = list()
 
 
-    def __int__(self):
-        pass
+    def __int__(self, item=None):
+        if item is not None:
+            self.listOfConfigMessage.append(item)
 
 
 
+    def append(self, item=None):
+        if item is not None:
+            self.listOfConfigMessage.append(item)
+
+    def get(self, index=None):
+        if index is None:
+            return None
+        else:
+            self.listOfConfigMessage.__getitem__(index)
 
 
+    def length(self):
+        return self.listOfConfigMessage.__len__()
 
 
 
