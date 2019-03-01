@@ -20,7 +20,7 @@ from pyof.v0x05.controller2switch.table_mod import Table
 
 __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
            'ExperimenterMultipartHeader', 'MultipartType',
-           'TableFeaturePropType', 'Property', 'InstructionsProperty',
+           'TableFeaturePropType', 'SwitchConfig', 'Property', 'InstructionsProperty',
            'NextTablesProperty', 'ActionsProperty', 'OxmProperty',
            'ListOfProperty', 'TableFeatures')
 
