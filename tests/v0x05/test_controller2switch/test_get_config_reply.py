@@ -1,15 +1,32 @@
 """Config Reply message tests."""
-from pyof.v0x05.controller2switch.get_config_reply import GetConfigReply
-from tests.test_struct import TestStruct
+import pyof.v0x05.controller2switch.get_config_reply as GetConfigReply
+from tests.v0x05.test_controller2switch.test_utils import MessageGenerator
+import unittest
+from pyof.v0x05.common.header import Type
 
 
-class TestGetConfigReply(TestStruct):
-    """Config Reply message tests."""
+class TestGetConfigReply(unittest.TestCase):
 
-    @classmethod
-    def setUpClass(cls):
-        """Configure raw file and its object in parent class (TestDump)."""
-        super().setUpClass()
-        super().set_raw_dump_file('v0x05', 'ofpt_get_config_reply')
-        super().set_raw_dump_object(GetConfigReply, xid=1)
-        super().set_minimum_size(12)
+    def test_getting_reply(self):
+
+        print()
+        print('Testing the GetConfigReply class.')
+
+        values = MessageGenerator()
+        values.__init__(Type.OFPT_GET_CONFIG_REPLY)
+        values.generate_messages()
+
+        for i in range(0, values.length()):
+
+            (xid, val) = values.get(i)
+
+            self.testObject = GetConfigReply.GetConfigReply(xid)
+            self.testObject.unpack(val, 8)
+            testValue = self.testObject.pack()
+            print('Testing the unpack message expected value {} versus actual value {}'.format(val, testValue))
+            self.assertEqual(val, testValue)
+
+
+
+if __name__ == '__main__':
+    unittest.main()
