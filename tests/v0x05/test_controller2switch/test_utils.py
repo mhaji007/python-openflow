@@ -60,4 +60,7 @@ class MessageGenerator():
 
 
 class PrintTables():
-    pass
+
+
+    def print_table(self, obj=None):
+        pass
