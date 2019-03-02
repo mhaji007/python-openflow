@@ -12,8 +12,9 @@ class MessageGenerator():
     MAX_8BITS_VALUE = 128
     MAX_16BITS_VALUE = 1000
     MAX_64BITS_VALUE = 1000
-
     MIN_NUM_OF_MESSAGE = 10
+    MAX_NUM_OF_OXMTLV = 5
+
     random.seed()
     type_of_msg = Type
     listOfConfigMessage = list()
@@ -32,7 +33,7 @@ class MessageGenerator():
 
             if self.type_of_mesg == Type.OFPT_GET_CONFIG_REPLY:
 
-                test_length = b'\x00\x08'
+                test_length = b'\x00\x00'
 
                 test_header = version + msg_type + test_length + xid.pack()
 
@@ -66,23 +67,37 @@ class MessageGenerator():
 
                 cookie = UBInt64(random.randint(0, self.MAX_64BITS_VALUE)).pack()
 
-                oxmtlv = OxmTLV(oxm_class=0x8000, oxm_field=0, oxm_hasmask=0, oxm_value=b'\x00\x00\x00\x16')
-                oxmtlv1 = OxmTLV(oxm_class=0x8000, oxm_field=0, oxm_hasmask=0, oxm_value=b'\x00\x00\x00\x16')
-                oxmtlv2 = OxmTLV(oxm_class=0x8000, oxm_field=0, oxm_hasmask=0, oxm_value=b'\x00\x00\x00\x16')
-                pack_oxmtlv = oxmtlv.pack()
+                oxmtlv = b''
 
-                match = Match(1, [oxmtlv, oxmtlv1, oxmtlv2])
-                matchVal = match.pack()
+                for i in range(0, random.randint(1,self.MAX_NUM_OF_OXMTLV)):
 
-                data = b'\x00'
+                    oxm_class = UBInt16(0x8000).pack()
+                    oxm_field_and_mask = UBInt8(0).pack()
+                    oxm_length = UBInt8(0)
+                    oxm_value = UBInt32(random.randint(1, self.MAX_32BITS_VALUE)).pack()
 
-                test_value = header + buffer_id + total_len + reason + table_id + cookie + matchVal #+ data
+                    test_value = oxm_class + oxm_field_and_mask + oxm_length.pack()
+                    oxm_length = UBInt8(len(test_value)).pack()
+                    val = oxm_class + oxm_field_and_mask + oxm_length + oxm_value
+
+                    oxmtlv += val
+
+                match_type = UBInt16(1).pack()
+                match_length = UBInt16(0)
+                match_pad = UBInt32(0).pack()
+                test_length = match_type + match_length.pack() + oxmtlv + match_pad
+
+                match_length = UBInt16(len(test_length)).pack()
+
+                matchVal = match_type + match_length + oxmtlv + match_pad
+
+                test_value = header + buffer_id + total_len + reason + table_id + cookie + matchVal
 
                 length = UBInt16(len(test_value)).pack()
 
                 header = version + msg_type + length + xid.pack()
 
-                value = header + buffer_id + total_len + reason + table_id + cookie + matchVal #+ data
+                value = header + buffer_id + total_len + reason + table_id + cookie + matchVal
 
                 item = (xid, value)
 
