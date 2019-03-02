@@ -337,7 +337,7 @@ class Match(GenericStruct):
 
 
     # One of OFPMT_*
-    type = UBInt16(enum_ref=MatchType)
+    match_type = UBInt16(enum_ref=MatchType)
     # Length of Match (excluding padding)
     length = UBInt16()
     """ Followed by:
@@ -348,7 +348,7 @@ class Match(GenericStruct):
         of 8, to preserve alignment in structures using it.
     """
     # 0 or more OXM match fields.
-    oxm_fields = OxmMatchFields()
+    oxm_match_fields = OxmMatchFields()
     # Zero bytes - see above for sizing
     pad = Pad(4)
 
@@ -362,7 +362,7 @@ class Match(GenericStruct):
                           Exactly (length - 4) (possibly 0) bytes containing
                           OXM TLVs, then exactly ((length + 7)/8*8 - length)
                           (between 0 and 7) bytes of all-zero bytes.
-            oxm_fields (OxmMatchFields): Sample description.
+            oxm_match_fields (OxmMatchFields): Sample description.
 
         """
         super().__init__()
@@ -405,11 +405,12 @@ class Match(GenericStruct):
     def unpack(self, buff, offset=0):
         """Discard padding bytes using the unpacked length attribute."""
         begin = offset
+        size = 0
         for name, value in list(self.get_class_attributes())[:-1]:
             size = self._unpack_attribute(name, value, buff, begin)
             begin += size
         self._unpack_attribute('oxm_match_fields', type(self).oxm_match_fields,
-                               buff[:offset+self.length], begin)
+                               buff[:offset+self.length - len(Pad(4))], begin - size)
 
     def get_field(self, field_type):
         """Return the value for the 'field_type' field in oxm_match_fields.
