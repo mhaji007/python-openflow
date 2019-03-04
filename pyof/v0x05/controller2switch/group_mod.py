@@ -67,11 +67,15 @@ class GroupMod(GenericMessage):
     """Group setup and teardown (controller -> datapath)."""
 
     header = Header(message_type=Type.OFPT_GROUP_MOD)
+    #: One of OFPGC_*
     command = UBInt16(enum_ref=GroupModCommand)
+    #: One of OFPGT_*
     group_type = UBInt8()
     #: Pad to 64 bits.
     pad = Pad(1)
+    # :Group identifier.
     group_id = UBInt32()
+    #: The length of the bucket array is inferred from the length field in the header.
     buckets = ListOfBuckets()
 
     def __init__(self, xid=None, command=None, group_type=None, group_id=None,
