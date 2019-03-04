@@ -1,10 +1,8 @@
 
 import random
 from pyof.foundation.basic_types import UBInt16,UBInt32, UBInt8, UBInt64
-from pyof.foundation.base import GenericMessage, GenericType
-from pyof.v0x05.common.header import Type, Header
-from pyof.foundation.constants import UBINT32_MAX_VALUE, UBINT16_MAX_VALUE, UBINT8_MAX_VALUE, UBINT64_MAX_VALUE
-from pyof.v0x05.common.flow_match import Match, MatchType, OxmTLV
+from pyof.foundation.base import GenericMessage
+from pyof.v0x05.common.header import Type
 
 class MessageGenerator():
 
@@ -53,7 +51,7 @@ class MessageGenerator():
 
             elif self.type_of_mesg == Type.OFPT_PACKET_IN:
 
-                test_length = b'\x00\x08'
+                test_length = b'\x00\x00'
 
                 header = version + msg_type + test_length + xid.pack()
 

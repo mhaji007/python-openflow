@@ -16,7 +16,7 @@ from pyof.v0x05.common.action import (
 from pyof.v0x05.common.flow_instructions import ListOfInstruction
 from pyof.v0x05.common.flow_match import ListOfOxmHeader
 from pyof.v0x05.common.header import Header
-from pyof.v0x05.controller2switch.table_mod import Table
+from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
 __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
            'ExperimenterMultipartHeader', 'MultipartType',

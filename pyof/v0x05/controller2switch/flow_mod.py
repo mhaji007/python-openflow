@@ -50,32 +50,64 @@ class FlowModFlags(GenericBitMask):
 
 # Classes
 class FlowMod(GenericMessage):
-    """Modifies the flow table from the controller."""
+    """Flow setup and teardown (controller -> datapath)."""
 
     header = Header(message_type=Type.OFPT_FLOW_MOD)
+
+    #: Opaque controller-issued identifier.
     cookie = UBInt64()
+
+    #: Mask used to restrict the cookie bits that must match when the command is
+    #: OFPFC_MODIFY* or OFPFC_DELETE*. A value of 0 indicates no restriction.
     cookie_mask = UBInt64()
 
-    # Flow actions
+    #: ID of the table to put the flow in. For OFPFC_DELETE_* commands, OFPTT_ALL
+    #: can also be used to delete matching flows from all tables.
     table_id = UBInt8()
+
+    #: One of OFPFC_*.
     command = UBInt8(enum_ref=FlowModCommand)
+
+    #: Idle time before discarding (seconds).
     idle_timeout = UBInt16()
+
+    #: Max time before discarding (seconds).
     hard_timeout = UBInt16()
+
+    #: Priority level of flow entry
     priority = UBInt16()
+
+    #: Buffered packet to apply to, or OFP_NO_BUFFER.
+    #: Not meaningful for OFPFC_DELETE*.
     buffer_id = UBInt32()
+
+    #: For OFPFC_DELETE* commands, require matching entries to include this as an output port.
+    #: A value of OFPP_ANY indicates no restrictions.
     out_port = UBInt32()
+
+    #: For OFPFC_DELETE* commands, require matching entries to include this as an output group.
+    #: A value of OFPP_ANY indicates no restrictions.
     out_group = UBInt32()
+
+    #: Bitmap of OFPFF_* flags.
     flags = UBInt16(enum_ref=FlowModFlags)
-    pad = Pad(2)
+
+    #: Eviction precedence (optional).
+    importance = UBInt16()
+
+    #: Fields to match. Variable size.
     match = Match()
-    instructions = ListOfInstruction()
+
+    #: The variable size and padded match is always followed by instructions.
+    #: Instruction set - 0 or more. The length of the instruction set is inferred from the length field in the header.
+    #: instructions = ListOfInstruction()
 
     def __init__(self, xid=None, cookie=0, cookie_mask=0, table_id=0,
                  command=None, idle_timeout=0, hard_timeout=0,
                  priority=0, buffer_id=OFP_NO_BUFFER, out_port=PortNo.OFPP_ANY,
                  out_group=Group.OFPG_ANY,
-                 flags=FlowModFlags.OFPFF_SEND_FLOW_REM,
-                 match=None, instructions=None):
+                 flags=FlowModFlags.OFPFF_SEND_FLOW_REM, importance=None,
+                 match=None):
         """Create a FlowMod with the optional parameters below.
 
         Args:
@@ -102,6 +134,7 @@ class FlowMod(GenericMessage):
                 indicates no restriction.
             flags (~pyof.v0x05.controller2switch.flow_mod.FlowModFlags):
                 One of OFPFF_*.
+            importance (int): Eviction precedence (optional)
             match (~pyof.v0x05.common.flow_match.Match):
                 Fields to match. Variable size.
         """
@@ -117,5 +150,6 @@ class FlowMod(GenericMessage):
         self.out_port = out_port
         self.out_group = out_group
         self.flags = flags
+        self.importance = importance
         self.match = Match() if match is None else match
-        self.instructions = instructions or ListOfInstruction()
+        #self.instructions = instructions or ListOfInstruction()
