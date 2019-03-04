@@ -94,16 +94,13 @@ class TableMod(GenericMessage):
         self.properties = properties
 
 
-class TableModPropEviction(GenericStruct):
+class TableModPropEviction(TableModPropHeader):
     """Eviction table mod Property. Mostly used in OFPMP_TABLE_DESC replies."""
-    #: OFPTMPT_EVICTION.
-    type = TableModPropType.OFPTMPT_EVICTION
-    #: Length in bytes of this property.
-    length = UBInt16()
+
     #: Bitmap of OFPTMPEF_* flags
     flags = UBInt32()
 
-    def __init__(self, length=None, flags=TableModPropEvictionFlag):
+    def __init__(self, flags=TableModPropEvictionFlag):
         """Assing parameters to object attributes.
 
                 Args:
@@ -111,15 +108,15 @@ class TableModPropEviction(GenericStruct):
                     flags (UBInt32): Bitmap of OFPTMPEF_* flags.
 
                 """
-        self.length = length
+        super().type = TableModPropType.OFPTMPT_EVICTION
         self.flas = flags
 
 
-class TableModPropVacancy(GenericStruct):
+class TableModPropVacancy(TableModPropHeader):
     """Vacancy table mod property"""
 
     #: OFPTMPT_VACANCY.
-    type = UBInt16()
+    type = TableModPropType.OFPTMPT_VACANCY
     #: Length in bytes of this property.
     length = UBInt16()
     #: Vacancy threshold when space decreases (%).
@@ -131,21 +128,41 @@ class TableModPropVacancy(GenericStruct):
     #: Align to 64 bits.
     pad1 = Pad(1)
 
+    def __init__(self, vacancy_down=None, vacancy_up=None, vacancy=None):
+
+        super().type = TableModPropType.OFPTMPT_VACANCY
+
+        self.vacancy_down = vacancy_down
+
+        self.vacancy_up = vacancy_up
+
+        self.vacancy = vacancy
 
 
-class TableModPropExperimenter(GenericStruct):
+
+class TableModPropExperimenter(TableModPropHeader):
     """Experimenter table mod property"""
 
     #: OFPTMPT_EXPERIMENTER.
-    type = UBInt16()
+    type = TableModPropType.OFPTMPT_EXPERIMENTER
     #: Length in bytes of this property.
     length = UBInt16()
     #: Experimenter ID which takes the same form as in struct experimenter_header
     experimenter = UBInt32()
     #: Experimenter defined.
     exp_type = UBInt32()
+
     """Followed by:
         - Exactly (length - 12) bytes containing the experimenter data, then
         - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7) bytes of all-zero bytes.
     """
     experimenter_data = UBInt32()
+
+    def __init__(self, experimenter=None, exp_type=None):
+
+        super().type = TableModPropType.OFPTMPT_EXPERIMENTER
+
+        self.experimenter = experimenter
+
+        self.exp_type = exp_type
+
