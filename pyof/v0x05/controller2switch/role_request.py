@@ -30,4 +30,5 @@ class RoleRequest(RoleBaseMessage):
             generation_id (int): Master Election Generation Id.
         """
         super().__init__(xid, role, generation_id)
+
         self.header.message_type = Type.OFPT_ROLE_REQUEST
