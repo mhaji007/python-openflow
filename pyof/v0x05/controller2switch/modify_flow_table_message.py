@@ -5,7 +5,8 @@ from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct
 from pyof.v0x05.common.header import Header, Type
 
-__all__ = ('Table', 'TableConfig', 'TableModPropType', 'TableMod', 'TableModPropHeader')
+__all__ = ('Table', 'TableConfig', 'TableModPropType', 'TableModPropEvictionFlag', 'TableMod', 'TableModPropHeader',
+           'TableModPropEviction', 'TableModPropVacancy')
 
 
 class Table(IntEnum):
@@ -17,6 +18,7 @@ class Table(IntEnum):
     #: Wildcard table used for table config, flow stats and flow deletes.
     OFPTT_ALL = 0xff
 
+
 class TableConfig(IntEnum):
     """Flags to configure the table."""
     #:Deprecated bits.
@@ -25,6 +27,7 @@ class TableConfig(IntEnum):
     OFPTC_EVICTION = 1 << 2
     #: Enable vacancy events.
     OFPTC_VACANCY_EVENTS = 1 << 3
+
 
 class TableModPropType(IntEnum):
     """Table Mod property types"""
@@ -36,6 +39,7 @@ class TableModPropType(IntEnum):
     #: Experimenter property
     OFPTMPT_EXPERIMENTER = 0xffff
 
+
 class TableModPropEvictionFlag(IntEnum):
     """Eviction flags."""
 
@@ -45,6 +49,20 @@ class TableModPropEvictionFlag(IntEnum):
     OFPTMPEF_IMPORTANCE = 1 << 1
     #: Using flow entry lifetime.
     OFPTMPEF_LIFETIME = 1 << 2
+
+
+class TableModPropHeader(GenericStruct):
+    """Common header for all Table Mod Properties."""
+
+    #: One of OFPTMPT_*.
+    type = UBInt16()
+    #: Length in bytes of this property.
+    length = UBInt16()
+
+    def __int__(self, type=TableModPropType, lenght=None):
+        self.type = type
+        self.length = lenght
+
 
 class TableMod(GenericMessage):
     """Configure/Modify behavior of a flow table."""
@@ -74,19 +92,6 @@ class TableMod(GenericMessage):
         # one from the Enum.
         self.config = config
         self.properties = properties
-
-
-class TableModPropHeader(GenericStruct):
-    """Common header for all Table Mod Properties."""
-    
-    #: One of OFPTMPT_*.
-    type = UBInt16()
-    #: Length in bytes of this property.
-    length = UBInt16()
-
-    def __int__(self, type=TableModPropType, lenght=None):
-        self.type = type
-        self.length = lenght
 
 
 class TableModPropEviction(GenericStruct):
@@ -126,3 +131,21 @@ class TableModPropVacancy(GenericStruct):
     #: Align to 64 bits.
     pad1 = Pad(1)
 
+
+
+class TableModPropExperimenter(GenericStruct):
+    """Experimenter table mod property"""
+
+    #: OFPTMPT_EXPERIMENTER.
+    type = UBInt16()
+    #: Length in bytes of this property.
+    length = UBInt16()
+    #: Experimenter ID which takes the same form as in struct experimenter_header
+    experimenter = UBInt32()
+    #: Experimenter defined.
+    exp_type = UBInt32()
+    """Followed by:
+        - Exactly (length - 12) bytes containing the experimenter data, then
+        - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7) bytes of all-zero bytes.
+    """
+    experimenter_data = UBInt32()
