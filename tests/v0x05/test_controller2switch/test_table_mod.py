@@ -2,7 +2,7 @@
 import unittest
 
 from pyof.v0x05.common.header import Type
-from pyof.v0x05.controller2switch.table_mod import TableMod
+from pyof.v0x05.controller2switch.modify_flow_table_message import TableMod
 
 
 class TestTableMod(unittest.TestCase):

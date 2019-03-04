@@ -14,7 +14,7 @@ from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
 from pyof.v0x05.controller2switch.group_mod import Group
 from pyof.v0x05.controller2switch.meter_mod import Meter
-from pyof.v0x05.controller2switch.table_mod import Table
+from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
 # Third-party imports
 
