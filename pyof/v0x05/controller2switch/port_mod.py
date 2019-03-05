@@ -87,7 +87,58 @@ class PortModPropEthernet(PortModPropHeader):
 
 
     def __init__(self, advertise=None):
+        """"""
+
         super().type = PortModPropType.OFPPMPT_ETHERNET
         self.advertise = advertise
         super().length = self.__sizeof__()
 
+
+class PortModPropOptical(PortModPropHeader):
+    """Optical port mod property."""
+
+    #: Bitmapof OFPOPF_*
+    configure = UBInt32()
+    #: The "center" frequency
+    freq_lmda = UBInt32()
+    #: signed frequency offset
+    fl_offset = UBInt32()
+    #: The size of the grid for this port
+    grid_span = UBInt32()
+    #: tx power setting
+    tx_pwr = UBInt32()
+
+    def __init__(self, configure=None, freq_lmda=None, fl_offset=None, grid_span=None, tx_pwr=None):
+        """"""
+
+        super().type = PortModPropType.OFPPMPT_OPTICAL
+        self.configure = configure
+        self.freq_lmda = freq_lmda
+        self.fl_offset = fl_offset
+        self.grid_span = grid_span
+        self.tx_pwr = tx_pwr
+        super().length = self.__sizeof__()
+
+class PortModPropExperimenter(PortModPropHeader):
+    """Experimenter port mod property."""
+
+    #: Experimenter ID which takes the same form as in struct experimenter_header
+    experimenter = UBInt32()
+    #: Experimenter defined
+    exp_type = UBInt32()
+    """Followed by:
+        - Exactly (length - 12) bytes containing the experimenter data, then
+        - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7) bytes of zero bytes
+    """
+    experimenter_data = UBInt32()
+
+    def __init__(self, experimenter=None, exp_type=None, experimenter_data=None):
+        """"""
+
+        super().type = PortModPropType.OFPPMPT_EXPERIMENTER
+
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
+
+        super().length = self.__sizeof__()
