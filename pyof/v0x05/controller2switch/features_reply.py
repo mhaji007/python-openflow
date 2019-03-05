@@ -66,6 +66,7 @@ class SwitchFeatures(GenericMessage):
     # Features
     #: Bitmap of support "ofp_capabilities"
     capabilities = UBInt32(enum_ref=Capabilities)
+
     reserved = UBInt32()
 
     def __init__(self, xid=None, datapath_id=None, n_buffers=None,
