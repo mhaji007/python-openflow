@@ -10,6 +10,7 @@ from pyof.foundation.basic_types import (
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.common.constants import DESC_STR_LEN, SERIAL_NUM_LEN
 from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
 from pyof.v0x05.controller2switch.group_mod import Group
@@ -327,3 +328,40 @@ class MeterMultipartRequest(GenericStruct):
         """
         super().__init__()
         self.meter_id = meter_id
+
+
+
+class Desc(GenericStruct):
+    """Body of reply to OFPMP_DESC request. Each entry is a NULL-terminated"""
+
+    #: Manufacturer description.
+    mfr_desc = ''
+
+    #: Hardware description.
+    hw_desc = ''
+
+    #: Software description.
+    sw_desc = ''
+
+    #: Serial number.
+    serial_num = ''
+
+    #: Human readable description of datapath.
+    dp_desc = ''
+
+    def unpack(self, buff, offset=0):
+
+        if buff is not None:
+            begin = offset
+            self.mfr_desc = str(buff[begin:: begin+DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.hw_desc = str(buff[begin:: begin + DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.sw_desc = str(buff[begin:: begin + DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.serial_num = str(buff[begin:: begin + SERIAL_NUM_LEN])
+            begin += SERIAL_NUM_LEN
+            self.dp_desc = str(buff[begin:: begin + DESC_STR_LEN])
+
+
+
