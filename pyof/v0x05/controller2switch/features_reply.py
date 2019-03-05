@@ -96,3 +96,4 @@ class SwitchFeatures(GenericMessage):
 
 class FeaturesReply(SwitchFeatures):
     """'OFPT_FEATURES_REPLY' message."""
+
