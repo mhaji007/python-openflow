@@ -121,9 +121,13 @@ class MeterMod(GenericMessage):
     """Meter configuration."""
 
     header = Header(message_type=Type.OFPT_METER_MOD)
+    #: One of OFPMC_*.
     command = UBInt16(enum_ref=MeterModCommand)
+    #: Bitmap of OFPMF_* flags.
     flags = UBInt16(enum_ref=MeterFlags)
+    #: Meter instance.
     meter_id = UBInt32()
+    #: The band list length field in the header.
     bands = FixedTypeList(MeterBandHeader)
 
     def __init__(self, xid=None, command=None, flags=None, meter_id=None,
