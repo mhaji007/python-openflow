@@ -12,6 +12,7 @@ from pyof.v0x05.common.flow_instructions import ListOfInstruction
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import Port
+from pyof.v0x05.common.constants import DESC_STR_LEN, SERIAL_NUM_LEN
 from pyof.v0x05.controller2switch.common import (
     Bucket, BucketCounter, ExperimenterMultipartHeader, MultipartType,
     TableFeatures)
@@ -728,3 +729,54 @@ class TableStats(GenericStruct):
         self.active_count = active_count
         self.lookup_count = lookup_count
         self.matched_count = matched_count
+
+
+class Desc(GenericStruct):
+    """Body of reply to OFPMP_DESC request. Each entry is a NULL-terminated"""
+
+    #: Manufacturer description.
+    mfr_desc = ''
+
+    #: Hardware description.
+    hw_desc = ''
+
+    #: Software description.
+    sw_desc = ''
+
+    #: Serial number.
+    serial_num = ''
+
+    #: Human readable description of datapath.
+    dp_desc = ''
+
+    def __init__(self, mfr_desc='',  hw_desc='', sw_desc='', serial_num='', dp_desc=''):
+        """Body of reply to OFPMP_DESC request. Each entry is a NULL-terminated.
+
+            Args:
+                mfr_desc(str): Manufacturer description.
+                hw_desc(str): Hardware description
+                sw_desc(str): Software description
+                serial_num(str): Serial number
+                dp_desc(str): Human readable description of datapath.
+        """
+        super().__init__()
+        self.mfr_desc = mfr_desc
+        self.hw_desc = hw_desc
+        self.sw_desc = sw_desc
+        self.serial_num = serial_num
+        self.dp_desc = dp_desc
+
+    def unpack(self, buff, offset=0):
+
+        if buff is not None:
+            begin = offset
+            self.mfr_desc = str(buff[begin:: begin+DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.hw_desc = str(buff[begin:: begin + DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.sw_desc = str(buff[begin:: begin + DESC_STR_LEN])
+            begin += DESC_STR_LEN
+            self.serial_num = str(buff[begin:: begin + SERIAL_NUM_LEN])
+            begin += SERIAL_NUM_LEN
+            self.dp_desc = str(buff[begin:: begin + DESC_STR_LEN])
+

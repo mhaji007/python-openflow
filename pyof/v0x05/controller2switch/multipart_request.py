@@ -331,37 +331,4 @@ class MeterMultipartRequest(GenericStruct):
 
 
 
-class Desc(GenericStruct):
-    """Body of reply to OFPMP_DESC request. Each entry is a NULL-terminated"""
-
-    #: Manufacturer description.
-    mfr_desc = ''
-
-    #: Hardware description.
-    hw_desc = ''
-
-    #: Software description.
-    sw_desc = ''
-
-    #: Serial number.
-    serial_num = ''
-
-    #: Human readable description of datapath.
-    dp_desc = ''
-
-    def unpack(self, buff, offset=0):
-
-        if buff is not None:
-            begin = offset
-            self.mfr_desc = str(buff[begin:: begin+DESC_STR_LEN])
-            begin += DESC_STR_LEN
-            self.hw_desc = str(buff[begin:: begin + DESC_STR_LEN])
-            begin += DESC_STR_LEN
-            self.sw_desc = str(buff[begin:: begin + DESC_STR_LEN])
-            begin += DESC_STR_LEN
-            self.serial_num = str(buff[begin:: begin + SERIAL_NUM_LEN])
-            begin += SERIAL_NUM_LEN
-            self.dp_desc = str(buff[begin:: begin + DESC_STR_LEN])
-
-
 
