@@ -32,13 +32,13 @@ class PacketOut(GenericMessage):
     pad = Pad(6)
     #: Action List.
     actions = ListOfActions()
+    #: The variable size action list is optionally followed by packet data.
+    #: This data is only present and meaninful if buffer_id == -1.
     #: Packet data. The length is inferred from the length field in the header.
-    #:    (Only meaningful if buffer_id == -1.)
-    data = BinaryData()
+    #: data = BinaryData()
 
     def __init__(self, xid=None, buffer_id=UBINT32_MAX_VALUE,
-                 in_port=PortNo.OFPP_CONTROLLER, actions=None,
-                 data=b''):
+                 in_port=PortNo.OFPP_CONTROLLER, actions=None):
         """Create a PacketOut with the optional parameters below.
 
         Args:
@@ -58,7 +58,7 @@ class PacketOut(GenericMessage):
         self.buffer_id = buffer_id
         self.in_port = in_port
         self.actions = [] if actions is None else actions
-        self.data = data
+        # self.data = data
 
     def validate(self):
         """Validate the entire message."""
