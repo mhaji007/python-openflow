@@ -250,18 +250,20 @@ class FlowStats(GenericStruct):
     idle_timeout = UBInt16()
     hard_timeout = UBInt16()
     flags = UBInt16()
+    importance = UBInt16()
     #: Align to 64-bits
-    pad2 = Pad(4)
+    pad2 = Pad(2)
     cookie = UBInt64()
     packet_count = UBInt64()
     byte_count = UBInt64()
     match = Match()
-    instructions = ListOfInstruction()
+
+    #: instructions = ListOfInstruction()
 
     def __init__(self, length=None, table_id=None, duration_sec=None,
                  duration_nsec=None, priority=None, idle_timeout=None,
-                 hard_timeout=None, flags=None, cookie=None, packet_count=None,
-                 byte_count=None, match=None, instructions=None):
+                 hard_timeout=None, flags=None, importance=None, cookie=None, packet_count=None,
+                 byte_count=None, match=None):
         """Create a FlowStats with the optional parameters below.
 
         Args:
@@ -274,6 +276,8 @@ class FlowStats(GenericStruct):
                 is not an exact-match entry.
             idle_timeout (int): Number of seconds idle before expiration.
             hard_timeout (int): Number of seconds before expiration.
+            flags (int): Bitmap of OFPFF_* flags.
+            importance (int): Eviction precedence.
             cookie (int): Opaque controller-issued identifier.
             packet_count (int): Number of packets in flow.
             byte_count (int): Number of bytes in flow.
@@ -288,11 +292,13 @@ class FlowStats(GenericStruct):
         self.idle_timeout = idle_timeout
         self.hard_timeout = hard_timeout
         self.flags = flags
+        self.importance = importance
         self.cookie = cookie
         self.packet_count = packet_count
         self.byte_count = byte_count
         self.match = match
-        self.instructions = instructions or []
+
+        #: self.instructions = instructions or []
 
     def unpack(self, buff, offset=0):
         """Unpack a binary message into this object's attributes.
