@@ -10,7 +10,7 @@ from pyof.foundation.basic_types import HWAddress, Pad, UBInt32, FixedTypeList, 
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import PortConfig, PortFeatures
 
-__all__ = ('PortMod','PortModPropType', 'PortModPropHeader', )
+__all__ = ('PortModPropType', 'PortModPropHeader', 'PortMod', 'PortModPropEthernet','PortModPropOptical','PortModPropExperimenter' )
 
 #: Enums
 class PortModPropType(IntEnum):
@@ -79,6 +79,7 @@ class PortMod(GenericMessage):
         self.mask = mask
         self.properties = properties
 
+
 class PortModPropEthernet(PortModPropHeader):
     """Ethernet port mod property"""
 
@@ -87,7 +88,12 @@ class PortModPropEthernet(PortModPropHeader):
 
 
     def __init__(self, advertise=None):
-        """"""
+        """Create a Port Mod Ethernet Property.
+
+            Args:
+                advertise (int): Bitmap of OFPPF_*. Zero all bits to prevent
+                any action taking place.
+        """
 
         super().type = PortModPropType.OFPPMPT_ETHERNET
         self.advertise = advertise
@@ -97,7 +103,7 @@ class PortModPropEthernet(PortModPropHeader):
 class PortModPropOptical(PortModPropHeader):
     """Optical port mod property."""
 
-    #: Bitmapof OFPOPF_*
+    #: Bitmap of OFPOPF_*
     configure = UBInt32()
     #: The "center" frequency
     freq_lmda = UBInt32()
@@ -109,7 +115,15 @@ class PortModPropOptical(PortModPropHeader):
     tx_pwr = UBInt32()
 
     def __init__(self, configure=None, freq_lmda=None, fl_offset=None, grid_span=None, tx_pwr=None):
-        """"""
+        """Create a  Port Mod Optical Property.
+
+            Args:
+                configure(int): Bitmap of OFPOPF_*
+                freq_lmda(int): The "center" frequency
+                fl_offset(int): Signed frequency offset
+                grid_span(int): The size of the grid for this port
+                tx_pwr(int): tx power setting
+        """
 
         super().type = PortModPropType.OFPPMPT_OPTICAL
         self.configure = configure
@@ -118,6 +132,7 @@ class PortModPropOptical(PortModPropHeader):
         self.grid_span = grid_span
         self.tx_pwr = tx_pwr
         super().length = self.__sizeof__()
+
 
 class PortModPropExperimenter(PortModPropHeader):
     """Experimenter port mod property."""
@@ -133,7 +148,17 @@ class PortModPropExperimenter(PortModPropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None, experimenter_data=None):
-        """"""
+        """Create the Port Mod Experimenter Property.
+
+            Args:
+                experimenter(int): Experimenter ID which takes the same form as in struct experimenter_header
+                exp_type(int): Experimenter defined
+                experimenter_data(int): Followed by:
+                                            - Exactly (length - 12) bytes containing
+                                            the experimenter data, then
+                                            - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7)
+                                             bytes of zero bytes
+        """
 
         super().type = PortModPropType.OFPPMPT_EXPERIMENTER
 
