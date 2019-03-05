@@ -5,19 +5,11 @@ from enum import IntEnum
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import UBInt16, UBInt8, UBInt32
-
+from pyof.v0x05.controller2switch.table_mod import TableModPropHeader
 # Third-party imports
 
 __all__ = ('TableDescription',)
 
-
-# Enums
-
-# NOTE: this class should be implemented in Modify Table Message.
-# Put here for the sake of error prevention. Remove after proper implementation
-class TableModPropHeader(IntEnum):
-    type = UBInt16()
-    length = UBInt16()
 
 
 # Classes
