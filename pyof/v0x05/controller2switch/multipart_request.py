@@ -10,6 +10,7 @@ from pyof.foundation.basic_types import (
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import PortNo
+from pyof.v0x05.common.constants import DESC_STR_LEN, SERIAL_NUM_LEN
 from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
 from pyof.v0x05.controller2switch.group_mod import Group
@@ -327,3 +328,7 @@ class MeterMultipartRequest(GenericStruct):
         """
         super().__init__()
         self.meter_id = meter_id
+
+
+
+
