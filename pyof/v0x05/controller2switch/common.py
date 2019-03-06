@@ -599,7 +599,7 @@ class TableFeatures(GenericStruct):
     def __init__(self, table_id=Table.OFPTT_ALL, name="",
                  metadata_match=0xFFFFFFFFFFFFFFFF,
                  metadata_write=0xFFFFFFFFFFFFFFFF,
-                 config=0,
+                 capabilities=0,
                  max_entries=0,
                  properties=None):
         """Create a TableFeatures with the optional parameters below.
@@ -616,7 +616,7 @@ class TableFeatures(GenericStruct):
                the table can write using the OFPIT_WRITE_METADATA instruction.
                The default value ``0xFFFFFFFFFFFFFFFF`` indicates that the
                table can write the full metadata field.
-            config(int): Field reseved for future use.
+            capabilities(int): Field reseved for future use.
             max_entries(int): Describe the maximum number of flow entries that
                 can be inserted into that table.
             properties(~pyof.v0x05.controller2switch.common.ListOfProperty):
@@ -627,7 +627,7 @@ class TableFeatures(GenericStruct):
         self.name = name
         self.metadata_match = metadata_match
         self.metadata_write = metadata_write
-        self.capabilities = config
+        self.capabilities = capabilities
         self.max_entries = max_entries
         self.properties = (ListOfProperty() if properties is None else
                            properties)
@@ -663,3 +663,30 @@ class TableFeatures(GenericStruct):
         length = UBInt16()
         length.unpack(buff, offset)
         super().unpack(buff[:offset+length.value], offset)
+
+
+class InstructionId(GenericStruct):
+    """Instruction ID"""
+
+    #: One of OFPIT_*.
+    type = UBInt16()
+    #: Length is 4 or experimenter defined.
+    length = UBInt16(4)
+    #: Optional experimenter id + data.
+    exp_data = UBInt8()
+
+    def __init__(self, type=None, length=None, exp_data=None):
+        """The instruction_ids field is the list of instructions supported by this table.
+        The elements of that list are variable in size to enable expressing experimenter
+         instructions. Non-experimenter instructions are 4 bytes.
+
+            Args:
+                type(int): One of OFPIT_*.
+                length(int): Length is 4 or experimenter defined.
+                exp_data(int): Optional experimenter id + data.
+        """
+
+        self.type = type
+        self.length = UBInt16(4) if length is None else length
+        self.exp_data = exp_data
+
