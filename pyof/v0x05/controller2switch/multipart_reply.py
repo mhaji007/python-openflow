@@ -15,6 +15,7 @@ from pyof.v0x05.common.port import Port
 from pyof.v0x05.controller2switch.common import (
     Bucket, BucketCounter, ExperimenterMultipartHeader, MultipartType,
     TableFeatures)
+from pyof.v0x05.controller2switch.modify_flow_table_message import TableModPropHeader
 from pyof.v0x05.controller2switch.meter_mod import (
     ListOfMeterBandHeader, MeterBandType, MeterFlags)
 
@@ -735,4 +736,27 @@ class TableStats(GenericStruct):
         self.lookup_count = lookup_count
         self.matched_count = matched_count
 
+
+class TableDesc(GenericStruct):
+    """Body of reply ro OFPMP_TABLE_DESC request."""
+
+    length = UBInt16()
+    table_id = UBInt8()
+    pad = Pad(1)
+    config = UBInt32()
+    properties = FixedTypeList(pyof_class=TableModPropHeader)
+
+    def __init__(self, length=None, table_id=None, config=None, properties=None):
+        """Body of reply to OFPMP_TABLE_DESC request
+
+            Args:
+                length(int): Length is padded to 64 bits.
+                table_id(int): Identifier of table. lowe numbered tables
+                config(int): Bitmap of OFPTC_* values.
+                properties(TableModPropHeader list): Table Mod Property list - 0 or more.
+        """
+        self.length = length
+        self.table_id = table_id
+        self.config = config
+        self.properties = FixedTypeList(pyof_class=TableModPropHeader) if properties is not [] else properties
 
