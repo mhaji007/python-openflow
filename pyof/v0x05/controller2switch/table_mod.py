@@ -1,15 +1,36 @@
 """Flow Table Modification message."""
 from enum import IntEnum
 
-from pyof.foundation.base import GenericMessage, GenericStruct
-from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16
+from pyof.foundation.base import GenericBitMask, GenericMessage, GenericStruct
+from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, FixedTypeList
 from pyof.v0x05.common.header import Header, Type
 
 
 __all__ = ('Table', 'TableMod')
 
 
-class TableModPropEvictionFlag(IntEnum):
+
+class Table(IntEnum):
+    """Table numbering. Tables can use any number up to OFPT_MAX."""
+
+    #: Last usable table number.
+    OFPTT_MAX = 0xfe
+    # Fake tables.
+    #: Wildcard table used for table config, flow stats and flow deletes.
+    OFPTT_ALL = 0xff
+
+
+
+class TableModPropType(IntEnum):
+    #: Eviction property
+    OFPTMPT_EVICTION = 0x2
+    #: Vacancy property
+    OFPTMPT_VACANCY = 0x3
+    #:Experimenter
+    OFPTMPT_EXPERIMENTER = 0xFFFF
+
+
+class TableModPropEvictionFlag(GenericBitMask):
     #: Using other factors
     OFPTMPEF_OTHER = 1 << 0
     #: Using flow entry importance
@@ -26,6 +47,11 @@ class TableModPropHeader(GenericStruct):
     #: Length in bytes of this property
     length = UBInt16()
 
+    def __init__(self, type = None, length = None):
+        super().__init__()
+        self.type = type
+        self.length = length
+
 
 class TableModPropEviction(GenericStruct):
     #: OFPTMPT_EVICTION
@@ -41,14 +67,7 @@ class TableModPropEviction(GenericStruct):
 
 
 
-class Table(IntEnum):
-    """Table numbering. Tables can use any number up to OFPT_MAX."""
 
-    #: Last usable table number.
-    OFPTT_MAX = 0xfe
-    # Fake tables.
-    #: Wildcard table used for table config, flow stats and flow deletes.
-    OFPTT_ALL = 0xff
 
 
 class TableMod(GenericMessage):
@@ -60,7 +79,7 @@ class TableMod(GenericMessage):
     pad = Pad(3)
     config = UBInt32()
 
-    properties = FixedTypeList(RolePropHeader)
+    properties = FixedTypeList(TableModPropHeader)
 
     def __init__(self, xid=None, table_id=Table.OFPTT_ALL, config=3):
         """Assing parameters to object attributes.
