@@ -135,7 +135,7 @@ class MultipartType(IntEnum):
     #: Queue statistics for a port.
     #: The request body is struct ofp_queue_stats_request.
     #: The reply body is an array of struct ofp_queue_stats.
-    OFPMP_QUEUE = 5
+    OFPMP_QUEUE_STATS = 5
 
     #: Group counter statistics.
     #: The request body is struct ofp_group_stats_request.
@@ -179,6 +179,21 @@ class MultipartType(IntEnum):
     #: The request body is empty.
     #: The reply body is an array of struct ofp_port.
     OFPMP_PORT_DESC = 13
+
+    #: Table description
+    #: The request body is empty
+    #: The reply body is an array of struct TableDesc.
+    OFPMP_TABLE_DESC = 14
+
+    #: Queue description
+    #: The request body is struct QueueDescRequest.
+    #: The reply body is an array of struct QueueDesc.
+    OFPMP_QUEUE_DESC = 15
+
+    #: Flow monitor. Reply may be an asynchronous message.
+    #: The request body is an array of struct FlowMonitorRequest.
+    #: The reply body is an array of struct FlowUpdateHeader.
+    OFPMP_FLOW_MONITOR = 16
 
     #: Experimenter extension.
     #: The request and reply bodies begin with
