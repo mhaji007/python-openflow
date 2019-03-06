@@ -13,7 +13,7 @@ from pyof.v0x05.asynchronous.port_status import PortReason
 # Local source tree imports
 from pyof.v0x05.common.action import (
     ActionHeader, ControllerMaxLen, ListOfActions)
-from pyof.v0x05.common.flow_instructions import ListOfInstruction
+from pyof.v0x05.common.flow_instructions import ListOfInstruction, InstructionType
 from pyof.v0x05.common.flow_match import ListOfOxmHeader
 from pyof.v0x05.common.header import Header
 from pyof.v0x05.controller2switch.modify_flow_table_message import Table
@@ -22,7 +22,7 @@ __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
            'ExperimenterMultipartHeader', 'MultipartType',
            'TableFeaturePropType', 'Property', 'InstructionsProperty',
            'NextTablesProperty', 'ActionsProperty', 'OxmProperty',
-           'ListOfProperty', 'TableFeatures')
+           'ListOfProperty', 'TableFeatures', 'InstructionId')
 
 # Enum
 
@@ -449,6 +449,34 @@ class Property(GenericStruct):
         self.length = self.get_size()
 
 
+
+class InstructionId(GenericStruct):
+    """Instruction ID"""
+
+    #: One of OFPIT_*.
+    type = UBInt16(InstructionType)
+    #: Length is 4 or experimenter defined.
+    length = UBInt16(4)
+    #: Optional experimenter id + data.
+    exp_data = UBInt8()
+
+    def __init__(self, type=InstructionType, length=None, exp_data=None):
+        """The instruction_ids field is the list of instructions supported by this table.
+        The elements of that list are variable in size to enable expressing experimenter
+         instructions. Non-experimenter instructions are 4 bytes.
+
+            Args:
+                type(InstructionType): One of OFPIT_*.
+                length(int): Length is 4 or experimenter defined.
+                exp_data(int): Optional experimenter id + data.
+        """
+
+        self.type = type
+        self.length = UBInt16(4) if length is None else length
+        self.exp_data = exp_data
+
+
+
 class InstructionsProperty(Property):
     """Instructions property.
 
@@ -457,7 +485,7 @@ class InstructionsProperty(Property):
         OFPTFPT_INSTRUCTIONS_MISS
     """
 
-    instruction_ids = ListOfInstruction()
+    instruction_ids = FixedTypeList(pyof_class=InstructionId)
 
     def __init__(self, property_type=TableFeaturePropType.OFPTFPT_INSTRUCTIONS,
                  instruction_ids=None):
@@ -665,28 +693,4 @@ class TableFeatures(GenericStruct):
         super().unpack(buff[:offset+length.value], offset)
 
 
-class InstructionId(GenericStruct):
-    """Instruction ID"""
-
-    #: One of OFPIT_*.
-    type = UBInt16()
-    #: Length is 4 or experimenter defined.
-    length = UBInt16(4)
-    #: Optional experimenter id + data.
-    exp_data = UBInt8()
-
-    def __init__(self, type=None, length=None, exp_data=None):
-        """The instruction_ids field is the list of instructions supported by this table.
-        The elements of that list are variable in size to enable expressing experimenter
-         instructions. Non-experimenter instructions are 4 bytes.
-
-            Args:
-                type(int): One of OFPIT_*.
-                length(int): Length is 4 or experimenter defined.
-                exp_data(int): Optional experimenter id + data.
-        """
-
-        self.type = type
-        self.length = UBInt16(4) if length is None else length
-        self.exp_data = exp_data
 
