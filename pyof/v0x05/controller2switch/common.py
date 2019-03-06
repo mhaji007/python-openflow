@@ -590,7 +590,7 @@ class TableFeatures(GenericStruct):
     # /* Bits of metadata table can write. */
     metadata_write = UBInt64()
     # /* Bitmap of OFPTC_* values */
-    config = UBInt32()
+    capabilities = UBInt32()
     # /* Max number of entries supported. */
     max_entries = UBInt32()
     # /* Table Feature Property list */
@@ -627,7 +627,7 @@ class TableFeatures(GenericStruct):
         self.name = name
         self.metadata_match = metadata_match
         self.metadata_write = metadata_write
-        self.config = config
+        self.capabilities = config
         self.max_entries = max_entries
         self.properties = (ListOfProperty() if properties is None else
                            properties)
