@@ -6,7 +6,7 @@ from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, FixedType
 from pyof.v0x05.common.header import Header, Type
 
 
-__all__ = ('Table', 'TableMod')
+__all__ = ('Table', 'TableMod', 'TableModPropType', 'TableModPropHeader', 'TableConfig', 'TableModPropEviction','TableModPropEvictionFlag')
 
 
 
@@ -22,15 +22,19 @@ class Table(IntEnum):
 
 
 class TableModPropType(IntEnum):
+    """Table Mod property types"""
+
     #: Eviction property
     OFPTMPT_EVICTION = 0x2
     #: Vacancy property
     OFPTMPT_VACANCY = 0x3
-    #:Experimenter
+    #: Experimenter
     OFPTMPT_EXPERIMENTER = 0xFFFF
 
 
 class TableModPropEvictionFlag(GenericBitMask):
+    """Eviction flags"""
+
     #: Using other factors
     OFPTMPEF_OTHER = 1 << 0
     #: Using flow entry importance
@@ -39,30 +43,58 @@ class TableModPropEvictionFlag(GenericBitMask):
     OFPTMPEF_LIFETIME = 1 << 2
 
 
+class TableConfig(GenericBitMask):
+    """Flags to configure the table"""
+
+    #: Deprecated bits
+    OFPTC_DEPRECATED_MASK = 3
+    #: Authorise table to evict flows
+    OFPTC_EVICTION = 1 << 2
+    #: Enable vacancy events
+    OFPTC_VACANCY_EVENTS = 1 << 3
 
 
 class TableModPropHeader(GenericStruct):
-    #: One of OFPTMPT_
-    type = UBInt16()
+    """Common header for all Table Mod Properties"""
+
+    #: One of OFPTMPT_*
+    type = UBInt16(enum_ref=TableModPropType)
     #: Length in bytes of this property
     length = UBInt16()
 
-    def __init__(self, type = None, length = None):
+    def __init__(self, type=None, length=None):
         super().__init__()
         self.type = type
         self.length = length
 
 
 class TableModPropEviction(GenericStruct):
+    """Eviction table mod Property. Mostly used in OFPMP_TABLE_DESC replies"""
+
     #: OFPTMPT_EVICTION
-    type = UBInt16()
+    type = UBInt16(TableModPropType.OFPTMPT_EVICTION)
     #: Length in bytes of this property
     length = UBInt16()
     #: Bitmap of OFPTMPEF_* flags
-    flags = UBInt32
+    flags = UBInt32()
 
 
 
+class TableModPropVacancy(GenericStruct):
+    """Vacancy table mod property"""
+
+    #: OFPTMPT_VACANCY
+    type = UBInt16(TableModPropType.OFPTMPT_VACANCY)
+    #: Length in bytes of this property
+    length = UBInt16()
+    #: Vacancy threshold when space decreases (%)
+    vacancy_down=UBInt8()
+    #: Vacancy threshold when space increases (%)
+    vacancy_up=UBInt8()
+    #: Current vacancy (%) - only in ofp_table_desc
+    vacancy=UBInt8()
+    #: Align to 64 bits
+    pad = Pad(1)
 
 
 
@@ -90,6 +122,7 @@ class TableMod(GenericMessage):
             table_id (int): ID of the table, OFPTT_ALL indicates all tables.
             config (int): Bitmap of OFPTC_* flags
         """
+
         super().__init__(xid)
         self.table_id = table_id
         # This is reserved for future used. The default value is the only valid
