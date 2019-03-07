@@ -22,7 +22,7 @@ __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter', 'SwitchCon
            'ExperimenterMultipartHeader', 'MultipartType', 'AsyncConfig', 'RoleBaseMessage',
            'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID',
            'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty',
-           'ListOfProperty', 'TableFeatures', 'InstructionId')
+           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'TableFeaturePropExperimenter')
 
 # Enum
 
@@ -638,9 +638,15 @@ class TableFeaturePropOxm(GenericStruct):
     def __init__(self, type=None, length=None, oxm_ids=None):
         """
 
-        :param type(int):
-        :param length(int):
-        :param oxm_ids(int):
+        :param type(int): One of OFPTFPT_MATCH, OFPTFPT_WILDCARDS, OFPTFPT_WRITE_SETFIELD,
+        OFPTFPT_WRITE_SETWIELD_MISS, OFPTFPT_APPLY_SETFIELD, OFPTFPT_APPLY_SETFIELD_MISS.
+        :param length(int): Length in bytes of this property.
+        Followed by:
+            - Exactly (length - 4) bytes containing the oxm_ids, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes
+            of all-zero bytes.
+        :param oxm_ids(int): Array of OXM headers.
+
         """
         super().__init__()
         self.type = type
@@ -648,7 +654,36 @@ class TableFeaturePropOxm(GenericStruct):
         self.oxm_ids = oxm_ids
 
 
+class TableFeaturePropExperimenter(GenericStruct):
+    """"""
+    type = UBInt16()
 
+    length = UBInt16()
+    experimenter = UBInt32()
+
+    exp_type = UBInt32()
+
+    experimenter_data = UBInt32()
+
+    def __init__(self, type=None, length=None, experimenter=None, exp_type=None, experimenter_data=None):
+
+        """
+
+        :param type(int): One of OFPTFPT_EXPERIMENTER, OFPTFPT_EXPERIMENTER_MISS.
+        :param length(int): Length in bytes of this property.
+        :param experimenter(int): Experimenter ID which takes the same form as in struct ExperimenterHeader
+        :param exp_type(int): Experimenter defined.
+        Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7)/888 - (length) (between 0 and 7) bytes of all-zero bytes.
+        :param experimenter_data(int): Experimenter data.
+        """
+        super().__init__()
+        self.type = type
+        self.length = length
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
 
 
 class ListOfProperty(FixedTypeList):
