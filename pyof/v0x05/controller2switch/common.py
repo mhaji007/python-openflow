@@ -12,16 +12,16 @@ from pyof.v0x05.asynchronous.packet_in import PacketInReason
 from pyof.v0x05.asynchronous.port_status import PortReason
 # Local source tree imports
 from pyof.v0x05.common.action import (
-    ActionHeader, ControllerMaxLen, ListOfActions)
+    ActionHeader, ControllerMaxLen, ListOfActions, ActionType)
 from pyof.v0x05.common.flow_instructions import ListOfInstruction, InstructionType
 from pyof.v0x05.common.flow_match import ListOfOxmHeader
 from pyof.v0x05.common.header import Header
 from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
-__all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
-           'ExperimenterMultipartHeader', 'MultipartType',
-           'TableFeaturePropType', 'Property', 'InstructionsProperty',
-           'NextTablesProperty', 'ActionsProperty', 'OxmProperty',
+__all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter', 'SwitchConfig',
+           'ExperimenterMultipartHeader', 'MultipartType', 'AsyncConfig', 'RoleBaseMessage',
+           'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID',
+           'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty',
            'ListOfProperty', 'TableFeatures', 'InstructionId')
 
 # Enum
@@ -494,7 +494,7 @@ class InstructionsProperty(Property):
         Args:
             type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            next_table_ids(|ListOfInstruction_v0x05|):
+            instruction_ids(|ListOfInstruction_v0x05|):
                 List of InstructionGotoTable instances.
         """
         super().__init__(property_type=property_type)
@@ -508,6 +508,7 @@ class NextTablesProperty(Property):
     This class represents Property with the following types:
         OFPTFPT_NEXT_TABLES
         OFPTFPT_NEXT_TABLES_MISS
+        OFPTFPT_TABLE_SYNC_FROM
     """
 
     next_table_ids = ListOfInstruction()
@@ -528,6 +529,27 @@ class NextTablesProperty(Property):
         self.update_length()
 
 
+class ActionID(GenericStruct):
+    """Action ID"""
+
+    type = UBInt16(ActionType)
+    len = UBInt16()
+    exp_data = UBInt8()
+
+    def __init__(self, type=ActionType, len=None, exp_data=None):
+        """Action ID
+            Args:
+                type(ActionType): One of OFPAT_*.
+                len(int): Length is 4 or experimenter defined.
+                exp_data(int): Optional experimenter id + data.
+        """
+
+        self.type = type if isinstance(type, ActionType) else None
+        self.len = UBInt16(4) if len is not None else len
+        self.exp_data = exp_data
+
+
+
 class ActionsProperty(Property):
     """Actions Property.
 
@@ -538,7 +560,7 @@ class ActionsProperty(Property):
         OFPTFPT_APPLY_ACTIONS_MISS
     """
 
-    action_ids = ListOfActions()
+    action_ids = FixedTypeList(pyof_class=ActionID) # ListOfActions()
 
     def __init__(self,
                  property_type=TableFeaturePropType.OFPTFPT_WRITE_ACTIONS,
@@ -552,7 +574,7 @@ class ActionsProperty(Property):
                 List of Action instances.
         """
         super().__init__(property_type)
-        self.action_ids = action_ids if action_ids else ListOfActions()
+        self.action_ids = action_ids if action_ids else FixedTypeList(pyof_class=ActionID)# ListOfActions()
         self.update_length()
 
 
@@ -583,6 +605,50 @@ class OxmProperty(Property):
         super().__init__(property_type)
         self.oxm_ids = ListOfOxmHeader() if oxm_ids is None else oxm_ids
         self.update_length()
+
+
+class ExperimenterProperty(Property):
+    """Experimenter table feature property.
+
+    This class represents property with the following types:
+        OFPTFPT_EXPERIMENTER
+        OFPTFPT_EXPERIMENTER_MISS
+
+    """
+    experimenter = UBInt32()
+    exp_type = UBInt32()
+
+    experimenter_data = UBInt32()
+
+    def __init__(self, property_type=TableFeaturePropType.OFPTFPT_EXPERIMENTER, experimenter=None, exp_type=None, experimenter_data=None):
+
+        super().__init__(property_type)
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
+
+
+class TableFeaturePropOxm(GenericStruct):
+    """Match, Wildcard or Set-Field property."""
+
+    type = UBInt16()
+    length = UBInt16()
+    oxm_ids = UBInt32()
+
+    def __init__(self, type=None, length=None, oxm_ids=None):
+        """
+
+        :param type(int):
+        :param length(int):
+        :param oxm_ids(int):
+        """
+        super().__init__()
+        self.type = type
+        self.length = length
+        self.oxm_ids = oxm_ids
+
+
+
 
 
 class ListOfProperty(FixedTypeList):
