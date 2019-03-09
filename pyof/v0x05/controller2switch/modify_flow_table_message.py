@@ -2,7 +2,7 @@
 from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage, GenericBitMask
-from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct
+from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct,FixedTypeList
 from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('Table', 'TableConfig', 'TableModPropType', 'TableModPropEvictionFlag', 'TableMod', 'TableModPropHeader',
@@ -75,7 +75,7 @@ class TableMod(GenericMessage):
     #: Bitmap of OFPTC_* flags
     config = UBInt32()
     #: Table Mod Property list
-    properties = TableModPropHeader()
+    properties = FixedTypeList(TableModPropHeader)
 
     def __init__(self, xid=None, table_id=Table.OFPTT_ALL, config=3, properties=TableModPropHeader):
         """Assing parameters to object attributes.

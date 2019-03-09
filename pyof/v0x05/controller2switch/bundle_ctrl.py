@@ -10,7 +10,8 @@ from pyof.v0x05.common.header import Header, Type
 
 # Third-party imports
 
-__all__ = ('BundleControlType', 'BundleControl')
+__all__ = ('BundleControlType', 'BundleControl','BundleFlags','BundlePropHeader'
+           ,'BundlePropExperimenter','BundlePropType')
 
 
 # Enums
