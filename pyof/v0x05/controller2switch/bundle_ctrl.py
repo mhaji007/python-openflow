@@ -92,6 +92,7 @@ class BundlePropExperimenter(BundlePropHeader):
 class BundleControl(GenericMessage):
     """Message structure for OFPT_BUNDLE_CONTROL"""
 
+
     header = Header(message_type=Type.OFPT_BUNDLE_CONTROL)
     #: Identify the bundle
     bundle_id = UBInt32()
@@ -103,6 +104,14 @@ class BundleControl(GenericMessage):
     properties = FixedTypeList(BundlePropHeader)
 
     def __init__(self, xid=None, bundle_id=None, type=BundleControlType, flags=BundleFlags, properties=None):
+        """Assign parameters to object attributes.
+
+        Args:
+            xid (int): :class:`~pyof.v0x05.common.header.Header`'s xid.
+                Defaults to random.
+            bundle_id (int): ID of the bundle
+            flags (int): Bitmap of OFPBF_* flags
+        """
         super().__init__(xid)
         self.bundle_id = bundle_id
         self.type = type
