@@ -2,7 +2,7 @@
 from enum import IntEnum
 
 from pyof.foundation.base import GenericMessage, GenericBitMask
-from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct,FixedTypeList
+from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct, FixedTypeList
 from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('Table', 'TableConfig', 'TableModPropType', 'TableModPropEvictionFlag', 'TableMod', 'TableModPropHeader',
@@ -21,6 +21,7 @@ class Table(IntEnum):
 
 class TableConfig(GenericBitMask):
     """Flags to configure the table."""
+
     #:Deprecated bits.
     OFPTC_DEPRECATED_MASK = 3
     #: Authorise table to evict flows.
@@ -157,6 +158,8 @@ class TableModPropExperimenter(TableModPropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
+        super().__init__()
+
         super().type = TableModPropType.OFPTMPT_EXPERIMENTER
 
         self.experimenter = experimenter

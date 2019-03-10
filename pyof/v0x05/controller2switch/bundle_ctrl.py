@@ -10,8 +10,8 @@ from pyof.v0x05.common.header import Header, Type
 
 # Third-party imports
 
-__all__ = ('BundleControlType', 'BundleControl','BundleFlags','BundlePropHeader'
-           ,'BundlePropExperimenter','BundlePropType')
+__all__ = ('BundleControlType', 'BundleControl', 'BundleFlags', 'BundlePropHeader'
+           , 'BundlePropExperimenter', 'BundlePropType')
 
 
 # Enums
@@ -80,6 +80,8 @@ class BundlePropExperimenter(BundlePropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
+        super().__init__()
+
         super().type = BundlePropType.OFPBPT_EXPERIMENTER
 
         self.experimenter = experimenter
