@@ -24,36 +24,41 @@ class TestErrorMessageTestCases(unittest.TestCase):
     This class will test the Error Message classes and codes with assert tests.
     """
 
-    def setUp(self):
-        self.testGenericFailedCode = Error.GenericFailedCode
-        self.testBadActionCode = Error.BadActionCode
-        self.testBadInstructionCode = Error.BadInstructionCode
-        self.testBadMatchCode = Error.BadMatchCode
-        self.testBadRequestCode = Error.BadRequestCode
-        self.testErrorType = Error.ErrorType
-        self.testFlowModFailedCode = Error.FlowModFailedCode
-        self.testGroupModFailedCode = Error.GroupModFailedCode
-        self.testHelloFailedCode = Error.HelloFailedCode
-        self.testMeterModFailedCode = Error.MeterModFailedCode
-        self.testPortModFailedCode = Error.PortModFailedCode
-        self.testQueueOpFailedCode = Error.QueueOpFailedCode
-        self.testRoleRequestFailedCode = Error.RoleRequestFailedCode
-        self.testSwitchConfigFailedCode = Error.SwitchConfigFailedCode
-        self.testTableFeatureFailedCode = Error.TableFeaturesFailedCode
-        self.testTableModFailedCode = Error.TableModFailedCode
-        self.testBadPropertyCode = Error.BadPropertyCode
-        self.testAsyncConfigFailedCode = Error.AsyncConfigFailedCode
-        self.testFlowMonitorFailedCode = Error.FlowMonitorFailedCode
-        self.testBundleFailedCode = Error.BundleFailedCode
-        self.testErrorMessage = Error.ErrorMsg()
-        self.testErrorExperimenterMessage = Error.ErrorExperimenterMsg()
+    MAX_BAD_ACTION_CODE_VALUE = 15
+    MAX_BAD_INSTRUCTION_CODE_VALUE = 9
+    MAX_BAD_MATCH_CODE_VALUE = 11
+    MAX_BAD_REQUEST_CODE_VALUE = 15
 
-        random.seed()
+    random.seed()
+
+    def setUp(self):
+        self.test_generic_failed_code = Error.GenericFailedCode
+        self.test_bad_action_code = Error.BadActionCode
+        self.test_bad_instruction_code = Error.BadInstructionCode
+        self.test_bad_match_code = Error.BadMatchCode
+        self.test_bad_request_code = Error.BadRequestCode
+        self.test_error_type = Error.ErrorType
+        self.test_flow_mod_failed_code = Error.FlowModFailedCode
+        self.test_group_mod_failed_code = Error.GroupModFailedCode
+        self.test_hello_failed_code = Error.HelloFailedCode
+        self.test_meter_mod_failed_code = Error.MeterModFailedCode
+        self.test_port_mod_failed_code = Error.PortModFailedCode
+        self.test_queue_op_failed_code = Error.QueueOpFailedCode
+        self.test_role_request_failed_code = Error.RoleRequestFailedCode
+        self.test_switch_config_failed_code = Error.SwitchConfigFailedCode
+        self.test_table_feature_failed_code = Error.TableFeaturesFailedCode
+        self.test_table_mod_failed_code = Error.TableModFailedCode
+        self.test_bad_property_code = Error.BadPropertyCode
+        self.test_async_config_failed_code = Error.AsyncConfigFailedCode
+        self.test_flow_monitor_failed_code = Error.FlowMonitorFailedCode
+        self.test_bundle_failed_code = Error.BundleFailedCode
+        self.test_error_message = Error.ErrorMsg()
+        self.test_error_experimenter_message = Error.ErrorExperimenterMsg()
 
     def tearDown(self):
         pass
 
-    def test_generic_failed_codeValue(self):
+    def test_generic_failed_code_value(self):
         """
         Testing the Generic Failed Codes Values.
         This function will test the only code value for this enum class.
@@ -61,823 +66,818 @@ class TestErrorMessageTestCases(unittest.TestCase):
         """
         value = 0
 
-        for elem in self.testGenericFailedCode:
+        for elem in self.test_generic_failed_code:
             self.assertEqual(value, elem)
 
-
-    def test_bad_action_codeValue(self):
+    def test_bad_action_code_value(self):
+        """
+        Testing the Bad Action Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
 
-        :return:
-        """
-        print()
-        print('Testing the Bad Action Codes Values')
         value = 0
 
-        for elem in self.testBadActionCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_bad_action_code:
             self.assertEqual(value, elem)
-            if value == 16:
-                break
-            else:
+            if value < self.MAX_BAD_ACTION_CODE_VALUE:
                 value += 1
 
-
-    def test_bad_instruction_codeValue(self):
+    def test_bad_instruction_code_value(self):
+        """
+        Testing the Bad Instruction Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
 
-        :return:
-        """
-        print()
-        print('Testing the Bad Instruction Codes Values')
         value = 0
 
-        for elem in self.testBadInstructionCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_bad_instruction_code:
             self.assertEqual(value, elem)
-            value += 1
+            if value < self.MAX_BAD_INSTRUCTION_CODE_VALUE:
+                value += 1
 
-    def test_bad_match_codeValue(self):
+    def test_bad_match_code_value(self):
+        """
+        Testing the Bad Match Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
 
-        :return:
-        """
-        print()
-        print('Testing the Bad Match Codes Values')
         value = 0
 
-        for elem in self.testBadMatchCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_bad_match_code:
             self.assertEqual(value, elem)
-            value += 1
+            if value < self.MAX_BAD_MATCH_CODE_VALUE:
+                value += 1
 
-    def test_bad_request_codeValue(self):
+    def test_bad_request_code_value(self):
+        """
+        Testing the Bad Request Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
 
-        :return:
-        """
-        print()
-        print('Testing the Bad Request Codes Values')
         value = 0
 
-        for elem in self.testBadRequestCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_bad_request_code:
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_BAD_REQUEST_CODE_VALUE:
+                value += 1
 
     def test_error_type(self):
         """
-
-        :return:
+        Testing the Error Types Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        print()
-        print('Testing the Error Types Codes Values')
+        MAX_VALUE = 18
         value = 0
-        temp = 0
-        for elem in self.testErrorType:
+
+        for elem in self.test_error_type:
 
             if value == 18:
                 value = 0xffff
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
 
-    def test_flow_mod_failed_codeValue(self):
+    def test_flow_mod_failed_code_value(self):
         """
-
-        :return:
+        Testing the Flow Mod Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        print()
-        print('Testing the Flow Mod Failed Codes Values')
+        MAX_VALUE = 10
+
         value = 0
 
-        for elem in self.testFlowModFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_flow_mod_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_group_mod_failed_codeValue(self):
+    def test_group_mod_failed_code_value(self):
         """
+        Testing the Group Mod Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 14
 
-        :return:
-        """
-        print()
-        print('Testing the Group Mod Failed Codes Values')
         value = 0
 
-        for elem in self.testGroupModFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_group_mod_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_hello_failed_codeValue(self):
+    def test_hello_failed_code_value(self):
         """
+        Testing the Hello Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 1
 
-        :return:
-        """
-        print()
-        print('Testing the Hello Failed Codes Values')
         value = 0
 
-        for elem in self.testHelloFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_hello_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_meter_mod_failed_codeValue(self):
+    def test_meter_mod_failed_code_value(self):
         """
+        Testing the Meter Mod Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 11
 
-        :return:
-        """
-        print()
-        print('Testing the Meter Mod Failed Codes Values')
         value = 0
 
-        for elem in self.testMeterModFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_meter_mod_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_port_mod_failed_codeValue(self):
+    def test_port_mod_failed_code_value(self):
         """
+        Testing the Port Mod Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 4
 
-        :return:
-        """
-        print()
-        print('Testing the Port Mod Failed Codes Values')
         value = 0
 
-        for elem in self.testPortModFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_port_mod_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_queue_op_failed_codeValue(self):
+    def test_queue_op_failed_code_value(self):
         """
+        Testing the Queue Op Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 2
 
-        :return:
-        """
-        print()
-        print('Testing the Queue Op Failed Codes Values')
         value = 0
 
-        for elem in self.testQueueOpFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_queue_op_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_role_request_failed_codeValue(self):
+    def test_role_request_failed_code_value(self):
         """
+        Testing the Role Request Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 2
 
-        :return:
-        """
-        print()
-        print('Testing the Role Request Failed Codes Values')
         value = 0
 
-        for elem in self.testRoleRequestFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_role_request_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_switch_config_failed_codeValue(self):
+    def test_switch_config_failed_code_value(self):
         """
+        Testing the Switch Config Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 2
 
-        :return:
-        """
-        print()
-        print('Testing the Switch Config Failed Codes Values')
         value = 0
 
-        for elem in self.testSwitchConfigFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_switch_config_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_table_feature_failed_codeValue(self):
+    def test_table_feature_failed_code_value(self):
         """
+        Testing the Table Feature Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 5
 
-        :return:
-        """
-        print()
-        print('Testing the Table Feature Failed Codes Values')
         value = 0
 
-        for elem in self.testTableFeatureFailedCode:
+        for elem in self.test_table_feature_failed_code:
             if value == 2:
                 value = 5
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_table_mod_failed_codeValue(self):
+    def test_table_mod_failed_code_value(self):
         """
+        Testing the Table Mod Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 2
 
-        :return:
-        """
-        print()
-        print('Testing the Table Mod Failed Codes Values')
         value = 0
 
-        for elem in self.testTableModFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_table_mod_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_bad_property_codeValue(self):
+    def test_bad_property_code_value(self):
         """
+        Testing the Bad Property Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 8
 
-        :return:
-        """
-        print()
-        print('Testing the Bad Property Codes Values')
         value = 0
 
-        for elem in self.testBadPropertyCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_bad_property_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_async_config_failed_codeValue(self):
+    def test_async_config_failed_code_value(self):
         """
+        Testing the Async Config Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 2
 
-        :return:
-        """
-        print()
-        print('Testing the Async Config Failed Codes Values')
         value = 0
 
-        for elem in self.testAsyncConfigFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_async_config_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_flow_monitor_failed_codeValue(self):
+    def test_flow_monitor_failed_code_value(self):
         """
+        Testing the Flow Monitor Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 7
 
-        :return:
-        """
-        print()
-        print('Testing the Flow Monitor Failed Codes Values')
         value = 0
 
-        for elem in self.testFlowMonitorFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
+        for elem in self.test_flow_monitor_failed_code:
+
             self.assertEqual(value, elem)
-            value += 1
+            if value < MAX_VALUE:
+                value += 1
 
-    def test_bundle_failed_codeValue(self):
+    def test_bundle_failed_code_value(self):
         """
+        Testing the Bundle Failed Codes Values.
+        This function will test all code values for this enum class.
+        :return: None
+        """
+        MAX_VALUE = 15
 
-        :return:
-        """
-        print()
-        print('Testing the Bundle Failed Codes Values')
         value = 0
 
-        for elem in self.testBundleFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
-            self.assertEqual(value, elem)
-            value += 1
+        for elem in self.test_bundle_failed_code:
 
+            self.assertEqual(value, elem)
+            if value < MAX_VALUE:
+                value += 1
 
     def test_error_message_header_hello_failed_codes(self):
         """
-
-        :return:
+        Testing the header HelloFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 0
-        errorTypeValue = Error.ErrorType.OFPET_HELLO_FAILED
+        MAX_VALUE = 5
+        error_type = 0
+        error_type_value = Error.ErrorType.OFPET_HELLO_FAILED
 
-        print('Testing the header HelloFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
 
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
-
     def test_error_message_header_bad_request_codes(self):
         """
-
-        :return:
+        Testing the header BadRequestCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 1
-        errorTypeValue = Error.ErrorType.OFPET_BAD_REQUEST
+        MAX_VALUE = 5
+        error_type = 1
+        error_type_value = Error.ErrorType.OFPET_BAD_REQUEST
 
-        print('Testing the header BadRequestCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_action_codes(self):
         """
-
-        :return:
+        Testing the header BadActionCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 2
-        errorTypeValue = Error.ErrorType.OFPET_BAD_ACTION
+        MAX_VALUE = 5
+        error_type = 2
+        error_type_value = Error.ErrorType.OFPET_BAD_ACTION
 
-        print('Testing the header BadActionCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_instruction_codes(self):
         """
-
-        :return:
+        Testing the header BadInstructionCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 3
-        errorTypeValue = Error.ErrorType.OFPET_BAD_INSTRUCTION
+        MAX_VALUE = 5
+        error_type = 3
+        error_type_value = Error.ErrorType.OFPET_BAD_INSTRUCTION
 
-        print('Testing the header BadInstructionCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_match_codes(self):
         """
-
-        :return:
+        Testing the header BadMatchCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 4
-        errorTypeValue = Error.ErrorType.OFPET_BAD_MATCH
+        MAX_VALUE = 5
+        error_type = 4
+        error_type_value = Error.ErrorType.OFPET_BAD_MATCH
 
-        print('Testing the header BadMatchCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_mod_failed_codes(self):
         """
-
-        :return:
+        Testing the header FlowModFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 5
-        errorTypeValue = Error.ErrorType.OFPET_FLOW_MOD_FAILED
+        MAX_VALUE = 5
+        error_type = 5
+        error_type_value = Error.ErrorType.OFPET_FLOW_MOD_FAILED
 
-        print('Testing the header FlowModFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
 
     def test_error_message_header_group_mod_failed_codes(self):
         """
-
-        :return:
+        Testing the header GroupModFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 6
-        errorTypeValue = Error.ErrorType.OFPET_GROUP_MOD_FAILED
+        MAX_VALUE = 5
+        error_type = 6
+        error_type_value = Error.ErrorType.OFPET_GROUP_MOD_FAILED
 
-        print('Testing the header GroupModFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_port_mod_failed_codes(self):
         """
-
-        :return:
+        Testing the header PortModFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 7
-        errorTypeValue = Error.ErrorType.OFPET_PORT_MOD_FAILED
+        MAX_VALUE = 5
+        error_type = 7
+        error_type_value = Error.ErrorType.OFPET_PORT_MOD_FAILED
 
-        print('Testing the header PortModFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_mod_failed_codes(self):
         """
-
-        :return:
+        Testing the header TableModFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 8
-        errorTypeValue = Error.ErrorType.OFPET_TABLE_MOD_FAILED
+        MAX_VALUE = 5
+        error_type = 8
+        error_type_value = Error.ErrorType.OFPET_TABLE_MOD_FAILED
 
-        print('Testing the header TableModFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_queue_op_failed_codes(self):
         """
-
-        :return:
+        Testing the header QueueOpFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 9
-        errorTypeValue = Error.ErrorType.OFPET_QUEUE_OP_FAILED
+        MAX_VALUE = 5
+        error_type = 9
+        error_type_value = Error.ErrorType.OFPET_QUEUE_OP_FAILED
 
-        print('Testing the header QueueOpFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_switch_config_failed_codes(self):
         """
-
-        :return:
+        Testing the header SwitchConfigFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 10
-        errorTypeValue = Error.ErrorType.OFPET_SWITCH_CONFIG_FAILED
+        MAX_VALUE = 5
+        error_type = 10
+        error_type_value = Error.ErrorType.OFPET_SWITCH_CONFIG_FAILED
 
-        print('Testing the header SwitchConfigFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_role_request_failed_codes(self):
         """
-
-        :return:
+        Testing the header RoleRequestFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 11
-        errorTypeValue = Error.ErrorType.OFPET_ROLE_REQUEST_FAILED
+        MAX_VALUE = 5
+        error_type = 11
+        error_type_value = Error.ErrorType.OFPET_ROLE_REQUEST_FAILED
 
-        print('Testing the header RoleRequestFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_meter_mod_failed_codes(self):
         """
-
-        :return:
+        Testing the header MeterModFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 12
-        errorTypeValue = Error.ErrorType.OFPET_METER_MOD_FAILED
+        MAX_VALUE = 5
+        error_type = 12
+        error_type_value = Error.ErrorType.OFPET_METER_MOD_FAILED
 
-        print('Testing the header MeterModFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_features_failed_codes(self):
         """
-
-        :return:
+        Testing the header TableFeaturesFailedCodes.
+        This function will test all code values for this enum class.
+        :return:  None
         """
-        errorType = 13
-        errorTypeValue = Error.ErrorType.OFPET_TABLE_FEATURES_FAILED
+        MAX_VALUE = 5
+        error_type = 13
+        error_type_value = Error.ErrorType.OFPET_TABLE_FEATURES_FAILED
 
-        print('Testing the header TableFeaturesFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
 
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            if errorCode == 2:
-                errorCode = 5
+            if error_code == 2:
+                error_code = 5
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_property_codes(self):
         """
-
-        :return:
+        Testing the header BadPropertyCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 14
-        errorTypeValue = Error.ErrorType.OFPET_BAD_PROPERTY
+        MAX_VALUE = 5
+        error_type = 14
+        error_type_value = Error.ErrorType.OFPET_BAD_PROPERTY
 
-        print('Testing the header BadPropertyCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_async_config_failed_codes(self):
         """
-
-        :return:
+        Testing the header AsyncConfigFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 15
-        errorTypeValue = Error.ErrorType.OFPET_ASYNC_CONFIG_FAILED
+        MAX_VALUE = 5
+        error_type = 15
+        error_type_value = Error.ErrorType.OFPET_ASYNC_CONFIG_FAILED
 
-        print('Testing the header AsyncConfigFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() +\
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() +\
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_monitor_failed_codes(self):
         """
-
-        :return:
+        Testing the header FlowMonitorFailedCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 16
-        errorTypeValue = Error.ErrorType.OFPET_FLOW_MONITOR_FAILED
+        MAX_VALUE = 5
+        error_type = 16
+        error_type_value = Error.ErrorType.OFPET_FLOW_MONITOR_FAILED
 
-        print('Testing the header FlowMonitorFailedCodes.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bundle_failed_codes(self):
         """
-
-        :return:
+        Testing the header BundleFailed.
+        This function will test all code values for this enum class.
+        :return: None
         """
-        errorType = 17
-        errorTypeValue = Error.ErrorType.OFPET_BUNDLE_FAILED
+        MAX_VALUE = 5
+        error_type = 17
+        error_type_value = Error.ErrorType.OFPET_BUNDLE_FAILED
 
-        print('Testing the header BundleFailed.')
+        error_code = 0
 
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_experimenter_codes(self):
         """
-
-        :return:
+        Testing the header ExperimenterCodes.
+        This function will test all code values for this enum class.
+        :return: None
         """
+        MAX_VALUE = 5
+        error_type_value = Error.ErrorType.OFPET_EXPERIMENTER
+        error_type = 0xffff
 
-        errorTypeValue = Error.ErrorType.OFPET_EXPERIMENTER
-        errorType = 0xffff
+        error_code = 0
 
-        print('Testing the header ExperimenterCodes.')
-
-        errorCode = 0
-
-        for elem in Error.ErrorType.get_class(errorTypeValue):
+        for elem in Error.ErrorType.get_class(error_type_value):
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(errorType).pack() + \
-                        UBInt16(errorCode).pack() + data
+            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+                        UBInt16(error_code).pack() + data
 
-            errorCode += 1
+            if error_code < MAX_VALUE:
+                error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, errorTypeValue, elem, data).pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectErrorMessages))
-
-            # testObject = Error.ErrorMsg.unpack(testValue)
-
-            # print(testObject)
+            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
 
             self.assertEqual(testValue, testObjectErrorMessages)
 
-
     def test_error_experimenter_message(self):
         """
-
-        :return:
+        Testing the Experimenter Message.
+        This function will test all code values for this enum class.
+        :return: None
         """
+        MAX_VALUE = 5
         # Max number of IDs to be created in the test
         MAX_NUM_ID = 20
-
-        print()
-        print('Testing the Experimenter Message.')
 
         type = 0xffff
 
@@ -895,10 +895,8 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x11' + UBInt32(xid).pack() + UBInt16(type).pack() + \
                         UBInt16(exp_code).pack() + UBInt32(id).pack() + data
 
-            self.testErrorExperimenterMessage.__init__(xid,exp_code, id, data)
-            testObjectValue = self.testErrorExperimenterMessage.pack()
-
-            print('Testing expected value {} versus actual value {}'.format(testValue, testObjectValue))
+            self.test_error_experimenter_message.__init__(xid, exp_code, id, data)
+            testObjectValue = self.test_error_experimenter_message.pack()
 
             self.assertEqual(testValue, testObjectValue)
 
