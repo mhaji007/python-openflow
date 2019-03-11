@@ -24,10 +24,27 @@ class TestErrorMessageTestCases(unittest.TestCase):
     This class will test the Error Message classes and codes with assert tests.
     """
 
+    MAX_ERROR_TYPE_VALUE = 18
+
     MAX_BAD_ACTION_CODE_VALUE = 15
     MAX_BAD_INSTRUCTION_CODE_VALUE = 9
     MAX_BAD_MATCH_CODE_VALUE = 11
     MAX_BAD_REQUEST_CODE_VALUE = 15
+    MAX_FLOW_MOD_FAILED_CODE_VALUE = 10
+    MAX_GROUP_MOD_FAILED_CODE_VALUE = 14
+    MAX_HELLO_FAILED_CODE_VALUE = 1
+    MAX_METER_MOD_FAILED_CODE_VALUE = 11
+    MAX_PORT_MOD_FAILED_CODE_VALUE = 4
+    MAX_QUEUE_OP_FAILED_CODE_VALUE = 2
+    MAX_ROLE_REQUEST_FAILED_CODE_VALUE = 2
+    MAX_SWITCH_CONFIG_FAILED_CODE_VALUE = 2
+    MAX_TABLE_FEATURE_FAILED_CODE_VALUE = 5
+    MAX_TABLE_MOD_FAILED_CODE_VALUE = 2
+    MAX_BAD_PROPERTY_CODE_VALUE = 8
+    MAX_ASYNC_CONFIG_FAILED_CODE_VALUE = 2
+    MAX_FLOW_MONITOR_FAILED_CODE_VALUE = 7
+    MAX_BUNDLE_FAILED_CODE_VALUE = 15
+    MAX_EXPERIMENTER_VALUE = 0
 
     random.seed()
 
@@ -77,11 +94,18 @@ class TestErrorMessageTestCases(unittest.TestCase):
         """
 
         value = 0
+        iter_given_code = self.test_bad_action_code.__iter__()
+        length = self.test_bad_action_code.__len__()
 
-        for elem in self.test_bad_action_code:
-            self.assertEqual(value, elem)
+        while value < self.MAX_BAD_ACTION_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BAD_ACTION_CODE_VALUE:
                 value += 1
+
+            length -= 1
+
 
     def test_bad_instruction_code_value(self):
         """
@@ -122,7 +146,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         for elem in self.test_bad_request_code:
             self.assertEqual(value, elem)
-            if value < MAX_BAD_REQUEST_CODE_VALUE:
+            if value < self.MAX_BAD_REQUEST_CODE_VALUE:
                 value += 1
 
     def test_error_type(self):
@@ -131,7 +155,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 18
+
         value = 0
 
         for elem in self.test_error_type:
@@ -139,7 +163,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             if value == 18:
                 value = 0xffff
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_ERROR_TYPE_VALUE:
                 value += 1
 
 
@@ -149,14 +173,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 10
+
 
         value = 0
 
         for elem in self.test_flow_mod_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_FLOW_MOD_FAILED_CODE_VALUE:
                 value += 1
 
     def test_group_mod_failed_code_value(self):
@@ -165,14 +189,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 14
+
 
         value = 0
 
         for elem in self.test_group_mod_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_GROUP_MOD_FAILED_CODE_VALUE:
                 value += 1
 
     def test_hello_failed_code_value(self):
@@ -181,14 +205,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 1
+
 
         value = 0
 
         for elem in self.test_hello_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_HELLO_FAILED_CODE_VALUE:
                 value += 1
 
     def test_meter_mod_failed_code_value(self):
@@ -197,14 +221,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 11
+
 
         value = 0
 
         for elem in self.test_meter_mod_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_METER_MOD_FAILED_CODE_VALUE:
                 value += 1
 
     def test_port_mod_failed_code_value(self):
@@ -213,14 +237,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 4
+
 
         value = 0
 
         for elem in self.test_port_mod_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_PORT_MOD_FAILED_CODE_VALUE:
                 value += 1
 
     def test_queue_op_failed_code_value(self):
@@ -229,14 +253,12 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 2
-
         value = 0
 
         for elem in self.test_queue_op_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_QUEUE_OP_FAILED_CODE_VALUE:
                 value += 1
 
     def test_role_request_failed_code_value(self):
@@ -245,14 +267,12 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 2
-
         value = 0
 
         for elem in self.test_role_request_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE:
                 value += 1
 
     def test_switch_config_failed_code_value(self):
@@ -261,14 +281,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 2
 
         value = 0
 
         for elem in self.test_switch_config_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE:
                 value += 1
 
     def test_table_feature_failed_code_value(self):
@@ -277,7 +296,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
 
         value = 0
 
@@ -286,7 +304,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
                 value = 5
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE:
                 value += 1
 
     def test_table_mod_failed_code_value(self):
@@ -295,14 +313,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 2
 
         value = 0
 
         for elem in self.test_table_mod_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_TABLE_MOD_FAILED_CODE_VALUE:
                 value += 1
 
     def test_bad_property_code_value(self):
@@ -311,14 +328,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 8
 
         value = 0
 
         for elem in self.test_bad_property_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_BAD_PROPERTY_CODE_VALUE:
                 value += 1
 
     def test_async_config_failed_code_value(self):
@@ -327,14 +343,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 2
 
         value = 0
 
         for elem in self.test_async_config_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE:
                 value += 1
 
     def test_flow_monitor_failed_code_value(self):
@@ -343,14 +358,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 7
 
         value = 0
 
         for elem in self.test_flow_monitor_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE:
                 value += 1
 
     def test_bundle_failed_code_value(self):
@@ -359,14 +373,13 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 15
 
         value = 0
 
         for elem in self.test_bundle_failed_code:
 
             self.assertEqual(value, elem)
-            if value < MAX_VALUE:
+            if value < self.MAX_BUNDLE_FAILED_CODE_VALUE:
                 value += 1
 
     def test_error_message_header_hello_failed_codes(self):
@@ -375,7 +388,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
         error_type = 0
         error_type_value = Error.ErrorType.OFPET_HELLO_FAILED
 
@@ -389,7 +401,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_HELLO_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -402,7 +414,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
         error_type = 1
         error_type_value = Error.ErrorType.OFPET_BAD_REQUEST
 
@@ -415,7 +426,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BAD_REQUEST_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -428,7 +439,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 2
         error_type_value = Error.ErrorType.OFPET_BAD_ACTION
 
@@ -441,7 +452,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BAD_ACTION_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -454,7 +465,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 3
         error_type_value = Error.ErrorType.OFPET_BAD_INSTRUCTION
 
@@ -467,7 +478,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BAD_INSTRUCTION_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -480,7 +491,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 4
         error_type_value = Error.ErrorType.OFPET_BAD_MATCH
 
@@ -493,7 +504,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BAD_MATCH_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -506,7 +517,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 5
         error_type_value = Error.ErrorType.OFPET_FLOW_MOD_FAILED
 
@@ -519,7 +530,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_FLOW_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -533,7 +544,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 6
         error_type_value = Error.ErrorType.OFPET_GROUP_MOD_FAILED
 
@@ -546,7 +557,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_GROUP_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -559,7 +570,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 7
         error_type_value = Error.ErrorType.OFPET_PORT_MOD_FAILED
 
@@ -572,7 +583,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_PORT_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -585,7 +596,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 8
         error_type_value = Error.ErrorType.OFPET_TABLE_MOD_FAILED
 
@@ -598,7 +609,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_TABLE_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -611,7 +622,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 9
         error_type_value = Error.ErrorType.OFPET_QUEUE_OP_FAILED
 
@@ -624,7 +635,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_QUEUE_OP_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -637,7 +648,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 10
         error_type_value = Error.ErrorType.OFPET_SWITCH_CONFIG_FAILED
 
@@ -650,7 +661,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -663,7 +674,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 11
         error_type_value = Error.ErrorType.OFPET_ROLE_REQUEST_FAILED
 
@@ -676,7 +687,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -689,7 +700,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 12
         error_type_value = Error.ErrorType.OFPET_METER_MOD_FAILED
 
@@ -702,7 +713,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_METER_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -715,7 +726,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return:  None
         """
-        MAX_VALUE = 5
+
         error_type = 13
         error_type_value = Error.ErrorType.OFPET_TABLE_FEATURES_FAILED
 
@@ -732,7 +743,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -745,7 +756,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 14
         error_type_value = Error.ErrorType.OFPET_BAD_PROPERTY
 
@@ -758,7 +769,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BAD_PROPERTY_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -771,7 +782,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 15
         error_type_value = Error.ErrorType.OFPET_ASYNC_CONFIG_FAILED
 
@@ -784,7 +795,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() +\
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -797,7 +808,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 16
         error_type_value = Error.ErrorType.OFPET_FLOW_MONITOR_FAILED
 
@@ -810,7 +821,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -823,7 +834,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type = 17
         error_type_value = Error.ErrorType.OFPET_BUNDLE_FAILED
 
@@ -836,7 +847,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_BUNDLE_FAILED_CODE_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
@@ -849,7 +860,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
         This function will test all code values for this enum class.
         :return: None
         """
-        MAX_VALUE = 5
+
         error_type_value = Error.ErrorType.OFPET_EXPERIMENTER
         error_type = 0xffff
 
@@ -862,7 +873,7 @@ class TestErrorMessageTestCases(unittest.TestCase):
             testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
-            if error_code < MAX_VALUE:
+            if error_code < self.MAX_EXPERIMENTER_VALUE:
                 error_code += 1
 
             testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
