@@ -4,11 +4,11 @@ An OpenFlow match is composed of a flow match header and a sequence of zero or
 more flow match fields.
 """
 # System imports
-from enum import Enum, IntEnum
+from enum import IntEnum
 from math import ceil
 
 # Local source tree imports
-from pyof.foundation.base import GenericStruct
+from pyof.foundation.base import GenericStruct, GenericBitMask
 from pyof.foundation.basic_types import (
     BinaryData, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32)
 from pyof.foundation.exceptions import PackException, UnpackException
@@ -18,7 +18,7 @@ __all__ = ('Ipv6ExtHdrFlags', 'ListOfOxmHeader', 'Match', 'MatchType',
            'OxmOfbMatchField', 'OxmTLV', 'VlanId')
 
 
-class Ipv6ExtHdrFlags(Enum):
+class Ipv6ExtHdrFlags(GenericBitMask):
     """Bit definitions for IPv6 Extension Header pseudo-field."""
 
     #: "No next header" encountered.

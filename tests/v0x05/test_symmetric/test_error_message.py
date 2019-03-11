@@ -20,6 +20,9 @@ import random
 
 
 class TestErrorMessageTestCases(unittest.TestCase):
+    """
+    This class will test the Error Message classes and codes with assert tests.
+    """
 
     def setUp(self):
         self.testGenericFailedCode = Error.GenericFailedCode
@@ -51,15 +54,22 @@ class TestErrorMessageTestCases(unittest.TestCase):
         pass
 
     def test_generic_failed_codeValue(self):
+        """
+        Testing the Generic Failed Codes Values.
+        This function will test the only code value for this enum class.
+        :return: None
+        """
         value = 0
-        print()
-        print('Testing the Generic Failed Codes Values')
+
         for elem in self.testGenericFailedCode:
-            print('Testing expected code value {} versus actual code value {}'.format(value, elem))
             self.assertEqual(value, elem)
 
 
     def test_bad_action_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bad Action Codes Values')
         value = 0
@@ -74,6 +84,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_bad_instruction_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bad Instruction Codes Values')
         value = 0
@@ -84,6 +98,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_bad_match_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bad Match Codes Values')
         value = 0
@@ -94,6 +112,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_bad_request_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bad Request Codes Values')
         value = 0
@@ -104,6 +126,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_error_type(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Error Types Codes Values')
         value = 0
@@ -118,6 +144,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_flow_mod_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Flow Mod Failed Codes Values')
         value = 0
@@ -128,6 +158,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_group_mod_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Group Mod Failed Codes Values')
         value = 0
@@ -138,6 +172,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_hello_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Hello Failed Codes Values')
         value = 0
@@ -148,6 +186,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_meter_mod_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Meter Mod Failed Codes Values')
         value = 0
@@ -158,6 +200,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_port_mod_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Port Mod Failed Codes Values')
         value = 0
@@ -168,6 +214,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_queue_op_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Queue Op Failed Codes Values')
         value = 0
@@ -178,6 +228,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_role_request_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Role Request Failed Codes Values')
         value = 0
@@ -188,6 +242,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_switch_config_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Switch Config Failed Codes Values')
         value = 0
@@ -198,6 +256,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_table_feature_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Table Feature Failed Codes Values')
         value = 0
@@ -210,6 +272,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_table_mod_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Table Mod Failed Codes Values')
         value = 0
@@ -220,6 +286,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_bad_property_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bad Property Codes Values')
         value = 0
@@ -230,6 +300,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_async_config_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Async Config Failed Codes Values')
         value = 0
@@ -240,6 +314,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_flow_monitor_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Flow Monitor Failed Codes Values')
         value = 0
@@ -250,6 +328,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             value += 1
 
     def test_bundle_failed_codeValue(self):
+        """
+
+        :return:
+        """
         print()
         print('Testing the Bundle Failed Codes Values')
         value = 0
@@ -261,6 +343,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_error_message_header_hello_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 0
         errorTypeValue = Error.ErrorType.OFPET_HELLO_FAILED
 
@@ -286,6 +372,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_error_message_header_bad_request_codes(self):
+        """
+
+        :return:
+        """
         errorType = 1
         errorTypeValue = Error.ErrorType.OFPET_BAD_REQUEST
 
@@ -309,6 +399,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_action_codes(self):
+        """
+
+        :return:
+        """
         errorType = 2
         errorTypeValue = Error.ErrorType.OFPET_BAD_ACTION
 
@@ -332,6 +426,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_instruction_codes(self):
+        """
+
+        :return:
+        """
         errorType = 3
         errorTypeValue = Error.ErrorType.OFPET_BAD_INSTRUCTION
 
@@ -355,6 +453,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_match_codes(self):
+        """
+
+        :return:
+        """
         errorType = 4
         errorTypeValue = Error.ErrorType.OFPET_BAD_MATCH
 
@@ -378,6 +480,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_mod_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 5
         errorTypeValue = Error.ErrorType.OFPET_FLOW_MOD_FAILED
 
@@ -402,6 +508,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_error_message_header_group_mod_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 6
         errorTypeValue = Error.ErrorType.OFPET_GROUP_MOD_FAILED
 
@@ -425,6 +535,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_port_mod_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 7
         errorTypeValue = Error.ErrorType.OFPET_PORT_MOD_FAILED
 
@@ -448,6 +562,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_mod_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 8
         errorTypeValue = Error.ErrorType.OFPET_TABLE_MOD_FAILED
 
@@ -471,6 +589,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_queue_op_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 9
         errorTypeValue = Error.ErrorType.OFPET_QUEUE_OP_FAILED
 
@@ -494,6 +616,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_switch_config_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 10
         errorTypeValue = Error.ErrorType.OFPET_SWITCH_CONFIG_FAILED
 
@@ -517,6 +643,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_role_request_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 11
         errorTypeValue = Error.ErrorType.OFPET_ROLE_REQUEST_FAILED
 
@@ -540,6 +670,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_meter_mod_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 12
         errorTypeValue = Error.ErrorType.OFPET_METER_MOD_FAILED
 
@@ -563,6 +697,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_table_features_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 13
         errorTypeValue = Error.ErrorType.OFPET_TABLE_FEATURES_FAILED
 
@@ -590,6 +728,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bad_property_codes(self):
+        """
+
+        :return:
+        """
         errorType = 14
         errorTypeValue = Error.ErrorType.OFPET_BAD_PROPERTY
 
@@ -613,6 +755,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_async_config_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 15
         errorTypeValue = Error.ErrorType.OFPET_ASYNC_CONFIG_FAILED
 
@@ -636,6 +782,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_flow_monitor_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 16
         errorTypeValue = Error.ErrorType.OFPET_FLOW_MONITOR_FAILED
 
@@ -659,6 +809,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_bundle_failed_codes(self):
+        """
+
+        :return:
+        """
         errorType = 17
         errorTypeValue = Error.ErrorType.OFPET_BUNDLE_FAILED
 
@@ -682,6 +836,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
             self.assertEqual(testValue, testObjectErrorMessages)
 
     def test_error_message_header_experimenter_codes(self):
+        """
+
+        :return:
+        """
 
         errorTypeValue = Error.ErrorType.OFPET_EXPERIMENTER
         errorType = 0xffff
@@ -711,6 +869,10 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
 
     def test_error_experimenter_message(self):
+        """
+
+        :return:
+        """
         # Max number of IDs to be created in the test
         MAX_NUM_ID = 20
 

@@ -1,10 +1,16 @@
+"""
 
+"""
 import random
 from pyof.foundation.basic_types import UBInt16,UBInt32, UBInt8, UBInt64
 from pyof.foundation.base import GenericMessage
 from pyof.v0x05.common.header import Type
 
+
 class MessageGenerator():
+    """
+
+    """
 
     MAX_32BITS_VALUE = 1000
     MAX_8BITS_VALUE = 128
@@ -20,6 +26,10 @@ class MessageGenerator():
     xid = UBInt32()
 
     def generate_messages(self):
+        """
+
+        :return:
+        """
 
         for index in range(0, self.max_num_of_mesg):
 
@@ -105,6 +115,11 @@ class MessageGenerator():
             self.listOfConfigMessage.append(item)
 
     def __init__(self, type_of_mesg=Type, xid=None):
+        """
+
+        :param type_of_mesg:
+        :param xid:
+        """
 
         if type_of_mesg is None:
             raise Exception()
@@ -114,24 +129,20 @@ class MessageGenerator():
 
 
     def get(self, index=None):
+        """
+        This function will access the message's list and return the desire message
+        :param index: an integer index to access the message list
+        :return: binarythe desired message access with the index
+        """
+
         if index is not None:
             return self.listOfConfigMessage[index]
 
     def length(self):
+        """
+        This function will return the number of messages in a list
+        :return: an integer value with the length of the list
+        """
         return self.listOfConfigMessage.__len__()
 
-#Needs Work
-class PrintTables():
-    div = '-'
-    strTable = ''
-
-    def print_table(self, obj=GenericMessage):
-
-        version = obj.header.version
-        msg_type = obj.header.message_type.__str__()
-        length = obj.header.length.__str__()
-        xid = obj.header.xid.__str__()
-
-        attr = obj.__getattribute__('flags').__str__()
-        self.strTable = hex(version.value) + self.div + msg_type + self.div + length + self.div + xid + self.div + attr
 

@@ -621,6 +621,16 @@ class ExperimenterProperty(Property):
     experimenter_data = UBInt32()
 
     def __init__(self, property_type=TableFeaturePropType.OFPTFPT_EXPERIMENTER, experimenter=None, exp_type=None, experimenter_data=None):
+        """ Create or initialize an object Experimenter table feature property.
+
+        :param property_type(int): One of OFPTFPT_EXPERIMENTER, OFPTFPT_EXPERIMENTER_MISS.
+        :param experimenter(int): Experimenter ID which takes the same form as in strcut ExperimenterHeader.
+        :param exp_type(int): Experimenter defined.
+        Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes of all-zero bytes.
+        :param experimenter_data(int): Experimenter data.
+        """
 
         super().__init__(property_type)
         self.experimenter = experimenter
@@ -628,19 +638,16 @@ class ExperimenterProperty(Property):
         self.experimenter_data = experimenter_data
 
 
-class TableFeaturePropOxm(GenericStruct):
+class TableFeaturePropOxm(Property):
     """Match, Wildcard or Set-Field property."""
 
-    type = UBInt16()
-    length = UBInt16()
     oxm_ids = UBInt32()
 
-    def __init__(self, type=None, length=None, oxm_ids=None):
-        """
+    def __init__(self, property_type=TableFeaturePropType.OFPTFPT_MATCH, oxm_ids=None):
+        """ Create or initialize an object Match, Wildcard or Set-Field property
 
-        :param type(int): One of OFPTFPT_MATCH, OFPTFPT_WILDCARDS, OFPTFPT_WRITE_SETFIELD,
+        :param property_type(int): One of OFPTFPT_MATCH, OFPTFPT_WILDCARDS, OFPTFPT_WRITE_SETFIELD,
         OFPTFPT_WRITE_SETWIELD_MISS, OFPTFPT_APPLY_SETFIELD, OFPTFPT_APPLY_SETFIELD_MISS.
-        :param length(int): Length in bytes of this property.
         Followed by:
             - Exactly (length - 4) bytes containing the oxm_ids, then
             - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes
@@ -648,42 +655,11 @@ class TableFeaturePropOxm(GenericStruct):
         :param oxm_ids(int): Array of OXM headers.
 
         """
-        super().__init__()
-        self.type = type
-        self.length = length
-        self.oxm_ids = oxm_ids
+        super().__init__(property_type)
 
+        self.oxm_ids = oxm_ids if oxm_ids is FixedTypeList else []
+        self.update_length()
 
-class TableFeaturePropExperimenter(GenericStruct):
-    """"""
-    type = UBInt16()
-
-    length = UBInt16()
-    experimenter = UBInt32()
-
-    exp_type = UBInt32()
-
-    experimenter_data = UBInt32()
-
-    def __init__(self, type=None, length=None, experimenter=None, exp_type=None, experimenter_data=None):
-
-        """
-
-        :param type(int): One of OFPTFPT_EXPERIMENTER, OFPTFPT_EXPERIMENTER_MISS.
-        :param length(int): Length in bytes of this property.
-        :param experimenter(int): Experimenter ID which takes the same form as in struct ExperimenterHeader
-        :param exp_type(int): Experimenter defined.
-        Followed by:
-            - Exactly (length - 12) bytes containing the experimenter data, then
-            - Exactly (length + 7)/888 - (length) (between 0 and 7) bytes of all-zero bytes.
-        :param experimenter_data(int): Experimenter data.
-        """
-        super().__init__()
-        self.type = type
-        self.length = length
-        self.experimenter = experimenter
-        self.exp_type = exp_type
-        self.experimenter_data = experimenter_data
 
 
 class ListOfProperty(FixedTypeList):

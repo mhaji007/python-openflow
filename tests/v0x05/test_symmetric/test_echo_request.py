@@ -5,15 +5,16 @@ from tests.test_struct import TestStruct
 import unittest
 
 
-
-
-
-
-
-
 class TestEchoReuestByCases(unittest.TestCase):
+    """
+
+    """
 
     def setUp(self):
+        """
+
+        :return:
+        """
         self.type = UBInt8(3)
         self.length = UBInt16(6)
         self.xid = UBInt32(23)
@@ -24,6 +25,10 @@ class TestEchoReuestByCases(unittest.TestCase):
 
 
     def test_echoRequest(self):
+        """
+
+        :return:
+        """
         self.assertEqual(self.type, self.testObject.header.message_type)
         self.assertEqual(self.length, self.testObject.header.length)
         self.assertEqual(self.xid, self.testObject.header.xid)
