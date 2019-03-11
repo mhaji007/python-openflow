@@ -78,7 +78,7 @@ class RoleStatus(GenericMessage):
         self.properties = properties
 
 
-class ExperimenterRoleProperty():
+class ExperimenterRoleProperty(RolePropHeader):
     """ Experimenter role property"""
 
     type = UBInt16()

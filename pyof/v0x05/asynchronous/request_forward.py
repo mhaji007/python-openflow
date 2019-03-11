@@ -4,7 +4,7 @@ from enum import IntEnum
 
 # Local source tree imports
 from pyof.foundation.base import GenericMessage
-from pyof.v0x05.common.header import Header
+from pyof.v0x05.common.header import Header,Type
 
 # Enums
 
