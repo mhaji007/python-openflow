@@ -1,8 +1,8 @@
 """Flow Table Modification message."""
 from enum import IntEnum
 
-from pyof.foundation.base import GenericMessage
-from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct
+from pyof.foundation.base import GenericMessage, GenericBitMask
+from pyof.foundation.basic_types import Pad, UBInt8, UBInt32, UBInt16, GenericStruct, FixedTypeList
 from pyof.v0x05.common.header import Header, Type
 
 __all__ = ('Table', 'TableConfig', 'TableModPropType', 'TableModPropEvictionFlag', 'TableMod', 'TableModPropHeader',
@@ -19,8 +19,9 @@ class Table(IntEnum):
     OFPTT_ALL = 0xff
 
 
-class TableConfig(IntEnum):
+class TableConfig(GenericBitMask):
     """Flags to configure the table."""
+
     #:Deprecated bits.
     OFPTC_DEPRECATED_MASK = 3
     #: Authorise table to evict flows.
@@ -40,7 +41,7 @@ class TableModPropType(IntEnum):
     OFPTMPT_EXPERIMENTER = 0xffff
 
 
-class TableModPropEvictionFlag(IntEnum):
+class TableModPropEvictionFlag(GenericBitMask):
     """Eviction flags."""
 
     #: Using other factors.
@@ -59,9 +60,9 @@ class TableModPropHeader(GenericStruct):
     #: Length in bytes of this property.
     length = UBInt16()
 
-    def __int__(self, type=TableModPropType, lenght=None):
+    def __int__(self, type=TableModPropType, length=None):
         self.type = type
-        self.length = lenght
+        self.length = length
 
 
 class TableMod(GenericMessage):
@@ -75,7 +76,7 @@ class TableMod(GenericMessage):
     #: Bitmap of OFPTC_* flags
     config = UBInt32()
     #: Table Mod Property list
-    properties = TableModPropHeader()
+    properties = FixedTypeList(TableModPropHeader)
 
     def __init__(self, xid=None, table_id=Table.OFPTT_ALL, config=3, properties=TableModPropHeader):
         """Assing parameters to object attributes.
@@ -101,7 +102,7 @@ class TableModPropEviction(TableModPropHeader):
     flags = UBInt32()
 
     def __init__(self, flags=TableModPropEvictionFlag):
-        """Assing parameters to object attributes.
+        """Assign parameters to object attributes.
 
                 Args:
                     length (UBInt16): Length in bytes of this property.
@@ -129,7 +130,6 @@ class TableModPropVacancy(TableModPropHeader):
     pad1 = Pad(1)
 
     def __init__(self, vacancy_down=None, vacancy_up=None, vacancy=None):
-
         super().type = TableModPropType.OFPTMPT_VACANCY
 
         self.vacancy_down = vacancy_down
@@ -137,7 +137,6 @@ class TableModPropVacancy(TableModPropHeader):
         self.vacancy_up = vacancy_up
 
         self.vacancy = vacancy
-
 
 
 class TableModPropExperimenter(TableModPropHeader):
@@ -159,10 +158,10 @@ class TableModPropExperimenter(TableModPropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
+        super().__init__()
 
         super().type = TableModPropType.OFPTMPT_EXPERIMENTER
 
         self.experimenter = experimenter
 
         self.exp_type = exp_type
-
