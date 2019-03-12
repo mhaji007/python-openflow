@@ -79,7 +79,12 @@ class RoleStatusMsg(GenericMessage):
 
         Args:
             xid (int): xid to be used on the message header.
-            elements: List of elements - 0 or more
+            role (int): the new role of the controller
+            reason (int): one of RoleReason
+            generation_id (int): the generation ID that was included in the role request message that
+            triggered the role change
+            properties: a list of role properties, describing dynamic parameters of table configuration
+
         """
         super().__init__(xid)
         self.role = role
