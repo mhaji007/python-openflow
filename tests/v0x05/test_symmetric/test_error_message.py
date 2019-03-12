@@ -106,7 +106,6 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
             length -= 1
 
-
     def test_bad_instruction_code_value(self):
         """
         Testing the Bad Instruction Codes Values.
@@ -116,10 +115,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_bad_instruction_code:
-            self.assertEqual(value, elem)
+        iter_given_code = self.test_bad_instruction_code.__iter__()
+        length = self.test_bad_instruction_code.__len__()
+
+        while value < self.MAX_BAD_INSTRUCTION_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BAD_INSTRUCTION_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_bad_match_code_value(self):
         """
@@ -130,10 +136,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_bad_match_code:
-            self.assertEqual(value, elem)
+        iter_given_code = self.test_bad_match_code.__iter__()
+        length = self.test_bad_match_code.__len__()
+
+        while value < self.MAX_BAD_MATCH_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BAD_MATCH_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_bad_request_code_value(self):
         """
@@ -144,10 +157,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_bad_request_code:
-            self.assertEqual(value, elem)
+        iter_given_code = self.test_bad_request_code.__iter__()
+        length = self.test_bad_request_code.__len__()
+
+        while value < self.MAX_BAD_REQUEST_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BAD_REQUEST_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_error_type(self):
         """
@@ -158,14 +178,20 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_error_type:
+        iter_given_code = self.test_error_type.__iter__()
+        length = self.test_error_type.__len__()
+
+        while value < self.MAX_ERROR_TYPE_VALUE or length > 0:
 
             if value == 18:
                 value = 0xffff
-            self.assertEqual(value, elem)
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_ERROR_TYPE_VALUE:
                 value += 1
 
+            length -= 1
 
     def test_flow_mod_failed_code_value(self):
         """
@@ -174,14 +200,19 @@ class TestErrorMessageTestCases(unittest.TestCase):
         :return: None
         """
 
-
         value = 0
 
-        for elem in self.test_flow_mod_failed_code:
+        iter_given_code = self.test_flow_mod_failed_code.__iter__()
+        length = self.test_flow_mod_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_FLOW_MOD_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_FLOW_MOD_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_group_mod_failed_code_value(self):
         """
@@ -190,14 +221,19 @@ class TestErrorMessageTestCases(unittest.TestCase):
         :return: None
         """
 
-
         value = 0
 
-        for elem in self.test_group_mod_failed_code:
+        iter_given_code = self.test_group_mod_failed_code.__iter__()
+        length = self.test_group_mod_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_GROUP_MOD_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_GROUP_MOD_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_hello_failed_code_value(self):
         """
@@ -206,14 +242,19 @@ class TestErrorMessageTestCases(unittest.TestCase):
         :return: None
         """
 
-
         value = 0
 
-        for elem in self.test_hello_failed_code:
+        iter_given_code = self.test_hello_failed_code.__iter__()
+        length = self.test_hello_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_HELLO_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_HELLO_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_meter_mod_failed_code_value(self):
         """
@@ -222,14 +263,19 @@ class TestErrorMessageTestCases(unittest.TestCase):
         :return: None
         """
 
-
         value = 0
 
-        for elem in self.test_meter_mod_failed_code:
+        iter_given_code = self.test_meter_mod_failed_code.__iter__()
+        length = self.test_meter_mod_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_METER_MOD_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_METER_MOD_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_port_mod_failed_code_value(self):
         """
@@ -238,14 +284,19 @@ class TestErrorMessageTestCases(unittest.TestCase):
         :return: None
         """
 
-
         value = 0
 
-        for elem in self.test_port_mod_failed_code:
+        iter_given_code = self.test_port_mod_failed_code.__iter__()
+        length = self.test_port_mod_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_PORT_MOD_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_PORT_MOD_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_queue_op_failed_code_value(self):
         """
@@ -255,11 +306,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
         """
         value = 0
 
-        for elem in self.test_queue_op_failed_code:
+        iter_given_code = self.test_queue_op_failed_code.__iter__()
+        length = self.test_queue_op_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_QUEUE_OP_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_QUEUE_OP_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_role_request_failed_code_value(self):
         """
@@ -269,11 +326,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
         """
         value = 0
 
-        for elem in self.test_role_request_failed_code:
+        iter_given_code = self.test_role_request_failed_code.__iter__()
+        length = self.test_role_request_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_switch_config_failed_code_value(self):
         """
@@ -284,11 +347,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_switch_config_failed_code:
+        iter_given_code = self.test_switch_config_failed_code.__iter__()
+        length = self.test_switch_config_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_table_feature_failed_code_value(self):
         """
@@ -299,13 +368,20 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_table_feature_failed_code:
+        iter_given_code = self.test_table_feature_failed_code.__iter__()
+        length = self.test_table_feature_failed_code.__len__()
+
+        while value < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE or length > 0:
+
             if value == 2:
                 value = 5
 
-            self.assertEqual(value, elem)
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_table_mod_failed_code_value(self):
         """
@@ -316,11 +392,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_table_mod_failed_code:
+        iter_given_code = self.test_table_mod_failed_code.__iter__()
+        length = self.test_table_mod_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_TABLE_MOD_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_TABLE_MOD_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_bad_property_code_value(self):
         """
@@ -331,11 +413,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_bad_property_code:
+        iter_given_code = self.test_bad_property_code.__iter__()
+        length = self.test_bad_property_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_BAD_PROPERTY_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BAD_PROPERTY_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_async_config_failed_code_value(self):
         """
@@ -346,11 +434,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_async_config_failed_code:
+        iter_given_code = self.test_async_config_failed_code.__iter__()
+        length = self.test_async_config_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_flow_monitor_failed_code_value(self):
         """
@@ -361,11 +455,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_flow_monitor_failed_code:
+        iter_given_code = self.test_flow_monitor_failed_code.__iter__()
+        length = self.test_flow_monitor_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_bundle_failed_code_value(self):
         """
@@ -376,11 +476,17 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         value = 0
 
-        for elem in self.test_bundle_failed_code:
+        iter_given_code = self.test_bundle_failed_code.__iter__()
+        length = self.test_bundle_failed_code.__len__()
 
-            self.assertEqual(value, elem)
+        while value < self.MAX_BUNDLE_FAILED_CODE_VALUE or length > 0:
+
+            self.assertEqual(value, iter_given_code.__next__())
+
             if value < self.MAX_BUNDLE_FAILED_CODE_VALUE:
                 value += 1
+
+            length -= 1
 
     def test_error_message_header_hello_failed_codes(self):
         """
@@ -393,20 +499,25 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_HELLO_FAILED_CODE_VALUE or length > 0:
 
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_HELLO_FAILED_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bad_request_codes(self):
         """
@@ -419,19 +530,25 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BAD_REQUEST_CODE_VALUE or length > 0:
+
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BAD_REQUEST_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bad_action_codes(self):
         """
@@ -445,19 +562,25 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BAD_ACTION_CODE_VALUE or length > 0:
+
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BAD_ACTION_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bad_instruction_codes(self):
         """
@@ -471,19 +594,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BAD_INSTRUCTION_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BAD_INSTRUCTION_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bad_match_codes(self):
         """
@@ -497,19 +624,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BAD_MATCH_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BAD_MATCH_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_flow_mod_failed_codes(self):
         """
@@ -523,20 +654,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_FLOW_MOD_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_FLOW_MOD_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
-
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_group_mod_failed_codes(self):
         """
@@ -550,19 +684,22 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_GROUP_MOD_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_GROUP_MOD_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
-
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_port_mod_failed_codes(self):
         """
@@ -576,19 +713,24 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_PORT_MOD_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_PORT_MOD_FAILED_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_table_mod_failed_codes(self):
         """
@@ -602,19 +744,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_TABLE_MOD_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_TABLE_MOD_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_queue_op_failed_codes(self):
         """
@@ -628,19 +774,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_QUEUE_OP_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_QUEUE_OP_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_switch_config_failed_codes(self):
         """
@@ -654,19 +804,22 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_SWITCH_CONFIG_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
-
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_role_request_failed_codes(self):
         """
@@ -680,19 +833,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_ROLE_REQUEST_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_meter_mod_failed_codes(self):
         """
@@ -706,19 +863,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_METER_MOD_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_METER_MOD_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_table_features_failed_codes(self):
         """
@@ -732,23 +893,26 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
 
+        while error_code < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
             if error_code == 2:
                 error_code = 5
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_TABLE_FEATURE_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bad_property_codes(self):
         """
@@ -762,19 +926,22 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BAD_PROPERTY_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BAD_PROPERTY_CODE_VALUE:
                 error_code += 1
+            length -= 1
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
-
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_async_config_failed_codes(self):
         """
@@ -788,19 +955,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() +\
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_ASYNC_CONFIG_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_flow_monitor_failed_codes(self):
         """
@@ -814,19 +985,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_FLOW_MONITOR_FAILED_CODE_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_bundle_failed_codes(self):
         """
@@ -840,19 +1015,24 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_BUNDLE_FAILED_CODE_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_BUNDLE_FAILED_CODE_VALUE:
                 error_code += 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            length -= 1
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_message_header_experimenter_codes(self):
         """
@@ -866,19 +1046,23 @@ class TestErrorMessageTestCases(unittest.TestCase):
 
         error_code = 0
 
-        for elem in Error.ErrorType.get_class(error_type_value):
+        iter_given_code = Error.ErrorType.get_class(error_type_value).__iter__()
+        length = Error.ErrorType.get_class(error_type_value).__len__()
+
+        while error_code < self.MAX_EXPERIMENTER_VALUE or length > 0:
             data = UBInt32(random.randint(2, 250)).pack()
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
+            test_value = b'\x05\x01\x00\x10' + UBInt32(xid).pack() + UBInt16(error_type).pack() + \
                         UBInt16(error_code).pack() + data
 
             if error_code < self.MAX_EXPERIMENTER_VALUE:
                 error_code += 1
+            length -= 1
 
-            testObjectErrorMessages = Error.ErrorMsg(xid, error_type_value, elem, data).pack()
+            test_object_error_messages = Error.ErrorMsg(xid, error_type_value, iter_given_code.__next__(), data).pack()
 
-            self.assertEqual(testValue, testObjectErrorMessages)
+            self.assertEqual(test_value, test_object_error_messages)
 
     def test_error_experimenter_message(self):
         """
@@ -903,13 +1087,14 @@ class TestErrorMessageTestCases(unittest.TestCase):
             # Generate a random int number between 2 and 250
             xid = random.randint(2, 250)
 
-            testValue = b'\x05\x01\x00\x11' + UBInt32(xid).pack() + UBInt16(type).pack() + \
+            test_value = b'\x05\x01\x00\x11' + UBInt32(xid).pack() + UBInt16(type).pack() + \
                         UBInt16(exp_code).pack() + UBInt32(id).pack() + data
 
             self.test_error_experimenter_message.__init__(xid, exp_code, id, data)
-            testObjectValue = self.test_error_experimenter_message.pack()
 
-            self.assertEqual(testValue, testObjectValue)
+            test_object_error_messages = self.test_error_experimenter_message.pack()
+
+            self.assertEqual(test_value, test_object_error_messages)
 
 
 
