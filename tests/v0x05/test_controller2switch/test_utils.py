@@ -109,6 +109,54 @@ class MessageGenerator():
 
                 item = (xid, value)
 
+            elif self.type_of_mesg == Type.OFPT_ECHO_REPLY:
+
+                test_length = b'\x00\x00'
+
+                header = version + msg_type + test_length + xid.pack()
+
+                buffer_id = UBInt32(random.randint(0, self.MAX_32BITS_VALUE)).pack()
+
+                total_len = UBInt16(random.randint(0, self.MAX_16BITS_VALUE)).pack()
+
+                reason = UBInt8(random.randint(0, 5)).pack()
+
+                table_id = UBInt8(random.randint(0, self.MAX_8BITS_VALUE)).pack()
+
+                cookie = UBInt64(random.randint(0, self.MAX_64BITS_VALUE)).pack()
+
+                oxmtlv = b''
+
+                for i in range(0, random.randint(1, self.MAX_NUM_OF_OXMTLV)):
+                    oxm_class = UBInt16(0x8000).pack()
+                    oxm_field_and_mask = UBInt8(0).pack()
+                    oxm_length = UBInt8(0)
+                    oxm_value = UBInt32(random.randint(1, self.MAX_32BITS_VALUE)).pack()
+
+                    test_value = oxm_class + oxm_field_and_mask + oxm_length.pack()
+                    oxm_length = UBInt8(len(test_value)).pack()
+                    val = oxm_class + oxm_field_and_mask + oxm_length + oxm_value
+
+                    oxmtlv += val
+
+                match_type = UBInt16(1).pack()
+                match_length = UBInt16(0)
+                match_pad = UBInt32(0).pack()
+                test_length = match_type + match_length.pack() + oxmtlv + match_pad
+
+                match_length = UBInt16(len(test_length)).pack()
+
+                matchVal = match_type + match_length + oxmtlv + match_pad
+
+                test_value = header + buffer_id + total_len + reason + table_id + cookie + matchVal
+
+                length = UBInt16(len(test_value)).pack()
+
+                header = version + msg_type + length + xid.pack()
+
+                value = header + buffer_id + total_len + reason + table_id + cookie + matchVal
+
+                item = (xid, value)
             else:
                 pass
 

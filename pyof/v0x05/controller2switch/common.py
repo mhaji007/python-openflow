@@ -22,7 +22,7 @@ __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter', 'SwitchCon
            'ExperimenterMultipartHeader', 'MultipartType', 'AsyncConfig', 'RoleBaseMessage',
            'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID',
            'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty',
-           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'TableFeaturePropExperimenter')
+           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'ExperimenterProperty')
 
 # Enum
 
@@ -636,6 +636,7 @@ class ExperimenterProperty(Property):
         self.experimenter = experimenter
         self.exp_type = exp_type
         self.experimenter_data = experimenter_data
+        self.update_length()
 
 
 class TableFeaturePropOxm(Property):
