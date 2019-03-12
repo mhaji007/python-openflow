@@ -10,7 +10,7 @@ from pyof.v0x05.common.header import Header, Type
 
 # Third-party imports
 
-__all__ = ('BundleControlType', 'BundleControl', 'BundleFlags', 'BundlePropHeader'
+__all__ = ('BundleControlType', 'BundleControlMsg', 'BundleFlags', 'BundlePropHeader'
            , 'BundlePropExperimenter', 'BundlePropType')
 
 
@@ -89,7 +89,7 @@ class BundlePropExperimenter(BundlePropHeader):
         self.exp_type = exp_type
 
 
-class BundleControl(GenericMessage):
+class BundleControlMsg(GenericMessage):
     """Message structure for OFPT_BUNDLE_CONTROL"""
 
 
