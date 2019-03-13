@@ -142,10 +142,6 @@ class TableModPropVacancy(TableModPropHeader):
 class TableModPropExperimenter(TableModPropHeader):
     """Experimenter table mod property"""
 
-    #: OFPTMPT_EXPERIMENTER.
-    type = TableModPropType.OFPTMPT_EXPERIMENTER
-    #: Length in bytes of this property.
-    length = UBInt16()
     #: Experimenter ID which takes the same form as in struct experimenter_header
     experimenter = UBInt32()
     #: Experimenter defined.
@@ -158,10 +154,14 @@ class TableModPropExperimenter(TableModPropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
-        super().__init__()
+        """
 
-        super().type = TableModPropType.OFPTMPT_EXPERIMENTER
+        :param experimenter: (int) Experimenter ID which takes the same form as in struct experimenter_header
+        :param exp_type: (int) Experimenter defined.
+        """
+        super().__init__(TableModPropType.OFPTMPT_EXPERIMENTER)
 
         self.experimenter = experimenter
 
         self.exp_type = exp_type
+        super().length = len(self)

@@ -12,17 +12,17 @@ from pyof.v0x05.asynchronous.packet_in import PacketInReason
 from pyof.v0x05.asynchronous.port_status import PortReason
 # Local source tree imports
 from pyof.v0x05.common.action import (
-    ActionHeader, ControllerMaxLen, ListOfActions)
-from pyof.v0x05.common.flow_instructions import ListOfInstruction
+    ActionHeader, ControllerMaxLen, ListOfActions, ActionType)
+from pyof.v0x05.common.flow_instructions import ListOfInstruction, InstructionType
 from pyof.v0x05.common.flow_match import ListOfOxmHeader
 from pyof.v0x05.common.header import Header
 from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
-__all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter',
-           'ExperimenterMultipartHeader', 'MultipartType',
-           'TableFeaturePropType', 'Property', 'InstructionsProperty',
-           'NextTablesProperty', 'ActionsProperty', 'OxmProperty',
-           'ListOfProperty', 'TableFeatures')
+__all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter', 'SwitchConfig',
+           'ExperimenterMultipartHeader', 'MultipartType', 'AsyncConfig', 'RoleBaseMessage',
+           'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID',
+           'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty',
+           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'ExperimenterProperty')
 
 # Enum
 
@@ -449,6 +449,34 @@ class Property(GenericStruct):
         self.length = self.get_size()
 
 
+
+class InstructionId(GenericStruct):
+    """Instruction ID"""
+
+    #: One of OFPIT_*.
+    type = UBInt16(InstructionType)
+    #: Length is 4 or experimenter defined.
+    length = UBInt16(4)
+    #: Optional experimenter id + data.
+    exp_data = UBInt8()
+
+    def __init__(self, type=InstructionType, length=None, exp_data=None):
+        """The instruction_ids field is the list of instructions supported by this table.
+        The elements of that list are variable in size to enable expressing experimenter
+         instructions. Non-experimenter instructions are 4 bytes.
+
+            Args:
+                type(InstructionType): One of OFPIT_*.
+                length(int): Length is 4 or experimenter defined.
+                exp_data(int): Optional experimenter id + data.
+        """
+
+        self.type = type
+        self.length = UBInt16(4) if length is None else length
+        self.exp_data = exp_data
+
+
+
 class InstructionsProperty(Property):
     """Instructions property.
 
@@ -457,7 +485,7 @@ class InstructionsProperty(Property):
         OFPTFPT_INSTRUCTIONS_MISS
     """
 
-    instruction_ids = ListOfInstruction()
+    instruction_ids = FixedTypeList(pyof_class=InstructionId)
 
     def __init__(self, property_type=TableFeaturePropType.OFPTFPT_INSTRUCTIONS,
                  instruction_ids=None):
@@ -466,7 +494,7 @@ class InstructionsProperty(Property):
         Args:
             type(|TableFeaturePropType_v0x05|):
                 Property Type value of this instance.
-            next_table_ids(|ListOfInstruction_v0x05|):
+            instruction_ids(|ListOfInstruction_v0x05|):
                 List of InstructionGotoTable instances.
         """
         super().__init__(property_type=property_type)
@@ -480,6 +508,7 @@ class NextTablesProperty(Property):
     This class represents Property with the following types:
         OFPTFPT_NEXT_TABLES
         OFPTFPT_NEXT_TABLES_MISS
+        OFPTFPT_TABLE_SYNC_FROM
     """
 
     next_table_ids = ListOfInstruction()
@@ -500,6 +529,27 @@ class NextTablesProperty(Property):
         self.update_length()
 
 
+class ActionID(GenericStruct):
+    """Action ID"""
+
+    type = UBInt16(ActionType)
+    len = UBInt16()
+    exp_data = UBInt8()
+
+    def __init__(self, type=ActionType, len=None, exp_data=None):
+        """Action ID
+            Args:
+                type(ActionType): One of OFPAT_*.
+                len(int): Length is 4 or experimenter defined.
+                exp_data(int): Optional experimenter id + data.
+        """
+
+        self.type = type if isinstance(type, ActionType) else None
+        self.len = UBInt16(4) if len is not None else len
+        self.exp_data = exp_data
+
+
+
 class ActionsProperty(Property):
     """Actions Property.
 
@@ -510,7 +560,7 @@ class ActionsProperty(Property):
         OFPTFPT_APPLY_ACTIONS_MISS
     """
 
-    action_ids = ListOfActions()
+    action_ids = FixedTypeList(pyof_class=ActionID) # ListOfActions()
 
     def __init__(self,
                  property_type=TableFeaturePropType.OFPTFPT_WRITE_ACTIONS,
@@ -524,7 +574,7 @@ class ActionsProperty(Property):
                 List of Action instances.
         """
         super().__init__(property_type)
-        self.action_ids = action_ids if action_ids else ListOfActions()
+        self.action_ids = action_ids if action_ids else FixedTypeList(pyof_class=ActionID)# ListOfActions()
         self.update_length()
 
 
@@ -555,6 +605,62 @@ class OxmProperty(Property):
         super().__init__(property_type)
         self.oxm_ids = ListOfOxmHeader() if oxm_ids is None else oxm_ids
         self.update_length()
+
+
+class ExperimenterProperty(Property):
+    """Experimenter table feature property.
+
+    This class represents property with the following types:
+        OFPTFPT_EXPERIMENTER
+        OFPTFPT_EXPERIMENTER_MISS
+
+    """
+    experimenter = UBInt32()
+    exp_type = UBInt32()
+
+    experimenter_data = UBInt32()
+
+    def __init__(self, property_type=TableFeaturePropType.OFPTFPT_EXPERIMENTER, experimenter=None, exp_type=None, experimenter_data=None):
+        """ Create or initialize an object Experimenter table feature property.
+
+        :param property_type(int): One of OFPTFPT_EXPERIMENTER, OFPTFPT_EXPERIMENTER_MISS.
+        :param experimenter(int): Experimenter ID which takes the same form as in strcut ExperimenterHeader.
+        :param exp_type(int): Experimenter defined.
+        Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes of all-zero bytes.
+        :param experimenter_data(int): Experimenter data.
+        """
+
+        super().__init__(property_type)
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
+        self.update_length()
+
+
+class TableFeaturePropOxm(Property):
+    """Match, Wildcard or Set-Field property."""
+
+    oxm_ids = UBInt32()
+
+    def __init__(self, property_type=TableFeaturePropType.OFPTFPT_MATCH, oxm_ids=None):
+        """ Create or initialize an object Match, Wildcard or Set-Field property
+
+        :param property_type(int): One of OFPTFPT_MATCH, OFPTFPT_WILDCARDS, OFPTFPT_WRITE_SETFIELD,
+        OFPTFPT_WRITE_SETWIELD_MISS, OFPTFPT_APPLY_SETFIELD, OFPTFPT_APPLY_SETFIELD_MISS.
+        Followed by:
+            - Exactly (length - 4) bytes containing the oxm_ids, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes
+            of all-zero bytes.
+        :param oxm_ids(int): Array of OXM headers.
+
+        """
+        super().__init__(property_type)
+
+        self.oxm_ids = oxm_ids if oxm_ids is FixedTypeList else []
+        self.update_length()
+
 
 
 class ListOfProperty(FixedTypeList):
@@ -590,7 +696,7 @@ class TableFeatures(GenericStruct):
     # /* Bits of metadata table can write. */
     metadata_write = UBInt64()
     # /* Bitmap of OFPTC_* values */
-    config = UBInt32()
+    capabilities = UBInt32()
     # /* Max number of entries supported. */
     max_entries = UBInt32()
     # /* Table Feature Property list */
@@ -599,7 +705,7 @@ class TableFeatures(GenericStruct):
     def __init__(self, table_id=Table.OFPTT_ALL, name="",
                  metadata_match=0xFFFFFFFFFFFFFFFF,
                  metadata_write=0xFFFFFFFFFFFFFFFF,
-                 config=0,
+                 capabilities=0,
                  max_entries=0,
                  properties=None):
         """Create a TableFeatures with the optional parameters below.
@@ -616,7 +722,7 @@ class TableFeatures(GenericStruct):
                the table can write using the OFPIT_WRITE_METADATA instruction.
                The default value ``0xFFFFFFFFFFFFFFFF`` indicates that the
                table can write the full metadata field.
-            config(int): Field reseved for future use.
+            capabilities(int): Field reseved for future use.
             max_entries(int): Describe the maximum number of flow entries that
                 can be inserted into that table.
             properties(~pyof.v0x05.controller2switch.common.ListOfProperty):
@@ -627,7 +733,7 @@ class TableFeatures(GenericStruct):
         self.name = name
         self.metadata_match = metadata_match
         self.metadata_write = metadata_write
-        self.config = config
+        self.capabilities = capabilities
         self.max_entries = max_entries
         self.properties = (ListOfProperty() if properties is None else
                            properties)
@@ -663,3 +769,6 @@ class TableFeatures(GenericStruct):
         length = UBInt16()
         length.unpack(buff, offset)
         super().unpack(buff[:offset+length.value], offset)
+
+
+

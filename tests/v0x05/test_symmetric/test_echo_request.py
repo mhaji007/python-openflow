@@ -5,30 +5,52 @@ from tests.test_struct import TestStruct
 import unittest
 
 
-
-
-
-
-
-
-class TestEchoReuestByCases(unittest.TestCase):
+class TestEchoRequestByCases(unittest.TestCase):
+    """
+    Test the Echo Request message elements composition
+    """
 
     def setUp(self):
+        """
+
+        :return: None
+        """
         self.type = UBInt8(3)
         self.length = UBInt16(6)
         self.xid = UBInt32(23)
         self.data = BinaryData(b'001100111101')
-        self.testObject = EchoRequest()
-        self.testObject.header.__init__(self.type,self.length,self.xid)
-        self.testObject1 = EchoRequest(self.xid,self.data)
+        self.test_object = EchoRequest()
+        self.test_object.header.__init__(self.type,self.length,self.xid)
+        self.test_object1 = EchoRequest(23, b'001100111101')
 
+    def test_echo_request_type(self):
+        """
+        Test the echo request type.
+        :return: None
+        """
+        self.assertEqual(self.type, self.test_object.header.message_type)
 
-    def test_echoRequest(self):
-        self.assertEqual(self.type, self.testObject.header.message_type)
-        self.assertEqual(self.length, self.testObject.header.length)
-        self.assertEqual(self.xid, self.testObject.header.xid)
-        self.assertEqual(self.data, self.testObject1.data)
-        self.assertNotEqual(self.type, self.testObject1.header.message_type)
+    def test_echo_request_length(self):
+        """
+        Test the echo request length.
+        :return: None
+        """
+        self.assertEqual(self.length, self.test_object.header.length)
+
+    def test_echo_request_xid(self):
+        """
+        Test the echo request xid.
+        :return: None
+        """
+        self.assertEqual(self.xid, self.test_object.header.xid)
+
+    def test_echo_request_data(self):
+        """
+        Test the echo request data.
+        :return: None
+        """
+        self.assertEqual(self.data, self.test_object1.data)
+
 
 
 class TestEchoRequest(TestStruct):

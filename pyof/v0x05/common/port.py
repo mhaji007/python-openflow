@@ -59,7 +59,7 @@ class PortDescPropType(IntEnum):
     OFPPDPT_EXPERIMENTER = 0xfff
 
 
-class OpticalPortFeatures(IntEnum):
+class OpticalPortFeatures(GenericBitMask):
     """Features of optical ports available in switch. """
 
     # Receiver is tunable.

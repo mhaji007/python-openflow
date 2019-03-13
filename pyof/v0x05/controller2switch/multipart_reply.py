@@ -738,7 +738,7 @@ class TableStats(GenericStruct):
 
 
 class TableDesc(GenericStruct):
-    """Body of reply ro OFPMP_TABLE_DESC request."""
+    """Body of reply to OFPMP_TABLE_DESC request."""
 
     length = UBInt16()
     table_id = UBInt8()
@@ -755,6 +755,7 @@ class TableDesc(GenericStruct):
                 config(int): Bitmap of OFPTC_* values.
                 properties(TableModPropHeader list): Table Mod Property list - 0 or more.
         """
+        super().__init__()
         self.length = length
         self.table_id = table_id
         self.config = config

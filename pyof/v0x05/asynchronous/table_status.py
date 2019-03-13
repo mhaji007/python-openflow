@@ -8,7 +8,7 @@ from enum import IntEnum
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
-from pyof.v0x05.controller2switch.table_description import TableDescription
+from pyof.v0x05.controller2switch.multipart_reply import TableDesc
 
 # Third-party imports
 
@@ -39,7 +39,7 @@ class TableStatus(GenericMessage):
     #: Pad to 64 bits
     pad = Pad(7)
     #: New table config
-    table = TableDescription()
+    table = TableDesc()
 
     def __init__(self, xid=None, reason=None, table=None):
         """Create a message with the optional parameters below.
