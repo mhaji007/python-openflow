@@ -79,7 +79,7 @@ class TableMod(GenericMessage):
     properties = FixedTypeList(TableModPropHeader)
 
     def __init__(self, xid=None, table_id=Table.OFPTT_ALL, config=3, properties=TableModPropHeader):
-        """Assing parameters to object attributes.
+        """Assign parameters to object attributes.
 
         Args:
             xid (int): :class:`~pyof.v0x05.common.header.Header`'s xid.

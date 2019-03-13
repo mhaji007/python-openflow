@@ -7,10 +7,11 @@ from enum import IntEnum
 from pyof.foundation.base import GenericMessage, GenericStruct
 from pyof.foundation.basic_types import BinaryData, FixedTypeList, UBInt16, UBInt8, UBInt32, UBInt64, Pad
 from pyof.v0x05.common.header import Header, Type
+from pyof.v0x05.controller2switch.role_request import ControllerRole
 
 # Third-party imports
 
-__all__ = ('RoleReason', 'RolePropertyType', 'RolePropHeader', 'RoleStatus')
+__all__ = ('RoleReason', 'RolePropertyType', 'RolePropHeader', 'RoleStatusMsg')
 
 
 # Enums
@@ -27,34 +28,43 @@ class RoleReason(IntEnum):
 
 
 class RolePropertyType(IntEnum):
-        """Role property types"""
+    """Role property types"""
 
-        #: Experimenter property
-        OFPRT_EXPERIMENTER = 0xFFFF
-
+    #: Experimenter property
+    OFPRPT_EXPERIMENTER = 0xFFFF
 
 
 class RolePropHeader(GenericStruct):
     """Common header for all Role properties"""
 
     #: One of OFPRPT_
-    type = UBInt16()
+    type = UBInt16(enum_ref=RolePropertyType)
     #: Length in bytes of this property
     length = UBInt16()
 
-    def __init__(self, type = None, length = None):
+    def __init__(self, type=RolePropertyType, length=None):
         super().__init__()
         self.type = type
         self.length = length
 
 
-class RoleStatus(GenericMessage):
+class RoleStatusMsg(GenericMessage):
     """OpenFlow Controller Role Status Message OFPT_ROLE_REQUEST. """
+
+    """Assign parameters to object attributes.
+
+    Args:
+        xid (int): :class:`~pyof.v0x05.common.header.Header`'s xid.
+            Defaults to random.
+        generation_id (int): Master Election Generation Id
+        reason (int): One of OFPCRR_*.
+        role (int): One of OFPCR_ROLE_*
+    """
 
     #: Type OFPT_ROLE_STATUS
     header = Header(message_type=Type.OFPT_ROLE_STATUS)
     #: One of OFPCR_ROLE_*
-    role = UBInt32()
+    role = UBInt32(enum_ref=ControllerRole)
     #: One of OFPCRR_*.
     reason = UBInt8(enum_ref=RoleReason)
     #: Align to 64 bits
@@ -64,12 +74,17 @@ class RoleStatus(GenericMessage):
     #: Role Property list
     properties = FixedTypeList(RolePropHeader)
 
-    def __init__(self, xid=None, role=None, reason=None, generation_id=None, properties=None):
+    def __init__(self, xid=None, role=ControllerRole, reason=RoleReason, generation_id=None, properties=None):
         """Create a message with the optional parameters below.
 
         Args:
             xid (int): xid to be used on the message header.
-            elements: List of elements - 0 or more
+            role (int): the new role of the controller
+            reason (int): one of RoleReason
+            generation_id (int): the generation ID that was included in the role request message that
+            triggered the role change
+            properties: a list of role properties, describing dynamic parameters of table configuration
+
         """
         super().__init__(xid)
         self.role = role
@@ -81,15 +96,27 @@ class RoleStatus(GenericMessage):
 class ExperimenterRoleProperty(RolePropHeader):
     """ Experimenter role property"""
 
-    type = UBInt16()
+    #: One of OFPRPT_EXPERIMENTER.
+    type = RolePropertyType.OFPRPT_EXPERIMENTER
+    #: Length in bytes of this property
     length = UBInt16()
+    #: Experimenter ID which takes the same form as in struct ofp_experimenter_header
     experimenter = UBInt32()
+    #: Experimenter defined
     exp_type = UBInt32()
+
+    """Followed by:
+        - Exactly (length - 12) bytes containing the experimenter data, then
+        - Exactly (length + 7)/ 8 * 8 - (length) (between 0 and 7) bytes of all-zero bytes.
+    """
+
     experimenter_data = UBInt32()
 
-    def __int__(self, type=Type.OFPRPT_EXPERIMENTER, length=None, experimenter=None, exp_type=None, experimenter_data=None):
-        self.type = type
-        self.length = length
+    def __init__(self, experimenter=None, exp_type=None):
+        super().__init__()
+
+        super().type = RolePropertyType.OFPRPT_EXPERIMENTER
+
         self.experimenter = experimenter
+
         self.exp_type = exp_type
-        self.experimenter_data = experimenter_data
