@@ -24,6 +24,7 @@ __all__ = ('MultipartRequest', 'MultipartRequestFlags',
            'PortStatsRequest', 'QueueStatsRequest',
            'GroupStatsRequest', 'MeterMultipartRequest')
 
+
 # Enum
 
 
@@ -330,5 +331,33 @@ class MeterMultipartRequest(GenericStruct):
         self.meter_id = meter_id
 
 
+class FlowMonitorRequest(GenericStruct):
+    """
+    Body for ofp_multipart_request of type OFPMP_FLOW_MONITOR.
+
+     The OFPMP_FLOW_MONITOR request’s body consists of an array of zero or more
+     instances of this structure. The request arranges to monitor the flows
+     that match the specified criteria, which are interpreted in the same way as
+     for OFPMP_FLOW.
+
+    ’id’ identifies a particular monitor for the purpose of allowing it to be
+     canceled later with OFPFMC_DELETE. ’id’ must be unique among
+     existing monitors that have not already been canceled.
+
+    """
+    #: Controller-assigned ID for this monitor
+    monitor_id = UBInt32()
+    #: Required output port, if not OFPP_ANY
+    out_port = UBInt32(enum_ref=PortNo)
+    #: Required group number, if not OFPG_ANY
+    out_group = UBInt32(enum_ref=Group)
+    #: OFPFMF_*
+    flags = UBInt16(enum_ref=)
+    #: One table’s ID or OFPTT_ALL (all tables)
+    table_id = UBInt8(enum_ref=Table)
+    #: One of OFPFMC_*
+    command = UBInt8(enum_ref=)
+    #: Fields to match. Variable size.
+    match = Match()
 
 
