@@ -10,7 +10,6 @@ from pyof.foundation.basic_types import (
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import PortNo
-from pyof.v0x05.common.constants import DESC_STR_LEN, SERIAL_NUM_LEN
 from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
 from pyof.v0x05.controller2switch.group_mod import Group
@@ -36,6 +35,36 @@ class MultipartRequestFlags(Enum):
 
     #: More requests to follow
     OFPMPF_REQ_MORE = 1 << 0
+
+
+class FlowMonitorCommand(Enum):
+    """Flow monitor commands"""
+
+    #: New flow monitor
+    OFPFMC_ADD = 0
+    #: Modify existing flow monitor
+    OFPFMC_MODIFY = 1
+    #: Delete / cancel existing flow monitor
+    OFPFMC_DELETE = 2
+
+
+class FlowMonitorFlags(Enum):
+    """’flags’ bits in struct of_flow_monitor_request"""
+
+    #: Initially matching flows
+    OFPFMF_INITIAL = 1 << 0
+    #: New matching flows as they are added
+    OFPFMF_ADD = 1 << 1
+    #: Old matching flows as they are removed
+    OFPFMF_REMOVED = 1 << 2
+    #: Matching flows as they are changed What to include in updates
+    OFPFMF_MODIFY = 1 << 3
+    #: If set, instructions are included
+    OFPFMF_INSTRUCTIONS = 1 << 4
+    #: If set, include own changes in full
+    OFPFMF_NO_ABBREV = 1 << 5
+    #: If set, don’t include other controllers
+    OFPFMF_ONLY_OWN = 1 << 6
 
 
 # Classes
@@ -352,12 +381,40 @@ class FlowMonitorRequest(GenericStruct):
     #: Required group number, if not OFPG_ANY
     out_group = UBInt32(enum_ref=Group)
     #: OFPFMF_*
-    flags = UBInt16(enum_ref=)
+    flags = UBInt16(enum_ref=FlowMonitorFlags)
     #: One table’s ID or OFPTT_ALL (all tables)
     table_id = UBInt8(enum_ref=Table)
     #: One of OFPFMC_*
-    command = UBInt8(enum_ref=)
-    #: Fields to match. Variable size.
+    command = UBInt8(enum_ref=FlowMonitorCommand)
+    #: Fields to match. Variable size
     match = Match()
 
+    def __init__(self, monitor_id=None, out_port=PortNo.OFPP_ANY, out_group=Group.OFPG_ANY, flags=FlowMonitorFlags,
+                 table_id=Table.OFPTT_ALL,
+                 command=FlowMonitorCommand, match=None):
+        """
+        Create a FlowStatsRequest with the optional parameters below.
 
+        Args:
+            monitor_id (int): uniquely identifies a monitor for a specific controller connection within a switch
+            (from pyof_table_stats)
+                0xff for all tables or 0xfe for emergency.
+            out_port (:class:`int`, :class:`~pyof.v0x05.common.port.PortNo`):
+                Require matching entries to include this as an output port.
+                A value of :attr:`.PortNo.OFPP_ANY` indicates no restriction.
+            out_group: Require matching entries to include this as an output
+                group. A value of :attr:`Group.OFPG_ANY` indicates no
+                restriction.
+            table_id (int): ID of table to read (from pyof_table_stats)
+                0xff for all tables or 0xfe for emergency.
+            command: defines what operation must be done on that monitor
+            match (~pyof.v0x05.common.flow_match.Match): Fields to match.
+        """
+        super().__init__()
+        self.monitor_id = monitor_id
+        self.out_port = out_port
+        self.out_group = out_group
+        self.flags = flags
+        self.table_id = table_id
+        self.command = command
+        self.match = Match() if match is None else match
