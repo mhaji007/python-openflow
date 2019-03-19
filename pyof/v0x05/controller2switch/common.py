@@ -470,7 +470,7 @@ class InstructionId(GenericStruct):
                 length(int): Length is 4 or experimenter defined.
                 exp_data(int): Optional experimenter id + data.
         """
-
+        super().__init__()
         self.type = type
         self.length = UBInt16(4) if length is None else length
         self.exp_data = exp_data
@@ -543,7 +543,7 @@ class ActionID(GenericStruct):
                 len(int): Length is 4 or experimenter defined.
                 exp_data(int): Optional experimenter id + data.
         """
-
+        super().__init__()
         self.type = type if isinstance(type, ActionType) else None
         self.len = UBInt16(4) if len is not None else len
         self.exp_data = exp_data

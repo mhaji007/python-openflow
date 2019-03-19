@@ -11,7 +11,7 @@ from pyof.foundation.constants import DESC_STR_LEN, SERIAL_NUM_LEN
 from pyof.v0x05.common.flow_instructions import ListOfInstruction
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
-from pyof.v0x05.common.port import Port
+from pyof.v0x05.common.port import Port, PortDescPropHeader
 from pyof.v0x05.controller2switch.common import (
     Bucket, BucketCounter, ExperimenterMultipartHeader, MultipartType,
     TableFeatures)
@@ -314,15 +314,33 @@ class FlowStats(GenericStruct):
         super().unpack(buff[:offset+unpack_length], offset)
 
 
+class ListOfPortDescProperty(FixedTypeList):
+    """
+
+    """
+
+    def __init__(self, items=None):
+        """
+
+        :param items:
+        """
+
+        super().__init__(PortDescPropHeader, items=items)
+
+
+
 class PortStats(GenericStruct):
-    """Body of reply to OFPST_PORT request.
+    """Body of reply to OFPMP_PORT_STATS request.
 
     If a counter is unsupported, set the field to all ones.
     """
+    length = UBInt16()
+    #: Align to 64-bits.
+    pad = Pad(2)
 
     port_no = UBInt32()
-    #: Align to 64-bits.
-    pad = Pad(4)
+    duration_sec = UBInt32()
+    duration_nsec = UBInt32()
     rx_packets = UBInt64()
     tx_packets = UBInt64()
     rx_bytes = UBInt64()
@@ -331,47 +349,40 @@ class PortStats(GenericStruct):
     tx_dropped = UBInt64()
     rx_errors = UBInt64()
     tx_errors = UBInt64()
-    rx_frame_err = UBInt64()
-    rx_over_err = UBInt64()
-    rx_crc_err = UBInt64()
-    collisions = UBInt64()
-    duration_sec = UBInt32()
-    duration_nsec = UBInt32()
 
-    def __init__(self, port_no=None, rx_packets=None,
-                 tx_packets=None, rx_bytes=None, tx_bytes=None,
-                 rx_dropped=None, tx_dropped=None, rx_errors=None,
-                 tx_errors=None, rx_frame_err=None, rx_over_err=None,
-                 rx_crc_err=None, collisions=None, duration_sec=None,
-                 duration_nsec=None):
-        """Create a PortStats with the optional parameters below.
+    properties = ListOfPortDescProperty()
 
-        Args:
-            port_no (:class:`int`, :class:`~pyof.v0x05.common.port.Port`):
-                Port number.
-            rx_packets (int): Number of received packets.
-            tx_packets (int): Number of transmitted packets.
-            rx_bytes (int): Number of received bytes.
-            tx_bytes (int): Number of transmitted bytes.
-            rx_dropped (int): Number of packets dropped by RX.
-            tx_dropped (int): Number of packets dropped by TX.
-            rx_errors (int): Number of receive errors. This is a super-set of
-                more specific receive errors and should be greater than or
-                equal to the sum of all rx_*_err values.
-            tx_errors (int): Number of transmit errors.  This is a super-set of
-                more specific transmit errors and should be greater than or
-                equal to the sum of all tx_*_err values (none currently
-                defined).
-            rx_frame_err (int): Number of frame alignment errors.
-            rx_over_err (int): Number of packets with RX overrun.
-            rx_crc_err (int): Number of CRC errors.
-            collisions (int): Number of collisions.
-            duration_sec (int): Time port has been alive in seconds
-            duration_nsec (int): Time port has been alive in nanoseconds beyond
-                duration_sec
+    # rx_frame_err = UBInt64()
+    # rx_over_err = UBInt64()
+    # rx_crc_err = UBInt64()
+    # collisions = UBInt64()
+
+    def __init__(self, port_no=None, duration_sec=None, duration_nsec=None,
+                 rx_packets=None, tx_packets=None, rx_bytes=None, tx_bytes=None,
+                 rx_dropped=None, tx_dropped=None, rx_errors=None, tx_errors=None,
+                 properties=None):
+        """
+        Create a PortStats with the optional parameters below.
+
+        :param port_no: (:class:`~pyof.v0x05.common.port.Port`): Port number.
+        :param duration_sec: Time port has been alive in seconds.
+        :param duration_nsec: Time port has been alive in nanoseconds beyond duration_sec
+        :param rx_packets: Number of received packets.
+        :param tx_packets: Number of transmitted packets.
+        :param rx_bytes: Number of received bytes.
+        :param tx_bytes: Number of transmitted bytes.
+        :param rx_dropped: Number of packets dropped by RX.
+        :param tx_dropped: Number of packets dropped by TX.
+        :param rx_errors: Number of receive errors. This is a super-set of more specific receive errors and should be
+        greater than or equal to the sum of all rx_*_err values.
+        :param tx_errors: Number of transmit errors.  This is a super-set of more specific transmit errors and
+        should be greater than or equal to the sum of all tx_*_err values (none currently defined).
+        :param properties: Port description property list - 0 or more properties.
         """
         super().__init__()
         self.port_no = port_no
+        self.duration_sec = duration_sec
+        self.duration_nsec = duration_nsec
         self.rx_packets = rx_packets
         self.tx_packets = tx_packets
         self.rx_bytes = rx_bytes
@@ -380,12 +391,7 @@ class PortStats(GenericStruct):
         self.tx_dropped = tx_dropped
         self.rx_errors = rx_errors
         self.tx_errors = tx_errors
-        self.rx_frame_err = rx_frame_err
-        self.rx_over_err = rx_over_err
-        self.rx_crc_err = rx_crc_err
-        self.collisions = collisions
-        self.duration_sec = duration_sec
-        self.duration_nsec = duration_nsec
+        self.properties = properties if properties else []
 
 
 class QueueStats(GenericStruct):

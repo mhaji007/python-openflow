@@ -10,7 +10,7 @@ from pyof.foundation.basic_types import (
 from pyof.v0x05.common.flow_match import Match
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.common.port import PortNo
-from pyof.v0x05.common.constants import DESC_STR_LEN, SERIAL_NUM_LEN
+
 from pyof.v0x05.controller2switch.common import (
     ExperimenterMultipartHeader, MultipartType, TableFeatures)
 from pyof.v0x05.controller2switch.group_mod import Group
@@ -260,7 +260,7 @@ class PortStatsRequest(GenericStruct):
 
         Args:
             port_no (:class:`int`, :class:`~pyof.v0x05.common.port.PortNo`):
-                :attr:`StatsType.OFPST_PORT` message must request statistics
+                :attr:`MultipartType.OFPMP_PORT_STATS` message must request statistics
                 either for a single port (specified in ``port_no``) or for all
                 ports (if ``port_no`` == :attr:`.PortNo.OFPP_ANY`).
         """
