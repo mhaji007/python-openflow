@@ -3,7 +3,7 @@
 # System imports
 from enum import IntEnum
 
-from pyof.foundation.base import GenericMessage, GenericStruct
+from pyof.foundation.base import GenericMessage, GenericStruct, GenericBitMask
 from pyof.foundation.basic_types import (
     Char, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.constants import OFP_MAX_TABLE_NAME_LEN
@@ -214,6 +214,23 @@ class PortStatsPropType(IntEnum):
     #: Experimenter property
     OFPPSPT_EXPERIMENTER = 0xffff
 
+
+class PortStatsOpticalFlags(GenericBitMask):
+    """
+    Flags is one of OFPOSF_ bellow
+    """
+    #: Receiver tune info valid
+    OFPOSF_RX_TUNE = 1 << 0
+    #: Transmit tune info valid
+    OFPOSF_TX_TUNE = 1 << 1
+    #: TX Power is valid
+    OFPOSF_TX_PWR = 1 << 2
+    #: RX Power is valid
+    OFPOSF_RX_PWR = 1 << 4
+    #: Transmit bias is valid
+    OFPOSF_TX_BIAS = 1 << 5
+    #: TX temp is valid
+    OFPOSF_TX_TEMP = 1 << 6
 
 # Classes
 
