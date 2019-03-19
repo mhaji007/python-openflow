@@ -3,7 +3,7 @@
 # System imports
 from enum import IntEnum
 
-from pyof.foundation.base import GenericMessage, GenericStruct
+from pyof.foundation.base import GenericMessage, GenericStruct, GenericBitMask
 from pyof.foundation.basic_types import (
     Char, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.foundation.constants import OFP_MAX_TABLE_NAME_LEN
@@ -201,6 +201,36 @@ class MultipartType(IntEnum):
     #: The request and reply bodies are otherwise experimenter-defined.
     OFPMP_EXPERIMENTER = 0xffff
 
+
+class PortStatsPropType(IntEnum):
+    """
+    Port stats property types.
+    """
+
+    #: Ethernet property.
+    OFPPSPT_ETHERNET = 0
+    #: Optical property
+    OFPPSPT_OPTICAL = 1
+    #: Experimenter property
+    OFPPSPT_EXPERIMENTER = 0xffff
+
+
+class PortStatsOpticalFlags(GenericBitMask):
+    """
+    Flags is one of OFPOSF_ bellow
+    """
+    #: Receiver tune info valid
+    OFPOSF_RX_TUNE = 1 << 0
+    #: Transmit tune info valid
+    OFPOSF_TX_TUNE = 1 << 1
+    #: TX Power is valid
+    OFPOSF_TX_PWR = 1 << 2
+    #: RX Power is valid
+    OFPOSF_RX_PWR = 1 << 4
+    #: Transmit bias is valid
+    OFPOSF_TX_BIAS = 1 << 5
+    #: TX temp is valid
+    OFPOSF_TX_TEMP = 1 << 6
 
 # Classes
 
@@ -470,7 +500,7 @@ class InstructionId(GenericStruct):
                 length(int): Length is 4 or experimenter defined.
                 exp_data(int): Optional experimenter id + data.
         """
-
+        super().__init__()
         self.type = type
         self.length = UBInt16(4) if length is None else length
         self.exp_data = exp_data
@@ -543,7 +573,7 @@ class ActionID(GenericStruct):
                 len(int): Length is 4 or experimenter defined.
                 exp_data(int): Optional experimenter id + data.
         """
-
+        super().__init__()
         self.type = type if isinstance(type, ActionType) else None
         self.len = UBInt16(4) if len is not None else len
         self.exp_data = exp_data
@@ -771,4 +801,114 @@ class TableFeatures(GenericStruct):
         super().unpack(buff[:offset+length.value], offset)
 
 
+class PortStatsPropHeader(GenericStruct):
+    """
+    Common header for all port stats properties.
+    """
+    #: One of OFPPSPT_*
+    type = UBInt16()
+    #: Length in bytes of this property.
+    length = UBInt16()
 
+class PortStatsPropEthernet(PortStatsPropHeader):
+    """
+    Ethernet port stats property
+    """
+    pad = Pad(4)
+
+    rx_frame_err = UBInt64()
+    rx_over_err = UBInt64()
+    rx_crc_err = UBInt64()
+    collisions = UBInt64()
+
+    def __init__(self, rx_frame_err=None, rx_over_err=None, rx_crc_err=None, collisions=None):
+        """
+        Create the Ethernet port stats property.
+
+        :param rx_frame_err: Number of frame alignment errors.
+        :param rx_over_err: Number of packets with RX overrun.
+        :param rx_crc_err: Number of CRC errors.
+        :param collisions: Number of collisions.
+        """
+        super().type = PortStatsPropType.OFPPSPT_ETHERNET
+        self.rx_frame_err = rx_frame_err
+        self.rx_over_err = rx_over_err
+        self.rx_crc_err = rx_crc_err
+        self.collisions = collisions
+        super().length = self.__sizeof__()
+
+
+class PortStatsPropOptical(PortStatsPropHeader):
+    """
+    Optical port stats property.
+    """
+
+    pad = Pad(4)
+    flags = UBInt32()
+    tx_freq_lmda = UBInt32()
+    tx_offset = UBInt32()
+    tx_grid_span = UBInt32()
+    rx_freq_lmda = UBInt32()
+    rx_offset = UBInt32()
+    rx_grid_span = UBInt32()
+    tx_pwr = UBInt16()
+    rx_pwr = UBInt16()
+    bias_current = UBInt16()
+    temperature = UBInt16()
+
+    def __init__(self, flags=None, tx_freq_lmda=None, tx_offset=None, tx_grid_span=None, rx_freq_lmda=None,
+                 rx_offset=None, rx_grid_span=None, tx_pwr=None, rx_pwr=None, bias_current=None, temperature=None):
+        """
+        Create the optical port stats property.
+
+        :param flags: Features enabled by the port.
+        :param tx_freq_lmda: Current TX Frequency/Wavelength
+        :param tx_offset: TX Offset
+        :param tx_grid_span: TX Grid Spacing
+        :param rx_freq_lmda: Current RX Frequency/Wavelength
+        :param rx_offset: RX Offset
+        :param rx_grid_span: RX Grid Spacing
+        :param tx_pwr: Current TX power
+        :param rx_pwr: Current RX power
+        :param bias_current: TX Bias Current
+        :param temperature: TX Laser Temperature
+        """
+        super().type = PortStatsPropType.OFPPSPT_OPTICAL
+        self.flags = flags
+        self.tx_freq_lmda = tx_freq_lmda
+        self.tx_offset = tx_offset
+        self.tx_grid_span = tx_grid_span
+        self.rx_freq_lmda = rx_freq_lmda
+        self.rx_offset = rx_offset
+        self.rx_grid_span = rx_grid_span
+        self.tx_pwr = tx_pwr
+        self.rx_pwr = rx_pwr
+        self.bias_current = bias_current
+        self.temperature = temperature
+        super().length = self.__sizeof__()
+
+
+class PortStatsPropExperimenter(PortStatsPropHeader):
+    """
+    Experimenter port stats property.
+    """
+    experimenter = UBInt32()
+    exp_type = UBInt32()
+    experimenter_data = UBInt32()
+
+    def __init__(self, experimenter=None, exp_type=None, experimenter_data=None):
+        """
+        Create the experimenter port stats property.
+
+        :param experimenter: Experimenter ID which takes the same form as in ExperimenterHeader
+        :param exp_type: Experimenter defined
+        Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes of all-zeros bytes
+        :param experimenter_data: Experimenter Data
+        """
+        super().type = PortStatsPropType.OFPPSPT_EXPERIMENTER
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
+        super().length = self.__sizeof__()
