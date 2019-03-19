@@ -202,6 +202,19 @@ class MultipartType(IntEnum):
     OFPMP_EXPERIMENTER = 0xffff
 
 
+class PortStatsPropType(IntEnum):
+    """
+    Port stats property types.
+    """
+
+    #: Ethernet property.
+    OFPPSPT_ETHERNET = 0
+    #: Optical property
+    OFPPSPT_OPTICAL = 1
+    #: Experimenter property
+    OFPPSPT_EXPERIMENTER = 0xffff
+
+
 # Classes
 
 class Bucket(GenericStruct):
@@ -771,4 +784,88 @@ class TableFeatures(GenericStruct):
         super().unpack(buff[:offset+length.value], offset)
 
 
+class PortStatsPropHeader(GenericStruct):
+    """
+    Common header for all port stats properties.
+    """
+    #: One of OFPPSPT_*
+    type = UBInt16()
+    #: Length in bytes of this property.
+    length = UBInt16()
+
+class PortStatsPropEthernet(PortStatsPropHeader):
+    """
+    Ethernet port stats property
+    """
+    pad = Pad(4)
+
+    rx_frame_err = UBInt64()
+    rx_over_err = UBInt64()
+    rx_crc_err = UBInt64()
+    collisions = UBInt64()
+
+    def __init__(self, rx_frame_err=None, rx_over_err=None, rx_crc_err=None, collisions=None):
+        """
+        Create the Ethernet port stats property.
+
+        :param rx_frame_err: Number of frame alignment errors.
+        :param rx_over_err: Number of packets with RX overrun.
+        :param rx_crc_err: Number of CRC errors.
+        :param collisions: Number of collisions.
+        """
+        super().type = PortStatsPropType.OFPPSPT_ETHERNET
+        self.rx_frame_err = rx_frame_err
+        self.rx_over_err = rx_over_err
+        self.rx_crc_err = rx_crc_err
+        self.collisions = collisions
+        super().length = self.__sizeof__()
+
+
+class PortStatsPropOptical(PortStatsPropHeader):
+    """
+
+    """
+
+    pad = Pad(4)
+    flags = UBInt32()
+    tx_freq_lmda = UBInt32()
+    tx_offset = UBInt32()
+    tx_grid_span = UBInt32()
+    rx_freq_lmda = UBInt32()
+    rx_offset = UBInt32()
+    rx_grid_span = UBInt32()
+    tx_pwr = UBInt16()
+    rx_pwr = UBInt16()
+    bias_current = UBInt16()
+    temperature = UBInt16()
+
+    def __init__(self, flags=None, tx_freq_lmda=None, tx_offset=None, tx_grid_span=None, rx_freq_lmda=None,
+                 rx_offset=None, rx_grid_span=None, tx_pwr=None, rx_pwr=None, bias_current=None, temperature=None):
+        """
+
+        :param flags:
+        :param tx_freq_lmda:
+        :param tx_offset:
+        :param tx_grid_span:
+        :param rx_freq_lmda:
+        :param rx_offset:
+        :param rx_grid_span:
+        :param tx_pwr:
+        :param rx_pwr:
+        :param bias_current:
+        :param temperature:
+        """
+        super().type = PortStatsPropType.OFPPSPT_OPTICAL
+        self.flags = flags
+        self.tx_freq_lmda = tx_freq_lmda
+        self.tx_offset = tx_offset
+        self.tx_grid_span = tx_grid_span
+        self.rx_freq_lmda = rx_freq_lmda
+        self.rx_offset = rx_offset
+        self.rx_grid_span = rx_grid_span
+        self.tx_pwr = tx_pwr
+        self.rx_pwr = rx_pwr
+        self.bias_current = bias_current
+        self.temperature = temperature
+        super().length = self.__sizeof__()
 

@@ -328,7 +328,6 @@ class ListOfPortDescProperty(FixedTypeList):
         super().__init__(PortDescPropHeader, items=items)
 
 
-
 class PortStats(GenericStruct):
     """Body of reply to OFPMP_PORT_STATS request.
 
