@@ -2,9 +2,7 @@
 
 # System imports
 
-from enum import IntEnum
-
-from pyof.foundation.base import GenericBitMask, GenericMessage, GenericStruct
+from pyof.foundation.base import GenericMessage
 from pyof.foundation.basic_types import UBInt32, UBInt16, FixedTypeList, Pad
 from pyof.v0x05.common.header import Header, Type
 from pyof.v0x05.controller2switch.bundle_ctrl import BundleFlags, BundlePropHeader
