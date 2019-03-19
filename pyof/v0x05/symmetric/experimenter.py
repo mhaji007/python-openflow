@@ -34,9 +34,9 @@ class ExperimenterHeader(GenericMessage):
     header = Header(message_type=Type.OFPT_EXPERIMENTER)
     experimenter = UBInt32()
     exp_type = UBInt32()
-    data = BinaryData()
+    experimenter_data = BinaryData()
 
-    def __init__(self, xid=None, experimenter=None, exp_type=None, data=b''):
+    def __init__(self, xid=None, experimenter=None, exp_type=None, experimenter_data=b''):
         """Create a ExperimenterHeader with the optional parameters below.
 
         Args:
@@ -45,8 +45,9 @@ class ExperimenterHeader(GenericMessage):
                 MSB 0: low-order bytes are IEEE OUI.
                 MSB != 0: defined by ONF.
             exp_type (int): Experimenter defined.
+            experimenter_data (Binary): Experimenter-defined arbitrary additional data.
         """
         super().__init__(xid)
         self.experimenter = experimenter
         self.exp_type = exp_type
-        self.data = data
+        self.experimenter_data = experimenter_data
