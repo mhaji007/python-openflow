@@ -823,7 +823,7 @@ class PortStatsPropEthernet(PortStatsPropHeader):
 
 class PortStatsPropOptical(PortStatsPropHeader):
     """
-
+    Optical port stats property.
     """
 
     pad = Pad(4)
@@ -842,18 +842,19 @@ class PortStatsPropOptical(PortStatsPropHeader):
     def __init__(self, flags=None, tx_freq_lmda=None, tx_offset=None, tx_grid_span=None, rx_freq_lmda=None,
                  rx_offset=None, rx_grid_span=None, tx_pwr=None, rx_pwr=None, bias_current=None, temperature=None):
         """
+        Create the optical port stats property.
 
-        :param flags:
-        :param tx_freq_lmda:
-        :param tx_offset:
-        :param tx_grid_span:
-        :param rx_freq_lmda:
-        :param rx_offset:
-        :param rx_grid_span:
-        :param tx_pwr:
-        :param rx_pwr:
-        :param bias_current:
-        :param temperature:
+        :param flags: Features enabled by the port.
+        :param tx_freq_lmda: Current TX Frequency/Wavelength
+        :param tx_offset: TX Offset
+        :param tx_grid_span: TX Grid Spacing
+        :param rx_freq_lmda: Current RX Frequency/Wavelength
+        :param rx_offset: RX Offset
+        :param rx_grid_span: RX Grid Spacing
+        :param tx_pwr: Current TX power
+        :param rx_pwr: Current RX power
+        :param bias_current: TX Bias Current
+        :param temperature: TX Laser Temperature
         """
         super().type = PortStatsPropType.OFPPSPT_OPTICAL
         self.flags = flags
@@ -869,3 +870,28 @@ class PortStatsPropOptical(PortStatsPropHeader):
         self.temperature = temperature
         super().length = self.__sizeof__()
 
+
+class PortStatsPropExperimenter(PortStatsPropHeader):
+    """
+    Experimenter port stats property.
+    """
+    experimenter = UBInt32()
+    exp_type = UBInt32()
+    experimenter_data = UBInt32()
+
+    def __init__(self, experimenter=None, exp_type=None, experimenter_data=None):
+        """
+        Create the experimenter port stats property.
+
+        :param experimenter: Experimenter ID which takes the same form as in ExperimenterHeader
+        :param exp_type: Experimenter defined
+        Followed by:
+            - Exactly (length - 12) bytes containing the experimenter data, then
+            - Exactly (length + 7)/8*8 - (length) (between 0 and 7) bytes of all-zeros bytes
+        :param experimenter_data: Experimenter Data
+        """
+        super().type = PortStatsPropType.OFPPSPT_EXPERIMENTER
+        self.experimenter = experimenter
+        self.exp_type = exp_type
+        self.experimenter_data = experimenter_data
+        super().length = self.__sizeof__()
