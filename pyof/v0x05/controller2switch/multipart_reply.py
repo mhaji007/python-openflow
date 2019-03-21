@@ -26,7 +26,7 @@ __all__ = ('MultipartReply', 'MultipartReplyFlags', 'AggregateStatsReply',
            'Desc', 'FlowStats', 'PortStats', 'QueueStats', 'GroupDescStats',
            'GroupFeatures', 'GroupStats', 'MeterConfig', 'MeterFeatures',
            'BandStats', 'ListOfBandStats', 'MeterStats', 'GroupCapabilities',
-           'TableStats')
+           'TableStats', 'ListOfPortDescProperty', 'TableDesc')
 
 # Enum
 
@@ -316,13 +316,14 @@ class FlowStats(GenericStruct):
 
 class ListOfPortDescProperty(FixedTypeList):
     """
-
+    List of Port description property
     """
 
     def __init__(self, items=None):
         """
+        Create a list of port description property.
 
-        :param items:
+        :param items: The elements of this list
         """
 
         super().__init__(PortDescPropHeader, items=items)
@@ -766,3 +767,25 @@ class TableDesc(GenericStruct):
         self.config = config
         self.properties = FixedTypeList(pyof_class=TableModPropHeader) if properties is not [] else properties
 
+
+class PortDesc(Port):
+    """
+    Description of port.
+    """
+
+    properties = ListOfPortDescProperty()
+
+    def __init__(self, port_no=None, hw_addr=None, name='', config=None, state=None, properties=None):
+        """
+        Create the Port description for Multipart Reply.
+
+        :param port_no: Port number
+        :param hw_addr: Address
+        :param name: Null terminated
+        :param config: Bitmap of OFPPC_* flags.
+        :param state: Bitmaps of OFPPS_* flags.
+        :param properties: Port description property list - 0 or more properties
+        """
+        super().__init__(port_no=port_no, hw_addr=hw_addr, name=name, config=config, state=state)
+        self.properties = properties if properties else []
+        self.length = self.__sizeof__()

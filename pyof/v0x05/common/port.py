@@ -229,7 +229,8 @@ class Port(GenericStruct):
     #pad2 = Pad(2)
 
     """
-
+    These are not existed in version 1.4 specifications
+    
     curr = UBInt32(enum_ref=PortFeatures)
     advertised = UBInt32(enum_ref=PortFeatures)
     supported = UBInt32(enum_ref=PortFeatures)
@@ -242,8 +243,7 @@ class Port(GenericStruct):
 
 
     def __init__(self, port_no=None, hw_addr=None, name=None, config=None,
-                 state=None, curr=None, advertised=None, supported=None,
-                 peer=None, curr_speed=None, max_speed=None):
+                 state=None):
         """Create a Port with the optional parameters below.
 
         Args:
@@ -251,19 +251,10 @@ class Port(GenericStruct):
             hw_addr (HWAddress): Hardware address.
             name (str): Null-terminated name.
 
-            config (~pyof.v0x04.common.port.PortConfig):
+            config (~pyof.v0x05.common.port.PortConfig):
                 Bitmap of OFPPC* flags.
-            state (~pyof.v0x04.common.port.PortState): Bitmap of OFPPS* flags.
-            curr (~pyof.v0x04.common.port.PortFeatures): Current features.
-            advertised (~pyof.v0x04.common.port.PortFeatures):
-                Features being advertised by the port.
-            supported (~pyof.v0x04.common.port.PortFeatures):
-                Features supported by the port.
-            peer (~pyof.v0x04.common.port.PortFeatures):
+            state (~pyof.v0x05.common.port.PortState): Bitmap of OFPPS* flags.
 
-                Features advertised by peer.
-            curr_speed (int): Current port bitrate in kbps.
-            max_speed (int): Max port bitrate in kbps.
         """
         super().__init__()
         self.port_no = port_no
@@ -271,12 +262,7 @@ class Port(GenericStruct):
         self.name = name
         self.config = config
         self.state = state
-        self.curr = curr
-        self.advertised = advertised
-        self.supported = supported
-        self.peer = peer
-        self.curr_speed = curr_speed
-        self.max_speed = max_speed
+
 
 
 class PortDescPropHeader(GenericStruct):
