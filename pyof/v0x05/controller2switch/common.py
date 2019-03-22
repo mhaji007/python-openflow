@@ -20,9 +20,11 @@ from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
 __all__ = ('ConfigFlag', 'ControllerRole', 'Bucket', 'BucketCounter', 'SwitchConfig',
            'ExperimenterMultipartHeader', 'MultipartType', 'AsyncConfig', 'RoleBaseMessage',
-           'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID',
-           'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty',
-           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'ExperimenterProperty')
+           'TableFeaturePropType', 'Property', 'InstructionsProperty', 'ActionID', 'PortStatsPropType',
+           'NextTablesProperty', 'ActionsProperty', 'OxmProperty', 'ExperimenterProperty', 'PortStatsOpticalFlags',
+           'ListOfProperty', 'TableFeatures', 'InstructionId', 'TableFeaturePropOxm', 'PortStatsPropHeader',
+           'PortStatsPropEthernet', 'PortStatsPropOptical', 'PortStatsPropExperimenter', 'ListOfInstructionId',
+           'ListActionID')
 
 # Enum
 
@@ -233,6 +235,7 @@ class PortStatsOpticalFlags(GenericBitMask):
     OFPOSF_TX_TEMP = 1 << 6
 
 # Classes
+
 
 class Bucket(GenericStruct):
     """Bucket for use in groups."""
@@ -479,7 +482,6 @@ class Property(GenericStruct):
         self.length = self.get_size()
 
 
-
 class InstructionId(GenericStruct):
     """Instruction ID"""
 
@@ -506,6 +508,19 @@ class InstructionId(GenericStruct):
         self.exp_data = exp_data
 
 
+class ListOfInstructionId(FixedTypeList):
+    """
+    List of Instruction IDs.
+    """
+
+    def __init__(self, items=None):
+        """
+        Create a list of Instruction IDs.
+
+        :param items: Instance or a list of instances.
+        """
+        super().__init__(pyof_class=InstructionId,items=items)
+
 
 class InstructionsProperty(Property):
     """Instructions property.
@@ -515,7 +530,7 @@ class InstructionsProperty(Property):
         OFPTFPT_INSTRUCTIONS_MISS
     """
 
-    instruction_ids = FixedTypeList(pyof_class=InstructionId)
+    instruction_ids = ListOfInstructionId()
 
     def __init__(self, property_type=TableFeaturePropType.OFPTFPT_INSTRUCTIONS,
                  instruction_ids=None):
@@ -579,6 +594,20 @@ class ActionID(GenericStruct):
         self.exp_data = exp_data
 
 
+class ListActionID(FixedTypeList):
+    """
+    List of action ID.
+
+    """
+
+    def __init__(self, items=None):
+        """
+        Create a list of Action IDs.
+
+        :param items: Instance or a list of instances
+        """
+        super().__init__(pyof_class=ActionID,items=items)
+
 
 class ActionsProperty(Property):
     """Actions Property.
@@ -590,7 +619,7 @@ class ActionsProperty(Property):
         OFPTFPT_APPLY_ACTIONS_MISS
     """
 
-    action_ids = FixedTypeList(pyof_class=ActionID) # ListOfActions()
+    action_ids = ListActionID()
 
     def __init__(self,
                  property_type=TableFeaturePropType.OFPTFPT_WRITE_ACTIONS,
@@ -604,7 +633,7 @@ class ActionsProperty(Property):
                 List of Action instances.
         """
         super().__init__(property_type)
-        self.action_ids = action_ids if action_ids else FixedTypeList(pyof_class=ActionID)# ListOfActions()
+        self.action_ids = action_ids if action_ids else []
         self.update_length()
 
 

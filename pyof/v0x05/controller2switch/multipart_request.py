@@ -4,7 +4,7 @@
 from enum import Enum
 
 # Local source tree imports
-from pyof.foundation.base import GenericMessage, GenericStruct
+from pyof.foundation.base import GenericMessage, GenericStruct, IntEnum
 from pyof.foundation.basic_types import (
     BinaryData, FixedTypeList, Pad, UBInt8, UBInt16, UBInt32, UBInt64)
 from pyof.v0x05.common.flow_match import Match
@@ -18,8 +18,8 @@ from pyof.v0x05.controller2switch.modify_flow_table_message import Table
 
 # Third-party imports
 
-__all__ = ('MultipartRequest', 'MultipartRequestFlags',
-           'AggregateStatsRequest', 'FlowStatsRequest',
+__all__ = ('MultipartRequest', 'MultipartRequestFlags', 'FlowMonitorCommand', 'FlowMonitorFlags',
+           'AggregateStatsRequest', 'FlowStatsRequest', 'FlowMonitorRequest',
            'PortStatsRequest', 'QueueStatsRequest',
            'GroupStatsRequest', 'MeterMultipartRequest')
 
@@ -27,7 +27,7 @@ __all__ = ('MultipartRequest', 'MultipartRequestFlags',
 # Enum
 
 
-class MultipartRequestFlags(Enum):
+class MultipartRequestFlags(IntEnum):
     """Flags for MultipartRequest."""
 
     #: No more requests to follow (This is not part of spec). Thanks @jondef95
@@ -37,7 +37,7 @@ class MultipartRequestFlags(Enum):
     OFPMPF_REQ_MORE = 1 << 0
 
 
-class FlowMonitorCommand(Enum):
+class FlowMonitorCommand(IntEnum):
     """Flow monitor commands"""
 
     #: New flow monitor
@@ -48,7 +48,7 @@ class FlowMonitorCommand(Enum):
     OFPFMC_DELETE = 2
 
 
-class FlowMonitorFlags(Enum):
+class FlowMonitorFlags(IntEnum):
     """’flags’ bits in struct of_flow_monitor_request"""
 
     #: Initially matching flows
