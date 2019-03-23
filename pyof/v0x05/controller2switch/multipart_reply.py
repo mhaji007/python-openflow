@@ -28,6 +28,7 @@ __all__ = ('MultipartReply', 'MultipartReplyFlags', 'AggregateStatsReply',
            'BandStats', 'ListOfBandStats', 'MeterStats', 'GroupCapabilities',
            'TableStats', 'ListOfPortDescProperty', 'TableDesc')
 
+
 # Enum
 
 
@@ -50,7 +51,93 @@ class GroupCapabilities(GenericBitMask):
     #: Chack chaining for loops and delete.
     OFPGFC_CHAINING_CHECKS = 1 << 3
 
+class FlowUpdateEvent(Enum):
+    """ ’event’ values in struct ofp_flow_update_header
+        enum ofp_flow_update_event"""
+
+    #: Flow present when flow monitor created
+    OFPFME_INITIAL = 0
+    #: Flow was added
+    OFPFME_ADDED = 1
+    #: Flow was removed
+    OFPFME_REMOVED = 2
+    #: Flow instructions were changed
+    OFPFME_MODIFIED = 3
+
+    """struct ofp_flow_update_abbrev"""
+     #: Abbreviated reply
+    OFPFME_ABBREV = 4
+
+    """struct ofp_flow_update_header"""
+    #: Monitoring paused(out of buffer space)
+    OFPFME_PAUSED = 5
+    #: Monitoring resumed
+    OFPFME_RESUMED = 6
+
+
 # Classes
+
+
+class FlowUpdateFull(GenericStruct):
+    """ OFPMP_FLOW_MONITOR reply for OFPFME_INITIAL, OFPFME_ADDED, OFPFME_REMOVED,
+    and OFPFME_MODIFIED."""
+
+    #: Length is 32 + match + instructions.
+    length = UBInt16()
+    #: One of OFPFME_*
+    event = UBInt16(enum_ref=FlowUpdateEvent)
+    #: ID of flow’s table
+    table_id = UBInt8()
+    #: OFPRR_* for OFPFME_REMOVED, else zero
+    reason = UBInt8(enum_ref=FlowUpdateEvent)
+    #: Number of seconds idle before expiration
+    idle_timeout = UBInt16()
+    #: Number of seconds before expiration
+    hard_timeout = UBInt16()
+    #: Priority of the entry
+    priority = UBInt16()
+    #: uint8_t zeros[4]; Reserved, currently zeroed
+    zeros = UBInt32(0)
+    #: Opaque controller-issued identifier.
+    cookie = UBInt16()
+    #: Fields to match. Variable size
+    match = Match()
+    """
+    Instruction set.
+        If OFPFMF_INSTRUCTIONS was not specified, or ’event’ is
+        OFPFME_REMOVED, no instructions are included. """
+
+     #instructions = ListOfInstruction() or []
+
+
+
+    def __init__(self, event=FlowUpdateEvent, table_id=None, reason=None, idle_timeout=None,
+                 hard_timeout=None, priority=None, zeros=None, cookie=None, match=None):
+        """Create a FlowUpdateFull with the optional parameters below.
+
+        Args:
+            length (int): Length of this entry.
+            event (int):  One of OFPFME_*
+            table_id (int): ID of table flow came from.
+            idle_timeout (int): Number of seconds idle before expiration.
+            hard_timeout (int): Number of seconds before expiration.
+            priority (int): Priority of the entry. Only meaningful when this
+                is not an exact-match entry.
+            cookie (int): Opaque controller-issued identifier.
+            match (~pyof.v0x05.common.flow_match.Match): Description of fields.
+        """
+        super().__init__()
+        self.event = event
+        self.table_id = table_id
+        self.reason = reason
+        self.idle_timeout = idle_timeout
+        self.hard_timeout = hard_timeout
+        self.priority = priority
+        self.zeros = zeros
+        self.cookie = cookie
+        self.match = match
+        self.length = self.__sizeof__()
+
 
 
 class MultipartReply(GenericMessage):
@@ -789,3 +876,54 @@ class PortDesc(Port):
         super().__init__(port_no=port_no, hw_addr=hw_addr, name=name, config=config, state=state)
         self.properties = properties if properties else []
         self.length = self.__sizeof__()
+
+
+class FlowUpdateHeader(GenericStruct):
+    """ OFPMP_FLOW_MONITOR reply header.
+
+     The body of an OFPMP_FLOW_MONITOR reply is an array of variable-length
+     structures, each of which begins with this header. The ’length’ member may
+     be used to traverse the array, and the ’event’ member may be used to
+     determine the particular structure.
+
+     Every instance is a multiple of 8 bytes long."""
+
+    #: Length of this entry
+    length = UBInt16()
+    #: One of OFPFME_*
+    event = UBInt16(enum_ref=FlowUpdateEvent)
+
+    def __init__(self, event=FlowUpdateEvent):
+        super().__init__()
+        self.event = event
+        self.length = self.__sizeof__()
+
+    class FlowUpdateAbbrev(GenericStruct):
+        #: Length is 8
+        length = 8
+
+    #: OFPFME_ABBREV
+    event = UBInt16(enum_ref=FlowUpdateEvent)
+    #: Controller - specified xid from flow_mod
+    xid = UBInt16()
+
+    def __init__(self, xid=None, event=FlowUpdateEvent.OFPFME_ABBREV):
+        super().__init__()
+        self.xid = xid
+        self.event = event
+        self.length = self.__sizeof__()
+
+
+    class FlowUpdatePaused(GenericStruct):
+        #: Length is 8
+        length = 8
+        #: One of OFPFME_ *
+        event = UBInt16(enum_ref=FlowUpdateEvent)
+        #: uint8_t zeros[4]; Reserved, currently zeroed
+        zeros = UBInt32(0)
+
+        def __init__(self, xid=None, event=FlowUpdateEvent):
+            super().__init__()
+            self.xid = xid
+            self.event = event
+            self.length = self.__sizeof__()
