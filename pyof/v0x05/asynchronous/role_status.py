@@ -38,14 +38,28 @@ class RolePropHeader(GenericStruct):
     """Common header for all Role properties"""
 
     #: One of OFPRPT_
-    type = UBInt16(enum_ref=RolePropertyType)
+    role_type = UBInt16(enum_ref=RolePropertyType)
     #: Length in bytes of this property
     length = UBInt16()
 
-    def __init__(self, type=RolePropertyType, length=None):
+    def __init__(self, role_type=RolePropertyType()):
         super().__init__()
-        self.type = type
-        self.length = length
+        self.role_type = role_type
+
+
+class ListOfRoleProperties(FixedTypeList):
+    """List of RoleProperties.
+
+    Represented by instances of RolePropHeader.
+    """
+    def __init__(self, items=None):
+        """Create a ListOfProperties with the optional parameters below.
+
+        Args:
+            items (|RolePropHeader_v0x05|): Instance or a list of instances.
+        """
+        super().__init__(pyof_class=RolePropHeader, items=items)
+
 
 
 class RoleStatusMsg(GenericMessage):
@@ -72,7 +86,7 @@ class RoleStatusMsg(GenericMessage):
     #: Master Election Generation Id
     generation_id = UBInt64()
     #: Role Property list
-    properties = FixedTypeList(RolePropHeader)
+    properties = ListOfRoleProperties()
 
     def __init__(self, xid=None, role=ControllerRole, reason=RoleReason, generation_id=None, properties=None):
         """Create a message with the optional parameters below.
@@ -86,20 +100,17 @@ class RoleStatusMsg(GenericMessage):
             properties: a list of role properties, describing dynamic parameters of table configuration
 
         """
-        super().__init__(xid)
+        super().__init__()
+        self.header.xid = xid
         self.role = role
         self.reason = reason
         self.generation_id = generation_id
-        self.properties = properties
+        self.properties = properties if properties else []
 
 
 class ExperimenterRoleProperty(RolePropHeader):
     """ Experimenter role property"""
 
-    #: One of OFPRPT_EXPERIMENTER.
-    type = RolePropertyType.OFPRPT_EXPERIMENTER
-    #: Length in bytes of this property
-    length = UBInt16()
     #: Experimenter ID which takes the same form as in struct ofp_experimenter_header
     experimenter = UBInt32()
     #: Experimenter defined
@@ -113,10 +124,16 @@ class ExperimenterRoleProperty(RolePropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
-        super().__init__()
+        """
 
-        super().type = RolePropertyType.OFPRPT_EXPERIMENTER
+        :param experimenter: Experimenter ID which takes the same form as in struct ofp_experimenter_header
+        :param exp_type: Experimenter defined
+        """
+        super().__init__(RolePropertyType.OFPRPT_EXPERIMENTER)
+        # super().type = RolePropertyType.OFPRPT_EXPERIMENTER
 
         self.experimenter = experimenter
 
         self.exp_type = exp_type
+
+        super().length = self.__sizeof__()
