@@ -51,6 +51,7 @@ class GroupCapabilities(GenericBitMask):
     #: Chack chaining for loops and delete.
     OFPGFC_CHAINING_CHECKS = 1 << 3
 
+
 class FlowUpdateEvent(Enum):
     """ ’event’ values in struct ofp_flow_update_header
         enum ofp_flow_update_event"""
@@ -65,7 +66,7 @@ class FlowUpdateEvent(Enum):
     OFPFME_MODIFIED = 3
 
     """struct ofp_flow_update_abbrev"""
-     #: Abbreviated reply
+    #: Abbreviated reply
     OFPFME_ABBREV = 4
 
     """struct ofp_flow_update_header"""
@@ -107,9 +108,7 @@ class FlowUpdateFull(GenericStruct):
         If OFPFMF_INSTRUCTIONS was not specified, or ’event’ is
         OFPFME_REMOVED, no instructions are included. """
 
-     #instructions = ListOfInstruction() or []
-
-
+    # instructions = ListOfInstruction() or []
 
     def __init__(self, event=FlowUpdateEvent, table_id=None, reason=None, idle_timeout=None,
                  hard_timeout=None, priority=None, zeros=None, cookie=None, match=None):
@@ -137,7 +136,6 @@ class FlowUpdateFull(GenericStruct):
         self.cookie = cookie
         self.match = match
         self.length = self.__sizeof__()
-
 
 
 class MultipartReply(GenericMessage):
@@ -398,7 +396,7 @@ class FlowStats(GenericStruct):
         """
         unpack_length = UBInt16()
         unpack_length.unpack(buff, offset)
-        super().unpack(buff[:offset+unpack_length], offset)
+        super().unpack(buff[:offset + unpack_length], offset)
 
 
 class ListOfPortDescProperty(FixedTypeList):
@@ -798,8 +796,8 @@ class MeterStats(GenericStruct):
         length = UBInt16()
         length.unpack(buff, offset)
 
-        length.unpack(buff, offset=offset+MeterStats.meter_id.get_size())
-        super().unpack(buff[:offset+length.value], offset=offset)
+        length.unpack(buff, offset=offset + MeterStats.meter_id.get_size())
+        super().unpack(buff[:offset + length.value], offset=offset)
 
 
 class TableStats(GenericStruct):
@@ -830,6 +828,20 @@ class TableStats(GenericStruct):
         self.matched_count = matched_count
 
 
+class ListOfTableModProperties(FixedTypeList):
+    """List of RoleProperties.
+
+    Represented by instances of RolePropHeader.
+    """
+    def __init__(self, items=None):
+        """Create a ListOfTableModProperties with the optional parameters below.
+
+        Args:
+            items (|TableModPropHeader_v0x05|): Instance or a list of instances.
+        """
+        super().__init__(pyof_class=TableModPropHeader, items=items)
+
+
 class TableDesc(GenericStruct):
     """Body of reply to OFPMP_TABLE_DESC request."""
 
@@ -837,7 +849,7 @@ class TableDesc(GenericStruct):
     table_id = UBInt8()
     pad = Pad(1)
     config = UBInt32()
-    properties = FixedTypeList(pyof_class=TableModPropHeader)
+    properties = ListOfTableModProperties()
 
     def __init__(self, length=None, table_id=None, config=None, properties=None):
         """Body of reply to OFPMP_TABLE_DESC request
@@ -852,7 +864,7 @@ class TableDesc(GenericStruct):
         self.length = length
         self.table_id = table_id
         self.config = config
-        self.properties = FixedTypeList(pyof_class=TableModPropHeader) if properties is not [] else properties
+        self.properties = properties if properties else []
 
 
 class PortDesc(Port):
@@ -898,32 +910,39 @@ class FlowUpdateHeader(GenericStruct):
         self.event = event
         self.length = self.__sizeof__()
 
-    class FlowUpdateAbbrev(GenericStruct):
-        #: Length is 8
-        length = 8
 
+class FlowUpdateAbbrev(GenericStruct):
+    #: Length is 8
+    length = UBInt16(8)
     #: OFPFME_ABBREV
     event = UBInt16(enum_ref=FlowUpdateEvent)
     #: Controller - specified xid from flow_mod
     xid = UBInt16()
 
     def __init__(self, xid=None, event=FlowUpdateEvent.OFPFME_ABBREV):
+        """
+
+        :param xid: Controller - specified xid from flow_mod
+        :param event: OFPFME_ABBREV
+        """
         super().__init__()
         self.xid = xid
         self.event = event
         self.length = self.__sizeof__()
 
 
-    class FlowUpdatePaused(GenericStruct):
-        #: Length is 8
-        length = 8
-        #: One of OFPFME_ *
-        event = UBInt16(enum_ref=FlowUpdateEvent)
-        #: uint8_t zeros[4]; Reserved, currently zeroed
-        zeros = UBInt32(0)
+class FlowUpdatePaused(GenericStruct):
+    #: Length is 8
+    length = UBInt16(8)
+    #: One of OFPFME_ *
+    event = UBInt16(enum_ref=FlowUpdateEvent)
+    #: uint8_t zeros[4]; Reserved, currently zeroed
+    zeros = UBInt32(0)
 
-        def __init__(self, xid=None, event=FlowUpdateEvent):
-            super().__init__()
-            self.xid = xid
-            self.event = event
-            self.length = self.__sizeof__()
+    def __init__(self, event=FlowUpdateEvent):
+        """
+        :param event: One of OFPFME_ *
+        """
+        super().__init__()
+        self.event = event
+        self.length = self.__sizeof__()
