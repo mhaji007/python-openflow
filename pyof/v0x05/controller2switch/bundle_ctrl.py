@@ -11,7 +11,7 @@ from pyof.v0x05.common.header import Header, Type
 # Third-party imports
 
 __all__ = ('BundleControlType', 'BundleControlMsg', 'BundleFlags', 'BundlePropHeader'
-           , 'BundlePropExperimenter', 'BundlePropType')
+           , 'BundlePropExperimenter', 'BundlePropType', 'ListOfBundleProperties')
 
 
 # Enums
@@ -55,18 +55,18 @@ class BundlePropHeader(GenericStruct):
     #: Length in bytes of this property
     length = UBInt16()
 
-    def __int__(self, enum_ref=BundlePropType, length=None):
+    def __int__(self, enum_ref=BundlePropType):
+        """
+        :param enum_ref:
+        :return:
+        """
         self.type = type
-        self.length = length
+
 
 
 class BundlePropExperimenter(BundlePropHeader):
     """Experimenter bundle property"""
 
-    #: OFPBPT_EXPERIMENTER
-    type = BundlePropType.OFPTMPT_EXPERIMENTE
-    #: Length in bytes of this property
-    length = UBInt16()
     #: Experimenter ID which takes the same form as in struct experimenter_header
     experimenter = UBInt32()
     #: Experimenter defined
@@ -80,6 +80,10 @@ class BundlePropExperimenter(BundlePropHeader):
     experimenter_data = UBInt32()
 
     def __init__(self, experimenter=None, exp_type=None):
+        """
+        :param experimenter: Experimenter ID which takes the same form as in struct experimenter_header
+        :param exp_type: Experimenter defined
+        """
         super().__init__()
 
         super().type = BundlePropType.OFPBPT_EXPERIMENTER
@@ -88,6 +92,22 @@ class BundlePropExperimenter(BundlePropHeader):
 
         self.exp_type = exp_type
 
+        super().length = self.__sizeof__()
+
+
+
+class ListOfBundleProperties(FixedTypeList):
+    """List of RoleProperties.
+
+    Represented by instances of BundlePropHeader.
+    """
+    def __init__(self, items=None):
+        """Create a ListOfBundleProperties with the optional parameters below.
+
+        Args:
+            items (|BundlePropHeader_v0x05|): Instance or a list of instances.
+        """
+        super().__init__(pyof_class=BundlePropHeader, items=items)
 
 class BundleControlMsg(GenericMessage):
     """Message structure for OFPT_BUNDLE_CONTROL"""
@@ -101,7 +121,7 @@ class BundleControlMsg(GenericMessage):
     #: Bitmap of OFPBF_* flags
     flags = UBInt16(enum_ref=BundleFlags)
     #: Bundle Property list
-    properties = FixedTypeList(BundlePropHeader)
+    properties = ListOfBundleProperties()
 
     def __init__(self, xid=None, bundle_id=None, type=BundleControlType, flags=BundleFlags, properties=None):
         """Assign parameters to object attributes.
@@ -112,7 +132,8 @@ class BundleControlMsg(GenericMessage):
             bundle_id (int): ID of the bundle
             flags (int): Bitmap of OFPBF_* flags
         """
-        super().__init__(xid)
+        super().__init__()
+        self.header.xid = xid
         self.bundle_id = bundle_id
         self.type = type
         self.flags = flags
